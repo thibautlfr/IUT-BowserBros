@@ -13,7 +13,6 @@ GameForm::GameForm(QWidget *parent)
     ui->setupUi(this);
 
     setFixedSize(800, 600);
-    viewport = QRect(0, 600, width(), height());
 
     qDebug() << this->height();
 
@@ -46,8 +45,6 @@ GameForm::GameForm(QWidget *parent)
     itsBlocks.push_back(new Block(580, 220));
     itsBlocks.push_back(new Block(600, 220));
 
-    //setAttribute(Qt::WA_OpaquePaintEvent);
-
     itsTimer = new QTimer(this);
     connect(itsTimer, SIGNAL(timeout()), this, SLOT(gameloop()));
     start();
@@ -60,7 +57,11 @@ GameForm::~GameForm()
     delete ui;
 }
 
-void GameForm::gameloop()
+// ---------------------------------------------------------------------------------------------------------
+
+
+// Gère les collisions entre le personnage et les éléments du jeu
+void GameForm::checkCharacterCollision()
 {
     // Vaut true si le cube est sur quelque chose
     bool isOnPlatform = false;
@@ -151,6 +152,11 @@ void GameForm::gameloop()
 
     itsCharacter->calculatePosition();
 
+}
+
+void GameForm::gameloop()
+{
+    checkCharacterCollision();
     repaint();
 }
 
@@ -200,50 +206,18 @@ void GameForm::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
     QPainter * painter = new QPainter(this);
 
+    painter->setPen(Qt::green);
+    painter->setBrush(Qt::SolidPattern);
+    painter->drawRect(*itsFloor);
+
+    itsCharacter->draw(painter);
+
+    //qDebug() << "REPAINT";
+
     for (std::list<Block*>::iterator it = itsBlocks.begin(); it != itsBlocks.end(); ++it)
     {
-        // Vérifier si le block est dans le "viewport"
-        if (viewport.intersects((*it)->getRect()))
-        {
-            // Calculer la position du block relative au "viewport"
-            int relativeX = (*it)->getRect().left() - viewport.left();
-            int relativeY = (*it)->getRect().top() - viewport.top();
-
-            // Dessiner le block à sa position relative
-            (*it)->getRect().setRect(relativeX, relativeY, 20, 20);
-            (*it)->draw(painter);
-        }
-    }
-
-    // Faites la même chose pour le personnage et les autres objets du jeu
-    if (itsCharacter->intersect(viewport))
-    {
-        itsCharacter->draw(painter);
-    }
-
-    if (itsFloor->intersects(viewport))
-    {
-        painter->fillRect(*itsFloor, Qt::red);
+        (*it)->draw(painter);
     }
 
     delete painter;
 }
-
-//void GameForm::paintEvent(QPaintEvent *event)
-//{
-//    Q_UNUSED(event);
-//    QPainter * painter = new QPainter(this);
-
-//    painter->fillRect(*itsFloor, Qt::red);
-
-//    itsCharacter->draw(painter);
-
-//    //qDebug() << "REPAINT";
-
-//    for (std::list<Block*>::iterator it = itsBlocks.begin(); it != itsBlocks.end(); ++it)
-//    {
-//
-//    }
-
-//    delete painter;
-//}

@@ -1,6 +1,6 @@
 #include "block.h"
 
-Block::Block(int x, int y)
+Block::Block(float x, float y)
 {
     itsX = x;
     itsY = y;
@@ -13,15 +13,27 @@ QRect Block::getRect()
     return itsRect;
 }
 
+float Block::getYSpeed()
+{
+    return itsYSpeed;
+}
+
+void Block::calculatePosition()
+{
+    itsY += itsYSpeed;
+}
+
 void Block::draw(QPainter *aPainter)
 {
     itsRect.moveTo(itsX, itsY);
-    aPainter->setPen(Qt::green);
-    QBrush b;
-    b.setColor(Qt::green);
-    b.setStyle(Qt::SolidPattern);
-    aPainter->setBrush(b);
+    aPainter->setPen(Qt::red);
+    aPainter->setBrush(Qt::SolidPattern);
     aPainter->drawRect(itsRect);
+}
+
+void Block::setYSpeed(float YSpeed)
+{
+    itsYSpeed = YSpeed;
 }
 
 void Block::moveDown(int speed) {

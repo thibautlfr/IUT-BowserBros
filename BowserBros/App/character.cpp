@@ -67,10 +67,7 @@ void Character::draw(QPainter * aPainter)
 {
     itsRect.moveTo(itsX, itsY);
     aPainter->setPen(Qt::blue);
-    QBrush b;
-    b.setColor(Qt::blue);
-    b.setStyle(Qt::SolidPattern);
-    aPainter->setBrush(b);
+    aPainter->setBrush(Qt::SolidPattern);
     aPainter->drawRect(itsRect);
 }
 

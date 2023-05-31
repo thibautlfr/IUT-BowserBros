@@ -26,6 +26,8 @@ public:
     explicit GameForm(QWidget *parent = nullptr);
     ~GameForm();
 
+    void checkCharacterCollision();
+
 public slots:
     void gameloop();
     void start();
@@ -42,6 +44,5 @@ private:
     void keyReleaseEvent(QKeyEvent *event);
     void paintEvent(QPaintEvent *event);
 
-    QRect viewport;
 };
 #endif // WIDGET_H

@@ -7,14 +7,19 @@
 class Block
 {
 private:
-    int itsX;
-    int itsY;
+    float itsX;
+    float itsY;
+    float itsYSpeed;
     QRect itsRect;
 public:
-    Block(int x, int y);
+    Block(float x, float y);
+    void setYSpeed(float YSpeed);
     void moveDown(int speed);
+
+    void calculatePosition();
     void draw(QPainter *aPainter);
     QRect getRect();
+    float getYSpeed();
 };
 
 #endif // PLATFORM_H
