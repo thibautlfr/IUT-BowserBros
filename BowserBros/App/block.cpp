@@ -24,4 +24,8 @@ void Block::draw(QPainter *aPainter)
     aPainter->drawRect(itsRect);
 }
 
+void Block::moveDown(int speed) {
+    itsRect.moveTop(itsRect.top() + speed);
+}
+
 

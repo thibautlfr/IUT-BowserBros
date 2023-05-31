@@ -13,8 +13,10 @@ GameForm::GameForm(QWidget *parent)
     ui->setupUi(this);
 
     setFixedSize(800, 600);
+    viewport = QRect(0, 600, width(), height());
 
-    //itsFloor = new QRect(0, this->height()-50, this->width(), 100);
+    qDebug() << this->height();
+
     itsFloor = new QRect(0, height() - 20, width(), 20);
     itsCharacter = new Character;
 
@@ -58,114 +60,8 @@ GameForm::~GameForm()
     delete ui;
 }
 
-/*
 void GameForm::gameloop()
 {
-    qDebug() << "GameLoop";
-    // Vaut true si le cube est sur quelque chose
-    bool isOnPlatform = false;
-
-    // On vérifie que le cube n'est pas sur le sol
-    if (itsFloor->top() - itsCharacter->getItsRect().bottom() == 1)
-    {
-        isOnPlatform = true;
-    }
-
-    // On vérifie que le cube n'est sur aucunes des plateformes
-    for (std::list<Block*>::iterator it = itsBlocks.begin(); it != itsBlocks.end(); ++it)
-    {
-        QRect platformRect = (*it)->getRect();
-
-        if (
-            // Si le rectangle est déjà sur la plateforme
-            (platformRect.top() - itsCharacter->getItsRect().bottom() == 1) &&
-            // ...ET qu'il n'est PAS PAS sur la plateforme (sur l'axe X)
-            !( (itsCharacter->getItsRect().right() < platformRect.left()) ||
-              (itsCharacter->getItsRect().left() > platformRect.right()) )
-            )
-        {
-            isOnPlatform = true;
-        }
-    }
-
-    // Gérer les collisions avec les plateformes
-    for (std::list<Block*>::iterator it = itsBlocks.begin(); it != itsBlocks.end(); ++it)
-    {
-        // Récupérer les rectangles du personnage et de la plateforme
-        QRect platformRect = (*it)->getRect();
-
-        // Si le personnage touche une plateforme
-        if(itsCharacter->intersect(platformRect))
-        {
-            // Si il arrive d'en bas
-            if(itsCharacter->getYSpeed() < 0)
-            {
-                itsCharacter->setItsY(platformRect.bottom()+1);
-                itsCharacter->reverseYSpeed();
-            }
-
-            // Si il arrive d'en haut
-            else if ( (itsCharacter->getYSpeed() >= 0) && ( platformRect.top() - itsCharacter->getItsY() >= 0) )
-            {
-                itsCharacter->setItsY(platformRect.top()-50);
-                itsCharacter->setYSpeed(0);
-                isOnPlatform = true;
-            }
-
-            // Si il arrive de la droite
-            else if (itsCharacter->getXSpeed() > 0 && itsCharacter->getItsRect().right() > platformRect.left())
-            {
-                itsCharacter->setItsX(platformRect.left()-50);
-                itsCharacter->reverseXSpeed();
-            }
-
-            // Si il arrive de la gauche
-            else if (itsCharacter->getXSpeed() < 0 && itsCharacter->getItsRect().left() < platformRect.right())
-            {
-                itsCharacter->setItsX(platformRect.right()+1);
-                itsCharacter->reverseXSpeed();
-            }
-        }
-    }
-
-    // Gérer les collision avec le sol
-    if (itsCharacter->intersect(*itsFloor))
-    {
-        itsCharacter->setYSpeed(0);
-        itsCharacter->setItsY(this->height() - 50);
-    }
-    else
-    {
-        // Si le personnage est en train de sauter, appliquez une force de gravité pour faire redescendre le personnage
-        if (itsCharacter->getYSpeed() < 0)
-        {
-            itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-            if(itsCharacter->getYSpeed() == 0)
-            {
-                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-            }
-        }
-        // Si le personnage est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
-        else if (itsCharacter->getYSpeed() > 0)
-        {
-            itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-        }
-
-        else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - 51) && !isOnPlatform)
-        {
-            itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-        }
-    }
-    itsCharacter->calculatePosition();
-
-    repaint();
-}
-*/
-
-void GameForm::gameloop()
-{
-
-
     // Vaut true si le cube est sur quelque chose
     bool isOnPlatform = false;
 
@@ -252,6 +148,7 @@ void GameForm::gameloop()
         }
     }
 
+
     itsCharacter->calculatePosition();
 
     repaint();
@@ -303,14 +200,50 @@ void GameForm::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
     QPainter * painter = new QPainter(this);
 
-    itsCharacter->draw(painter);
-
-    //qDebug() << "REPAINT";
-
     for (std::list<Block*>::iterator it = itsBlocks.begin(); it != itsBlocks.end(); ++it)
     {
-        (*it)->draw(painter);
+        // Vérifier si le block est dans le "viewport"
+        if (viewport.intersects((*it)->getRect()))
+        {
+            // Calculer la position du block relative au "viewport"
+            int relativeX = (*it)->getRect().left() - viewport.left();
+            int relativeY = (*it)->getRect().top() - viewport.top();
+
+            // Dessiner le block à sa position relative
+            (*it)->getRect().setRect(relativeX, relativeY, 20, 20);
+            (*it)->draw(painter);
+        }
+    }
+
+    // Faites la même chose pour le personnage et les autres objets du jeu
+    if (itsCharacter->intersect(viewport))
+    {
+        itsCharacter->draw(painter);
+    }
+
+    if (itsFloor->intersects(viewport))
+    {
+        painter->fillRect(*itsFloor, Qt::red);
     }
 
     delete painter;
 }
+
+//void GameForm::paintEvent(QPaintEvent *event)
+//{
+//    Q_UNUSED(event);
+//    QPainter * painter = new QPainter(this);
+
+//    painter->fillRect(*itsFloor, Qt::red);
+
+//    itsCharacter->draw(painter);
+
+//    //qDebug() << "REPAINT";
+
+//    for (std::list<Block*>::iterator it = itsBlocks.begin(); it != itsBlocks.end(); ++it)
+//    {
+//
+//    }
+
+//    delete painter;
+//}

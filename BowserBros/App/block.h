@@ -12,6 +12,7 @@ private:
     QRect itsRect;
 public:
     Block(int x, int y);
+    void moveDown(int speed);
     void draw(QPainter *aPainter);
     QRect getRect();
 };

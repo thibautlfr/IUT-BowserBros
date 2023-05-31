@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QKeyEvent>
 #include <QPaintEvent>
+#include <QScrollBar>
 #include <list>
 
 #include "character.h"
@@ -32,7 +33,6 @@ public slots:
 private:
     Ui::GameForm *ui;
     QTimer *itsTimer;
-
     Character * itsCharacter;
     QRect * itsFloor;
 
@@ -41,5 +41,7 @@ private:
     void keyPressEvent (QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     void paintEvent(QPaintEvent *event);
+
+    QRect viewport;
 };
 #endif // WIDGET_H
