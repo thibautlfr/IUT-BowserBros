@@ -11,15 +11,21 @@ CONFIG += c++17
 SOURCES += \
     block.cpp \
     character.cpp \
+    gameform.cpp \
     main.cpp \
+    menuform.cpp \
     widget.cpp
 
 HEADERS += \
     block.h \
     character.h \
+    gameform.h \
+    menuform.h \
     widget.h
 
 FORMS += \
+    gameform.ui \
+    menuform.ui \
     widget.ui
 
 # Default rules for deployment.

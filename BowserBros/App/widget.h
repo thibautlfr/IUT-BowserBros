@@ -2,16 +2,9 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include <QTimer>
-#include <QObject>
-#include <QKeyEvent>
-#include <QPaintEvent>
-#include <list>
-
-#include "character.h"
-#include "block.h"
-
-using namespace std;
+#include <QStackedWidget>
+#include "menuform.h"
+#include "gameform.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -20,26 +13,15 @@ QT_END_NAMESPACE
 class Widget : public QWidget
 {
     Q_OBJECT
+    MenuForm * menuForm;
+    GameForm * gameForm;
 
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
-public slots:
-    void gameloop();
-    void start();
-
 private:
     Ui::Widget *ui;
-    QTimer *itsTimer;
-
-    Character * itsCharacter;
-    QRect * itsFloor;
-
-    list<Block*> itsBlocks;
-
-    void keyPressEvent (QKeyEvent *event);
-    void keyReleaseEvent(QKeyEvent *event);
-    void paintEvent(QPaintEvent *event);
+    QStackedWidget* stackedWidget;
 };
 #endif // WIDGET_H

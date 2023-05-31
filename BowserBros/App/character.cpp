@@ -9,22 +9,11 @@ Character::Character()
     itsXSpeed = 0;
     itsYSpeed = 0;
     itsJumpSpeed = -10;
-    platform = true;
-}
-
-bool Character::isOnPlatform()
-{
-    return platform;
 }
 
 QRect Character::getItsRect()
 {
     return itsRect;
-}
-
-void Character::setPlatform(bool B)
-{
-    platform = B;
 }
 
 void Character::setItsY(float Y)

@@ -12,7 +12,6 @@ private:
     float itsXSpeed;
     float itsYSpeed;
     float itsJumpSpeed;
-    bool platform;
     QRect itsRect;
 public:
     Character();
@@ -36,9 +35,6 @@ public:
 
     void jump();
     bool intersect(QRect anObstacle);
-
-    bool isOnPlatform();
-    void setPlatform(bool B);
 
     QRect getItsRect();
 
