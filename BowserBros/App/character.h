@@ -14,7 +14,7 @@ private:
     float itsJumpSpeed;
     QRect itsRect;
 public:
-    Character();
+    Character(float x, float y);
 
     void setItsY(float Y);
     void setItsX(float X);

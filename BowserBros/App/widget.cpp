@@ -3,6 +3,7 @@
 
 #include <QStackedWidget>
 #include <QVBoxLayout>
+#include <QScrollArea>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -18,8 +19,8 @@ Widget::Widget(QWidget *parent)
 
     connect(menuForm, &MenuForm::playButtonClicked, this, [=]() {
         gameForm = new GameForm;
-        stackedWidget->addWidget(gameForm);
-        stackedWidget->setCurrentWidget(gameForm);
+        stackedWidget->addWidget(gameForm->getScrollArea());
+        stackedWidget->setCurrentWidget(gameForm->getScrollArea());
         gameForm->setFocus();
     });
 
@@ -32,4 +33,3 @@ Widget::~Widget()
 {
     delete ui;
 }
-

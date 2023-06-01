@@ -12,38 +12,43 @@ GameForm::GameForm(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setFixedSize(800, 600);
+    setFixedSize(800, 1200);
+
+    itsScrollArea = new QScrollArea;
+    itsScrollArea->setWidget(this);
+    itsScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    itsScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff); // désactiver la barre de défilement
 
     qDebug() << this->height();
 
-    itsFloor = new QRect(0, height() - 20, width(), 20);
-    itsCharacter = new Character;
+    itsFloor = new QRect(0, height() - 20, width()-2, 20);
+    itsCharacter = new Character(50, height() - 100);
 
     // Première plateforme
-    itsBlocks.push_back(new Block(100, 450));
-    itsBlocks.push_back(new Block(120, 450));
-    itsBlocks.push_back(new Block(140, 450));
-    itsBlocks.push_back(new Block(160, 450));
+    itsBlocks.push_back(new Block(100, height() - 180));
+    itsBlocks.push_back(new Block(120, height() - 180));
+    itsBlocks.push_back(new Block(140, height() - 180));
+    itsBlocks.push_back(new Block(160, height() - 180));
 
-    itsBlocks.push_back(new Block(300, 350));
-    itsBlocks.push_back(new Block(320, 350));
-    itsBlocks.push_back(new Block(340, 350));
-    itsBlocks.push_back(new Block(360, 350));
-    itsBlocks.push_back(new Block(360, 330));
-    itsBlocks.push_back(new Block(380, 330));
-    itsBlocks.push_back(new Block(400, 330));
-    itsBlocks.push_back(new Block(420, 330));
+    itsBlocks.push_back(new Block(300, height() - 300));
+    itsBlocks.push_back(new Block(320, height() - 300));
+    itsBlocks.push_back(new Block(340, height() - 300));
+    itsBlocks.push_back(new Block(360, height() - 300));
+    itsBlocks.push_back(new Block(360, height() - 320));
+    itsBlocks.push_back(new Block(380, height() - 320));
+    itsBlocks.push_back(new Block(400, height() - 320));
+    itsBlocks.push_back(new Block(420, height() - 320));
 
-    itsBlocks.push_back(new Block(120, 220));
-    itsBlocks.push_back(new Block(140, 220));
-    itsBlocks.push_back(new Block(160, 220));
-    itsBlocks.push_back(new Block(180, 220));
+    itsBlocks.push_back(new Block(120, height() - 460));
+    itsBlocks.push_back(new Block(140, height() - 460));
+    itsBlocks.push_back(new Block(160, height() - 460));
+    itsBlocks.push_back(new Block(180, height() - 460));
 
 
-    itsBlocks.push_back(new Block(540, 220));
-    itsBlocks.push_back(new Block(560, 220));
-    itsBlocks.push_back(new Block(580, 220));
-    itsBlocks.push_back(new Block(600, 220));
+    itsBlocks.push_back(new Block(540, height() - 460));
+    itsBlocks.push_back(new Block(560, height() - 460));
+    itsBlocks.push_back(new Block(580, height() - 460));
+    itsBlocks.push_back(new Block(600, height() - 460));
 
     itsTimer = new QTimer(this);
     connect(itsTimer, SIGNAL(timeout()), this, SLOT(gameloop()));
@@ -59,6 +64,11 @@ GameForm::~GameForm()
 
 // ---------------------------------------------------------------------------------------------------------
 
+QScrollArea* GameForm::getScrollArea() const {
+    return itsScrollArea;
+}
+
+// ---------------------------------------------------------------------------------------------------------
 
 // Gère les collisions entre le personnage et les éléments du jeu
 void GameForm::checkCharacterCollision()
@@ -112,7 +122,7 @@ void GameForm::checkCharacterCollision()
                 // Si il arrive d'en haut
                 else if ( (itsCharacter->getYSpeed() >= 0) && ( platformRect.top() - itsCharacter->getItsY() >= 0) )
                 {
-                    itsCharacter->setItsY(platformRect.top()-50);
+                    itsCharacter->setItsY(platformRect.top() - itsCharacter->getItsRect().height());
                     itsCharacter->setYSpeed(0);
                     isOnPlatform = true;
                 }
@@ -123,7 +133,7 @@ void GameForm::checkCharacterCollision()
         if (itsCharacter->intersect(*itsFloor))
         {
             itsCharacter->setYSpeed(0);
-            itsCharacter->setItsY(itsFloor->top()-50);
+            itsCharacter->setItsY(itsFloor->top() - itsCharacter->getItsRect().height());
         }
         else
         {
@@ -142,21 +152,37 @@ void GameForm::checkCharacterCollision()
                 itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
             }
 
-            else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - 51) && !isOnPlatform)
+            else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - (itsCharacter->getItsRect().height() + 1)) && !isOnPlatform)
             {
                 itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
             }
         }
     }
 
-
     itsCharacter->calculatePosition();
 
 }
 
+void GameForm::updateScroll() {
+    int characterY = itsCharacter->getItsY();
+    qDebug() << characterY;
+
+    // Si le personnage est dans la partie supérieure de la fenêtre
+    if (characterY > height() - 300) {
+        itsScrollArea->verticalScrollBar()->setValue(height() - 600);
+    }
+    // Sinon, si le personnage est dans la partie inférieure de la fenêtre
+    else {
+        // Assurez-vous que le personnage reste au milieu de la fenêtre
+        itsScrollArea->verticalScrollBar()->setValue(characterY - 300);
+    }
+}
+
+
 void GameForm::gameloop()
 {
     checkCharacterCollision();
+    updateScroll();
     repaint();
 }
 

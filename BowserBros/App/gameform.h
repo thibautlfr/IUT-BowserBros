@@ -7,6 +7,7 @@
 #include <QKeyEvent>
 #include <QPaintEvent>
 #include <QScrollBar>
+#include <QScrollArea>
 #include <list>
 
 #include "character.h"
@@ -23,10 +24,13 @@ class GameForm : public QWidget
     Q_OBJECT
 
 public:
-    explicit GameForm(QWidget *parent = nullptr);
+    explicit GameForm(QWidget *parent = 0);
     ~GameForm();
 
     void checkCharacterCollision();
+    void updateScroll();
+
+    QScrollArea* getScrollArea() const;
 
 public slots:
     void gameloop();
@@ -37,6 +41,7 @@ private:
     QTimer *itsTimer;
     Character * itsCharacter;
     QRect * itsFloor;
+    QScrollArea *itsScrollArea;
 
     list<Block*> itsBlocks;
 

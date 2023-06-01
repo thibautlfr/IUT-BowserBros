@@ -1,14 +1,14 @@
 #include "character.h"
 
 
-Character::Character()
+Character::Character(float x, float y)
 {
-    itsX = 100;
-    itsY = 500;
-    itsRect = QRect(itsX, itsY, 50, 50);
+    itsX = x;
+    itsY = y;
+    itsRect = QRect(itsX, itsY, 20, 45);
     itsXSpeed = 0;
     itsYSpeed = 0;
-    itsJumpSpeed = -10;
+    itsJumpSpeed = -9;
 }
 
 QRect Character::getItsRect()
