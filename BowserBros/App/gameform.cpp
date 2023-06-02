@@ -3,6 +3,12 @@
 
 #include <iostream>
 #include <QDebug>
+#include <QFile>
+//#include <fstream>
+//#include <sstream>
+#include <string>
+
+using namespace std;
 
 const float GRAVITY = 0.25;
 
@@ -25,15 +31,17 @@ GameForm::GameForm(QWidget *parent)
     itsCharacter = new Character(50, height() - 100);
 
     // Première plateforme
-    itsBlocks.push_back(new Block(100, height() - 180));
-    itsBlocks.push_back(new Block(120, height() - 180));
-    itsBlocks.push_back(new Block(140, height() - 180));
-    itsBlocks.push_back(new Block(160, height() - 180));
+//    itsBlocks.push_back(new Block(100, height() - 180));
+//    itsBlocks.push_back(new Block(120, height() - 180));
+//    itsBlocks.push_back(new Block(140, height() - 180));
+//    itsBlocks.push_back(new Block(160, height() - 180));
 
-    itsBlocks.push_back(new Block(300, height() - 300));
-    itsBlocks.push_back(new Block(320, height() - 300));
-    itsBlocks.push_back(new Block(340, height() - 300));
-    itsBlocks.push_back(new Block(360, height() - 300));
+//    itsBlocks.push_back(new Block(300, height() - 300));
+//    itsBlocks.push_back(new Block(320, height() - 300));
+//    itsBlocks.push_back(new Block(340, height() - 300));
+//    itsBlocks.push_back(new Block(360, height() - 300));
+    loadLevel(1);
+
     itsBlocks.push_back(new Block(360, height() - 320));
     itsBlocks.push_back(new Block(380, height() - 320));
     itsBlocks.push_back(new Block(400, height() - 320));
@@ -67,6 +75,38 @@ GameForm::~GameForm()
 QScrollArea* GameForm::getScrollArea() const {
     return itsScrollArea;
 }
+
+// ---------------------------------------------------------------------------------------------------------
+
+// Charger un niveau à partir du fichier texte correspondant
+void GameForm::loadLevel(int levelNumber) {
+    QString filename = ":levels/level" + QString::number(levelNumber) + ".txt";
+    qDebug() << filename;
+    QFile levelFile(filename);
+    //QFile levelFile("qrc:///Levels/level1.txt");
+    if (levelFile.open(QIODevice::ReadOnly))
+    {
+        QTextStream in(&levelFile);
+        while (!in.atEnd()) {
+            QString line = in.readLine();
+            QStringList coords = line.split(';');
+            if (coords.size() == 2) {
+                int x = coords[0].toInt();
+                int y = coords[1].toInt();
+                itsBlocks.push_back(new Block(x, height() - y));
+            } else {
+                qDebug() << "Erreur de lecture du fichier du niveau!";
+                break;
+            }
+        }
+        levelFile.close();
+    }
+    else
+    {
+        qDebug() << "Impossible d'ouvrir le fichier du niveau!";
+    }
+}
+
 
 // ---------------------------------------------------------------------------------------------------------
 
@@ -165,7 +205,7 @@ void GameForm::checkCharacterCollision()
 
 void GameForm::updateScroll() {
     int characterY = itsCharacter->getItsY();
-    qDebug() << characterY;
+    //qDebug() << characterY;
 
     // Si le personnage est dans la partie supérieure de la fenêtre
     if (characterY > height() - 300) {

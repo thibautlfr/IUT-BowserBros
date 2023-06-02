@@ -29,6 +29,7 @@ public:
 
     void checkCharacterCollision();
     void updateScroll();
+    void loadLevel(int levelNumber);
 
     QScrollArea* getScrollArea() const;
 
