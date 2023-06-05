@@ -15,6 +15,7 @@ SOURCES += \
     element.cpp \
     gameform.cpp \
     main.cpp \
+    mario.cpp \
     menuform.cpp \
     widget.cpp
 
@@ -24,6 +25,7 @@ HEADERS += \
     entity.h \
     element.h \
     gameform.h \
+    mario.h \
     menuform.h \
     widget.h
 
