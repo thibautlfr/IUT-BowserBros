@@ -96,7 +96,7 @@ void GameForm::checkCharacterCollision()
     bool isOnPlatform = false;
 
     // On vérifie que le cube n'est pas sur le sol
-    //qDebug() << (itsFloor->top() - itsCharacter->getItsRect().bottom());
+    qDebug() << (itsFloor->getRect().top() - itsCharacter->getItsRect().bottom());
     if (itsFloor->getRect().top() - itsCharacter->getItsRect().bottom() == 1  )
     {
         isOnPlatform = true;
@@ -149,7 +149,6 @@ void GameForm::checkCharacterCollision()
         // Gérer les collision avec le sol
         //if (itsCharacter->intersect(*itsFloor))
         if (itsCharacter->getItsRect().intersects(itsFloor->getRect()))
-
         {
             itsCharacter->setYSpeed(0);
             itsCharacter->setItsY(itsFloor->getRect().top() - itsCharacter->getItsRect().height());
