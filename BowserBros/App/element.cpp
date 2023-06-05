@@ -1,7 +1,5 @@
 #include "element.h"
 
-//#include <QString>
-
 Element::Element(float x, float y, int width, int height)
 {
     itsX = x;

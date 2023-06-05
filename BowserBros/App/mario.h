@@ -9,12 +9,14 @@ class Mario : public Entity
 {
 private:
     float itsJumpSpeed ;
+    bool isOnPlatform;
 public:
     Mario(float x, float y, int width, int height);
     Mario(float x, float y, string asset);
 
     void jump();
-    void updateAsset(string Direction);
+    void updateAsset(int timeElapsed);
+    void setOnPlatform(bool onPlatform);
 
     bool intersect(QRect anObstacle);
 

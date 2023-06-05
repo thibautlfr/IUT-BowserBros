@@ -5,6 +5,7 @@ FireBall::FireBall(float x, float y)
     itsX = x;
     itsY = y;
     itsYSpeed = 2;
+    itsAsset.load(":Assets/Assets/other/fireball.png");
 }
 
 QRect FireBall::getItsRect()
@@ -15,4 +16,9 @@ QRect FireBall::getItsRect()
 void FireBall::calculatePosition()
 {
     itsY += itsYSpeed;
+}
+
+void FireBall::draw(QPainter * aPainter)
+{
+    aPainter->drawImage(itsX , itsY , itsAsset);
 }

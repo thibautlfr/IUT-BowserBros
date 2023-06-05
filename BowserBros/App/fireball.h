@@ -3,6 +3,7 @@
 
 #include <QImage>
 #include <QRect>
+#include <QPainter>
 
 class FireBall
 {
@@ -18,6 +19,7 @@ public:
     FireBall(float x, float y);
     QRect getItsRect();
     void calculatePosition();
+    void draw(QPainter * aPainter);
 };
 
 #endif // FIREBALL_H

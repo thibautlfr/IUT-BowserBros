@@ -41,6 +41,10 @@ public slots:
     void start();
 
 private:
+
+    int elapsedTime;
+    int backgroundY;
+
     Ui::GameForm *ui;
     QTimer *itsTimer;
     Mario * itsCharacter;

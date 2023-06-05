@@ -37,5 +37,7 @@
         <file>Assets/other/fireball.png</file>
         <file>Assets/other/floor.png</file>
         <file>Assets/bowser/bowsermenu.png</file>
+        <file>Assets/mario/mario11.png</file>
+        <file>Assets/mario/mario12.png</file>
     </qresource>
 </RCC>

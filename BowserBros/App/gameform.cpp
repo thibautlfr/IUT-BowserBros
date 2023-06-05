@@ -18,10 +18,10 @@ GameForm::GameForm(QWidget *parent)
 
     setFixedSize(800, 1200);
 
-    itsBackground.load(":Assets/Assets/background/background4.png");
-    qDebug() << itsBackground.isNull();
-    Q_ASSERT(! itsBackground.isNull());
+    elapsedTime = 0;
 
+    itsBackground.load(":Assets/Assets/background/background6.png");
+    backgroundY = height() - itsBackground.height();
 
     itsScrollArea = new QScrollArea;
     itsScrollArea->setWidget(this);
@@ -33,7 +33,7 @@ GameForm::GameForm(QWidget *parent)
     qDebug() << this->height();
 
     itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
-    itsCharacter = new Mario(50, height() - 100, ":/Assets/Assets/mario/mario6.png");
+    itsCharacter = new Mario(50, height() - 100, ":Assets/Assets/mario/mario4.png");
     itsBoss = new Bowser(30, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
 
     itsTimer = new QTimer(this);
@@ -94,12 +94,14 @@ void GameForm::checkCharacterCollision()
 {
     // Vaut true si le cube est sur quelque chose
     bool isOnPlatform = false;
+    itsCharacter->setOnPlatform(false);
 
     // On vérifie que le cube n'est pas sur le sol
-    qDebug() << (itsFloor->getRect().top() - itsCharacter->getItsRect().bottom());
+    //qDebug() << (itsFloor->getRect().top() - itsCharacter->getItsRect().bottom());
     if (itsFloor->getRect().top() - itsCharacter->getItsRect().bottom() == 1  )
     {
         isOnPlatform = true;
+        itsCharacter->setOnPlatform(true);
     }
     // On vérifie que le cube n'est sur aucunes des plateformes
     for (Element * block : itsBlocks)
@@ -114,6 +116,7 @@ void GameForm::checkCharacterCollision()
             )
         {
             isOnPlatform = true;
+            itsCharacter->setOnPlatform(true);
         }
     }
 
@@ -142,6 +145,7 @@ void GameForm::checkCharacterCollision()
                     itsCharacter->setItsY(platformRect.top() - itsCharacter->getItsRect().height());
                     itsCharacter->setYSpeed(0);
                     isOnPlatform = true;
+                    itsCharacter->setOnPlatform(true);
                 }
             }
         }
@@ -178,6 +182,7 @@ void GameForm::checkCharacterCollision()
     }
 
     itsCharacter->calculatePosition();
+    itsCharacter->updateAsset(elapsedTime);
 
 }
 
@@ -206,12 +211,19 @@ void GameForm::updateScroll() {
     if (characterY > height() - 300) {
         itsScrollArea->verticalScrollBar()->setValue(height() - 600);
         itsBoss->setItsY(height() - 570);
+        backgroundY = height() - itsBackground.height();  // fixe l'arrière plan
     }
     // Sinon, si le personnage est dans la partie superieur de la fenêtre
     else {
         // Assurez-vous que le personnage reste au milieu de la fenêtre
         itsScrollArea->verticalScrollBar()->setValue(characterY - 300);
         characterY - 270 > 30 ? itsBoss->setItsY(characterY - 270): itsBoss->setItsY(30);
+        if (characterY - 300 > 0 && characterY + 300 < height() - 20)
+        {
+            backgroundY = 0.5 * characterY - 150;  // déplace l'arrière-plan vers le haut
+        }
+
+
     }
 
     itsBoss->calculatePosition();
@@ -220,6 +232,7 @@ void GameForm::updateScroll() {
 
 void GameForm::gameloop()
 {
+    elapsedTime += 10;
     checkCharacterCollision();
     checkBowserCollision();
     updateScroll();
@@ -235,7 +248,7 @@ void GameForm::start()
     else
     {
         qDebug() << "Timer lancé";
-                    itsTimer->start(10);
+        itsTimer->start(10);
     }
 }
 
@@ -272,7 +285,7 @@ void GameForm::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
     QPainter * painter = new QPainter(this);
 
-    painter->drawImage(0, 600, itsBackground);
+    painter->drawImage(0, backgroundY, itsBackground);
 
     painter->setPen(Qt::green);
     painter->setBrush(Qt::SolidPattern);
