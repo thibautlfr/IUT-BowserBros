@@ -8,8 +8,13 @@
 using namespace std;
 
 enum ElementType{
-    BLOCK,
-    CHEST
+    CHEST,
+    BREAKABLE1,
+    BREAKABLE2,
+    LUCKYBLOCK1,
+    LUCKYBLOCK2,
+    UNBREAKABLE,
+    CRACKELED
 };
 
 class Element

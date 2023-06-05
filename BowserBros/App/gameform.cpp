@@ -68,11 +68,37 @@ void GameForm::loadLevel(int levelNumber) {
         while (!in.atEnd()) {
             QString line = in.readLine();
             QStringList coords = line.split(';');
-            if (coords.size() == 2) {
+            if (coords.size() == 3) {
                 int x = coords[0].toInt();
                 int y = coords[1].toInt();
-                qDebug() << "Bloc créé en " << x << " ; " << y << "\n";
-                itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block1.jpg"));
+                int type = coords[2].toInt();
+                qDebug() << "Bloc créé en " << x << " ; " << y ;
+
+                switch (ElementType(type)) {
+                case BREAKABLE1:
+                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block1.jpg"));
+                    break;
+                case BREAKABLE2:
+                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block5.jpg"));
+                    break;
+                case UNBREAKABLE:
+                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block6.jpg"));
+                    break;
+                case LUCKYBLOCK1:
+                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block3.jpg"));
+                    break;
+                case LUCKYBLOCK2:
+                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block2.jpg"));
+                    break;
+                case CRACKELED:
+                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block4.jpg"));
+                    break;
+                case CHEST:
+                    itsChest = new Element(x, height() - y, ":Assets/Assets/other/chest.png");
+                default:
+                    break;
+                }
+                ;
             } else {
                 qDebug() << "Erreur de lecture du fichier du niveau!";
                 break;
@@ -151,7 +177,6 @@ void GameForm::checkCharacterCollision()
         }
 
         // Gérer les collision avec le sol
-        //if (itsCharacter->intersect(*itsFloor))
         if (itsCharacter->getItsRect().intersects(itsFloor->getRect()))
         {
             itsCharacter->setYSpeed(0);
@@ -220,10 +245,8 @@ void GameForm::updateScroll() {
         characterY - 270 > 30 ? itsBoss->setItsY(characterY - 270): itsBoss->setItsY(30);
         if (characterY - 300 > 0 && characterY + 300 < height() - 20)
         {
-            backgroundY = 0.5 * characterY - 150;  // déplace l'arrière-plan vers le haut
+            backgroundY = 0.5 * characterY - (600*0.5*0.5);  // déplace l'arrière-plan vers le haut
         }
-
-
     }
 
     itsBoss->calculatePosition();
@@ -295,6 +318,8 @@ void GameForm::paintEvent(QPaintEvent *event)
     {
         block->draw(painter);
     }
+
+    itsChest->draw(painter);
 
     itsCharacter->draw(painter);
     itsBoss->draw(painter);

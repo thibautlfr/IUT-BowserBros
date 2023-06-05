@@ -50,6 +50,7 @@ private:
     Mario * itsCharacter;
     Bowser * itsBoss;
     Element * itsFloor;
+    Element * itsChest;
     QScrollArea *itsScrollArea;
     QImage itsBackground;
 
