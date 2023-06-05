@@ -8,7 +8,7 @@ class Mario : public Entity
 private:
     float itsJumpSpeed ;
 public:
-    Mario(float x, float y, int width, int height, float jumpSpeed);
+    Mario(float x, float y, int width, int height);
 
     void jump();
     void updateAsset();

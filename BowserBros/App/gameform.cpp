@@ -28,7 +28,7 @@ GameForm::GameForm(QWidget *parent)
     qDebug() << this->height();
 
     itsFloor = new QRect(0, height() - 20, width()-2, 20);
-    itsCharacter = new Character(50, height() - 100);
+    itsCharacter = new Mario(50, height() - 100, 20, 45);
 
     itsTimer = new QTimer(this);
     connect(itsTimer, SIGNAL(timeout()), this, SLOT(gameloop()));

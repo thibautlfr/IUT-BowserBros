@@ -1,7 +1,10 @@
 #include "mario.h"
 
-Mario::Mario(float x, float y, int width, int height, float jumpSpeed) :
-    Entity(x, y, width, height), itsJumpSpeed(jumpSpeed){}
+Mario::Mario(float x, float y, int width, int height) :
+    Entity(x, y, width, height)
+{
+    itsJumpSpeed = -12;
+}
 
 void Mario::jump()
 {

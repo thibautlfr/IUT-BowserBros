@@ -10,7 +10,7 @@
 #include <QScrollArea>
 #include <list>
 
-#include "character.h"
+#include "mario.h"
 #include "element.h"
 
 using namespace std;
@@ -40,7 +40,7 @@ public slots:
 private:
     Ui::GameForm *ui;
     QTimer *itsTimer;
-    Character * itsCharacter;
+    Mario * itsCharacter;
     QRect * itsFloor;
     QScrollArea *itsScrollArea;
 
