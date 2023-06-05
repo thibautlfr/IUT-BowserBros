@@ -11,7 +11,7 @@
 #include <list>
 
 #include "character.h"
-#include "block.h"
+#include "element.h"
 
 using namespace std;
 
@@ -44,7 +44,7 @@ private:
     QRect * itsFloor;
     QScrollArea *itsScrollArea;
 
-    list<Block*> itsBlocks;
+    list<Element*> itsBlocks;
 
     void keyPressEvent (QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);

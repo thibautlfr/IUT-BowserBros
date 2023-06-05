@@ -4,8 +4,6 @@
 #include <iostream>
 #include <QDebug>
 #include <QFile>
-//#include <fstream>
-//#include <sstream>
 #include <string>
 
 using namespace std;
@@ -70,7 +68,7 @@ void GameForm::loadLevel(int levelNumber) {
                 int x = coords[0].toInt();
                 int y = coords[1].toInt();
                 qDebug() << "Bloc créé en " << x << " ; " << y << "\n";
-                itsBlocks.push_back(new Block(x, height() - y));
+                itsBlocks.push_back(new Element(x, height() - y, 20, 20));
             } else {
                 qDebug() << "Erreur de lecture du fichier du niveau!";
                 break;
@@ -102,15 +100,15 @@ void GameForm::checkCharacterCollision()
 
 
     // On vérifie que le cube n'est sur aucunes des plateformes
-    for (std::list<Block*>::iterator it = itsBlocks.begin(); it != itsBlocks.end(); ++it)
+    for (Element * block : itsBlocks)
     {
         //qDebug() << (*it)->getRect().top() - itsCharacter->getItsRect().bottom();
         if (
             // Si le rectangle est déja sur la plateforme
-            ((*it)->getRect().top() - itsCharacter->getItsRect().bottom() == 1) &&
+            (block->getRect().top() - itsCharacter->getItsRect().bottom() == 1) &&
             // ...ET qu'il n'est PAS PAS sur la plateforme (sur l'axe X)
-            !( (itsCharacter->getItsRect().right() < (*it)->getRect().left()) ||
-              (itsCharacter->getItsRect().left() > (*it)->getRect().right()) )
+            !( (itsCharacter->getItsRect().right() < block->getRect().left()) ||
+              (itsCharacter->getItsRect().left() > block->getRect().right()) )
             )
         {
             isOnPlatform = true;
@@ -121,10 +119,10 @@ void GameForm::checkCharacterCollision()
     if (isOnPlatform == false)
     {
         // Gérer les collisions avec les plateformes
-        for (std::list<Block*>::iterator it = itsBlocks.begin(); it != itsBlocks.end(); ++it)
+        for (Element * block : itsBlocks)
         {
             // Récupérer les rectangles du personnage et de la plateforme
-            QRect platformRect = (*it)->getRect();
+            QRect platformRect = block->getRect();
 
             // Si le personnage touche une plateforme
             if(itsCharacter->intersect(platformRect))
@@ -212,7 +210,7 @@ void GameForm::start()
     else
     {
         qDebug() << "Timer lancé";
-        itsTimer->start(10);
+                    itsTimer->start(10);
     }
 }
 
@@ -257,9 +255,9 @@ void GameForm::paintEvent(QPaintEvent *event)
 
     //qDebug() << "REPAINT";
 
-    for (std::list<Block*>::iterator it = itsBlocks.begin(); it != itsBlocks.end(); ++it)
+    for (Element * block : itsBlocks)
     {
-        (*it)->draw(painter);
+        block->draw(painter);
     }
 
     delete painter;
