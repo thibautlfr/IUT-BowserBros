@@ -11,7 +11,6 @@ CONFIG += c++17
 SOURCES += \
     entity.cpp \
     element.cpp \
-    entity.cpp \
     gameform.cpp \
     main.cpp \
     mario.cpp \
@@ -21,7 +20,6 @@ SOURCES += \
 HEADERS += \
     entity.h \
     element.h \
-    entity.h \
     gameform.h \
     mario.h \
     menuform.h \
