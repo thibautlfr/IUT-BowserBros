@@ -11,19 +11,23 @@ CONFIG += c++17
 SOURCES += \
     block.cpp \
     character.cpp \
+    entity.cpp \
     element.cpp \
     entity.cpp \
     gameform.cpp \
     main.cpp \
+    mario.cpp \
     menuform.cpp \
     widget.cpp
 
 HEADERS += \
     block.h \
     character.h \
+    entity.h \
     element.h \
     entity.h \
     gameform.h \
+    mario.h \
     menuform.h \
     widget.h
 

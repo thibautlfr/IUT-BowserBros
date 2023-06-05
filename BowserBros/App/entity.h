@@ -6,7 +6,7 @@
 
 class Entity
 {
-private:
+protected:
     float itsX;
     float itsY;
     float itsXSpeed;
