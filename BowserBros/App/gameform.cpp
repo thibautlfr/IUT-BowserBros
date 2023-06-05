@@ -27,7 +27,8 @@ GameForm::GameForm(QWidget *parent)
 
     qDebug() << this->height();
 
-    itsFloor = new QRect(0, height() - 20, width()-2, 20);
+    //itsFloor = new QRect(0, height() - 20, width()-2, 20);
+    itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
     itsCharacter = new Mario(50, height() - 100, 20, 45);
     itsBoss = new Bowser(30, height()-570, 41, 59);
 
@@ -92,12 +93,10 @@ void GameForm::checkCharacterCollision()
 
     // On vérifie que le cube n'est pas sur le sol
     //qDebug() << (itsFloor->top() - itsCharacter->getItsRect().bottom());
-    if (itsFloor->top() - itsCharacter->getItsRect().bottom() == 1)
+    if (itsFloor->getRect().top() - itsCharacter->getItsRect().bottom() == 1  )
     {
         isOnPlatform = true;
     }
-
-
     // On vérifie que le cube n'est sur aucunes des plateformes
     for (Element * block : itsBlocks)
     {
@@ -144,10 +143,12 @@ void GameForm::checkCharacterCollision()
         }
 
         // Gérer les collision avec le sol
-        if (itsCharacter->intersect(*itsFloor))
+        //if (itsCharacter->intersect(*itsFloor))
+        if (itsCharacter->getItsRect().intersects(itsFloor->getRect()))
+
         {
             itsCharacter->setYSpeed(0);
-            itsCharacter->setItsY(itsFloor->top() - itsCharacter->getItsRect().height());
+            itsCharacter->setItsY(itsFloor->getRect().top() - itsCharacter->getItsRect().height());
         }
         else
         {
@@ -268,7 +269,8 @@ void GameForm::paintEvent(QPaintEvent *event)
 
     painter->setPen(Qt::green);
     painter->setBrush(Qt::SolidPattern);
-    painter->drawRect(*itsFloor);
+    //painter->drawRect(*itsFloor);
+    itsFloor->draw(painter);
     //qDebug() << "REPAINT";
 
     for (Element * block : itsBlocks)

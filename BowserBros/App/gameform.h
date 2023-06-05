@@ -45,9 +45,8 @@ private:
     QTimer *itsTimer;
     Mario * itsCharacter;
     Bowser * itsBoss;
-    QRect * itsFloor;
+    Element * itsFloor;
     QScrollArea *itsScrollArea;
-
     list<Element*> itsBlocks;
 
     void keyPressEvent (QKeyEvent *event);
