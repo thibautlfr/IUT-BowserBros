@@ -3,15 +3,18 @@
 
 #include "entity.h"
 
+using namespace std ;
+
 class Mario : public Entity
 {
 private:
     float itsJumpSpeed ;
 public:
     Mario(float x, float y, int width, int height);
+    Mario(float x, float y, string asset);
 
     void jump();
-    void updateAsset();
+    void updateAsset(string Direction);
 
     bool intersect(QRect anObstacle);
 

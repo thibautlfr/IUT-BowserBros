@@ -18,6 +18,11 @@ GameForm::GameForm(QWidget *parent)
 
     setFixedSize(800, 1200);
 
+    itsBackground.load(":Assets/Assets/background/background4.png");
+    qDebug() << itsBackground.isNull();
+    Q_ASSERT(! itsBackground.isNull());
+
+
     itsScrollArea = new QScrollArea;
     itsScrollArea->setWidget(this);
     itsScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -27,10 +32,9 @@ GameForm::GameForm(QWidget *parent)
 
     qDebug() << this->height();
 
-    //itsFloor = new QRect(0, height() - 20, width()-2, 20);
     itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
-    itsCharacter = new Mario(50, height() - 100, 20, 45);
-    itsBoss = new Bowser(30, height()-570, 41, 59);
+    itsCharacter = new Mario(50, height() - 100, ":/Assets/Assets/mario/mario6.png");
+    itsBoss = new Bowser(30, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
 
     itsTimer = new QTimer(this);
     connect(itsTimer, SIGNAL(timeout()), this, SLOT(gameloop()));
@@ -184,11 +188,13 @@ void GameForm::checkBowserCollision()
     {
         itsBoss->setItsX(31);
         itsBoss->reverseXSpeed();
+        itsBoss->setItsImage(":Assets/Assets/bowser/bowserright.png");
     }
     else if (itsBoss->getItsRect().right() >= (width() - 30) && itsBoss->getXSpeed() > 0)
     {
         itsBoss->setItsX(width() - 31 - itsBoss->getItsRect().width());
         itsBoss->reverseXSpeed();
+        itsBoss->setItsImage(":Assets/Assets/bowser/bowserleft.png");
     }
     itsBoss->calculatePosition();
 }
@@ -267,11 +273,11 @@ void GameForm::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
     QPainter * painter = new QPainter(this);
 
+    painter->drawImage(0, 600, itsBackground);
+
     painter->setPen(Qt::green);
     painter->setBrush(Qt::SolidPattern);
-    //painter->drawRect(*itsFloor);
     itsFloor->draw(painter);
-    //qDebug() << "REPAINT";
 
     for (Element * block : itsBlocks)
     {

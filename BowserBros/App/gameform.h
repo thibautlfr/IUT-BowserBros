@@ -47,6 +47,8 @@ private:
     Bowser * itsBoss;
     Element * itsFloor;
     QScrollArea *itsScrollArea;
+    QImage itsBackground;
+
     list<Element*> itsBlocks;
 
     void keyPressEvent (QKeyEvent *event);

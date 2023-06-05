@@ -9,12 +9,31 @@ Entity::Entity(float x, float y, int width, int height)
     itsYSpeed = 0;
 }
 
+Entity::Entity(float x, float y, string asset)
+{
+    itsX = x;
+    itsY = y;
+    itsXSpeed = 0;
+    itsYSpeed = 0;
+
+    itsImage.load(QString::fromStdString(asset));
+    itsRect = QRect(itsX, itsY, itsImage.width(), itsImage.height());
+    Q_ASSERT(! itsImage.isNull());
+}
+
 void Entity::draw(QPainter * aPainter)
 {
-    itsRect.moveTo(itsX, itsY);
-    aPainter->setPen(Qt::blue);
-    aPainter->setBrush(Qt::SolidPattern);
-    aPainter->drawRect(itsRect);    
+    if (itsImage.isNull())
+    {
+        itsRect.moveTo(itsX, itsY);
+        aPainter->setPen(Qt::red);
+        aPainter->setBrush(Qt::SolidPattern);
+        aPainter->drawRect(itsRect);
+    }
+    else
+    {
+        aPainter->drawImage(itsX , itsY , itsImage);
+    }
 }
 
 void Entity::reverseXSpeed()
@@ -35,7 +54,15 @@ void Entity::calculatePosition()
 
 QRect Entity::getItsRect()
 {
-    return itsRect;
+    if(itsImage.isNull())
+    {
+        return itsRect;
+    }
+    else
+    {
+        QRect entityRect = QRect(itsX, itsY, itsImage.width(), itsImage.height());
+        return entityRect;
+    }
 }
 
 void Entity::setItsY(float Y)
@@ -73,4 +100,9 @@ float Entity::getXSpeed()
     return itsXSpeed;
 }
 
-
+void Entity::setItsImage(string newAssetPath)
+{
+    itsImage.load(QString::fromStdString(newAssetPath));
+    itsRect = QRect(itsX, itsY, itsImage.width(), itsImage.height());
+    Q_ASSERT(! itsImage.isNull());
+}

@@ -1,11 +1,13 @@
 #include "bowser.h"
+#include <iostream>
 
-Bowser::Bowser(float x, float y, int width, int height)
-    :Entity(x, y, width, height)
+Bowser::Bowser(float x, float y, int width, int height, string asset)
+    :Entity(x, y,asset)
 {
     itsX = x;
     itsY = y;
     itsXSpeed = 0.5;
+
     itsRect = QRect(x, y, width, height);
 
     itsFireBalls = new vector<FireBall*>;
