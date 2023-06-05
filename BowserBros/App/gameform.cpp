@@ -29,12 +29,11 @@ GameForm::GameForm(QWidget *parent)
 
     itsFloor = new QRect(0, height() - 20, width()-2, 20);
     itsCharacter = new Mario(50, height() - 100, 20, 45);
+    itsBoss = new Bowser(30, height()-570, 41, 59);
 
     itsTimer = new QTimer(this);
     connect(itsTimer, SIGNAL(timeout()), this, SLOT(gameloop()));
     start();
-
-
 }
 
 GameForm::~GameForm()
@@ -178,25 +177,45 @@ void GameForm::checkCharacterCollision()
 
 }
 
+void GameForm::checkBowserCollision()
+{
+    if (itsBoss->getItsRect().left() <= 30 && itsBoss->getXSpeed() < 0)
+    {
+        itsBoss->setItsX(31);
+        itsBoss->reverseXSpeed();
+    }
+    else if (itsBoss->getItsRect().right() >= (width() - 30) && itsBoss->getXSpeed() > 0)
+    {
+        itsBoss->setItsX(width() - 31 - itsBoss->getItsRect().width());
+        itsBoss->reverseXSpeed();
+    }
+    itsBoss->calculatePosition();
+}
+
 void GameForm::updateScroll() {
     int characterY = itsCharacter->getItsY();
     //qDebug() << characterY;
 
-    // Si le personnage est dans la partie supérieure de la fenêtre
+    // Si le personnage est dans la partie inférieure de la fenêtre
     if (characterY > height() - 300) {
         itsScrollArea->verticalScrollBar()->setValue(height() - 600);
+        itsBoss->setItsY(height() - 570);
     }
-    // Sinon, si le personnage est dans la partie inférieure de la fenêtre
+    // Sinon, si le personnage est dans la partie superieur de la fenêtre
     else {
         // Assurez-vous que le personnage reste au milieu de la fenêtre
         itsScrollArea->verticalScrollBar()->setValue(characterY - 300);
+        characterY - 270 > 30 ? itsBoss->setItsY(characterY - 270): itsBoss->setItsY(30);
     }
+
+    itsBoss->calculatePosition();
 }
 
 
 void GameForm::gameloop()
 {
     checkCharacterCollision();
+    checkBowserCollision();
     updateScroll();
     repaint();
 }
@@ -250,15 +269,16 @@ void GameForm::paintEvent(QPaintEvent *event)
     painter->setPen(Qt::green);
     painter->setBrush(Qt::SolidPattern);
     painter->drawRect(*itsFloor);
-
-    itsCharacter->draw(painter);
-
     //qDebug() << "REPAINT";
 
     for (Element * block : itsBlocks)
     {
         block->draw(painter);
     }
+
+    itsCharacter->draw(painter);
+    itsBoss->draw(painter);
+
 
     delete painter;
 }

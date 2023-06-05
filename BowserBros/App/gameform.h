@@ -11,6 +11,7 @@
 #include <list>
 
 #include "mario.h"
+#include "bowser.h"
 #include "element.h"
 
 using namespace std;
@@ -28,6 +29,8 @@ public:
     ~GameForm();
 
     void checkCharacterCollision();
+    void checkBowserCollision();
+
     void updateScroll();
     void loadLevel(int levelNumber);
 
@@ -41,6 +44,7 @@ private:
     Ui::GameForm *ui;
     QTimer *itsTimer;
     Mario * itsCharacter;
+    Bowser * itsBoss;
     QRect * itsFloor;
     QScrollArea *itsScrollArea;
 

@@ -5,6 +5,7 @@ Bowser::Bowser(float x, float y, int width, int height)
 {
     itsX = x;
     itsY = y;
+    itsXSpeed = 0.5;
     itsRect = QRect(x, y, width, height);
 
     itsFireBalls = new vector<FireBall*>;
