@@ -2,4 +2,39 @@
     <qresource prefix="/Levels">
         <file>Levels/level1.txt</file>
     </qresource>
+    <qresource prefix="/Assets">
+        <file>Assets/background/background1.png</file>
+        <file>Assets/background/background2.png</file>
+        <file>Assets/background/background3.png</file>
+        <file>Assets/background/background4.png</file>
+        <file>Assets/background/background5.png</file>
+        <file>Assets/background/background6.png</file>
+        <file>Assets/background/background8.png</file>
+        <file>Assets/background/background9.png</file>
+        <file>Assets/block/block1.jpg</file>
+        <file>Assets/block/block2.jpg</file>
+        <file>Assets/block/block3.jpg</file>
+        <file>Assets/block/block4.jpg</file>
+        <file>Assets/block/block5.jpg</file>
+        <file>Assets/block/block6.jpg</file>
+        <file>Assets/bowser/bowserfireball.png</file>
+        <file>Assets/bowser/bowserleft.png</file>
+        <file>Assets/bowser/bowserright.png</file>
+        <file>Assets/mario/mario1.png</file>
+        <file>Assets/mario/mario2.png</file>
+        <file>Assets/mario/mario3.png</file>
+        <file>Assets/mario/mario4.png</file>
+        <file>Assets/mario/mario5.png</file>
+        <file>Assets/mario/mario6.png</file>
+        <file>Assets/mario/mario7.png</file>
+        <file>Assets/mario/mario8.png</file>
+        <file>Assets/mario/mario9.png</file>
+        <file>Assets/mario/mario10.png</file>
+        <file>Assets/menu/gametitle.png</file>
+        <file>Assets/menu/playbutton.png</file>
+        <file>Assets/menu/quitbutton.png</file>
+        <file>Assets/other/chest.png</file>
+        <file>Assets/other/fireball.png</file>
+        <file>Assets/other/floor.png</file>
+    </qresource>
 </RCC>

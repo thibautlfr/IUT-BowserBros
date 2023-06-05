@@ -14,7 +14,7 @@ void Entity::draw(QPainter * aPainter)
     itsRect.moveTo(itsX, itsY);
     aPainter->setPen(Qt::blue);
     aPainter->setBrush(Qt::SolidPattern);
-    aPainter->drawRect(itsRect);
+    aPainter->drawRect(itsRect);    
 }
 
 void Entity::reverseXSpeed()

@@ -5,6 +5,8 @@
 #include <QPainter>
 #include <QImage>
 
+using namespace std;
+
 enum ElementType{
     BLOCK,
     CHEST
@@ -19,6 +21,7 @@ private:
     QImage itsImage;
 public:
     Element(float x, float y, int widht, int height);
+    Element(float x, float y, string asset);
     void draw(QPainter *aPainter);
     QRect getRect();
     float getYSpeed();

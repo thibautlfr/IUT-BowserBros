@@ -67,7 +67,7 @@ void GameForm::loadLevel(int levelNumber) {
                 int x = coords[0].toInt();
                 int y = coords[1].toInt();
                 qDebug() << "Bloc créé en " << x << " ; " << y << "\n";
-                itsBlocks.push_back(new Element(x, height() - y, 20, 20));
+                itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block1.jpg"));
             } else {
                 qDebug() << "Erreur de lecture du fichier du niveau!";
                 break;
