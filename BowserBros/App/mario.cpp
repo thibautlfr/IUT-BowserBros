@@ -20,4 +20,3 @@ bool Mario::intersect(QRect anObstacle)
 {
     return anObstacle.intersects(itsRect);
 }
-
