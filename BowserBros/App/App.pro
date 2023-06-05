@@ -12,6 +12,7 @@ SOURCES += \
     block.cpp \
     character.cpp \
     element.cpp \
+    entity.cpp \
     gameform.cpp \
     main.cpp \
     menuform.cpp \
@@ -21,6 +22,7 @@ HEADERS += \
     block.h \
     character.h \
     element.h \
+    entity.h \
     gameform.h \
     menuform.h \
     widget.h
