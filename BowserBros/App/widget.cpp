@@ -26,6 +26,10 @@ Widget::Widget(QWidget *parent)
         gameForm->setFocus();
     });
 
+    connect(menuForm, &MenuForm::quitButtonClicked, this, [=]() {
+        QApplication::quit(); // Cette ligne de code quitte l'application
+    });
+
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(stackedWidget);
     setLayout(layout);

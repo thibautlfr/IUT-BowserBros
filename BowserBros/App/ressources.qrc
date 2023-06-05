@@ -36,5 +36,6 @@
         <file>Assets/other/chest.png</file>
         <file>Assets/other/fireball.png</file>
         <file>Assets/other/floor.png</file>
+        <file>Assets/bowser/bowsermenu.png</file>
     </qresource>
 </RCC>
