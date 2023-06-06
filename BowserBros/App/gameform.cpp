@@ -241,15 +241,14 @@ void GameForm::checkBowserCollision()
     {
         itsBoss->setItsX(31);
         itsBoss->reverseXSpeed();
-        itsBoss->setItsImage(":Assets/Assets/bowser/bowserright.png");
     }
     else if (itsBoss->getItsRect().right() >= (width() - 30) && itsBoss->getXSpeed() > 0)
     {
         itsBoss->setItsX(width() - 31 - itsBoss->getItsRect().width());
         itsBoss->reverseXSpeed();
-        itsBoss->setItsImage(":Assets/Assets/bowser/bowserleft.png");
     }
     itsBoss->calculatePosition();
+    itsBoss->getItsX() < itsCharacter->getItsX() ? itsBoss->setItsImage(":Assets/Assets/bowser/bowserright.png") : itsBoss->setItsImage(":Assets/Assets/bowser/bowserleft.png");
 }
 
 void GameForm::updateScroll() {

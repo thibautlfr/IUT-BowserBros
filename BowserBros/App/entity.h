@@ -28,6 +28,7 @@ public:
     void setItsImage(string newAssetPath);
 
     float getItsY();
+    float getItsX();
 
     float getYSpeed();
     float getXSpeed();
