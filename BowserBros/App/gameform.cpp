@@ -288,32 +288,52 @@ void GameForm::updateFireBalls()
     }
 }
 
+
 void GameForm::checkCollisionFireBalls()
 {
-    for (vector<FireBall*>::iterator it = itsBoss->getItsFireBalls()->begin(); it != itsBoss->getItsFireBalls()->end();)
+    vector<FireBall *> *fireBalls = itsBoss->getItsFireBalls();
+
+    for (FireBall *fireBall : *fireBalls)
     {
-        bool collisionDetected = false;
-
-        if(itsCharacter->intersect((*it)->getItsRect()))
+        if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
+            // Arrêtez le jeu et revenez au menu
+            itsTimer->stop();
             emit quitButtonClicked();
+            break; // Sortir de la boucle car une boule de feu a touché Mario
         }
+    }
 
-        for (Element* block : itsBlocks)
+    for (vector<FireBall *>::iterator it = fireBalls->begin(); it != fireBalls->end();)
+    {
+        bool isCollision = false;
+
+        // Vérifier les collisions avec les blocs
+        for (Element *block : itsBlocks)
         {
-            if ((*it)->getItsRect().intersects(itsCharacter->getItsRect()) ||
-                (*it)->getItsRect().intersects(itsChest->getRect()) ||
-                (*it)->getItsRect().intersects(itsFloor->getRect()) ||
-                (*it)->getItsRect().intersects(block->getRect()))
+            if ((*it)->getItsRect().intersects(block->getRect()))
             {
-                collisionDetected = true;
+                isCollision = true;
                 break;
             }
         }
 
-        if (collisionDetected)
+        // Vérifier les collisions avec le sol
+        if ((*it)->getItsRect().intersects(itsFloor->getRect()))
         {
-            itsBoss->eraseFireBall(it);
+            isCollision = true;
+        }
+
+        // Vérifier les collisions avec le personnage (Mario)
+        if ((*it)->getItsRect().intersects(itsCharacter->getItsRect()))
+        {
+            isCollision = true;
+        }
+
+        if (isCollision)
+        {
+            delete *it;  // Supprime la boule de feu de la mémoire
+            it = fireBalls->erase(it);  // Supprime l'élément de la liste
         }
         else
         {
