@@ -50,6 +50,7 @@ GameForm::GameForm(QWidget *parent)
 GameForm::~GameForm()
 {
     delete itsCharacter;
+    delete itsBoss;
     delete itsTimer;
     delete ui;
 }
