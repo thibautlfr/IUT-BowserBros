@@ -12,7 +12,6 @@
 
 //Song
 #include <QMediaPlayer>
-#include <QMediaPlaylist>
 #include <QSoundEffect>
 
 #include "mario.h"
