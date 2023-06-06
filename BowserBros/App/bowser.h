@@ -19,6 +19,7 @@ public:
 
     vector<FireBall*> * getItsFireBalls();
     void dropFireBall();
+    void eraseFireBall(vector<FireBall*>::iterator it);
 };
 
 #endif // BOWSER_H

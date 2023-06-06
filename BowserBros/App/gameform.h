@@ -30,9 +30,13 @@ public:
 
     void checkCharacterCollision();
     void checkBowserCollision();
+    void checkCollisionFireBalls();
 
     void updateScroll();
+    void updateFireBalls();
     void loadLevel(int levelNumber);
+
+
 
     QScrollArea* getScrollArea() const;
 
@@ -59,6 +63,8 @@ private:
     void keyPressEvent (QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     void paintEvent(QPaintEvent *event);
+
+
 
 };
 #endif // WIDGET_H

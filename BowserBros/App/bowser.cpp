@@ -31,3 +31,9 @@ void Bowser::dropFireBall()
 {
     itsFireBalls->push_back(new FireBall(itsX, itsY + 59));
 }
+
+void Bowser::eraseFireBall(vector<FireBall*>::iterator it)
+{
+    delete *it;  // Supprime la boule de feu de la mémoire
+    *itsFireBalls->erase(it);  // Supprime l'élément de la liste
+}

@@ -4,13 +4,17 @@ FireBall::FireBall(float x, float y)
 {
     itsX = x;
     itsY = y;
-    itsYSpeed = 2;
+    itsYSpeed = 2; 
     itsAsset.load(":Assets/Assets/other/fireball.png");
+
+    itsRect = QRect(itsX, itsY, itsAsset.width(), itsAsset.height());
+    Q_ASSERT(! itsAsset.isNull());
 }
 
 QRect FireBall::getItsRect()
 {
-    return itsAsset.rect();
+    QRect fireBallRect = QRect(itsX, itsY, itsAsset.width(), itsAsset.height());
+    return fireBallRect;
 }
 
 void FireBall::calculatePosition()

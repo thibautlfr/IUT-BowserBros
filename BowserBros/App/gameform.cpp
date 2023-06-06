@@ -36,6 +36,8 @@ GameForm::GameForm(QWidget *parent)
     itsCharacter = new Mario(50, height() - 100, ":Assets/Assets/mario/mario4.png");
     itsBoss = new Bowser(30, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
 
+    itsBoss->dropFireBall();
+
     itsTimer = new QTimer(this);
     connect(itsTimer, SIGNAL(timeout()), this, SLOT(gameloop()));
     start();
@@ -252,6 +254,49 @@ void GameForm::updateScroll() {
     itsBoss->calculatePosition();
 }
 
+void GameForm::updateFireBalls()
+{
+    for (FireBall * fireball : *itsBoss->getItsFireBalls())
+    {
+        fireball->calculatePosition();
+    }
+
+    if(elapsedTime % 1000 == 0)
+    {
+        itsBoss->dropFireBall();
+    }
+}
+
+void GameForm::checkCollisionFireBalls()
+{
+    for (vector<FireBall*>::iterator it = itsBoss->getItsFireBalls()->begin(); it != itsBoss->getItsFireBalls()->end();)
+    {
+        bool collisionDetected = false;
+
+        for (Element* block : itsBlocks)
+        {
+            if ((*it)->getItsRect().intersects(itsCharacter->getItsRect()) ||
+                (*it)->getItsRect().intersects(itsChest->getRect()) ||
+                (*it)->getItsRect().intersects(itsFloor->getRect()) ||
+                (*it)->getItsRect().intersects(block->getRect()))
+            {
+                collisionDetected = true;
+                break;
+            }
+        }
+
+        if (collisionDetected)
+        {
+            itsBoss->eraseFireBall(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
+}
+
+
 
 void GameForm::gameloop()
 {
@@ -259,6 +304,8 @@ void GameForm::gameloop()
     checkCharacterCollision();
     checkBowserCollision();
     updateScroll();
+    updateFireBalls();
+    checkCollisionFireBalls();
     repaint();
 }
 
@@ -316,7 +363,12 @@ void GameForm::paintEvent(QPaintEvent *event)
 
     for (Element * block : itsBlocks)
     {
-        block->draw(painter);
+        block->draw(painter);        
+    }
+
+    for (FireBall * fireball : *itsBoss->getItsFireBalls())
+    {
+        fireball->draw(painter);
     }
 
     itsChest->draw(painter);
