@@ -212,6 +212,16 @@ void GameForm::checkCharacterCollision()
         }
     }
 
+    //Vérifier que le character n'atteint pas la bordure du jeu
+    if(itsCharacter->getItsRect().left() <= 0)
+    {
+        itsCharacter->setItsX(1) ;
+    }
+    else if(itsCharacter->getItsRect().right() >= 800)
+    {
+        itsCharacter->setItsX(800 - itsCharacter->getItsRect().width()) ;
+    }
+
     // Vérification de collision avec le coffre pour fin du jeu
     if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
     {
