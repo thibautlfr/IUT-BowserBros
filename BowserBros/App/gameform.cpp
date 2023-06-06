@@ -129,19 +129,23 @@ void GameForm::checkCharacterCollision()
     itsCharacter->setOnPlatform(false);
 
     // On vérifie que le cube n'est pas sur le sol
-    //qDebug() << (itsFloor->getRect().top() - itsCharacter->getItsRect().bottom());
-    if (itsFloor->getRect().top() - itsCharacter->getItsRect().bottom() == 1  )
+    if ((itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
+        itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1  )
     {
         isOnPlatform = true;
         itsCharacter->setOnPlatform(true);
+        if (itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
+        {
+            itsCharacter->setItsY(itsCharacter->getItsY() + 5);
+        }
     }
     // On vérifie que le cube n'est sur aucunes des plateformes
     for (Element * block : itsBlocks)
     {
-        //qDebug() << (*it)->getRect().top() - itsCharacter->getItsRect().bottom();
         if (
-            // Si le rectangle est déja sur la plateforme
-            (block->getRect().top() - itsCharacter->getItsRect().bottom() == 1) &&
+            // Si le rectangle est déjà sur la plateforme
+            ((block->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
+             (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)) &&
             // ...ET qu'il n'est PAS PAS sur la plateforme (sur l'axe X)
             !( (itsCharacter->getItsRect().right() < block->getRect().left()) ||
               (itsCharacter->getItsRect().left() > block->getRect().right()) )
@@ -149,6 +153,10 @@ void GameForm::checkCharacterCollision()
         {
             isOnPlatform = true;
             itsCharacter->setOnPlatform(true);
+            if (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
+            {
+                itsCharacter->setItsY(itsCharacter->getItsY() + 5);
+            }
         }
     }
 
@@ -212,6 +220,16 @@ void GameForm::checkCharacterCollision()
         }
     }
 
+    //Vérifier que le character n'atteint pas la bordure du jeu
+    if(itsCharacter->getItsRect().left() <= 0)
+    {
+        itsCharacter->setItsX(1) ;
+    }
+    else if(itsCharacter->getItsRect().right() >= 800)
+    {
+        itsCharacter->setItsX(800 - itsCharacter->getItsRect().width()) ;
+    }
+
     // Vérification de collision avec le coffre pour fin du jeu
     if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
     {
@@ -231,15 +249,14 @@ void GameForm::checkBowserCollision()
     {
         itsBoss->setItsX(31);
         itsBoss->reverseXSpeed();
-        itsBoss->setItsImage(":Assets/Assets/bowser/bowserright.png");
     }
     else if (itsBoss->getItsRect().right() >= (width() - 30) && itsBoss->getXSpeed() > 0)
     {
         itsBoss->setItsX(width() - 31 - itsBoss->getItsRect().width());
         itsBoss->reverseXSpeed();
-        itsBoss->setItsImage(":Assets/Assets/bowser/bowserleft.png");
     }
     itsBoss->calculatePosition();
+    itsBoss->getItsX() < itsCharacter->getItsX() ? itsBoss->setItsImage(":Assets/Assets/bowser/bowserright.png") : itsBoss->setItsImage(":Assets/Assets/bowser/bowserleft.png");
 }
 
 void GameForm::updateScroll() {
@@ -279,33 +296,57 @@ void GameForm::updateFireBalls()
     }
 }
 
+
 void GameForm::checkCollisionFireBalls()
 {
-    for (vector<FireBall*>::iterator it = itsBoss->getItsFireBalls()->begin(); it != itsBoss->getItsFireBalls()->end();)
+    vector<FireBall *> *fireBalls = itsBoss->getItsFireBalls();
+
+    for (FireBall *fireBall : *fireBalls)
     {
-        bool collisionDetected = false;
-
-        if(itsCharacter->intersect((*it)->getItsRect()))
+        if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
+            // Arrêtez le jeu et revenez au menu
+            itsTimer->stop();
             emit quitButtonClicked();
+            break; // Sortir de la boucle car une boule de feu a touché Mario
         }
+    }
 
-        for (Element* block : itsBlocks)
+    for (vector<FireBall *>::iterator it = fireBalls->begin(); it != fireBalls->end();)
+    {
+        bool isCollision = false;
+
+        // Vérifier les collisions avec les blocs
+        for (Element *block : itsBlocks)
         {
-            if ((*it)->getItsRect().intersects(itsCharacter->getItsRect()) ||
-                (*it)->getItsRect().intersects(itsChest->getRect()) ||
-                (*it)->getItsRect().intersects(itsFloor->getRect()) ||
-                (*it)->getItsRect().intersects(block->getRect()))
+            if ((*it)->getItsRect().intersects(block->getRect()))
             {
+<<<<<<< HEAD
                 collisionDetected = true;
 
+=======
+                isCollision = true;
+>>>>>>> de4c58c37038cf105c9b9f2b7451338a8ebebd43
                 break;
             }
         }
 
-        if (collisionDetected)
+        // Vérifier les collisions avec le sol
+        if ((*it)->getItsRect().intersects(itsFloor->getRect()))
         {
-            itsBoss->eraseFireBall(it);
+            isCollision = true;
+        }
+
+        // Vérifier les collisions avec le personnage (Mario)
+        if ((*it)->getItsRect().intersects(itsCharacter->getItsRect()))
+        {
+            isCollision = true;
+        }
+
+        if (isCollision)
+        {
+            delete *it;  // Supprime la boule de feu de la mémoire
+            it = fireBalls->erase(it);  // Supprime l'élément de la liste
         }
         else
         {

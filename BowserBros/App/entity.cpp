@@ -90,6 +90,11 @@ float Entity::getItsY()
     return itsY;
 }
 
+float Entity::getItsX()
+{
+    return itsX;
+}
+
 float Entity::getYSpeed()
 {
     return itsYSpeed;
