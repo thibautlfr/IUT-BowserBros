@@ -56,6 +56,8 @@ private:
 
     Ui::GameForm *ui;
 
+    bool isGameEnded;
+
     QTimer *itsTimer;
     Mario * itsCharacter;
     Bowser * itsBoss;
