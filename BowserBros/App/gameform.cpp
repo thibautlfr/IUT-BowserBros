@@ -247,6 +247,23 @@ void GameForm::checkCharacterCollision()
 
 void GameForm::checkBowserCollision()
 {
+    // Vitesse minimum et maximum pour Bowser
+    float minSpeed = -0.5;
+    float maxSpeed = 0.5;
+
+    // Change la vitesse de Bowser en fonction du X de Mario
+    if (itsBoss->getItsX() > itsCharacter->getItsX() && itsBoss->getXSpeed() > minSpeed) // Si Bowser est à droite
+    {
+        itsBoss->setXSpeed(itsBoss->getXSpeed() - 0.005);
+        itsBoss->setItsImage(":Assets/Assets/bowser/bowserleft.png");
+    }
+    else if (itsBoss->getItsX() < itsCharacter->getItsX() && itsBoss->getXSpeed() < maxSpeed) // Si il est à gauche
+    {
+        itsBoss->setXSpeed(itsBoss->getXSpeed() + 0.005);
+        itsBoss->setItsImage(":Assets/Assets/bowser/bowserright.png");
+    }
+
+    // Collision avec les "bords invisibles"
     if (itsBoss->getItsRect().left() <= 30 && itsBoss->getXSpeed() < 0)
     {
         itsBoss->setItsX(31);
@@ -257,9 +274,11 @@ void GameForm::checkBowserCollision()
         itsBoss->setItsX(width() - 31 - itsBoss->getItsRect().width());
         itsBoss->reverseXSpeed();
     }
+
+    // Mise à jour de la position de Bowser
     itsBoss->calculatePosition();
-    itsBoss->getItsX() < itsCharacter->getItsX() ? itsBoss->setItsImage(":Assets/Assets/bowser/bowserright.png") : itsBoss->setItsImage(":Assets/Assets/bowser/bowserleft.png");
 }
+
 
 void GameForm::updateScroll() {
     int characterY = itsCharacter->getItsY();
@@ -329,7 +348,7 @@ void GameForm::checkCollisionFireBalls()
             }
         }
 
-        // Vérifier les collisions avec le sol
+        // Vérifier les collisions avec le coffre
         if ((*it)->getItsRect().intersects(itsChest->getRect()))
         {
             isCollision = true;
