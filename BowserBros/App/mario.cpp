@@ -21,7 +21,6 @@ void Mario::jump()
 
 void Mario::updateAsset(int timeElapsed)
 {
-    //A faire lorsqu'on aura ajouté les assets au jeu
     if (isOnPlatform)
     {
         if(itsXSpeed == 0 )
@@ -37,10 +36,18 @@ void Mario::updateAsset(int timeElapsed)
             int(timeElapsed / 150) % 2 == 1? itsImage.load(":Assets/Assets/mario/mario1.png"): itsImage.load(":Assets/Assets/mario/mario2.png");
         }
     }
-    else
+    else if(itsYSpeed != 0)
     {
-        itsXSpeed > 0 ? itsImage.load(":Assets/Assets/mario/mario11.png"): itsImage.load(":Assets/Assets/mario/mario12.png");
+        if (itsXSpeed > 0)
+        {
+            itsImage.load(":Assets/Assets/mario/mario11.png");
+        }
+        else if (itsXSpeed < 0)
+        {
+            itsImage.load(":Assets/Assets/mario/mario12.png");
+        }
     }
+    itsRect = itsImage.rect();
 }
 
 void Mario::setOnPlatform(bool onPlatform)
