@@ -39,5 +39,9 @@
         <file>Assets/bowser/bowsermenu.png</file>
         <file>Assets/mario/mario11.png</file>
         <file>Assets/mario/mario12.png</file>
+        <file>Assets/other/chest-arrow.png</file>
+        <file>Assets/other/leftarrow.png</file>
+        <file>Assets/other/rightarrow.png</file>
+        <file>Assets/other/spacebar.png</file>
     </qresource>
 </RCC>

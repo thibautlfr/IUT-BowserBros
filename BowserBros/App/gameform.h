@@ -31,6 +31,8 @@ public:
     void checkCharacterCollision();
     void checkBowserCollision();
 
+    void paintPlayerHelps(QPainter * painter);
+
     void updateScroll();
     void loadLevel(int levelNumber);
 
@@ -49,13 +51,21 @@ private:
     int backgroundY;
 
     Ui::GameForm *ui;
+
     QTimer *itsTimer;
     Mario * itsCharacter;
     Bowser * itsBoss;
+
     Element * itsFloor;
     Element * itsChest;
+
     QScrollArea *itsScrollArea;
+
     QImage itsBackground;
+    QImage leftArrow;
+    QImage rightArrow;
+    QImage chestArrow;
+    QImage spaceBar;
 
     list<Element*> itsBlocks;
 
