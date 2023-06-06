@@ -291,7 +291,8 @@ void GameForm::checkCollisionFireBalls()
 
         for (Element* block : itsBlocks)
         {
-            if ((*it)->getItsRect().intersects(itsChest->getRect()) ||
+            if ((*it)->getItsRect().intersects(itsCharacter->getItsRect()) ||
+                (*it)->getItsRect().intersects(itsChest->getRect()) ||
                 (*it)->getItsRect().intersects(itsFloor->getRect()) ||
                 (*it)->getItsRect().intersects(block->getRect()))
             {
