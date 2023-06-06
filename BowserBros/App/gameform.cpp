@@ -118,7 +118,6 @@ void GameForm::loadLevel(int levelNumber) {
     }
 }
 
-
 // ---------------------------------------------------------------------------------------------------------
 
 // Gère les collisions entre le personnage et les éléments du jeu
@@ -285,10 +284,14 @@ void GameForm::checkCollisionFireBalls()
     {
         bool collisionDetected = false;
 
+        if(itsCharacter->intersect((*it)->getItsRect()))
+        {
+            emit quitButtonClicked();
+        }
+
         for (Element* block : itsBlocks)
         {
-            if ((*it)->getItsRect().intersects(itsCharacter->getItsRect()) ||
-                (*it)->getItsRect().intersects(itsChest->getRect()) ||
+            if ((*it)->getItsRect().intersects(itsChest->getRect()) ||
                 (*it)->getItsRect().intersects(itsFloor->getRect()) ||
                 (*it)->getItsRect().intersects(block->getRect()))
             {
@@ -316,9 +319,9 @@ void GameForm::gameloop()
     elapsedTime += 10;
     checkCharacterCollision();
     checkBowserCollision();
+    checkCollisionFireBalls();
     updateScroll();
     updateFireBalls();
-    checkCollisionFireBalls();
     repaint();
 }
 
