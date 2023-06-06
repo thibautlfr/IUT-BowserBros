@@ -21,9 +21,12 @@ Widget::Widget(QWidget *parent)
         gameForm = new GameForm;
         stackedWidget->addWidget(gameForm->getScrollArea());
         stackedWidget->setCurrentWidget(gameForm->getScrollArea());
-        //stackedWidget->addWidget(gameForm);
-        //stackedWidget->setCurrentWidget(gameForm);
         gameForm->setFocus();
+
+        connect(gameForm, &GameForm::quitButtonClicked, this, [=]() {
+            stackedWidget->setCurrentWidget(menuForm);
+            //delete gameForm;
+        });
     });
 
     connect(menuForm, &MenuForm::quitButtonClicked, this, [=]() {

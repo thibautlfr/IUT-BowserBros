@@ -12,7 +12,6 @@ class Bowser : public Entity
 {
 private:
     vector<FireBall*> * itsFireBalls;
-    string itsAsset;
 public:
     Bowser(float x, float y, int width, int heigth, string asset);
     ~Bowser();

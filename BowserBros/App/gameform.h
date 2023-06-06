@@ -40,6 +40,9 @@ public slots:
     void gameloop();
     void start();
 
+signals:
+    void quitButtonClicked();
+
 private:
 
     int elapsedTime;

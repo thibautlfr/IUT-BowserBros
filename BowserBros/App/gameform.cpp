@@ -206,6 +206,14 @@ void GameForm::checkCharacterCollision()
         }
     }
 
+    // Vérification de collision avec le coffre pour fin du jeu
+    if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
+    {
+        // Arrêtez le jeu et revenez au menu
+        itsTimer->stop();
+        emit quitButtonClicked();
+    }
+
     itsCharacter->calculatePosition();
     itsCharacter->updateAsset(elapsedTime);
 
