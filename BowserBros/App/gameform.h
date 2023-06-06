@@ -45,6 +45,7 @@ public:
 
     void playMainMusic();
     void playJumpSound();
+    void stopMainMusic();
 
     QScrollArea* getScrollArea() const;
 
@@ -59,6 +60,7 @@ private:
 
     int elapsedTime;
     int backgroundY;
+    QSoundEffect *mainsound;
 
     Ui::GameForm *ui;
 

@@ -19,6 +19,7 @@ GameForm::GameForm(QWidget *parent)
     setFixedSize(800, 1200);
 
     elapsedTime = 0;
+    mainsound = new QSoundEffect();
 
     itsBackground.load(":Assets/Assets/background/background6.png");
     rightArrow.load(":Assets/Assets/other/rightarrow.png");
@@ -234,6 +235,7 @@ void GameForm::checkCharacterCollision()
     if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
     {
         // Arrêtez le jeu et revenez au menu
+        stopMainMusic();
         itsTimer->stop();
         emit quitButtonClicked();
     }
@@ -306,6 +308,7 @@ void GameForm::checkCollisionFireBalls()
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
             // Arrêtez le jeu et revenez au menu
+            stopMainMusic();
             itsTimer->stop();
             emit quitButtonClicked();
             break; // Sortir de la boucle car une boule de feu a touché Mario
@@ -321,12 +324,7 @@ void GameForm::checkCollisionFireBalls()
         {
             if ((*it)->getItsRect().intersects(block->getRect()))
             {
-<<<<<<< HEAD
-                collisionDetected = true;
-
-=======
                 isCollision = true;
->>>>>>> de4c58c37038cf105c9b9f2b7451338a8ebebd43
                 break;
             }
         }
@@ -475,13 +473,9 @@ void GameForm::paintPlayerHelps(QPainter * painter)
 }
 
 void GameForm::playMainMusic() {
-    QMediaPlayer *player = new QMediaPlayer;
-    QMediaPlaylist *playlist = new QMediaPlaylist;
-
-    playlist->addMedia(QUrl("qrc:/Song/Song/MainSong.mp3"));
-    player->setPlaylist(playlist);
-    player->play();
-    player->setVolume(6);
+    mainsound->setSource(QUrl::fromLocalFile(":/Song/Song/MainMusic.wav"));
+    mainsound->setVolume(1);
+    mainsound->play();
 }
 
 void GameForm::playJumpSound(){
@@ -490,12 +484,9 @@ void GameForm::playJumpSound(){
     Jumpson->setSource(QUrl::fromLocalFile(":/Song/Song/JumpSound.wav"));
     Jumpson->setVolume(1);
     Jumpson->play();
-//    QMediaPlayer *player = new QMediaPlayer;
-//    QMediaPlaylist *playlist = new QMediaPlaylist;
+}
 
-//    playlist->addMedia(QUrl("qrc:/Song/Song/JumpSound.mp3"));
-//    player->setPlaylist(playlist);
-//    player->play();
-//    player->setVolume(10);
+void GameForm::stopMainMusic(){
+    mainsound->stop();
 }
 

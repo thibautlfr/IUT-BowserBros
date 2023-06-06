@@ -45,8 +45,7 @@
         <file>Assets/other/spacebar.png</file>
     </qresource>
     <qresource prefix="/Song">
-        <file>Song/JumpSound.mp3</file>
-        <file>Song/MainSong.mp3</file>
         <file>Song/JumpSound.wav</file>
+        <file>Song/MainMusic.wav</file>
     </qresource>
 </RCC>
