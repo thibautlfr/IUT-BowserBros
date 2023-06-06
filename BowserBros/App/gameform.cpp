@@ -129,19 +129,23 @@ void GameForm::checkCharacterCollision()
     itsCharacter->setOnPlatform(false);
 
     // On vérifie que le cube n'est pas sur le sol
-    //qDebug() << (itsFloor->getRect().top() - itsCharacter->getItsRect().bottom());
-    if (itsFloor->getRect().top() - itsCharacter->getItsRect().bottom() == 1  )
+    if ((itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
+        itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1  )
     {
         isOnPlatform = true;
         itsCharacter->setOnPlatform(true);
+        if (itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
+        {
+            itsCharacter->setItsY(itsCharacter->getItsY() + 5);
+        }
     }
     // On vérifie que le cube n'est sur aucunes des plateformes
     for (Element * block : itsBlocks)
     {
-        //qDebug() << (*it)->getRect().top() - itsCharacter->getItsRect().bottom();
         if (
-            // Si le rectangle est déja sur la plateforme
-            (block->getRect().top() - itsCharacter->getItsRect().bottom() == 1) &&
+            // Si le rectangle est déjà sur la plateforme
+            ((block->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
+             (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)) &&
             // ...ET qu'il n'est PAS PAS sur la plateforme (sur l'axe X)
             !( (itsCharacter->getItsRect().right() < block->getRect().left()) ||
               (itsCharacter->getItsRect().left() > block->getRect().right()) )
@@ -149,6 +153,10 @@ void GameForm::checkCharacterCollision()
         {
             isOnPlatform = true;
             itsCharacter->setOnPlatform(true);
+            if (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
+            {
+                itsCharacter->setItsY(itsCharacter->getItsY() + 5);
+            }
         }
     }
 
