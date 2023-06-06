@@ -330,6 +330,12 @@ void GameForm::checkCollisionFireBalls()
         }
 
         // Vérifier les collisions avec le sol
+        if ((*it)->getItsRect().intersects(itsChest->getRect()))
+        {
+            isCollision = true;
+        }
+
+        // Vérifier les collisions avec le sol
         if ((*it)->getItsRect().intersects(itsFloor->getRect()))
         {
             isCollision = true;
