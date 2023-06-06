@@ -1,4 +1,6 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    App
+    App \
+    TestElement \
+    TestEntity

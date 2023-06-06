@@ -21,6 +21,10 @@ GameForm::GameForm(QWidget *parent)
     elapsedTime = 0;
 
     itsBackground.load(":Assets/Assets/background/background6.png");
+    rightArrow.load(":Assets/Assets/other/rightarrow.png");
+    leftArrow.load(":Assets/Assets/other/leftarrow.png");
+    spaceBar.load(":Assets/Assets/other/spacebar.png");
+    chestArrow.load(":Assets/Assets/other/chest-arrow.png");
     backgroundY = height() - itsBackground.height();
 
     itsScrollArea = new QScrollArea;
@@ -208,6 +212,14 @@ void GameForm::checkCharacterCollision()
         }
     }
 
+    // Vérification de collision avec le coffre pour fin du jeu
+    if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
+    {
+        // Arrêtez le jeu et revenez au menu
+        itsTimer->stop();
+        emit quitButtonClicked();
+    }
+
     itsCharacter->calculatePosition();
     itsCharacter->updateAsset(elapsedTime);
 
@@ -297,6 +309,7 @@ void GameForm::checkCollisionFireBalls()
 }
 
 
+// ---------------------------------------------------------------------------------------------------------
 
 void GameForm::gameloop()
 {
@@ -321,6 +334,8 @@ void GameForm::start()
         itsTimer->start(10);
     }
 }
+
+// ---------------------------------------------------------------------------------------------------------
 
 void GameForm::keyPressEvent (QKeyEvent * event)
 {
@@ -373,9 +388,38 @@ void GameForm::paintEvent(QPaintEvent *event)
 
     itsChest->draw(painter);
 
+    // Afficher les aides au joueur
+    paintPlayerHelps(painter);
+
     itsCharacter->draw(painter);
     itsBoss->draw(painter);
 
-
     delete painter;
+}
+
+void GameForm::paintPlayerHelps(QPainter * painter)
+{
+    if(itsCharacter->getItsY() > height() - 300)
+    {
+        painter->drawImage(600, height()-65, leftArrow);
+        painter->drawImage(650, height()-65, spaceBar);
+        painter->drawImage(750, height()-65, rightArrow);
+        painter->drawImage(itsChest->getRect().x(), height()-600, chestArrow);
+    }
+    else if(itsCharacter->getItsY() - 300 < 0)
+    {
+        painter->drawImage(600, 535, leftArrow);
+        painter->drawImage(650, 535, spaceBar);
+        painter->drawImage(750, 535, rightArrow);
+    }
+    else
+    {
+        painter->drawImage(600, itsCharacter->getItsY()+235, leftArrow);
+        painter->drawImage(650, itsCharacter->getItsY()+235, spaceBar);
+        painter->drawImage(750, itsCharacter->getItsY()+235, rightArrow);
+        if(itsCharacter->getItsY()-300 > itsChest->getRect().y())
+        {
+            painter->drawImage(itsChest->getRect().x(), itsCharacter->getItsY()-300, chestArrow);
+        }
+    }
 }

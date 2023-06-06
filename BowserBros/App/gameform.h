@@ -32,6 +32,8 @@ public:
     void checkBowserCollision();
     void checkCollisionFireBalls();
 
+    void paintPlayerHelps(QPainter * painter);
+
     void updateScroll();
     void updateFireBalls();
     void loadLevel(int levelNumber);
@@ -44,19 +46,30 @@ public slots:
     void gameloop();
     void start();
 
+signals:
+    void quitButtonClicked();
+
 private:
 
     int elapsedTime;
     int backgroundY;
 
     Ui::GameForm *ui;
+
     QTimer *itsTimer;
     Mario * itsCharacter;
     Bowser * itsBoss;
+
     Element * itsFloor;
     Element * itsChest;
+
     QScrollArea *itsScrollArea;
+
     QImage itsBackground;
+    QImage leftArrow;
+    QImage rightArrow;
+    QImage chestArrow;
+    QImage spaceBar;
 
     list<Element*> itsBlocks;
 

@@ -4,13 +4,13 @@
 Mario::Mario(float x, float y, int width, int height) :
     Entity(x, y, width, height)
 {
-    itsJumpSpeed = -10;
+    itsJumpSpeed = -8;
 }
 
 Mario::Mario(float x, float y, string asset) :
     Entity(x, y, asset)
 {
-    itsJumpSpeed = -10;
+    itsJumpSpeed = -8;
     itsImage.load(QString::fromStdString(asset));
 }
 
