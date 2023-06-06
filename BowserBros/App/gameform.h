@@ -10,6 +10,11 @@
 #include <QScrollArea>
 #include <list>
 
+//Song
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+#include <QSoundEffect>
+
 #include "mario.h"
 #include "bowser.h"
 #include "element.h"
@@ -38,7 +43,8 @@ public:
     void updateFireBalls();
     void loadLevel(int levelNumber);
 
-
+    void playMainMusic();
+    void playJumpSound();
 
     QScrollArea* getScrollArea() const;
 

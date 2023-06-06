@@ -298,6 +298,7 @@ void GameForm::checkCollisionFireBalls()
                 (*it)->getItsRect().intersects(block->getRect()))
             {
                 collisionDetected = true;
+
                 break;
             }
         }
@@ -336,7 +337,9 @@ void GameForm::start()
     else
     {
         qDebug() << "Timer lancé";
+        playMainMusic();
         itsTimer->start(10);
+
     }
 }
 
@@ -357,6 +360,7 @@ void GameForm::keyPressEvent (QKeyEvent * event)
 
     if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 )
     {
+        playJumpSound();
         itsCharacter->jump();
         qDebug() << "Space Key";
     }
@@ -428,3 +432,29 @@ void GameForm::paintPlayerHelps(QPainter * painter)
         }
     }
 }
+
+void GameForm::playMainMusic() {
+    QMediaPlayer *player = new QMediaPlayer;
+    QMediaPlaylist *playlist = new QMediaPlaylist;
+
+    playlist->addMedia(QUrl("qrc:/Song/Song/MainSong.mp3"));
+    player->setPlaylist(playlist);
+    player->play();
+    player->setVolume(6);
+}
+
+void GameForm::playJumpSound(){
+
+    QSoundEffect *Jumpson = new QSoundEffect();
+    Jumpson->setSource(QUrl::fromLocalFile(":/Song/Song/JumpSound.wav"));
+    Jumpson->setVolume(1);
+    Jumpson->play();
+//    QMediaPlayer *player = new QMediaPlayer;
+//    QMediaPlaylist *playlist = new QMediaPlaylist;
+
+//    playlist->addMedia(QUrl("qrc:/Song/Song/JumpSound.mp3"));
+//    player->setPlaylist(playlist);
+//    player->play();
+//    player->setVolume(10);
+}
+
