@@ -16,14 +16,13 @@ using namespace std;
 @enum ElementType
 @brief Represents the types of elements.
 */
-
 enum ElementType {
-    CHEST, //< Chest element type. */
-    BREAKABLE1, //< Breakable1 element type. */
-    BREAKABLE2, //< Breakable2 element type. */
-    LUCKYBLOCK1, //< LuckyBlock1 element type. */
-    LUCKYBLOCK2, //< LuckyBlock2 element type. */
-    UNBREAKABLE, //< Unbreakable element type. */
+    CHEST, /**< Chest element type. */
+    BREAKABLE1, /**< Breakable1 element type. */
+    BREAKABLE2, /**< Breakable2 element type. */
+    LUCKYBLOCK1, /**< LuckyBlock1 element type. */
+    LUCKYBLOCK2, /**< LuckyBlock2 element type. */
+    UNBREAKABLE, /**< Unbreakable element type. */
     CRACKELED /**< Cracked element type. */
 };
 
@@ -49,6 +48,7 @@ public:
       * @param height The height of the element.
      */
     Element(float x, float y, int width, int height);
+
     /**
       * @brief Constructs an Element object with position and asset.
       * @param x The x-coordinate of the element's position.
@@ -56,20 +56,28 @@ public:
       * @param asset The asset file path for the element's image.
      */
     Element(float x, float y, string asset);
-    /**
-      * @brief Draws the element on a QPainter object.
-      * @param aPainter A pointer to the QPainter object.
-     */
-    void draw(QPainter *aPainter);
+
+    // --------------------------------------------------------------------------------------------
+
     /**
       * @brief Returns the bounding rectangle of the element.
       * @return The bounding rectangle of the element.
      */
     QRect getRect();
+
     /**
       * @brief Returns the y-speed of the element.
       * @return The y-speed of the element.
      */
     float getYSpeed();
+
+    // --------------------------------------------------------------------------------------------
+
+    /**
+      * @brief Draws the element on a QPainter object.
+      * @param aPainter A pointer to the QPainter object.
+     */
+    void draw(QPainter *aPainter);
+
 };
 #endif // ELEMENT_H

@@ -27,6 +27,7 @@ public:
       * @param height The height of Mario.
      */
     Mario(float x, float y, int width, int height);
+
     /**
       * @brief Constructs a Mario object.
       * @param x The initial x-coordinate of Mario.
@@ -34,6 +35,17 @@ public:
       * @param asset The asset file path for Mario's image.
     */
     Mario(float x, float y, string asset);
+
+    // --------------------------------------------------------------------------------------------
+
+    /**
+      * @brief Sets whether Mario is on a platform or not.
+      * @param onPlatform Flag indicating if Mario is on a platform.
+    */
+    void setOnPlatform(bool onPlatform);
+
+    // --------------------------------------------------------------------------------------------
+
     /**
       * @brief Makes Mario jump.
      */
@@ -43,11 +55,7 @@ public:
       * @param timeElapsed The elapsed time since the last update.
     */
     void updateAsset(int timeElapsed);
-    /**
-      * @brief Sets whether Mario is on a platform or not.
-      * @param onPlatform Flag indicating if Mario is on a platform.
-    */
-    void setOnPlatform(bool onPlatform);
+
     /**
       * @brief Checks if Mario intersects with an obstacle.
       * @param anObstacle The QRect object representing the obstacle.

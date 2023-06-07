@@ -2,6 +2,7 @@
 @file fireball.h
 @brief Defines the FireBall class.
 */
+
 #ifndef FIREBALL_H
 #define FIREBALL_H
 
@@ -31,15 +32,22 @@ public:
      * @param y The y-coordinate of the fireball's position.
     */
     FireBall(float x, float y);
+
+    // --------------------------------------------------------------------------------------------
+
     /**
       * @brief Returns the bounding rectangle of the fireball.
       * @return The bounding rectangle of the fireball.
     */
     QRect getItsRect();
+
+    // --------------------------------------------------------------------------------------------
+
     /**
       * @brief Calculates the new position of the fireball.
      */
     void calculatePosition();
+
     /**
       * @brief Draws the fireball on a QPainter object.
       * @param aPainter A pointer to the QPainter object.

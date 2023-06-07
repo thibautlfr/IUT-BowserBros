@@ -32,21 +32,29 @@ public:
       * @param asset The asset file path for the Bowser's sprite.
     */
     Bowser(float x, float y, int width, int height, string asset);
+
     /**
       * @brief Destroys the Bowser object.
     */
     ~Bowser();
+
+    // --------------------------------------------------------------------------------------------
+
     /**
       * @brief Returns a pointer to the vector of FireBall objects.
       * @return A pointer to the vector of FireBall objects.
     */
     vector<FireBall*> * getItsFireBalls();
+
+    // --------------------------------------------------------------------------------------------
+
     /**
       * @brief Drops a FireBall.
       *
       * Creates a new FireBall object and adds it to the vector of FireBall objects.
      */
     void dropFireBall();
+
     /**
       * @brief Erases a FireBall.
       * @param it An iterator pointing to the FireBall to be erased.

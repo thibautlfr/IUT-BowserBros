@@ -15,8 +15,6 @@ SoundController::~SoundController()
     delete jumpsound;
     delete winsound;
     delete gameoversound;
-
-
 }
 
 void SoundController::MainSound()
@@ -31,8 +29,6 @@ void SoundController::StopMainSound()
 {
     mainsound->stop();
 }
-
-
 
 void SoundController::JumpSound()
 {

@@ -2,11 +2,13 @@
 @file widget.h
 @brief Defines the Widget class.
 */
+
 #ifndef WIDGET_H
 #define WIDGET_H
 
 #include <QWidget>
 #include <QStackedWidget>
+
 #include "menuform.h"
 #include "gameform.h"
 
@@ -20,7 +22,6 @@ QT_END_NAMESPACE
 The Widget class represents the main widget of the game, which contains the menu form and the game form.
 It inherits from the QWidget class.
 */
-
 class Widget : public QWidget
 {
     Q_OBJECT
@@ -32,6 +33,7 @@ public:
       * @param parent The parent QWidget object.
      */
     Widget(QWidget *parent = nullptr);
+
     /**
       * @brief Destructs the Widget object.
      */
@@ -39,7 +41,7 @@ public:
 
 private:
     Ui::Widget *ui;
-    QStackedWidget* stackedWidget;
+    QStackedWidget* stackedWidget; /**< The stack widget to switch between level and menu */
 };
 
 #endif // WIDGET_H
