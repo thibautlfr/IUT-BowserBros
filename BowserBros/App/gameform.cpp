@@ -21,7 +21,6 @@ GameForm::GameForm(QWidget *parent)
     elapsedTime = 0;
     mainsound = new QSoundEffect();
 
-    itsBackground.load(":Assets/Assets/background/background6.png");
     rightArrow.load(":Assets/Assets/other/rightarrow.png");
     leftArrow.load(":Assets/Assets/other/leftarrow.png");
     spaceBar.load(":Assets/Assets/other/spacebar.png");
