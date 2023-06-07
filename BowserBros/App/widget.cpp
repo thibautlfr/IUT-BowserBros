@@ -1,4 +1,5 @@
 #include "widget.h"
+#include "qicon.h"
 #include "ui_widget.h"
 
 #include <QStackedWidget>
@@ -12,7 +13,9 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
 
     menuForm = new MenuForm;
-
+    setWindowTitle("BrowserBros");
+    QIcon newIcon(":Assets/Assets/other/chest.png");
+    setWindowIcon(newIcon);
     stackedWidget = new QStackedWidget;
     stackedWidget->setFixedSize(800, 600);
     stackedWidget->addWidget(menuForm);
