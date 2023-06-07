@@ -22,7 +22,7 @@ private slots:
 void TestUnitBowser::testBowserConstructor()
 {
     Bowser bowser(0, 0, 100, 100, "../../BowserBros/App/Assets/mario/mario1.png");
-    QCOMPARE(bowser.getItsFireBalls()->size(), 0); // On s'attend à ce qu'aucune boule de feu n'ait été créée au départ.
+    QCOMPARE(int(bowser.getItsFireBalls()->size()), 0); // On s'attend à ce qu'aucune boule de feu n'ait été créée au départ.
 }
 
 void TestUnitBowser::testFireBallConstructor()
