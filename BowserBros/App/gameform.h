@@ -119,6 +119,7 @@ private:
 
     Ui::GameForm *ui; /**< The user interface for the game form. */
     int itsLevel; /**< The current number level in the game. */
+    int itsAvalaibleLevelsNb; /**< The amount of avalaible numbers in the game */
     int elapsedTime; /**< The elapsed time in the game. */
     int backgroundY; /**< The y-coordinate of the background. */
     bool isGameEnded; /**< Flag indicating if the game has ended. */
