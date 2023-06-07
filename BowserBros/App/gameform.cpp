@@ -7,7 +7,6 @@
 #include <string>
 #include <thread>
 #include <chrono>
-
 #include <QDir>
 
 using namespace std;
@@ -41,6 +40,7 @@ GameForm::GameForm(QWidget *parent)
     // Création de la "caméra"
     itsScrollArea = new QScrollArea;
     itsScrollArea->setWidget(this);
+    itsScrollArea->setFocusPolicy(Qt::NoFocus);
     itsScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     itsScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff); // désactiver la barre de défilement
 
