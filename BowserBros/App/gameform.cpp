@@ -1,10 +1,15 @@
 #include "gameform.h"
 #include "ui_gameform.h"
 
+
 #include <iostream>
 #include <QDebug>
 #include <QFile>
 #include <string>
+#include <thread>
+#include <chrono>
+
+
 
 using namespace std;
 
@@ -19,7 +24,7 @@ GameForm::GameForm(QWidget *parent)
     setFixedSize(800, 1200);
 
     elapsedTime = 0;
-    mainsound = new QSoundEffect();
+    sound = new SoundController;
 
     itsBackground.load(":Assets/Assets/background/background6.png");
     rightArrow.load(":Assets/Assets/other/rightarrow.png");
@@ -52,8 +57,10 @@ GameForm::~GameForm()
 {
     delete itsCharacter;
     delete itsBoss;
+    delete sound;
     delete itsTimer;
     delete ui;
+
 }
 
 // ---------------------------------------------------------------------------------------------------------
@@ -235,7 +242,9 @@ void GameForm::checkCharacterCollision()
     if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
     {
         // Arrêtez le jeu et revenez au menu
-        stopMainMusic();
+        sound->StopMainSound();
+        sound->WinSound();
+        this_thread::sleep_for(chrono::milliseconds(9000));
         itsTimer->stop();
         emit quitButtonClicked();
     }
@@ -327,7 +336,10 @@ void GameForm::checkCollisionFireBalls()
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
             // Arrêtez le jeu et revenez au menu
-            stopMainMusic();
+
+            sound->StopMainSound();
+            sound->GameoverSound();
+            this_thread::sleep_for(chrono::milliseconds(300));
             itsTimer->stop();
             emit quitButtonClicked();
             break; // Sortir de la boucle car une boule de feu a touché Mario
@@ -401,7 +413,7 @@ void GameForm::start()
     else
     {
         qDebug() << "Timer lancé";
-        playMainMusic();
+        sound->MainSound();
         itsTimer->start(10);
 
     }
@@ -424,7 +436,7 @@ void GameForm::keyPressEvent (QKeyEvent * event)
 
     if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 )
     {
-        playJumpSound();
+        sound->JumpSound();
         itsCharacter->jump();
         qDebug() << "Space Key";
     }
@@ -497,21 +509,8 @@ void GameForm::paintPlayerHelps(QPainter * painter)
     }
 }
 
-void GameForm::playMainMusic() {
-    mainsound->setSource(QUrl::fromLocalFile(":/Song/Song/MainMusic.wav"));
-    mainsound->setVolume(1);
-    mainsound->play();
-}
 
-void GameForm::playJumpSound(){
 
-    QSoundEffect *Jumpson = new QSoundEffect();
-    Jumpson->setSource(QUrl::fromLocalFile(":/Song/Song/JumpSound.wav"));
-    Jumpson->setVolume(1);
-    Jumpson->play();
-}
 
-void GameForm::stopMainMusic(){
-    mainsound->stop();
-}
+
 

@@ -47,5 +47,7 @@
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>
         <file>Song/MainMusic.wav</file>
+        <file>Song/gameover.wav</file>
+        <file>Song/win.wav</file>
     </qresource>
 </RCC>

@@ -9,10 +9,11 @@
 #include <QScrollBar>
 #include <QScrollArea>
 #include <list>
-
 //Song
 #include <QMediaPlayer>
 #include <QSoundEffect>
+#include "soundcontroller.h"
+
 
 #include "mario.h"
 #include "bowser.h"
@@ -59,7 +60,7 @@ private:
 
     int elapsedTime;
     int backgroundY;
-    QSoundEffect *mainsound;
+    SoundController * sound;
 
     Ui::GameForm *ui;
 
@@ -79,6 +80,7 @@ private:
     QImage rightArrow;
     QImage chestArrow;
     QImage spaceBar;
+
 
     list<Element*> itsBlocks;
 
