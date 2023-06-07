@@ -12,7 +12,6 @@ Bowser::Bowser(float x, float y, int width, int height, string asset)
 
     itsFireBalls = new vector<FireBall*>;
 }
-
 Bowser::~Bowser()
 {
     for (FireBall * fireball : *itsFireBalls)
