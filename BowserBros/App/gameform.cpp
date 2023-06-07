@@ -1,7 +1,6 @@
 #include "gameform.h"
 #include "ui_gameform.h"
 
-
 #include <iostream>
 #include <QDebug>
 #include <QFile>
@@ -9,7 +8,7 @@
 #include <thread>
 #include <chrono>
 
-
+#include <QDir>
 
 using namespace std;
 
@@ -21,33 +20,41 @@ GameForm::GameForm(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Fixe la taille du widget
     setFixedSize(800, 1200);
 
+    // Temps écoulé depuis le début du niveau
     elapsedTime = 0;
+
+    // Création du gestionnaire de son
     sound = new SoundController;
 
+    // Chargement des assets d'aide au joueur
     rightArrow.load(":Assets/Assets/other/rightarrow.png");
     leftArrow.load(":Assets/Assets/other/leftarrow.png");
     spaceBar.load(":Assets/Assets/other/spacebar.png");
     chestArrow.load(":Assets/Assets/other/chest-arrow.png");
+
+    // Initialise le Y du background
     backgroundY = height() - itsBackground.height();
 
+    // Création de la "caméra"
     itsScrollArea = new QScrollArea;
     itsScrollArea->setWidget(this);
     itsScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     itsScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff); // désactiver la barre de défilement
 
+    // Chargement du premier niveau
     itsLevel = 1;
+    itsAvalaibleLevelsNb = QDir(":Levels/Levels").entryInfoList().count();
     loadLevel(itsLevel);
 
-    qDebug() << this->height();
-
+    // Création du sol, du personnage et du boss
     itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
     itsCharacter = new Mario(50, height() - 100, ":Assets/Assets/mario/mario4.png");
     itsBoss = new Bowser(30, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
 
-    itsBoss->dropFireBall();
-
+    // Création et lancement du timer
     itsTimer = new QTimer(this);
     connect(itsTimer, SIGNAL(timeout()), this, SLOT(gameloop()));
     start();
@@ -263,7 +270,10 @@ void GameForm::checkCharacterCollision()
     {
         // Arrêtez le jeu et revenez au menu
         sound->StopMainSound();
-        sound->WinSound();
+        if (itsLevel == itsAvalaibleLevelsNb)
+        {
+            sound->WinSound();
+        }
         this_thread::sleep_for(chrono::milliseconds(300));
         itsTimer->stop();
         itsLevel ++;
@@ -310,7 +320,6 @@ void GameForm::checkBowserCollision()
     itsBoss->calculatePosition();
 }
 
-
 void GameForm::updateScroll() {
     int characterY = itsCharacter->getItsY();
     //qDebug() << characterY;
@@ -348,7 +357,6 @@ void GameForm::updateFireBalls()
     }
 }
 
-
 void GameForm::checkCollisionFireBalls()
 {
     vector<FireBall *> *fireBalls = itsBoss->getItsFireBalls();
@@ -358,13 +366,12 @@ void GameForm::checkCollisionFireBalls()
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
             // Arrêtez le jeu et revenez au menu
-
             sound->StopMainSound();
             sound->GameoverSound();
             this_thread::sleep_for(chrono::milliseconds(300));
             itsTimer->stop();
             itsLevel = 1;
-            loadLevel(itsLevel);
+            //loadLevel(itsLevel);
             emit quitButtonClicked();
             return; // Sortir de la boucle car une boule de feu a touché Mario
         }
