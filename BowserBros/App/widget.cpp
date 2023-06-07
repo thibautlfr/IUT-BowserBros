@@ -13,7 +13,7 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
 
     menuForm = new MenuForm;
-    setWindowTitle("BrowserBros");
+    setWindowTitle("BowserBros");
     QIcon newIcon(":Assets/Assets/other/chest.png");
     setWindowIcon(newIcon);
     stackedWidget = new QStackedWidget;

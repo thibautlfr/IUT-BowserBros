@@ -5,12 +5,6 @@
     <qresource prefix="/Assets">
         <file>Assets/background/background1.png</file>
         <file>Assets/background/background2.png</file>
-        <file>Assets/background/background3.png</file>
-        <file>Assets/background/background4.png</file>
-        <file>Assets/background/background5.png</file>
-        <file>Assets/background/background6.png</file>
-        <file>Assets/background/background8.png</file>
-        <file>Assets/background/background9.png</file>
         <file>Assets/block/block1.jpg</file>
         <file>Assets/block/block2.jpg</file>
         <file>Assets/block/block3.jpg</file>
@@ -43,6 +37,7 @@
         <file>Assets/other/leftarrow.png</file>
         <file>Assets/other/rightarrow.png</file>
         <file>Assets/other/spacebar.png</file>
+        <file>Assets/background/backgroundMenu.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>

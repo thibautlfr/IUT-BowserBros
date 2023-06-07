@@ -33,7 +33,8 @@ GameForm::GameForm(QWidget *parent)
     itsScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     itsScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff); // désactiver la barre de défilement
 
-    loadLevel(1);
+    itsLevel = 1;
+    loadLevel(itsLevel);
 
     qDebug() << this->height();
 
@@ -66,7 +67,15 @@ QScrollArea* GameForm::getScrollArea() const {
 
 // Charger un niveau à partir du fichier texte correspondant
 void GameForm::loadLevel(int levelNumber) {
+    if(levelNumber > 1)
+    {
+        itsCharacter->setItsX(50);
+        itsCharacter->setItsY(height() - 100);
+        itsBlocks.clear();
+    }
     QString filename = ":Levels/Levels/level" + QString::number(levelNumber) + ".txt";
+    QString backgroundName = ":Assets/Assets/background/background" + QString::number(levelNumber) + ".png";
+    itsBackground.load(backgroundName);
     qDebug() << filename;
     QFile levelFile(filename);
     //QFile levelFile("qrc:///Levels/level1.txt");
@@ -117,6 +126,13 @@ void GameForm::loadLevel(int levelNumber) {
     else
     {
         qDebug() << "Impossible d'ouvrir le fichier du niveau!";
+        stopMainMusic();
+        itsTimer->stop();
+        itsLevel = 1;
+        loadLevel(itsLevel);
+        emit quitButtonClicked();
+        return; // Sortir de la boucle car une boule de feu a touché Mario
+
     }
 }
 
@@ -237,7 +253,10 @@ void GameForm::checkCharacterCollision()
         // Arrêtez le jeu et revenez au menu
         stopMainMusic();
         itsTimer->stop();
-        emit quitButtonClicked();
+        itsLevel ++;
+        loadLevel(itsLevel);
+        start();
+        return;
     }
 
     itsCharacter->calculatePosition();
@@ -329,8 +348,10 @@ void GameForm::checkCollisionFireBalls()
             // Arrêtez le jeu et revenez au menu
             stopMainMusic();
             itsTimer->stop();
+            itsLevel = 1;
+            loadLevel(itsLevel);
             emit quitButtonClicked();
-            break; // Sortir de la boucle car une boule de feu a touché Mario
+            return; // Sortir de la boucle car une boule de feu a touché Mario
         }
     }
 

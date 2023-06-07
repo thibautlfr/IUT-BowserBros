@@ -12,7 +12,7 @@ MenuForm::MenuForm(QWidget *parent) :
     ui->setupUi(this);
 
     setFixedSize(800, 600);
-    itsBackground.load(":Assets/Assets/background/background4.png");
+    itsBackground.load(":Assets/Assets/background/backgroundMenu.png");
     itsFloor.load(":Assets/Assets/other/floor.png");
     itsGameTitle.load(":Assets/Assets/menu/gametitle.png");
     itsMario.load(":Assets/Assets/mario/mario6.png");

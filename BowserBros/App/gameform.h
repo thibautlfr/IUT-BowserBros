@@ -112,6 +112,7 @@ signals:
     void quitButtonClicked();
 
 private:
+    int itsLevel; /**< The current number level in the game. */
     int elapsedTime; /**< The elapsed time in the game. */
     int backgroundY; /**< The y-coordinate of the background. */
     QSoundEffect *mainsound; /**< The main sound effect. */
