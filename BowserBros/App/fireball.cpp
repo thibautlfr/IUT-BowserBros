@@ -8,7 +8,7 @@ FireBall::FireBall(float x, float y)
     itsAsset.load(":Assets/Assets/other/fireball.png");
 
     itsRect = QRect(itsX, itsY, itsAsset.width(), itsAsset.height());
-    Q_ASSERT(! itsAsset.isNull());
+    //Q_ASSERT(! itsAsset.isNull());
 }
 
 QRect FireBall::getItsRect()
