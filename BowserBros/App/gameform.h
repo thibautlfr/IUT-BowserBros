@@ -13,10 +13,11 @@
 #include <QScrollBar>
 #include <QScrollArea>
 #include <list>
-
 //Song
 #include <QMediaPlayer>
 #include <QSoundEffect>
+#include "soundcontroller.h"
+
 
 #include "mario.h"
 #include "bowser.h"
@@ -77,22 +78,6 @@ public:
       * @param levelNumber The number of the level to load.
      */
     void loadLevel(int levelNumber);
-    /**
-      * @brief Plays the main music of the game.
-     */
-    void playMainMusic();
-    /**
-      * @brief Plays the jump sound effect.
-     */
-    void playJumpSound();
-    /**
-      * @brief Stops the main music of the game.
-     */
-    void stopMainMusic();
-    /**
-      * @brief Returns the QScrollArea object used in the game.
-      * @return The QScrollArea object.
-     */
     QScrollArea* getScrollArea() const;
 
 public slots:
@@ -129,6 +114,7 @@ private:
     QImage rightArrow; /**< The right arrow image for player help. */
     QImage chestArrow; /**< The chest arrow image for player help. */
     QImage spaceBar; /**< The space bar image for player help. */
+    SoundController * sound; /**< The sound controller for the game */
     list<Element*> itsBlocks; /**< The list of blocks in the game. */
     /**
       * @brief Handles the key press event.
