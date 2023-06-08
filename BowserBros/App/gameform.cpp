@@ -33,6 +33,7 @@ GameForm::GameForm(QWidget *parent)
     // Ouverture de la base de données
     itsDB = new DataBase;
 
+    itsDB->addScore("Thibaut", 80.3);
     QList<QPair<QString, double>> topPlayers = itsDB->getTopPlayers(10); // Récupère les 10 meilleurs joueurs
     for (const QPair<QString, double>& player : topPlayers) {
         QString name = player.first;
@@ -336,15 +337,6 @@ void GameForm::checkCharacterCollision()
         {
             itsCharacter->setYSpeed(0);
             itsCharacter->setItsY(itsFloor->getRect().top() - itsCharacter->getItsRect().height());
-
-//            if(collisionRight == true)
-//            {
-//                itsCharacter->setXSpeed(-2);
-//            }
-//            else if(collisionLeft == true)
-//            {
-//                itsCharacter->setXSpeed(2);
-//            }
         }
         else
         {

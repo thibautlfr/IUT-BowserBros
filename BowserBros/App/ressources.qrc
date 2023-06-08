@@ -45,7 +45,4 @@
         <file>Song/gameover.wav</file>
         <file>Song/win.wav</file>
     </qresource>
-    <qresource prefix="/DataBase">
-        <file>DataBase/scoreboard.db</file>
-    </qresource>
 </RCC>

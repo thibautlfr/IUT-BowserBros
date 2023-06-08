@@ -3,22 +3,17 @@
 DataBase::DataBase()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbPath = "../../DataBase/scoreboard.db";
+    db.setDatabaseName(dbPath);
 
-    // Copier le fichier de ressources vers un emplacement temporaire
-    QString dbPath = ":/DataBase/DataBase/scoreboard.db";
-    QString tempDbPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/scoreboard.db";
-    if (QFile::copy(dbPath, tempDbPath)) {
-        db.setDatabaseName(tempDbPath);
-
-        if (!db.open()) {
-            qDebug() << "Erreur base de données:" << db.lastError().text();
-            open = false;
-        } else {
-            open = true;
-        }
-    } else {
-        qDebug() << "Erreur lors de la copie du fichier de ressources";
+    if(!db.open())
+    {
+        qDebug() << "Erreur base de donnees";
         open = false;
+    }
+    else
+    {
+        open = true;
     }
 }
 
@@ -62,7 +57,7 @@ QList<QPair<QString, double>> DataBase::getTopPlayers(int count)
 
     if (count <= 0) {
         // Si count est inférieur ou égal à 0, récupérer le classement complet
-        if (query.exec("SELECT name, score FROM player ORDER BY score DESC")) {
+        if (query.exec("SELECT name, score FROM player ORDER BY score ASC")) {
             while (query.next()) {
                 QString name = query.value(0).toString();
                 double score = query.value(1).toDouble();
@@ -71,7 +66,7 @@ QList<QPair<QString, double>> DataBase::getTopPlayers(int count)
         }
     } else {
         // Récupérer les X meilleurs joueurs
-        if (query.exec(QString("SELECT name, score FROM player ORDER BY score DESC LIMIT %1").arg(count))) {
+        if (query.exec(QString("SELECT name, score FROM player ORDER BY score ASC LIMIT %1").arg(count))) {
             while (query.next()) {
                 QString name = query.value(0).toString();
                 double score = query.value(1).toDouble();
