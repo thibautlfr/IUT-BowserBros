@@ -1,0 +1,49 @@
+\hypertarget{character_8h_source}{}\doxysection{character.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CHARACTER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CHARACTER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QRect>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QPainter>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character}{Character}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{float}\ itsX;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{float}\ itsY;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{float}\ itsXSpeed;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{float}\ itsYSpeed;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{float}\ itsJumpSpeed;}
+\DoxyCodeLine{00015\ \ \ \ \ QRect\ itsRect;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_character}{Character}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ setItsY(\textcolor{keywordtype}{float}\ Y);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ setItsX(\textcolor{keywordtype}{float}\ X);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ setXSpeed(\textcolor{keywordtype}{float}\ aSpeed);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ setYSpeed(\textcolor{keywordtype}{float}\ aSpeed);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ getItsY();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ getYSpeed();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ getXSpeed();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ calculatePosition();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ draw(QPainter\ *aPainter);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ reverseXSpeed();}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ reverseYSpeed();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ jump();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ intersect(QRect\ anObstacle);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ QRect\ getItsRect();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CHARACTER\_H}}
+
+\end{DoxyCode}

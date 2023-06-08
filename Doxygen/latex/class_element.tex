@@ -1,0 +1,120 @@
+\hypertarget{class_element}{}\doxysection{Element Class Reference}
+\label{class_element}\index{Element@{Element}}
+
+
+Represents a game element. The \mbox{\hyperlink{class_element}{Element}} class provides common attributes and functionalities for game elements.  
+
+
+
+
+{\ttfamily \#include $<$element.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_element_a2f03a5dc4d3027853085c321b3f936b3}{Element}} (float x, float y, int width, int height)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_element}{Element}} object with position and size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_element_a7c02e572e7efbfa7b4a620f9ccf41e80}{Element}} (float x, float y, string asset)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_element}{Element}} object with position and asset. \end{DoxyCompactList}\item 
+QRect \mbox{\hyperlink{class_element_a791d0c61e750ae88890db269437a7398}{get\+Rect}} ()
+\begin{DoxyCompactList}\small\item\em Returns the bounding rectangle of the element. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_element_afca529aab9f253870c961e96096f456e}{get\+YSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the y-\/speed of the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_element_a4eba9d0acde5621a8aae65476ea6646d}{draw}} (QPainter $\ast$a\+Painter)
+\begin{DoxyCompactList}\small\item\em Draws the element on a QPainter object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a game element. The \mbox{\hyperlink{class_element}{Element}} class provides common attributes and functionalities for game elements. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_element_a2f03a5dc4d3027853085c321b3f936b3}\label{class_element_a2f03a5dc4d3027853085c321b3f936b3}} 
+\index{Element@{Element}!Element@{Element}}
+\index{Element@{Element}!Element@{Element}}
+\doxysubsubsection{\texorpdfstring{Element()}{Element()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Element\+::\+Element (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Constructs an \mbox{\hyperlink{class_element}{Element}} object with position and size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the element\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the element\textquotesingle{}s position. \\
+\hline
+{\em width} & The width of the element. \\
+\hline
+{\em height} & The height of the element. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_element_a7c02e572e7efbfa7b4a620f9ccf41e80}\label{class_element_a7c02e572e7efbfa7b4a620f9ccf41e80}} 
+\index{Element@{Element}!Element@{Element}}
+\index{Element@{Element}!Element@{Element}}
+\doxysubsubsection{\texorpdfstring{Element()}{Element()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Element\+::\+Element (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{string}]{asset }\end{DoxyParamCaption})}
+
+
+
+Constructs an \mbox{\hyperlink{class_element}{Element}} object with position and asset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the element\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the element\textquotesingle{}s position. \\
+\hline
+{\em asset} & The asset file path for the element\textquotesingle{}s image. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_element_a4eba9d0acde5621a8aae65476ea6646d}\label{class_element_a4eba9d0acde5621a8aae65476ea6646d}} 
+\index{Element@{Element}!draw@{draw}}
+\index{draw@{draw}!Element@{Element}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Element\+::draw (\begin{DoxyParamCaption}\item[{QPainter $\ast$}]{a\+Painter }\end{DoxyParamCaption})}
+
+
+
+Draws the element on a QPainter object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+Painter} & A pointer to the QPainter object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_element_a791d0c61e750ae88890db269437a7398}\label{class_element_a791d0c61e750ae88890db269437a7398}} 
+\index{Element@{Element}!getRect@{getRect}}
+\index{getRect@{getRect}!Element@{Element}}
+\doxysubsubsection{\texorpdfstring{getRect()}{getRect()}}
+{\footnotesize\ttfamily QRect Element\+::get\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the bounding rectangle of the element. 
+
+\begin{DoxyReturn}{Returns}
+The bounding rectangle of the element. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_element_afca529aab9f253870c961e96096f456e}\label{class_element_afca529aab9f253870c961e96096f456e}} 
+\index{Element@{Element}!getYSpeed@{getYSpeed}}
+\index{getYSpeed@{getYSpeed}!Element@{Element}}
+\doxysubsubsection{\texorpdfstring{getYSpeed()}{getYSpeed()}}
+{\footnotesize\ttfamily float Element\+::get\+YSpeed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the y-\/speed of the element. 
+
+\begin{DoxyReturn}{Returns}
+The y-\/speed of the element. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{element_8h}{element.\+h}}\item 
+element.\+cpp\end{DoxyCompactItemize}

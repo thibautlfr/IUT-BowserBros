@@ -1,0 +1,134 @@
+\hypertarget{class_game_form}{}\doxysection{Game\+Form Class Reference}
+\label{class_game_form}\index{GameForm@{GameForm}}
+
+
+Represents the game interface. The \mbox{\hyperlink{class_game_form}{Game\+Form}} class represents the game interface where the game is played. It handles various game functionalities such as character movement, collisions, level loading, etc.  
+
+
+
+
+{\ttfamily \#include $<$gameform.\+h$>$}
+
+Inheritance diagram for Game\+Form\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_form}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_form_a91c7ea0d51aa02f436f5fcbc04833950}\label{class_game_form_a91c7ea0d51aa02f436f5fcbc04833950}} 
+void {\bfseries gameloop} ()
+\begin{DoxyCompactList}\small\item\em The game loop that updates the game state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a7b1bfa851740c8c62b617621e5a9991e}\label{class_game_form_a7b1bfa851740c8c62b617621e5a9991e}} 
+void {\bfseries start} ()
+\begin{DoxyCompactList}\small\item\em Starts the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_form_ae0d0ab858de99ec8935c98e6ad0b9a46}\label{class_game_form_ae0d0ab858de99ec8935c98e6ad0b9a46}} 
+void {\bfseries quit\+Button\+Clicked} ()
+\begin{DoxyCompactList}\small\item\em Signal emitted when the quit button is clicked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_form_a9f4418060b0102494713e7ce629f8bb6}{Game\+Form}} (QWidget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_game_form}{Game\+Form}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a9a68a99923b27abccde9562cf43a5195}\label{class_game_form_a9a68a99923b27abccde9562cf43a5195}} 
+{\bfseries $\sim$\+Game\+Form} ()
+\begin{DoxyCompactList}\small\item\em Destructs the \mbox{\hyperlink{class_game_form}{Game\+Form}} object. \end{DoxyCompactList}\item 
+QScroll\+Area $\ast$ \mbox{\hyperlink{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}{get\+Scroll\+Area}} () const
+\begin{DoxyCompactList}\small\item\em Getter for its\+Scroll\+Area. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a527a1f3aa5c4115f25a0724a50068866}\label{class_game_form_a527a1f3aa5c4115f25a0724a50068866}} 
+void {\bfseries check\+Character\+Collision} ()
+\begin{DoxyCompactList}\small\item\em Checks for character collisions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a23b137c85d4bae5c8e2b07ce270abb7d}\label{class_game_form_a23b137c85d4bae5c8e2b07ce270abb7d}} 
+void {\bfseries check\+Bowser\+Collision} ()
+\begin{DoxyCompactList}\small\item\em Checks for collisions with \mbox{\hyperlink{class_bowser}{Bowser}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}\label{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}} 
+void {\bfseries check\+Collision\+Fire\+Balls} ()
+\begin{DoxyCompactList}\small\item\em Checks for collisions with fireballs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_form_a8386c0313181b8b39549e5c53490c943}{paint\+Player\+Helps}} (QPainter $\ast$painter)
+\begin{DoxyCompactList}\small\item\em Paints the player\textquotesingle{}s helps. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_aab9cda161194e2f0013fd61cdd76fafa}\label{class_game_form_aab9cda161194e2f0013fd61cdd76fafa}} 
+void {\bfseries update\+Scroll} ()
+\begin{DoxyCompactList}\small\item\em Updates the scrolling of the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_aa6bc375695665688925ed87bbbc005ba}\label{class_game_form_aa6bc375695665688925ed87bbbc005ba}} 
+void {\bfseries update\+Fire\+Balls} ()
+\begin{DoxyCompactList}\small\item\em Updates the fireballs in the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_form_a0b814dd05c17c1056706609a89a51e12}{load\+Level}} (int level\+Number)
+\begin{DoxyCompactList}\small\item\em Loads a specific level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the game interface. The \mbox{\hyperlink{class_game_form}{Game\+Form}} class represents the game interface where the game is played. It handles various game functionalities such as character movement, collisions, level loading, etc. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_form_a9f4418060b0102494713e7ce629f8bb6}\label{class_game_form_a9f4418060b0102494713e7ce629f8bb6}} 
+\index{GameForm@{GameForm}!GameForm@{GameForm}}
+\index{GameForm@{GameForm}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{GameForm()}{GameForm()}}
+{\footnotesize\ttfamily Game\+Form\+::\+Game\+Form (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \mbox{\hyperlink{class_game_form}{Game\+Form}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent QWidget object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}\label{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}} 
+\index{GameForm@{GameForm}!getScrollArea@{getScrollArea}}
+\index{getScrollArea@{getScrollArea}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{getScrollArea()}{getScrollArea()}}
+{\footnotesize\ttfamily QScroll\+Area $\ast$ Game\+Form\+::get\+Scroll\+Area (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for its\+Scroll\+Area. 
+
+\begin{DoxyReturn}{Returns}
+the scroll area element of the \mbox{\hyperlink{class_game_form}{Game\+Form}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_form_a0b814dd05c17c1056706609a89a51e12}\label{class_game_form_a0b814dd05c17c1056706609a89a51e12}} 
+\index{GameForm@{GameForm}!loadLevel@{loadLevel}}
+\index{loadLevel@{loadLevel}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{loadLevel()}{loadLevel()}}
+{\footnotesize\ttfamily void Game\+Form\+::load\+Level (\begin{DoxyParamCaption}\item[{int}]{level\+Number }\end{DoxyParamCaption})}
+
+
+
+Loads a specific level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level\+Number} & The number of the level to load. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_form_a8386c0313181b8b39549e5c53490c943}\label{class_game_form_a8386c0313181b8b39549e5c53490c943}} 
+\index{GameForm@{GameForm}!paintPlayerHelps@{paintPlayerHelps}}
+\index{paintPlayerHelps@{paintPlayerHelps}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{paintPlayerHelps()}{paintPlayerHelps()}}
+{\footnotesize\ttfamily void Game\+Form\+::paint\+Player\+Helps (\begin{DoxyParamCaption}\item[{QPainter $\ast$}]{painter }\end{DoxyParamCaption})}
+
+
+
+Paints the player\textquotesingle{}s helps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & A pointer to the QPainter object. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gameform_8h}{gameform.\+h}}\item 
+gameform.\+cpp\end{DoxyCompactItemize}

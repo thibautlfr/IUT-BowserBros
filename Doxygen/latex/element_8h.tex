@@ -1,0 +1,77 @@
+\hypertarget{element_8h}{}\doxysection{element.\+h File Reference}
+\label{element_8h}\index{element.h@{element.h}}
+
+
+Defines the \mbox{\hyperlink{class_element}{Element}} class.  
+
+
+{\ttfamily \#include $<$QRect$>$}\newline
+{\ttfamily \#include $<$QPainter$>$}\newline
+{\ttfamily \#include $<$QImage$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_element}{Element}}
+\begin{DoxyCompactList}\small\item\em Represents a game element. The \mbox{\hyperlink{class_element}{Element}} class provides common attributes and functionalities for game elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01ae}{Element\+Type}} \{ \newline
+\mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01aead3fba710316b46b04a3bf166dfb65643}{CHEST}}
+, \mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01aeacf48ff36a394142e3a03fc57094afd39}{BREAKABLE1}}
+, \mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01aeafede4b8669524c3d90578fcfc45c62d7}{BREAKABLE2}}
+, \mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01aeaf195580367b24d92460da0ff9b7b0cee}{LUCKYBLOCK1}}
+, \newline
+\mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01aea734739decf00bbc1d37c2a6ce66d3061}{LUCKYBLOCK2}}
+, \mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01aeab6fa7fc6820097fa0137d9bf2b6662d2}{UNBREAKABLE}}
+, \mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01aeaabc2faa2e90c65cd22eb3cd4c2d6c473}{CRACKELED}}
+ \}
+\begin{DoxyCompactList}\small\item\em Represents the types of elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the \mbox{\hyperlink{class_element}{Element}} class. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{element_8h_a16b11be27a8e9362dd122c4d879e01ae}\label{element_8h_a16b11be27a8e9362dd122c4d879e01ae}} 
+\index{element.h@{element.h}!ElementType@{ElementType}}
+\index{ElementType@{ElementType}!element.h@{element.h}}
+\doxysubsubsection{\texorpdfstring{ElementType}{ElementType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01ae}{Element\+Type}}}
+
+
+
+Represents the types of elements. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CHEST@{CHEST}!element.h@{element.h}}\index{element.h@{element.h}!CHEST@{CHEST}}}\mbox{\Hypertarget{element_8h_a16b11be27a8e9362dd122c4d879e01aead3fba710316b46b04a3bf166dfb65643}\label{element_8h_a16b11be27a8e9362dd122c4d879e01aead3fba710316b46b04a3bf166dfb65643}} 
+CHEST&Chest element type. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BREAKABLE1@{BREAKABLE1}!element.h@{element.h}}\index{element.h@{element.h}!BREAKABLE1@{BREAKABLE1}}}\mbox{\Hypertarget{element_8h_a16b11be27a8e9362dd122c4d879e01aeacf48ff36a394142e3a03fc57094afd39}\label{element_8h_a16b11be27a8e9362dd122c4d879e01aeacf48ff36a394142e3a03fc57094afd39}} 
+BREAKABLE1&Breakable1 element type. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BREAKABLE2@{BREAKABLE2}!element.h@{element.h}}\index{element.h@{element.h}!BREAKABLE2@{BREAKABLE2}}}\mbox{\Hypertarget{element_8h_a16b11be27a8e9362dd122c4d879e01aeafede4b8669524c3d90578fcfc45c62d7}\label{element_8h_a16b11be27a8e9362dd122c4d879e01aeafede4b8669524c3d90578fcfc45c62d7}} 
+BREAKABLE2&Breakable2 element type. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LUCKYBLOCK1@{LUCKYBLOCK1}!element.h@{element.h}}\index{element.h@{element.h}!LUCKYBLOCK1@{LUCKYBLOCK1}}}\mbox{\Hypertarget{element_8h_a16b11be27a8e9362dd122c4d879e01aeaf195580367b24d92460da0ff9b7b0cee}\label{element_8h_a16b11be27a8e9362dd122c4d879e01aeaf195580367b24d92460da0ff9b7b0cee}} 
+LUCKYBLOCK1&Lucky\+Block1 element type. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LUCKYBLOCK2@{LUCKYBLOCK2}!element.h@{element.h}}\index{element.h@{element.h}!LUCKYBLOCK2@{LUCKYBLOCK2}}}\mbox{\Hypertarget{element_8h_a16b11be27a8e9362dd122c4d879e01aea734739decf00bbc1d37c2a6ce66d3061}\label{element_8h_a16b11be27a8e9362dd122c4d879e01aea734739decf00bbc1d37c2a6ce66d3061}} 
+LUCKYBLOCK2&Lucky\+Block2 element type. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNBREAKABLE@{UNBREAKABLE}!element.h@{element.h}}\index{element.h@{element.h}!UNBREAKABLE@{UNBREAKABLE}}}\mbox{\Hypertarget{element_8h_a16b11be27a8e9362dd122c4d879e01aeab6fa7fc6820097fa0137d9bf2b6662d2}\label{element_8h_a16b11be27a8e9362dd122c4d879e01aeab6fa7fc6820097fa0137d9bf2b6662d2}} 
+UNBREAKABLE&Unbreakable element type. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CRACKELED@{CRACKELED}!element.h@{element.h}}\index{element.h@{element.h}!CRACKELED@{CRACKELED}}}\mbox{\Hypertarget{element_8h_a16b11be27a8e9362dd122c4d879e01aeaabc2faa2e90c65cd22eb3cd4c2d6c473}\label{element_8h_a16b11be27a8e9362dd122c4d879e01aeaabc2faa2e90c65cd22eb3cd4c2d6c473}} 
+CRACKELED&Cracked element type. \\
+\hline
+
+\end{DoxyEnumFields}

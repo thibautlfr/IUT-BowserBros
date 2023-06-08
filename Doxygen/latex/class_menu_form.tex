@@ -1,0 +1,107 @@
+\hypertarget{class_menu_form}{}\doxysection{Menu\+Form Class Reference}
+\label{class_menu_form}\index{MenuForm@{MenuForm}}
+
+
+Represents the menu form of the game. The \mbox{\hyperlink{class_menu_form}{Menu\+Form}} class represents the menu form of the game, where players can start or quit the game. It inherits from the QWidget class.  
+
+
+
+
+{\ttfamily \#include $<$menuform.\+h$>$}
+
+Inheritance diagram for Menu\+Form\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_menu_form}
+\end{center}
+\end{figure}
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_menu_form_a5b6a1433f9bc85f8802f8d7a37c9d547}\label{class_menu_form_a5b6a1433f9bc85f8802f8d7a37c9d547}} 
+void {\bfseries play\+Button\+Clicked} ()
+\begin{DoxyCompactList}\small\item\em Signal emitted when the play button is clicked. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_form_aa8720bd59c2dca3d8ab0271b364052bf}\label{class_menu_form_aa8720bd59c2dca3d8ab0271b364052bf}} 
+void {\bfseries quit\+Button\+Clicked} ()
+\begin{DoxyCompactList}\small\item\em Signal emitted when the quit button is clicked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_menu_form_acaab5223ef7986a0e55157632db86265}{Menu\+Form}} (QWidget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_menu_form}{Menu\+Form}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_form_ab20e7f52b30cb65140d1b7a6a80a89e6}\label{class_menu_form_ab20e7f52b30cb65140d1b7a6a80a89e6}} 
+{\bfseries $\sim$\+Menu\+Form} ()
+\begin{DoxyCompactList}\small\item\em Destructs the \mbox{\hyperlink{class_menu_form}{Menu\+Form}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QImage \mbox{\hyperlink{class_menu_form_ab337166203f67e366b13820d3736f3f6}{its\+Background}}
+\item 
+QImage \mbox{\hyperlink{class_menu_form_a7e677d26c885317462d009e57af36b3e}{its\+Floor}}
+\item 
+QImage \mbox{\hyperlink{class_menu_form_ab1518926630806b1d2d90d39caabfd07}{its\+Mario}}
+\item 
+QImage \mbox{\hyperlink{class_menu_form_a0ca014313d0eb5c638441276ce5008a3}{its\+Bowser}}
+\item 
+QImage \mbox{\hyperlink{class_menu_form_a96679a536f3b4c4875ef0cd05efdd6a1}{its\+Game\+Title}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the menu form of the game. The \mbox{\hyperlink{class_menu_form}{Menu\+Form}} class represents the menu form of the game, where players can start or quit the game. It inherits from the QWidget class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_menu_form_acaab5223ef7986a0e55157632db86265}\label{class_menu_form_acaab5223ef7986a0e55157632db86265}} 
+\index{MenuForm@{MenuForm}!MenuForm@{MenuForm}}
+\index{MenuForm@{MenuForm}!MenuForm@{MenuForm}}
+\doxysubsubsection{\texorpdfstring{MenuForm()}{MenuForm()}}
+{\footnotesize\ttfamily Menu\+Form\+::\+Menu\+Form (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \mbox{\hyperlink{class_menu_form}{Menu\+Form}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent QWidget object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_menu_form_ab337166203f67e366b13820d3736f3f6}\label{class_menu_form_ab337166203f67e366b13820d3736f3f6}} 
+\index{MenuForm@{MenuForm}!itsBackground@{itsBackground}}
+\index{itsBackground@{itsBackground}!MenuForm@{MenuForm}}
+\doxysubsubsection{\texorpdfstring{itsBackground}{itsBackground}}
+{\footnotesize\ttfamily QImage Menu\+Form\+::its\+Background}
+
+The background image of the menu form. \mbox{\Hypertarget{class_menu_form_a0ca014313d0eb5c638441276ce5008a3}\label{class_menu_form_a0ca014313d0eb5c638441276ce5008a3}} 
+\index{MenuForm@{MenuForm}!itsBowser@{itsBowser}}
+\index{itsBowser@{itsBowser}!MenuForm@{MenuForm}}
+\doxysubsubsection{\texorpdfstring{itsBowser}{itsBowser}}
+{\footnotesize\ttfamily QImage Menu\+Form\+::its\+Bowser}
+
+The \mbox{\hyperlink{class_bowser}{Bowser}} image of the menu form. \mbox{\Hypertarget{class_menu_form_a7e677d26c885317462d009e57af36b3e}\label{class_menu_form_a7e677d26c885317462d009e57af36b3e}} 
+\index{MenuForm@{MenuForm}!itsFloor@{itsFloor}}
+\index{itsFloor@{itsFloor}!MenuForm@{MenuForm}}
+\doxysubsubsection{\texorpdfstring{itsFloor}{itsFloor}}
+{\footnotesize\ttfamily QImage Menu\+Form\+::its\+Floor}
+
+The floor image of the menu form. \mbox{\Hypertarget{class_menu_form_a96679a536f3b4c4875ef0cd05efdd6a1}\label{class_menu_form_a96679a536f3b4c4875ef0cd05efdd6a1}} 
+\index{MenuForm@{MenuForm}!itsGameTitle@{itsGameTitle}}
+\index{itsGameTitle@{itsGameTitle}!MenuForm@{MenuForm}}
+\doxysubsubsection{\texorpdfstring{itsGameTitle}{itsGameTitle}}
+{\footnotesize\ttfamily QImage Menu\+Form\+::its\+Game\+Title}
+
+The game title image of the menu form. \mbox{\Hypertarget{class_menu_form_ab1518926630806b1d2d90d39caabfd07}\label{class_menu_form_ab1518926630806b1d2d90d39caabfd07}} 
+\index{MenuForm@{MenuForm}!itsMario@{itsMario}}
+\index{itsMario@{itsMario}!MenuForm@{MenuForm}}
+\doxysubsubsection{\texorpdfstring{itsMario}{itsMario}}
+{\footnotesize\ttfamily QImage Menu\+Form\+::its\+Mario}
+
+The \mbox{\hyperlink{class_mario}{Mario}} image of the menu form. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{menuform_8h}{menuform.\+h}}\item 
+menuform.\+cpp\end{DoxyCompactItemize}

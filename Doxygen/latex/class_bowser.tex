@@ -1,0 +1,161 @@
+\hypertarget{class_bowser}{}\doxysection{Bowser Class Reference}
+\label{class_bowser}\index{Bowser@{Bowser}}
+
+
+Represents the \mbox{\hyperlink{class_bowser}{Bowser}} enemy. The \mbox{\hyperlink{class_bowser}{Bowser}} class is derived from the \mbox{\hyperlink{class_entity}{Entity}} class and provides functionalities specific to \mbox{\hyperlink{class_bowser}{Bowser}}.  
+
+
+
+
+{\ttfamily \#include $<$bowser.\+h$>$}
+
+Inheritance diagram for Bowser\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_bowser}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bowser_a540b6afd1cc1738496a2806f50bcd31b}{Bowser}} (float x, float y, int width, int height, string asset)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_bowser}{Bowser}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bowser_a12a1ac2920cf067f9466ce7e9261bf7e}\label{class_bowser_a12a1ac2920cf067f9466ce7e9261bf7e}} 
+{\bfseries $\sim$\+Bowser} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{class_bowser}{Bowser}} object. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_bowser_adc115b644cc74011ddc863bffa884232}{get\+Its\+Fire\+Balls}} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the vector of \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}} objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bowser_acdd34fa89cebd709d4787b0a3dcd7921}{drop\+Fire\+Ball}} ()
+\begin{DoxyCompactList}\small\item\em Drops a \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bowser_a8a87caa82804ac9ee792ba1d96bddabf}{erase\+Fire\+Ball}} (vector$<$ \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}} $\ast$ $>$\+::iterator it)
+\begin{DoxyCompactList}\small\item\em Erases a \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_a87015483c7f33232367b9df539486af3}{Entity}} (float x, float y, int width, int height)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity_afe525604909cacead8754fed6988349f}{Entity}} (float x, float y, string asset)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and asset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ac8cb9f36ba2c8f8ca112556beeacfca0}{set\+ItsY}} (float Y)
+\begin{DoxyCompactList}\small\item\em Sets the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a42afe2a0c04394db1f026f46430fee3e}{set\+ItsX}} (float X)
+\begin{DoxyCompactList}\small\item\em Sets the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6a99fc0394e8c99e3f2ab626c2da2767}{set\+XSpeed}} (float a\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6409ad44a9b174490083dabee12f1025}{set\+YSpeed}} (float a\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a9bd1559414607eef261997bf69de63e9}{set\+Its\+Image}} (string new\+Asset\+Path)
+\begin{DoxyCompactList}\small\item\em Sets the image asset of the entity. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_a4c7bd3bd447928ae871833b749fb9dcd}{get\+ItsY}} ()
+\begin{DoxyCompactList}\small\item\em Returns the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_aa0c849c1529ca6c0dde810e5c0741c35}{get\+ItsX}} ()
+\begin{DoxyCompactList}\small\item\em Returns the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_adad018778998318bb083da987536c932}{get\+YSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_a86c9d6debe5cef873e9bb2807cae4125}{get\+XSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
+QRect \mbox{\hyperlink{class_entity_a38553a2451e4963a279129fa10264cb4}{get\+Its\+Rect}} ()
+\begin{DoxyCompactList}\small\item\em Returns the bounding rectangle of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_ad745385f5f47550344c9f470980b9ab0}\label{class_entity_ad745385f5f47550344c9f470980b9ab0}} 
+void {\bfseries calculate\+Position} ()
+\begin{DoxyCompactList}\small\item\em Calculates the new position of the entity based on its speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ac46c3c209c82cc006ada312cd6516b03}{draw}} (QPainter $\ast$a\+Painter)
+\begin{DoxyCompactList}\small\item\em Draws the entity on a QPainter object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a97c9f08ae564416ec74f43b45077e324}\label{class_entity_a97c9f08ae564416ec74f43b45077e324}} 
+void {\bfseries reverse\+XSpeed} ()
+\begin{DoxyCompactList}\small\item\em Reverses the x-\/speed of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a8609b50d53decd1f099bad8c31008c94}\label{class_entity_a8609b50d53decd1f099bad8c31008c94}} 
+void {\bfseries reverse\+YSpeed} ()
+\begin{DoxyCompactList}\small\item\em Reverses the y-\/speed of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_entity_a996440af8e9edf9475eae8fcc07413cf}{itsX}}
+\item 
+float \mbox{\hyperlink{class_entity_aee9b8509d9ec5d40df774f8d224c98ea}{itsY}}
+\item 
+float \mbox{\hyperlink{class_entity_a4fcab160674d29af76f8f01aeb786277}{its\+XSpeed}}
+\item 
+float \mbox{\hyperlink{class_entity_a815ea04795bc966aa2d7c911bcc3b790}{its\+YSpeed}}
+\item 
+QRect \mbox{\hyperlink{class_entity_a30c27b56869648d8d59d2a6a4f52b2fb}{its\+Rect}}
+\item 
+QImage \mbox{\hyperlink{class_entity_ac8f5c15659ea04667f2e4280d570e088}{its\+Image}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the \mbox{\hyperlink{class_bowser}{Bowser}} enemy. The \mbox{\hyperlink{class_bowser}{Bowser}} class is derived from the \mbox{\hyperlink{class_entity}{Entity}} class and provides functionalities specific to \mbox{\hyperlink{class_bowser}{Bowser}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bowser_a540b6afd1cc1738496a2806f50bcd31b}\label{class_bowser_a540b6afd1cc1738496a2806f50bcd31b}} 
+\index{Bowser@{Bowser}!Bowser@{Bowser}}
+\index{Bowser@{Bowser}!Bowser@{Bowser}}
+\doxysubsubsection{\texorpdfstring{Bowser()}{Bowser()}}
+{\footnotesize\ttfamily Bowser\+::\+Bowser (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{string}]{asset }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{class_bowser}{Bowser}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the \mbox{\hyperlink{class_bowser}{Bowser}}\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the \mbox{\hyperlink{class_bowser}{Bowser}}\textquotesingle{}s position. \\
+\hline
+{\em width} & The width of the \mbox{\hyperlink{class_bowser}{Bowser}}\textquotesingle{}s sprite. \\
+\hline
+{\em height} & The height of the \mbox{\hyperlink{class_bowser}{Bowser}}\textquotesingle{}s sprite. \\
+\hline
+{\em asset} & The asset file path for the \mbox{\hyperlink{class_bowser}{Bowser}}\textquotesingle{}s sprite. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bowser_acdd34fa89cebd709d4787b0a3dcd7921}\label{class_bowser_acdd34fa89cebd709d4787b0a3dcd7921}} 
+\index{Bowser@{Bowser}!dropFireBall@{dropFireBall}}
+\index{dropFireBall@{dropFireBall}!Bowser@{Bowser}}
+\doxysubsubsection{\texorpdfstring{dropFireBall()}{dropFireBall()}}
+{\footnotesize\ttfamily void Bowser\+::drop\+Fire\+Ball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Drops a \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}}. 
+
+Creates a new \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}} object and adds it to the vector of \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}} objects. \mbox{\Hypertarget{class_bowser_a8a87caa82804ac9ee792ba1d96bddabf}\label{class_bowser_a8a87caa82804ac9ee792ba1d96bddabf}} 
+\index{Bowser@{Bowser}!eraseFireBall@{eraseFireBall}}
+\index{eraseFireBall@{eraseFireBall}!Bowser@{Bowser}}
+\doxysubsubsection{\texorpdfstring{eraseFireBall()}{eraseFireBall()}}
+{\footnotesize\ttfamily void Bowser\+::erase\+Fire\+Ball (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}} $\ast$ $>$\+::iterator}]{it }\end{DoxyParamCaption})}
+
+
+
+Erases a \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & An iterator pointing to the \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}} to be erased. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bowser_adc115b644cc74011ddc863bffa884232}\label{class_bowser_adc115b644cc74011ddc863bffa884232}} 
+\index{Bowser@{Bowser}!getItsFireBalls@{getItsFireBalls}}
+\index{getItsFireBalls@{getItsFireBalls}!Bowser@{Bowser}}
+\doxysubsubsection{\texorpdfstring{getItsFireBalls()}{getItsFireBalls()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}} $\ast$ $>$ $\ast$ Bowser\+::get\+Its\+Fire\+Balls (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a pointer to the vector of \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}} objects. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the vector of \mbox{\hyperlink{class_fire_ball}{Fire\+Ball}} objects. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bowser_8h}{bowser.\+h}}\item 
+bowser.\+cpp\end{DoxyCompactItemize}

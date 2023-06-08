@@ -1,0 +1,319 @@
+\hypertarget{class_entity}{}\doxysection{Entity Class Reference}
+\label{class_entity}\index{Entity@{Entity}}
+
+
+Represents a game entity. The \mbox{\hyperlink{class_entity}{Entity}} class provides common attributes and functionalities for game entities.  
+
+
+
+
+{\ttfamily \#include $<$entity.\+h$>$}
+
+Inheritance diagram for Entity\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_entity}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_a87015483c7f33232367b9df539486af3}{Entity}} (float x, float y, int width, int height)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity_afe525604909cacead8754fed6988349f}{Entity}} (float x, float y, string asset)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and asset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ac8cb9f36ba2c8f8ca112556beeacfca0}{set\+ItsY}} (float Y)
+\begin{DoxyCompactList}\small\item\em Sets the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a42afe2a0c04394db1f026f46430fee3e}{set\+ItsX}} (float X)
+\begin{DoxyCompactList}\small\item\em Sets the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6a99fc0394e8c99e3f2ab626c2da2767}{set\+XSpeed}} (float a\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6409ad44a9b174490083dabee12f1025}{set\+YSpeed}} (float a\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a9bd1559414607eef261997bf69de63e9}{set\+Its\+Image}} (string new\+Asset\+Path)
+\begin{DoxyCompactList}\small\item\em Sets the image asset of the entity. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_a4c7bd3bd447928ae871833b749fb9dcd}{get\+ItsY}} ()
+\begin{DoxyCompactList}\small\item\em Returns the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_aa0c849c1529ca6c0dde810e5c0741c35}{get\+ItsX}} ()
+\begin{DoxyCompactList}\small\item\em Returns the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_adad018778998318bb083da987536c932}{get\+YSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_a86c9d6debe5cef873e9bb2807cae4125}{get\+XSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
+QRect \mbox{\hyperlink{class_entity_a38553a2451e4963a279129fa10264cb4}{get\+Its\+Rect}} ()
+\begin{DoxyCompactList}\small\item\em Returns the bounding rectangle of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_ad745385f5f47550344c9f470980b9ab0}\label{class_entity_ad745385f5f47550344c9f470980b9ab0}} 
+void {\bfseries calculate\+Position} ()
+\begin{DoxyCompactList}\small\item\em Calculates the new position of the entity based on its speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ac46c3c209c82cc006ada312cd6516b03}{draw}} (QPainter $\ast$a\+Painter)
+\begin{DoxyCompactList}\small\item\em Draws the entity on a QPainter object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a97c9f08ae564416ec74f43b45077e324}\label{class_entity_a97c9f08ae564416ec74f43b45077e324}} 
+void {\bfseries reverse\+XSpeed} ()
+\begin{DoxyCompactList}\small\item\em Reverses the x-\/speed of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a8609b50d53decd1f099bad8c31008c94}\label{class_entity_a8609b50d53decd1f099bad8c31008c94}} 
+void {\bfseries reverse\+YSpeed} ()
+\begin{DoxyCompactList}\small\item\em Reverses the y-\/speed of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_entity_a996440af8e9edf9475eae8fcc07413cf}{itsX}}
+\item 
+float \mbox{\hyperlink{class_entity_aee9b8509d9ec5d40df774f8d224c98ea}{itsY}}
+\item 
+float \mbox{\hyperlink{class_entity_a4fcab160674d29af76f8f01aeb786277}{its\+XSpeed}}
+\item 
+float \mbox{\hyperlink{class_entity_a815ea04795bc966aa2d7c911bcc3b790}{its\+YSpeed}}
+\item 
+QRect \mbox{\hyperlink{class_entity_a30c27b56869648d8d59d2a6a4f52b2fb}{its\+Rect}}
+\item 
+QImage \mbox{\hyperlink{class_entity_ac8f5c15659ea04667f2e4280d570e088}{its\+Image}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a game entity. The \mbox{\hyperlink{class_entity}{Entity}} class provides common attributes and functionalities for game entities. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_entity_a87015483c7f33232367b9df539486af3}\label{class_entity_a87015483c7f33232367b9df539486af3}} 
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the entity\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the entity\textquotesingle{}s position. \\
+\hline
+{\em width} & The width of the entity. \\
+\hline
+{\em height} & The height of the entity. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_afe525604909cacead8754fed6988349f}\label{class_entity_afe525604909cacead8754fed6988349f}} 
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{string}]{asset }\end{DoxyParamCaption})}
+
+
+
+Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and asset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the entity\textquotesingle{}s position. \\
+\hline
+{\em y} & The y-\/coordinate of the entity\textquotesingle{}s position. \\
+\hline
+{\em asset} & The asset file path for the entity\textquotesingle{}s image. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_entity_ac46c3c209c82cc006ada312cd6516b03}\label{class_entity_ac46c3c209c82cc006ada312cd6516b03}} 
+\index{Entity@{Entity}!draw@{draw}}
+\index{draw@{draw}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Entity\+::draw (\begin{DoxyParamCaption}\item[{QPainter $\ast$}]{a\+Painter }\end{DoxyParamCaption})}
+
+
+
+Draws the entity on a QPainter object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+Painter} & A pointer to the QPainter object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_a38553a2451e4963a279129fa10264cb4}\label{class_entity_a38553a2451e4963a279129fa10264cb4}} 
+\index{Entity@{Entity}!getItsRect@{getItsRect}}
+\index{getItsRect@{getItsRect}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getItsRect()}{getItsRect()}}
+{\footnotesize\ttfamily QRect Entity\+::get\+Its\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the bounding rectangle of the entity. 
+
+\begin{DoxyReturn}{Returns}
+The bounding rectangle of the entity. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_aa0c849c1529ca6c0dde810e5c0741c35}\label{class_entity_aa0c849c1529ca6c0dde810e5c0741c35}} 
+\index{Entity@{Entity}!getItsX@{getItsX}}
+\index{getItsX@{getItsX}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getItsX()}{getItsX()}}
+{\footnotesize\ttfamily float Entity\+::get\+ItsX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the x-\/coordinate of the entity\textquotesingle{}s position. 
+
+\begin{DoxyReturn}{Returns}
+The x-\/coordinate of the entity\textquotesingle{}s position. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a4c7bd3bd447928ae871833b749fb9dcd}\label{class_entity_a4c7bd3bd447928ae871833b749fb9dcd}} 
+\index{Entity@{Entity}!getItsY@{getItsY}}
+\index{getItsY@{getItsY}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getItsY()}{getItsY()}}
+{\footnotesize\ttfamily float Entity\+::get\+ItsY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the y-\/coordinate of the entity\textquotesingle{}s position. 
+
+\begin{DoxyReturn}{Returns}
+The y-\/coordinate of the entity\textquotesingle{}s position. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a86c9d6debe5cef873e9bb2807cae4125}\label{class_entity_a86c9d6debe5cef873e9bb2807cae4125}} 
+\index{Entity@{Entity}!getXSpeed@{getXSpeed}}
+\index{getXSpeed@{getXSpeed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getXSpeed()}{getXSpeed()}}
+{\footnotesize\ttfamily float Entity\+::get\+XSpeed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the speed of the entity along the x-\/axis. 
+
+\begin{DoxyReturn}{Returns}
+The speed of the entity along the x-\/axis. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_adad018778998318bb083da987536c932}\label{class_entity_adad018778998318bb083da987536c932}} 
+\index{Entity@{Entity}!getYSpeed@{getYSpeed}}
+\index{getYSpeed@{getYSpeed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getYSpeed()}{getYSpeed()}}
+{\footnotesize\ttfamily float Entity\+::get\+YSpeed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the speed of the entity along the y-\/axis. 
+
+\begin{DoxyReturn}{Returns}
+The speed of the entity along the y-\/axis. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a9bd1559414607eef261997bf69de63e9}\label{class_entity_a9bd1559414607eef261997bf69de63e9}} 
+\index{Entity@{Entity}!setItsImage@{setItsImage}}
+\index{setItsImage@{setItsImage}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setItsImage()}{setItsImage()}}
+{\footnotesize\ttfamily void Entity\+::set\+Its\+Image (\begin{DoxyParamCaption}\item[{string}]{new\+Asset\+Path }\end{DoxyParamCaption})}
+
+
+
+Sets the image asset of the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Asset\+Path} & The new asset file path for the entity\textquotesingle{}s image. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_a42afe2a0c04394db1f026f46430fee3e}\label{class_entity_a42afe2a0c04394db1f026f46430fee3e}} 
+\index{Entity@{Entity}!setItsX@{setItsX}}
+\index{setItsX@{setItsX}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setItsX()}{setItsX()}}
+{\footnotesize\ttfamily void Entity\+::set\+ItsX (\begin{DoxyParamCaption}\item[{float}]{X }\end{DoxyParamCaption})}
+
+
+
+Sets the x-\/coordinate of the entity\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & The new x-\/coordinate value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_ac8cb9f36ba2c8f8ca112556beeacfca0}\label{class_entity_ac8cb9f36ba2c8f8ca112556beeacfca0}} 
+\index{Entity@{Entity}!setItsY@{setItsY}}
+\index{setItsY@{setItsY}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setItsY()}{setItsY()}}
+{\footnotesize\ttfamily void Entity\+::set\+ItsY (\begin{DoxyParamCaption}\item[{float}]{Y }\end{DoxyParamCaption})}
+
+
+
+Sets the y-\/coordinate of the entity\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Y} & The new y-\/coordinate value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_a6a99fc0394e8c99e3f2ab626c2da2767}\label{class_entity_a6a99fc0394e8c99e3f2ab626c2da2767}} 
+\index{Entity@{Entity}!setXSpeed@{setXSpeed}}
+\index{setXSpeed@{setXSpeed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setXSpeed()}{setXSpeed()}}
+{\footnotesize\ttfamily void Entity\+::set\+XSpeed (\begin{DoxyParamCaption}\item[{float}]{a\+Speed }\end{DoxyParamCaption})}
+
+
+
+Sets the speed of the entity along the x-\/axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+Speed} & The new x-\/speed value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_a6409ad44a9b174490083dabee12f1025}\label{class_entity_a6409ad44a9b174490083dabee12f1025}} 
+\index{Entity@{Entity}!setYSpeed@{setYSpeed}}
+\index{setYSpeed@{setYSpeed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setYSpeed()}{setYSpeed()}}
+{\footnotesize\ttfamily void Entity\+::set\+YSpeed (\begin{DoxyParamCaption}\item[{float}]{a\+Speed }\end{DoxyParamCaption})}
+
+
+
+Sets the speed of the entity along the y-\/axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+Speed} & The new y-\/speed value. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_entity_ac8f5c15659ea04667f2e4280d570e088}\label{class_entity_ac8f5c15659ea04667f2e4280d570e088}} 
+\index{Entity@{Entity}!itsImage@{itsImage}}
+\index{itsImage@{itsImage}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{itsImage}{itsImage}}
+{\footnotesize\ttfamily QImage Entity\+::its\+Image\hspace{0.3cm}{\ttfamily [protected]}}
+
+The image of the entity. \mbox{\Hypertarget{class_entity_a30c27b56869648d8d59d2a6a4f52b2fb}\label{class_entity_a30c27b56869648d8d59d2a6a4f52b2fb}} 
+\index{Entity@{Entity}!itsRect@{itsRect}}
+\index{itsRect@{itsRect}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{itsRect}{itsRect}}
+{\footnotesize\ttfamily QRect Entity\+::its\+Rect\hspace{0.3cm}{\ttfamily [protected]}}
+
+The bounding rectangle of the entity. \mbox{\Hypertarget{class_entity_a996440af8e9edf9475eae8fcc07413cf}\label{class_entity_a996440af8e9edf9475eae8fcc07413cf}} 
+\index{Entity@{Entity}!itsX@{itsX}}
+\index{itsX@{itsX}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{itsX}{itsX}}
+{\footnotesize\ttfamily float Entity\+::itsX\hspace{0.3cm}{\ttfamily [protected]}}
+
+The x-\/coordinate of the entity\textquotesingle{}s position. \mbox{\Hypertarget{class_entity_a4fcab160674d29af76f8f01aeb786277}\label{class_entity_a4fcab160674d29af76f8f01aeb786277}} 
+\index{Entity@{Entity}!itsXSpeed@{itsXSpeed}}
+\index{itsXSpeed@{itsXSpeed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{itsXSpeed}{itsXSpeed}}
+{\footnotesize\ttfamily float Entity\+::its\+XSpeed\hspace{0.3cm}{\ttfamily [protected]}}
+
+The speed of the entity along the x-\/axis. \mbox{\Hypertarget{class_entity_aee9b8509d9ec5d40df774f8d224c98ea}\label{class_entity_aee9b8509d9ec5d40df774f8d224c98ea}} 
+\index{Entity@{Entity}!itsY@{itsY}}
+\index{itsY@{itsY}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{itsY}{itsY}}
+{\footnotesize\ttfamily float Entity\+::itsY\hspace{0.3cm}{\ttfamily [protected]}}
+
+The y-\/coordinate of the entity\textquotesingle{}s position. \mbox{\Hypertarget{class_entity_a815ea04795bc966aa2d7c911bcc3b790}\label{class_entity_a815ea04795bc966aa2d7c911bcc3b790}} 
+\index{Entity@{Entity}!itsYSpeed@{itsYSpeed}}
+\index{itsYSpeed@{itsYSpeed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{itsYSpeed}{itsYSpeed}}
+{\footnotesize\ttfamily float Entity\+::its\+YSpeed\hspace{0.3cm}{\ttfamily [protected]}}
+
+The speed of the entity along the y-\/axis. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{entity_8h}{entity.\+h}}\item 
+entity.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,190 @@
+\hypertarget{class_mario}{}\doxysection{Mario Class Reference}
+\label{class_mario}\index{Mario@{Mario}}
+
+
+Represents the player character \mbox{\hyperlink{class_mario}{Mario}}. The \mbox{\hyperlink{class_mario}{Mario}} class represents the player character in the game. It inherits from the \mbox{\hyperlink{class_entity}{Entity}} class. It contains specific functionalities and properties related to \mbox{\hyperlink{class_mario}{Mario}}.  
+
+
+
+
+{\ttfamily \#include $<$mario.\+h$>$}
+
+Inheritance diagram for Mario\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_mario}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mario_ab95512785b18f8be80facfcae0894efb}{Mario}} (float x, float y, int width, int height)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_mario}{Mario}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_mario_a18dc19a04b05c2e6502a5633e05cbc18}{Mario}} (float x, float y, string asset)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_mario}{Mario}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mario_a0801c2edd426c94b35f1e8817c6ab91d}{set\+On\+Platform}} (bool on\+Platform)
+\begin{DoxyCompactList}\small\item\em Sets whether \mbox{\hyperlink{class_mario}{Mario}} is on a platform or not. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_mario_ac3b75d0650fb2a149d33fd9f1420da99}\label{class_mario_ac3b75d0650fb2a149d33fd9f1420da99}} 
+void {\bfseries jump} ()
+\begin{DoxyCompactList}\small\item\em Makes \mbox{\hyperlink{class_mario}{Mario}} jump. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mario_af98b58d0ae7ffbd220bbfdab43ec74dc}{update\+Asset}} (int time\+Elapsed)
+\begin{DoxyCompactList}\small\item\em Updates the asset of \mbox{\hyperlink{class_mario}{Mario}} based on the elapsed time. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_mario_a4aa96bb8f6d098098a5ea175364ad085}{intersect}} (QRect an\+Obstacle)
+\begin{DoxyCompactList}\small\item\em Checks if \mbox{\hyperlink{class_mario}{Mario}} intersects with an obstacle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_a87015483c7f33232367b9df539486af3}{Entity}} (float x, float y, int width, int height)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity_afe525604909cacead8754fed6988349f}{Entity}} (float x, float y, string asset)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and asset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ac8cb9f36ba2c8f8ca112556beeacfca0}{set\+ItsY}} (float Y)
+\begin{DoxyCompactList}\small\item\em Sets the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a42afe2a0c04394db1f026f46430fee3e}{set\+ItsX}} (float X)
+\begin{DoxyCompactList}\small\item\em Sets the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6a99fc0394e8c99e3f2ab626c2da2767}{set\+XSpeed}} (float a\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6409ad44a9b174490083dabee12f1025}{set\+YSpeed}} (float a\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a9bd1559414607eef261997bf69de63e9}{set\+Its\+Image}} (string new\+Asset\+Path)
+\begin{DoxyCompactList}\small\item\em Sets the image asset of the entity. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_a4c7bd3bd447928ae871833b749fb9dcd}{get\+ItsY}} ()
+\begin{DoxyCompactList}\small\item\em Returns the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_aa0c849c1529ca6c0dde810e5c0741c35}{get\+ItsX}} ()
+\begin{DoxyCompactList}\small\item\em Returns the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_adad018778998318bb083da987536c932}{get\+YSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_a86c9d6debe5cef873e9bb2807cae4125}{get\+XSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
+QRect \mbox{\hyperlink{class_entity_a38553a2451e4963a279129fa10264cb4}{get\+Its\+Rect}} ()
+\begin{DoxyCompactList}\small\item\em Returns the bounding rectangle of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_ad745385f5f47550344c9f470980b9ab0}\label{class_entity_ad745385f5f47550344c9f470980b9ab0}} 
+void {\bfseries calculate\+Position} ()
+\begin{DoxyCompactList}\small\item\em Calculates the new position of the entity based on its speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ac46c3c209c82cc006ada312cd6516b03}{draw}} (QPainter $\ast$a\+Painter)
+\begin{DoxyCompactList}\small\item\em Draws the entity on a QPainter object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a97c9f08ae564416ec74f43b45077e324}\label{class_entity_a97c9f08ae564416ec74f43b45077e324}} 
+void {\bfseries reverse\+XSpeed} ()
+\begin{DoxyCompactList}\small\item\em Reverses the x-\/speed of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a8609b50d53decd1f099bad8c31008c94}\label{class_entity_a8609b50d53decd1f099bad8c31008c94}} 
+void {\bfseries reverse\+YSpeed} ()
+\begin{DoxyCompactList}\small\item\em Reverses the y-\/speed of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_entity_a996440af8e9edf9475eae8fcc07413cf}{itsX}}
+\item 
+float \mbox{\hyperlink{class_entity_aee9b8509d9ec5d40df774f8d224c98ea}{itsY}}
+\item 
+float \mbox{\hyperlink{class_entity_a4fcab160674d29af76f8f01aeb786277}{its\+XSpeed}}
+\item 
+float \mbox{\hyperlink{class_entity_a815ea04795bc966aa2d7c911bcc3b790}{its\+YSpeed}}
+\item 
+QRect \mbox{\hyperlink{class_entity_a30c27b56869648d8d59d2a6a4f52b2fb}{its\+Rect}}
+\item 
+QImage \mbox{\hyperlink{class_entity_ac8f5c15659ea04667f2e4280d570e088}{its\+Image}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the player character \mbox{\hyperlink{class_mario}{Mario}}. The \mbox{\hyperlink{class_mario}{Mario}} class represents the player character in the game. It inherits from the \mbox{\hyperlink{class_entity}{Entity}} class. It contains specific functionalities and properties related to \mbox{\hyperlink{class_mario}{Mario}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_mario_ab95512785b18f8be80facfcae0894efb}\label{class_mario_ab95512785b18f8be80facfcae0894efb}} 
+\index{Mario@{Mario}!Mario@{Mario}}
+\index{Mario@{Mario}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{Mario()}{Mario()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Mario\+::\+Mario (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{class_mario}{Mario}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x-\/coordinate of \mbox{\hyperlink{class_mario}{Mario}}. \\
+\hline
+{\em y} & The initial y-\/coordinate of \mbox{\hyperlink{class_mario}{Mario}}. \\
+\hline
+{\em width} & The width of \mbox{\hyperlink{class_mario}{Mario}}. \\
+\hline
+{\em height} & The height of \mbox{\hyperlink{class_mario}{Mario}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mario_a18dc19a04b05c2e6502a5633e05cbc18}\label{class_mario_a18dc19a04b05c2e6502a5633e05cbc18}} 
+\index{Mario@{Mario}!Mario@{Mario}}
+\index{Mario@{Mario}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{Mario()}{Mario()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Mario\+::\+Mario (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{string}]{asset }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{class_mario}{Mario}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x-\/coordinate of \mbox{\hyperlink{class_mario}{Mario}}. \\
+\hline
+{\em y} & The initial y-\/coordinate of \mbox{\hyperlink{class_mario}{Mario}}. \\
+\hline
+{\em asset} & The asset file path for \mbox{\hyperlink{class_mario}{Mario}}\textquotesingle{}s image. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_mario_a4aa96bb8f6d098098a5ea175364ad085}\label{class_mario_a4aa96bb8f6d098098a5ea175364ad085}} 
+\index{Mario@{Mario}!intersect@{intersect}}
+\index{intersect@{intersect}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{intersect()}{intersect()}}
+{\footnotesize\ttfamily bool Mario\+::intersect (\begin{DoxyParamCaption}\item[{QRect}]{an\+Obstacle }\end{DoxyParamCaption})}
+
+
+
+Checks if \mbox{\hyperlink{class_mario}{Mario}} intersects with an obstacle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an\+Obstacle} & The QRect object representing the obstacle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if \mbox{\hyperlink{class_mario}{Mario}} intersects with the obstacle, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mario_a0801c2edd426c94b35f1e8817c6ab91d}\label{class_mario_a0801c2edd426c94b35f1e8817c6ab91d}} 
+\index{Mario@{Mario}!setOnPlatform@{setOnPlatform}}
+\index{setOnPlatform@{setOnPlatform}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{setOnPlatform()}{setOnPlatform()}}
+{\footnotesize\ttfamily void Mario\+::set\+On\+Platform (\begin{DoxyParamCaption}\item[{bool}]{on\+Platform }\end{DoxyParamCaption})}
+
+
+
+Sets whether \mbox{\hyperlink{class_mario}{Mario}} is on a platform or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em on\+Platform} & Flag indicating if \mbox{\hyperlink{class_mario}{Mario}} is on a platform. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mario_af98b58d0ae7ffbd220bbfdab43ec74dc}\label{class_mario_af98b58d0ae7ffbd220bbfdab43ec74dc}} 
+\index{Mario@{Mario}!updateAsset@{updateAsset}}
+\index{updateAsset@{updateAsset}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{updateAsset()}{updateAsset()}}
+{\footnotesize\ttfamily void Mario\+::update\+Asset (\begin{DoxyParamCaption}\item[{int}]{time\+Elapsed }\end{DoxyParamCaption})}
+
+
+
+Updates the asset of \mbox{\hyperlink{class_mario}{Mario}} based on the elapsed time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+Elapsed} & The elapsed time since the last update. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mario_8h}{mario.\+h}}\item 
+mario.\+cpp\end{DoxyCompactItemize}
