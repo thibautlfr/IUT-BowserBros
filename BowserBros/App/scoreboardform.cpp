@@ -18,6 +18,8 @@ ScoreboardForm::ScoreboardForm(QWidget *parent) :
     itsMario.load(":Assets/Assets/mario/mario6.png");
     itsBowser.load(":Assets/Assets/bowser/bowsermenu.png");
 
+    // --------------------------------------------------------------------------------------------------------------------------------
+
     // Créer la QTableWidget
     QTableWidget* tableWidget = new QTableWidget(this);
     tableWidget->setFixedSize(400, 300); // Définir la taille de la table
@@ -30,18 +32,21 @@ ScoreboardForm::ScoreboardForm(QWidget *parent) :
     tableWidget->setStyleSheet("QTableWidget { background-color: #9f4f0a; border: 1px solid black; }"
                                "QHeaderView::section { background-color: #e7b12a; }"); // Changer la couleur du texte
 
-
     // Définir le nombre de colonnes
     tableWidget->setColumnCount(2);
 
     // Définir les en-têtes des colonnes
     QStringList headers;
+
     headers << "Player" << "Time";
     tableWidget->setHorizontalHeaderLabels(headers);
 
     // Centrer le texte et appliquer la couleur de fond aux en-têtes des colonnes
     QHeaderView* headerView = tableWidget->horizontalHeader();
     headerView->setDefaultAlignment(Qt::AlignCenter); // Centrer le texte des en-têtes des colonnes
+
+    // Désactiver la possibilité de cliquer sur les noms des colonnes
+    headerView->setSectionsClickable(false);
 
     // Masquer les numéros de lignes à gauche
     tableWidget->verticalHeader()->setVisible(false);
@@ -68,10 +73,8 @@ ScoreboardForm::ScoreboardForm(QWidget *parent) :
     // Définir le mode de redimensionnement des colonnes à "Stretch" pour les faire occuper toute la largeur
     headerView->setSectionResizeMode(QHeaderView::Stretch);
 
-
     // Étendre les lignes jusqu'en bas de la table
     tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
 
     // Centrer le texte et appliquer la couleur de fond aux cellules
     QTableWidgetItem* playerItem = new QTableWidgetItem("Player");
@@ -87,6 +90,7 @@ ScoreboardForm::ScoreboardForm(QWidget *parent) :
     int tableY = (height() - tableWidget->height()) / 2;
     tableWidget->move(tableX, tableY);
 
+    // --------------------------------------------------------------------------------------------------------------------------------
 
     repaint() ;
 }
