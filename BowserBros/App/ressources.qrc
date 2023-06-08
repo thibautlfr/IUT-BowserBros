@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/Levels">
         <file>Levels/level1.txt</file>
-        <file>Levels/level2.txt</file>
     </qresource>
     <qresource prefix="/Assets">
         <file>Assets/background/background1.png</file>
