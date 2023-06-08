@@ -80,6 +80,16 @@ QScrollArea* GameForm::getScrollArea() const {
 
 // Charger un niveau à partir du fichier texte correspondant
 void GameForm::loadLevel(int levelNumber) {
+    //Si on dépasse le nombre de niveau existant, alors stoppez le jeu
+    if(itsLevel > itsAvalaibleLevelsNb)
+    {
+        sound->StopMainSound();
+        itsTimer->stop();
+        itsLevel = 1;
+        loadLevel(itsLevel);
+        emit gameLosed();
+        return; // Sortir de la boucle car une boule de feu a touché Mario
+    }
     if(levelNumber > 1)
     {
         itsCharacter->setItsX(50);
@@ -144,14 +154,8 @@ void GameForm::loadLevel(int levelNumber) {
     else
     {
         qDebug() << "Impossible d'ouvrir le fichier du niveau!";
-        sound->StopMainSound();
-        itsTimer->stop();
-        itsLevel = 1;
-        loadLevel(itsLevel);
-        emit quitButtonClicked();
-        return; // Sortir de la boucle car une boule de feu a touché Mario
-
     }
+
 }
 
 // ---------------------------------------------------------------------------------------------------------
@@ -185,12 +189,16 @@ void GameForm::checkCharacterCollision()
         if (itsLevel == itsAvalaibleLevelsNb)
         {
             sound->WinSound();
+            emit gameWon();
         }
-        this_thread::sleep_for(chrono::milliseconds(300));
-        itsTimer->stop();
-        itsLevel ++;
-        loadLevel(itsLevel);
-        return;
+        else
+        {
+            this_thread::sleep_for(chrono::milliseconds(300));
+            itsTimer->stop();
+            itsLevel ++;
+            loadLevel(itsLevel);
+            return;
+        }
     }
 
     // On vérifie que le cube n'est pas sur le sol
@@ -424,7 +432,7 @@ void GameForm::updateFireBalls()
 
     if(elapsedTime % 1000 == 0)
     {
-        itsBoss->dropFireBall();
+        //itsBoss->dropFireBall();
     }
 }
 
@@ -443,7 +451,7 @@ void GameForm::checkCollisionFireBalls()
             itsTimer->stop();
             itsLevel = 1;
             //loadLevel(itsLevel);
-            emit quitButtonClicked();
+            emit gameLosed();
             return; // Sortir de la boucle car une boule de feu a touché Mario
         }
     }

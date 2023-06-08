@@ -113,7 +113,10 @@ signals:
     /**
       * @brief Signal emitted when the quit button is clicked.
     */
-    void quitButtonClicked();
+    void gameLosed();
+
+    void gameWon();
+
 
 private:
 

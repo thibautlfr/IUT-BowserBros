@@ -11,6 +11,7 @@
 
 #include "menuform.h"
 #include "gameform.h"
+#include "scoreboardform.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -25,8 +26,9 @@ It inherits from the QWidget class.
 class Widget : public QWidget
 {
     Q_OBJECT
-    MenuForm* menuForm; /**< The menu form object. */
-    GameForm*gameForm; /**< The game form object. */
+    MenuForm * menuForm; /**< The menu form object. */
+    GameForm * gameForm; /**< The game form object. */
+    ScoreboardForm * scoreboardForm ;
 public:
     /**
       * @brief Constructs a Widget object.

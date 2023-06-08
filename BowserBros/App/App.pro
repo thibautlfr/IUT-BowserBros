@@ -18,6 +18,7 @@ SOURCES += \
     main.cpp \
     mario.cpp \
     menuform.cpp \
+    scoreboardform.cpp \
     soundcontroller.cpp \
     widget.cpp
 
@@ -29,12 +30,14 @@ HEADERS += \
     gameform.h \
     mario.h \
     menuform.h \
+    scoreboardform.h \
     soundcontroller.h \
     widget.h
 
 FORMS += \
     gameform.ui \
     menuform.ui \
+    scoreboardform.ui \
     widget.ui
 
 # Default rules for deployment.
