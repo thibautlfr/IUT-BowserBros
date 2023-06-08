@@ -4,6 +4,7 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QTime>
+#include <QLabel>
 
 
 ScoreboardForm::ScoreboardForm(QWidget *parent) :
@@ -19,6 +20,18 @@ ScoreboardForm::ScoreboardForm(QWidget *parent) :
     itsBowser.load(":Assets/Assets/bowser/bowsermenu.png");
 
     // --------------------------------------------------------------------------------------------------------------------------------
+
+    // Créer un QLabel pour afficher le titre avec l'image
+    QLabel* titleLabel = new QLabel(this);
+    QPixmap titlePixmap(":/Assets/Assets/score/score-title.png");
+    int titleWidth = 500; // Définir la largeur souhaitée pour l'image
+    int titleHeight = 200; // Définir la hauteur souhaitée pour l'image
+    QPixmap scaledPixmap = titlePixmap.scaled(titleWidth, titleHeight, Qt::KeepAspectRatio); // Redimensionner l'image en conservant les proportions
+    titleLabel->setPixmap(scaledPixmap);
+    titleLabel->setScaledContents(true); // Redimensionner le QLabel pour s'adapter à l'image
+    int titleX = 160; // Position X souhaitée
+    int titleY = 40; // Position Y souhaitée
+    titleLabel->move(titleX, titleY);
 
     // Créer la QTableWidget
     QTableWidget* tableWidget = new QTableWidget(this);
