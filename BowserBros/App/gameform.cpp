@@ -22,11 +22,25 @@ GameForm::GameForm(QWidget *parent)
     // Fixe la taille du widget
     setFixedSize(800, 1200);
 
+    // ---------------------------------------------------------------------------------------------
+
     // Temps écoulé depuis le début du niveau
     elapsedTime = 0;
 
     // Création du gestionnaire de son
     sound = new SoundController;
+
+    // Ouverture de la base de données
+    itsDB = new DataBase;
+
+    QList<QPair<QString, double>> topPlayers = itsDB->getTopPlayers(10); // Récupère les 10 meilleurs joueurs
+    for (const QPair<QString, double>& player : topPlayers) {
+        QString name = player.first;
+        double score = player.second;
+        qDebug() << "Joueur :" << name << "Score :" << score;
+    }
+
+    // ---------------------------------------------------------------------------------------------
 
     // Chargement des assets d'aide au joueur
     rightArrow.load(":Assets/Assets/other/rightarrow.png");
@@ -44,6 +58,8 @@ GameForm::GameForm(QWidget *parent)
     itsScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     itsScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff); // désactiver la barre de défilement
 
+    // ---------------------------------------------------------------------------------------------
+
     // Chargement du premier niveau
     itsLevel = 1;
     itsAvalaibleLevelsNb = QDir(":Levels/Levels").entryInfoList().count();
@@ -53,6 +69,8 @@ GameForm::GameForm(QWidget *parent)
     itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
     itsCharacter = new Mario(50, height() - 100, ":Assets/Assets/mario/mario4.png");
     itsBoss = new Bowser(width()-80, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
+
+    // ---------------------------------------------------------------------------------------------
 
     // Création et lancement du timer
     itsTimer = new QTimer(this);
