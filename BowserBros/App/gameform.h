@@ -13,6 +13,7 @@
 #include <QPaintEvent>
 #include <QScrollBar>
 #include <QScrollArea>
+#include <QLabel>
 #include <list>
 //Song
 #include <QMediaPlayer>
@@ -99,6 +100,11 @@ public:
      */
     void loadLevel(int levelNumber);
 
+    /**
+     * @brief Displays the chrono at the top right corner
+     */
+    void displayChrono();
+
 public slots:
     /**
       * @brief The game loop that updates the game state.
@@ -123,6 +129,8 @@ private:
     int elapsedTime; /**< The elapsed time in the game. */
     int backgroundY; /**< The y-coordinate of the background. */
     bool isGameEnded; /**< Flag indicating if the game has ended. */
+    QLabel *timeLabel; /**< Text indicating the time spent since the start of the game */
+    QLabel* levelLabel; /**< Text indicating the current level */
 
     // --------------------------------------------------------------------------------------------
 
