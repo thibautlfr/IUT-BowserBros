@@ -152,7 +152,7 @@ private:
     QScrollArea *itsScrollArea; /**< The scroll area for the game. */
     QTimer *itsTimer; /**< The timer for the game loop. */
     SoundController * sound; /**< The sound controller for the game */
-    list<Element*> itsBlocks; /**< The list of blocks in the game. */
+    vector<Element*> itsBlocks; /**< The list of blocks in the game. */
 
     // --------------------------------------------------------------------------------------------
 

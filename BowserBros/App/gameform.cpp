@@ -193,12 +193,25 @@ void GameForm::loadLevel(int levelNumber) {
 // Gère les collisions entre le personnage et les éléments du jeu
 void GameForm::checkCharacterCollision()
 {
-    // Vaut true si il y'a une collision droite ou gauche avec un bloc
-//    bool collisionRight;
-//    bool collisionLeft;
 
-    // Vaut true si le personnage est sur quelque chose
-    bool isOnPlatform = false;
+    // Maximum distance for the blocks concerned
+    const int DISTANCE_THRESHOLD = 25;
+
+    // Vector with blocs near to Mario
+    vector<Element*> nearlyBlocks;
+
+    for (Element * block : itsBlocks)
+    {
+        int distanceX = abs(itsCharacter->getItsRect().center().x() - block->getRect().center().x());
+
+        // Add only the block near to the player
+        if (distanceX < DISTANCE_THRESHOLD)
+        {
+            nearlyBlocks.push_back(block);
+
+        }
+    }
+
     itsCharacter->setOnPlatform(false);
 
     //Vérifier que le character n'atteint pas la bordure du jeu
@@ -231,7 +244,7 @@ void GameForm::checkCharacterCollision()
     if ((itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
         itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1  )
     {
-        for (Element * block : itsBlocks)
+        for (Element * block : nearlyBlocks)
         {
             // Récupérer les rectangles du personnage et de la plateforme
             QRect platformRect = block->getRect();
@@ -239,7 +252,7 @@ void GameForm::checkCharacterCollision()
             if(itsCharacter->intersect(platformRect))
             {
                 // Si il arrive de la droite
-                    if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
+                if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
                 {
                     itsCharacter->setItsX(platformRect.right()+1);
                 }
@@ -260,7 +273,7 @@ void GameForm::checkCharacterCollision()
         return;
     }
     // On vérifie que le cube n'est sur aucunes des plateformes
-    for (Element * block : itsBlocks)
+    for (Element * block : nearlyBlocks)
     {
         if (
             // Si le rectangle est déjà sur la plateforme
@@ -271,7 +284,7 @@ void GameForm::checkCharacterCollision()
               (itsCharacter->getItsRect().left() > block->getRect().right()) )
             )
         {
-            for (Element * otherBlock : itsBlocks)
+            for (Element * otherBlock : nearlyBlocks)
             {
                 // Récupérer les rectangles de la plateforme
                 QRect platformRect = otherBlock->getRect();
@@ -301,10 +314,10 @@ void GameForm::checkCharacterCollision()
     }
 
     // Si il est ni sur le sol ni sur une plateforme alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
-    if (isOnPlatform == false)
+    if (itsCharacter->getOnPlatform() == false)
     {
         // Gérer les collisions avec les plateformes
-        for (Element * block : itsBlocks)
+        for (Element * block : nearlyBlocks)
         {
             // Récupérer les rectangles du personnage et de la plateforme
             QRect platformRect = block->getRect();
@@ -341,7 +354,6 @@ void GameForm::checkCharacterCollision()
                 {
                     itsCharacter->setItsY(platformRect.top() - itsCharacter->getItsRect().height());
                     itsCharacter->setYSpeed(0);
-                    isOnPlatform = true;
                     itsCharacter->setOnPlatform(true);
                 }
             }
@@ -352,15 +364,6 @@ void GameForm::checkCharacterCollision()
         {
             itsCharacter->setYSpeed(0);
             itsCharacter->setItsY(itsFloor->getRect().top() - itsCharacter->getItsRect().height());
-
-//            if(collisionRight == true)
-//            {
-//                itsCharacter->setXSpeed(-2);
-//            }
-//            else if(collisionLeft == true)
-//            {
-//                itsCharacter->setXSpeed(2);
-//            }
         }
         else
         {
@@ -379,7 +382,7 @@ void GameForm::checkCharacterCollision()
                 itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
             }
 
-            else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - (itsCharacter->getItsRect().height() + 1)) && !isOnPlatform)
+            else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - (itsCharacter->getItsRect().height() + 1)) && !itsCharacter->getOnPlatform())
             {
                 itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
             }
