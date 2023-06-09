@@ -119,8 +119,11 @@ QScrollArea* GameForm::getScrollArea() const {
 void GameForm::loadLevel(int levelNumber) {
     if(levelNumber > 1)
     {
+        // Repositionement des acteurs du jeu
         itsCharacter->setItsX(50);
         itsCharacter->setItsY(height() - 100);
+        itsBoss->setItsX(width()-80);
+        itsBoss->setItsY(height()-570);
         itsBlocks.clear();
     }
     QString filename = ":Levels/Levels/level" + QString::number(levelNumber) + ".txt";
