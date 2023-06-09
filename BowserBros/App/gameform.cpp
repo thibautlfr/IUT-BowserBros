@@ -23,11 +23,16 @@ GameForm::GameForm(QWidget *parent)
     // Fixe la taille du widget
     setFixedSize(800, 1200);
 
-    // Initialisation du temps écoulé depuis le début de la patie
+    //=============================================================
+
+    // Initialisation du temps écoulé depuis le début de la partie
     elapsedTime = 0;
 
     // Création du gestionnaire de son
     sound = new SoundController;
+
+    // Ouverture de la base de données
+    itsScoreBoard = new ScoreBoard;
 
     //=============================================================
 
@@ -94,12 +99,12 @@ GameForm::~GameForm()
 {
     delete itsCharacter;
     delete itsBoss;
+    delete itsScoreBoard;
     delete sound;
     delete levelLabel;
     delete timeLabel;
     delete itsTimer;
     delete ui;
-
 }
 
 // ---------------------------------------------------------------------------------------------------------
