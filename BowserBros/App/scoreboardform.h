@@ -38,7 +38,7 @@ public:
     QLabel* itsInstructionsLabel; // Label pour afficher les instructions
     QLineEdit* itsPseudoLineEdit; // LineEdit pour saisir le pseudo
 
-    float * playerScore ;
+    float playerScore ;
 
 signals:
     /**

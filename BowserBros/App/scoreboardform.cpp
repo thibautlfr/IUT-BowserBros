@@ -49,44 +49,44 @@ ScoreboardForm::ScoreboardForm(QWidget *parent, int elapsedTime) :
 
     setSettingsTable();
 
+    if(elapsedTime != 0)
+    {
+        int seconds = elapsedTime / 1000;
+        int milliseconds = elapsedTime % 1000;
+
+        playerScore = seconds + static_cast<double>(milliseconds) / 1000.0;
+
+        qDebug() << playerScore;
+
+        itsInstructionsLabel = new QLabel("Veuillez entrer votre pseudo :", this);
+        itsInstructionsLabel->setStyleSheet("font-size: 21px; color: white");
+        itsInstructionsLabel->setFont(font);
+        itsInstructionsLabel->setAlignment(Qt::AlignCenter);
+        itsInstructionsLabel->setGeometry(160, 400, 500, 30);
+
+        itsPseudoLineEdit = new QLineEdit(this);
+        itsPseudoLineEdit->setAlignment(Qt::AlignCenter);
+        itsPseudoLineEdit->setGeometry(160, 550, 400, 30);
+
+        // Appliquer un style personnalisé à l'entrée utilisateur
+        itsPseudoLineEdit->setStyleSheet("font-size: 18px;"
+                                         "background-color: white;"
+                                         "border: 2px solid black;"
+                                         "border-radius: 10px;"
+                                         "padding: 5px;"
+                                         "color: black;");
+
+        // Calculer la position X pour centrer les éléments
+        int labelX = (width() - itsInstructionsLabel->width()) / 2;
+        int lineEditX = (width() - itsPseudoLineEdit->width()) / 2;
+
+        // Définir les positions X calculées
+        itsInstructionsLabel->move(labelX, 450);
+        itsPseudoLineEdit->move(lineEditX, 500);
+    }
+
     // Remplir le tableau de classement
     fillScoreboardTable();
-
-    int seconds = elapsedTime / 1000;
-    int milliseconds = elapsedTime % 1000;
-    QString timeString = QString("time\n%1.%2").arg(seconds).arg(milliseconds / 100, 1, 10, QChar('0'));
-
-    qDebug() << timeString ;
-
-    if(time)
-
-    itsInstructionsLabel = new QLabel("Veuillez entrer votre pseudo :", this);
-    itsInstructionsLabel->setStyleSheet("font-size: 21px; color: white");
-    itsInstructionsLabel->setFont(font);
-    itsInstructionsLabel->setAlignment(Qt::AlignCenter);
-    itsInstructionsLabel->setGeometry(160, 400, 500, 30);
-
-    itsPseudoLineEdit = new QLineEdit(this);
-    itsPseudoLineEdit->setAlignment(Qt::AlignCenter);
-    itsPseudoLineEdit->setGeometry(160, 550, 400, 30);
-
-    // Appliquer un style personnalisé à l'entrée utilisateur
-    itsPseudoLineEdit->setStyleSheet("font-size: 18px;"
-                                     "background-color: white;"
-                                     "border: 2px solid black;"
-                                     "border-radius: 10px;"
-                                     "padding: 5px;"
-                                     "color: black;");
-
-    // Calculer la position X pour centrer les éléments
-    int labelX = (width() - itsInstructionsLabel->width()) / 2;
-    int lineEditX = (width() - itsPseudoLineEdit->width()) / 2;
-
-    // Définir les positions X calculées
-    itsInstructionsLabel->move(labelX, 450);
-    itsPseudoLineEdit->move(lineEditX, 500);
-
-
 
     // --------------------------------------------------------------------------------------------------------------------------------
 
