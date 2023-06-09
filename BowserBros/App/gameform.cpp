@@ -31,15 +31,7 @@ GameForm::GameForm(QWidget *parent)
     sound = new SoundController;
 
     // Ouverture de la base de données
-    itsDB = new DataBase;
-
-    itsDB->addScore("Thibaut", 80.3);
-    QList<QPair<QString, double>> topPlayers = itsDB->getTopPlayers(10); // Récupère les 10 meilleurs joueurs
-    for (const QPair<QString, double>& player : topPlayers) {
-        QString name = player.first;
-        double score = player.second;
-        qDebug() << "Joueur :" << name << "Score :" << score;
-    }
+    itsScoreBoard = new ScoreBoard;
 
     // ---------------------------------------------------------------------------------------------
 
@@ -83,10 +75,10 @@ GameForm::~GameForm()
 {
     delete itsCharacter;
     delete itsBoss;
+    delete itsScoreBoard;
     delete sound;
     delete itsTimer;
     delete ui;
-
 }
 
 // ---------------------------------------------------------------------------------------------------------

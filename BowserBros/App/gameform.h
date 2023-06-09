@@ -22,7 +22,7 @@
 #include "mario.h"
 #include "bowser.h"
 #include "element.h"
-#include "database.h"
+#include "scoreboard.h"
 
 using namespace std;
 namespace Ui {
@@ -142,7 +142,7 @@ private:
 
     // --------------------------------------------------------------------------------------------
 
-    DataBase * itsDB;
+    ScoreBoard * itsScoreBoard;
     QScrollArea *itsScrollArea; /**< The scroll area for the game. */
     QTimer *itsTimer; /**< The timer for the game loop. */
     SoundController * sound; /**< The sound controller for the game */

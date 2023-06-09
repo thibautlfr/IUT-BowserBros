@@ -1,6 +1,5 @@
 QT       += core gui
 QT       += multimedia
-QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,7 +11,6 @@ CONFIG += c++17
 
 SOURCES += \
     bowser.cpp \
-    database.cpp \
     entity.cpp \
     element.cpp \
     fireball.cpp \
@@ -20,18 +18,19 @@ SOURCES += \
     main.cpp \
     mario.cpp \
     menuform.cpp \
+    scoreboard.cpp \
     soundcontroller.cpp \
     widget.cpp
 
 HEADERS += \
     bowser.h \
-    database.h \
     entity.h \
     element.h \
     fireball.h \
     gameform.h \
     mario.h \
     menuform.h \
+    scoreboard.h \
     soundcontroller.h \
     widget.h
 
