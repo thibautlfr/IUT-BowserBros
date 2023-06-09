@@ -22,8 +22,8 @@ Widget::Widget(QWidget *parent)
     menuForm = new MenuForm;
     stackedWidget->addWidget(menuForm);
 
-    scoreboardForm = new ScoreboardForm;
-    stackedWidget->addWidget(scoreboardForm);
+
+
 
     connect(menuForm, &MenuForm::playButtonClicked, this, [=]() {
         gameForm = new GameForm;
@@ -35,7 +35,9 @@ Widget::Widget(QWidget *parent)
             stackedWidget->setCurrentWidget(menuForm);
             //delete gameForm;
         });
-        connect(gameForm, &GameForm::gameWon, this, [=]() {
+        connect(gameForm, &GameForm::gameWon, this, [=](int elapsedTime) {
+            scoreboardForm = new ScoreboardForm(this, elapsedTime);
+            stackedWidget->addWidget(scoreboardForm);
             stackedWidget->setCurrentWidget(scoreboardForm);
             scoreboardForm->setFocus();
         });

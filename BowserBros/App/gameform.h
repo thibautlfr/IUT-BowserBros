@@ -122,7 +122,7 @@ signals:
     */
     void gameLosed();
 
-    void gameWon();
+    void gameWon(int elapsedTime);
 
 
 private:
@@ -153,7 +153,7 @@ private:
 
     // --------------------------------------------------------------------------------------------
 
-    ScoreBoard * itsScoreBoard;
+
     QScrollArea *itsScrollArea; /**< The scroll area for the game. */
     QTimer *itsTimer; /**< The timer for the game loop. */
     SoundController * sound; /**< The sound controller for the game */

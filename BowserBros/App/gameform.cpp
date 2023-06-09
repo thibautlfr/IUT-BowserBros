@@ -31,9 +31,6 @@ GameForm::GameForm(QWidget *parent)
     // Création du gestionnaire de son
     sound = new SoundController;
 
-    // Ouverture de la base de données
-    itsScoreBoard = new ScoreBoard;
-
     //=============================================================
 
     // Charger la police depuis le fichier
@@ -99,7 +96,6 @@ GameForm::~GameForm()
 {
     delete itsCharacter;
     delete itsBoss;
-    delete itsScoreBoard;
     delete sound;
     delete levelLabel;
     delete timeLabel;
@@ -243,7 +239,8 @@ void GameForm::checkCharacterCollision()
         if (itsLevel == itsAvalaibleLevelsNb)
         {
             sound->WinSound();
-            emit gameWon();
+            itsTimer->stop();
+            emit gameWon(elapsedTime);
         }
         else
         {

@@ -5,8 +5,9 @@
 #include <QTime>
 #include <QLabel>
 #include <QFontDatabase>
+#include <QLineEdit>
 
-ScoreboardForm::ScoreboardForm(QWidget *parent) :
+ScoreboardForm::ScoreboardForm(QWidget *parent, int elapsedTime) :
     QWidget(parent),
     ui(new Ui::ScoreboardForm)
 {
@@ -40,6 +41,9 @@ ScoreboardForm::ScoreboardForm(QWidget *parent) :
 
     // --------------------------------------------------------------------------------------------------------------------------------
 
+    // Ouverture de la base de données
+    itsScoreBoard = new ScoreBoard;
+
     // Créer la QTableWidget
     itsRankingTable = new QTableWidget(this);
 
@@ -47,6 +51,42 @@ ScoreboardForm::ScoreboardForm(QWidget *parent) :
 
     // Remplir le tableau de classement
     fillScoreboardTable();
+
+    int seconds = elapsedTime / 1000;
+    int milliseconds = elapsedTime % 1000;
+    QString timeString = QString("time\n%1.%2").arg(seconds).arg(milliseconds / 100, 1, 10, QChar('0'));
+
+    qDebug() << timeString ;
+
+    if(time)
+
+    itsInstructionsLabel = new QLabel("Veuillez entrer votre pseudo :", this);
+    itsInstructionsLabel->setStyleSheet("font-size: 21px; color: white");
+    itsInstructionsLabel->setFont(font);
+    itsInstructionsLabel->setAlignment(Qt::AlignCenter);
+    itsInstructionsLabel->setGeometry(160, 400, 500, 30);
+
+    itsPseudoLineEdit = new QLineEdit(this);
+    itsPseudoLineEdit->setAlignment(Qt::AlignCenter);
+    itsPseudoLineEdit->setGeometry(160, 550, 400, 30);
+
+    // Appliquer un style personnalisé à l'entrée utilisateur
+    itsPseudoLineEdit->setStyleSheet("font-size: 18px;"
+                                     "background-color: white;"
+                                     "border: 2px solid black;"
+                                     "border-radius: 10px;"
+                                     "padding: 5px;"
+                                     "color: black;");
+
+    // Calculer la position X pour centrer les éléments
+    int labelX = (width() - itsInstructionsLabel->width()) / 2;
+    int lineEditX = (width() - itsPseudoLineEdit->width()) / 2;
+
+    // Définir les positions X calculées
+    itsInstructionsLabel->move(labelX, 450);
+    itsPseudoLineEdit->move(lineEditX, 500);
+
+
 
     // --------------------------------------------------------------------------------------------------------------------------------
 
@@ -61,7 +101,7 @@ ScoreboardForm::~ScoreboardForm()
 void ScoreboardForm::setSettingsTable()
 {
     itsRankingTable->setObjectName("scoreboardTable"); // Définir un nom d'objet pour la QTableWidget
-    itsRankingTable->setFixedSize(400, 300); // Définir la taille de la table
+    itsRankingTable->setFixedSize(400, 200); // Définir la taille de la table
     itsRankingTable->setEditTriggers(QAbstractItemView::NoEditTriggers); // Désactiver l'édition des cellules
     itsRankingTable->setSelectionMode(QAbstractItemView::NoSelection); // Désactiver la sélection des cellules
     itsRankingTable->setFocusPolicy(Qt::NoFocus); // Désactiver le focus sur la table
@@ -108,32 +148,32 @@ void ScoreboardForm::setSettingsTable()
     int tableY = (height() - itsRankingTable->height()) / 2;
     itsRankingTable->move(tableX, tableY);
 }
-
-// Fonction pour remplir le tableau de classement
 void ScoreboardForm::fillScoreboardTable()
 {
     if (!itsRankingTable)
-        return;
+    return;
 
-    // Ajouter des noms aléatoires et des temps aléatoires à la table
-    QTime time = QTime::currentTime();
-    srand(static_cast<uint>(time.msec())); // Initialiser le générateur de nombres aléatoires avec le temps actuel
+    // Récupérer les meilleurs joueurs et leurs temps à partir de ScoreBoard
+    QList<QPair<QString, double>> topPlayers = itsScoreBoard->getTopPlayers(5);
 
-    itsRankingTable->setRowCount(5); // Définir le nombre de lignes à 5
+    // Définir le nombre de lignes à 5
+    itsRankingTable->setRowCount(5);
 
-    for (int row = 0; row < 5; ++row) {
-        QString playerName = "Player " + QString::number(row + 1);
-        QString timeStr = QString::number(rand() % 100 + 1) + " s";
+    for (int row = 0; row < topPlayers.count(); ++row) {
+    QString playerName = topPlayers[row].first;
+    double score = topPlayers[row].second;
+    QString timeStr = QString::number(score) + " s";
 
-        QTableWidgetItem* playerItem = new QTableWidgetItem(playerName);
-        playerItem->setTextAlignment(Qt::AlignCenter); // Centrer le texte de la cellule
-        itsRankingTable->setItem(row, 0, playerItem);
+    QTableWidgetItem* playerItem = new QTableWidgetItem(playerName);
+    playerItem->setTextAlignment(Qt::AlignCenter); // Centrer le texte de la cellule
+    itsRankingTable->setItem(row, 0, playerItem);
 
-        QTableWidgetItem* timeItem = new QTableWidgetItem(timeStr);
-        timeItem->setTextAlignment(Qt::AlignCenter); // Centrer le texte de la cellule
-        itsRankingTable->setItem(row, 1, timeItem);
+    QTableWidgetItem* timeItem = new QTableWidgetItem(timeStr);
+    timeItem->setTextAlignment(Qt::AlignCenter); // Centrer le texte de la cellule
+    itsRankingTable->setItem(row, 1, timeItem);
     }
 }
+
 
 void ScoreboardForm::paintEvent(QPaintEvent *event)
 {

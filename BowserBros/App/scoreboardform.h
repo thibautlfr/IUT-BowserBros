@@ -1,6 +1,7 @@
 #ifndef SCOREBOARDFORM_H
 #define SCOREBOARDFORM_H
 
+#include "scoreboard.h"
 #include <QLabel>
 #include <QWidget>
 #include <QPainter>
@@ -15,7 +16,8 @@ class ScoreboardForm : public QWidget
     Q_OBJECT
 
 public:
-    explicit ScoreboardForm(QWidget *parent = nullptr);
+
+    explicit ScoreboardForm(QWidget *parent = nullptr, int elapsedTime = 0);
 
     ~ScoreboardForm();
 
@@ -31,10 +33,18 @@ public:
 
     QTableWidget * itsRankingTable ;
 
+    ScoreBoard * itsScoreBoard;
+
+    QLabel* itsInstructionsLabel; // Label pour afficher les instructions
+    QLineEdit* itsPseudoLineEdit; // LineEdit pour saisir le pseudo
+
+    float * playerScore ;
+
 signals:
     /**
       * @brief Signal emitted when the play button is clicked.
     */
+
     void playButtonClicked();
 
     /**
