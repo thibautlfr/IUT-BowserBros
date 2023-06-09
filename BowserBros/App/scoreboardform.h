@@ -1,8 +1,10 @@
 #ifndef SCOREBOARDFORM_H
 #define SCOREBOARDFORM_H
 
+#include <QLabel>
 #include <QWidget>
 #include <QPainter>
+#include <QTableWidget>
 
 namespace Ui {
 class ScoreboardForm;
@@ -17,10 +19,17 @@ public:
 
     ~ScoreboardForm();
 
+    void fillScoreboardTable();
+
+    void setSettingsTable();
+
     QImage itsBackground; /**< The background image of the scoreboard form. */
     QImage itsFloor; /**< The floor image of the scoreboard form. */
     QImage itsMario; /**< The Mario image of the scoreboard form. */
     QImage itsBowser; /**< The Bowser image of the scoreboard form. */
+    QLabel * itsTitle;
+
+    QTableWidget * itsRankingTable ;
 
 signals:
     /**
