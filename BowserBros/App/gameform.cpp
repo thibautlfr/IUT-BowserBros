@@ -219,7 +219,7 @@ void GameForm::checkCharacterCollision()
 
     itsCharacter->setOnPlatform(false);
 
-    //Vérifier que le character n'atteint pas la bordure du jeu
+    // Vérifier que le character n'atteint pas la bordure du jeu
     if(itsCharacter->getItsRect().left() <= 0)
     {
         itsCharacter->setItsX(1) ;
@@ -244,155 +244,272 @@ void GameForm::checkCharacterCollision()
         loadLevel(itsLevel);
         return;
     }
+            if (
+                // Si le rectangle est sur la plateforme
+                ((block->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
+                 // Ou si il chute sur une plateforme
+                 (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)) &&
+                // ...ET qu''il n'est ni à droite du bloc
+                !( (itsCharacter->getItsRect().right() < block->getRect().left()) ||
+                   // ...Ou ni à gauche
+                  (itsCharacter->getItsRect().left() > block->getRect().right()) )
+                )
+    //        {
+    //            for (Element * otherBlock : nearlyBlocks)
+    //            {
+    //                // Récupérer les rectangles de la plateforme
+    //                QRect platformRect = otherBlock->getRect();
 
-    // On vérifie que le cube n'est pas sur le sol
-    if ((itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
-        itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1  )
-    {
-        for (Element * block : nearlyBlocks)
-        {
-            // Récupérer les rectangles du personnage et de la plateforme
-            QRect platformRect = block->getRect();
+    //                // Si il rentre en contact avec un bloc
+    //                if(itsCharacter->intersect(platformRect))
+    //                {
+    //                    // Si il arrive de la droite du bloc
+    //                    if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
+    //                    {
+    //                        // On le décale
+    //                        itsCharacter->setItsX(platformRect.right()+1);
+    //                    }
+    //                    // Si il arrive de la gauche du bloc
+    //                    else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
+    //                    {
+    //                        // On le décale
+    //                        itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
+    //                    }
+    //                }
+    //            }
+    //            // On confirme qu'il est sur une plateform
+    //            itsCharacter->setOnPlatform(true);
+    //            // Si il chute vers le bloc
+    //            if (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
+    //            {
+    //                // On le repositionne
+    //                itsCharacter->setItsY(itsCharacter->getItsY() + 5);
+    //            }
+    //            itsCharacter->calculatePosition();
+    //            itsCharacter->updateAsset(elapsedTime);
+    //            return;
+    //        }
+    //    }
 
-            if(itsCharacter->intersect(platformRect))
-            {
-                // Si il arrive de la droite
-                if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
-                {
-                    itsCharacter->setItsX(platformRect.right()+1);
-                }
-                else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
-                {
-                    itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
-                }
-            }
-        }
-        //isOnPlatform = true;
-        itsCharacter->setOnPlatform(true);
-        if (itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
-        {
-            itsCharacter->setItsY(itsCharacter->getItsY() + 5);
-        }
-        itsCharacter->calculatePosition();
-        itsCharacter->updateAsset(elapsedTime);
-        return;
-    }
-    // On vérifie que le cube n'est sur aucunes des plateformes
     for (Element * block : nearlyBlocks)
     {
-        if (
-            // Si le rectangle est déjà sur la plateforme
-            ((block->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
-             (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)) &&
-            // ...ET qu'il n'est PAS PAS sur la plateforme (sur l'axe X)
-            !( (itsCharacter->getItsRect().right() < block->getRect().left()) ||
-              (itsCharacter->getItsRect().left() > block->getRect().right()) )
-            )
-        {
-            for (Element * otherBlock : nearlyBlocks)
-            {
-                // Récupérer les rectangles de la plateforme
-                QRect platformRect = otherBlock->getRect();
+          // On vérifie si le joueur est sur quelque chose
+              // Si le joueur est posé sur le sol
+          if ((itsFloor->getRect().top() - itsCharacter->getItsRect().bottom() == 1) ||
+              // Ou si le joueur est en train de chuter vers le sol
+              itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1
+              ||
+          // On vérifie si le joueur est sur une plateforme
+              // Si le rectangle est sur une plateforme
+              ((block->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
+               // Ou si il chute sur une plateforme
+               (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)) &&
+              // ...ET qu'il n'est ni à droite de la plateforme
+              !((itsCharacter->getItsRect().right() < block->getRect().left()) ||
+                 // ...Ou ni à gauche
+                (itsCharacter->getItsRect().left() > block->getRect().right())))
 
-                if(itsCharacter->intersect(platformRect))
-                {
-                    // Si il arrive de la droite
-                    if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
-                    {
-                        itsCharacter->setItsX(platformRect.right()+1);
-                    }
-                    else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
-                    {
-                        itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
-                    }
-                }
-            }
-            itsCharacter->setOnPlatform(true);
-            if (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
-            {
-                itsCharacter->setItsY(itsCharacter->getItsY() + 5);
-            }
-            itsCharacter->calculatePosition();
-            itsCharacter->updateAsset(elapsedTime);
-            return;
-        }
+          {
+                  // Récupére le rectangle du bloc en cours
+                  QRect platformRect = block->getRect();
+
+                  if(itsCharacter->intersect(platformRect))
+                  {
+                      // Si il arrive vers un bloc de la droite
+                      if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
+                      {
+                          // On évite qu'il rentre à l'intérieur du bloc
+                          itsCharacter->setItsX(platformRect.right()+1);
+                      }
+                      // Si il arrive vers un bloc de la gauche
+                      else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
+                      {
+                          // On évite qu'il rentre à l'intérieur du bloc
+                          itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
+                      }
+                  }
+              // On confirme que le joueur est sur quelque chose
+              itsCharacter->setOnPlatform(true);
+                  // Si il chute vers le sol
+              if (itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1
+                      ||
+                  // Ou s'il chute vers un bloc
+                  block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
+              {
+                  // On le repositionne
+                  itsCharacter->setItsY(itsCharacter->getItsY() + 5);
+              }
+              // On l'affiche correctement
+              itsCharacter->calculatePosition();
+              itsCharacter->updateAsset(elapsedTime);
+          }
     }
 
-    // Si il est ni sur le sol ni sur une plateforme alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
-    if (itsCharacter->getOnPlatform() == false)
-    {
-        // Gérer les collisions avec les plateformes
-        for (Element * block : nearlyBlocks)
-        {
-            // Récupérer les rectangles du personnage et de la plateforme
-            QRect platformRect = block->getRect();
+//    // On vérifie si le joueur est sur le sol
+//        // Si le joueur est posé sur le sol
+//    if ((itsFloor->getRect().top() - itsCharacter->getItsRect().bottom() == 1) ||
+//        // Ou si le joueur est en train de chuter vers le sol
+//        itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1  )
+//    {
+//        for (Element * block : nearlyBlocks)
+//        {
+//            // Récupérer les rectangles du personnage et de la plateforme
+//            QRect platformRect = block->getRect();
 
-            // Si le personnage touche une plateforme
-            if(itsCharacter->intersect(platformRect))
-            {
+//            if(itsCharacter->intersect(platformRect))
+//            {
+//                // Si il arrive vers un bloc de la droite
+//                if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
+//                {
+//                    // On évite qu'il rentre à l'intérieur du bloc
+//                    itsCharacter->setItsX(platformRect.right()+1);
+//                }
+//                // Si il arrive vers un bloc de la gauche
+//                else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
+//                {
+//                    // On évite qu'il rentre à l'intérieur du bloc
+//                    itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
+//                }
+//            }
+//        }
+//        // On confirme que le joueur est sur quelque chose
+//        itsCharacter->setOnPlatform(true);
+//        // Si il chute vers le sol
+//        if (itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
+//        {
+//            // On le repositionne
+//            itsCharacter->setItsY(itsCharacter->getItsY() + 5);
+//        }
+//        // On l'affiche correctement
+//        itsCharacter->calculatePosition();
+//        itsCharacter->updateAsset(elapsedTime);
+//        return;
+//    }
+//    // On vérifie que le joueur n'est sur aucunes des plateformes
+//    for (Element * block : nearlyBlocks)
+//    {
+//        if (
+//            // Si le rectangle est sur la plateforme
+//            ((block->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
+//             // Ou si il chute sur une plateforme
+//             (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)) &&
+//            // ...ET qu''il n'est ni à droite du bloc
+//            !( (itsCharacter->getItsRect().right() < block->getRect().left()) ||
+//               // ...Ou ni à gauche
+//              (itsCharacter->getItsRect().left() > block->getRect().right()) )
+//            )
+//        {
+//            for (Element * otherBlock : nearlyBlocks)
+//            {
+//                // Récupérer les rectangles de la plateforme
+//                QRect platformRect = otherBlock->getRect();
 
-                // Si le joueur arrive de la droite
-                if((itsCharacter->getItsRect().left() - platformRect.right() <= 0 and itsCharacter->getItsRect().left() - platformRect.right() >=-1) )
-                {
-                    itsCharacter->setItsX(itsCharacter->getItsX()+1);
-                    itsCharacter->setXSpeed(0);
-                    //collisionRight = true;
+//                // Si il rentre en contact avec un bloc
+//                if(itsCharacter->intersect(platformRect))
+//                {
+//                    // Si il arrive de la droite du bloc
+//                    if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
+//                    {
+//                        // On le décale
+//                        itsCharacter->setItsX(platformRect.right()+1);
+//                    }
+//                    // Si il arrive de la gauche du bloc
+//                    else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
+//                    {
+//                        // On le décale
+//                        itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
+//                    }
+//                }
+//            }
+//            // On confirme qu'il est sur une plateform
+//            itsCharacter->setOnPlatform(true);
+//            // Si il chute vers le bloc
+//            if (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
+//            {
+//                // On le repositionne
+//                itsCharacter->setItsY(itsCharacter->getItsY() + 5);
+//            }
+//            itsCharacter->calculatePosition();
+//            itsCharacter->updateAsset(elapsedTime);
+//            return;
+//        }
+//    }
 
-                }
-                // Si le joueur arrive de la gauche
-                else if (itsCharacter->getItsRect().right() - platformRect.left() >= 0 and itsCharacter->getItsRect().right() - platformRect.left() <=1)
-                {
-                    itsCharacter->setItsX(itsCharacter->getItsX()-1);
-                    itsCharacter->setXSpeed(0);
-                    //collisionLeft = true;
+//    // Si il est ni sur le sol ni sur une plateforme alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
+//    if (itsCharacter->getOnPlatform() == false)
+//    {
+//        // Gérer les collisions avec les plateformes
+//        for (Element * block : nearlyBlocks)
+//        {
+//            // Récupérer les rectangles du personnage et de la plateforme
+//            QRect platformRect = block->getRect();
 
-                }
-                // Si il arrive d'en bas
-                else if(itsCharacter->getYSpeed() < 0)
-                {
-                    itsCharacter->setItsY(platformRect.bottom()+1);
-                    itsCharacter->reverseYSpeed();
-                }
+//            // Si le personnage touche une plateforme
+//            if(itsCharacter->intersect(platformRect))
+//            {
 
-                // Si il arrive d'en haut
-                else if ( (itsCharacter->getYSpeed() >= 0) && ( platformRect.top() - itsCharacter->getItsY() >= 0) )
-                {
-                    itsCharacter->setItsY(platformRect.top() - itsCharacter->getItsRect().height());
-                    itsCharacter->setYSpeed(0);
-                    itsCharacter->setOnPlatform(true);
-                }
-            }
-        }
+//                // Si le joueur arrive de la droite
+//                if((itsCharacter->getItsRect().left() - platformRect.right() <= 0 and itsCharacter->getItsRect().left() - platformRect.right() >=-1) )
+//                {
+//                    itsCharacter->setItsX(itsCharacter->getItsX()+1);
+//                    itsCharacter->setXSpeed(0);
+//                    //collisionRight = true;
 
-        // Gérer les collision avec le sol
-        if (itsCharacter->getItsRect().intersects(itsFloor->getRect()))
-        {
-            itsCharacter->setYSpeed(0);
-            itsCharacter->setItsY(itsFloor->getRect().top() - itsCharacter->getItsRect().height());
-        }
-        else
-        {
-            // Si le personnage est en train de sauter, appliquez une force de gravité pour faire redescendre le personnage
-            if (itsCharacter->getYSpeed() < 0)
-            {
-                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-                if(itsCharacter->getYSpeed() == 0)
-                {
-                    itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-                }
-            }
-            // Si le personnage est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
-            else if (itsCharacter->getYSpeed() > 0)
-            {
-                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-            }
+//                }
+//                // Si le joueur arrive de la gauche
+//                else if (itsCharacter->getItsRect().right() - platformRect.left() >= 0 and itsCharacter->getItsRect().right() - platformRect.left() <=1)
+//                {
+//                    itsCharacter->setItsX(itsCharacter->getItsX()-1);
+//                    itsCharacter->setXSpeed(0);
+//                    //collisionLeft = true;
 
-            else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - (itsCharacter->getItsRect().height() + 1)) && !itsCharacter->getOnPlatform())
-            {
-                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-            }
-        }
-    }
+//                }
+//                // Si il arrive d'en bas
+//                else if(itsCharacter->getYSpeed() < 0)
+//                {
+//                    itsCharacter->setItsY(platformRect.bottom()+1);
+//                    itsCharacter->reverseYSpeed();
+//                }
+
+//                // Si il arrive d'en haut
+//                else if ( (itsCharacter->getYSpeed() >= 0) && ( platformRect.top() - itsCharacter->getItsY() >= 0) )
+//                {
+//                    itsCharacter->setItsY(platformRect.top() - itsCharacter->getItsRect().height());
+//                    itsCharacter->setYSpeed(0);
+//                    itsCharacter->setOnPlatform(true);
+//                }
+//            }
+//        }
+
+//        // Gérer les collision avec le sol
+//        if (itsCharacter->getItsRect().intersects(itsFloor->getRect()))
+//        {
+//            itsCharacter->setYSpeed(0);
+//            itsCharacter->setItsY(itsFloor->getRect().top() - itsCharacter->getItsRect().height());
+//        }
+//        else
+//        {
+//            // Si le personnage est en train de sauter, appliquez une force de gravité pour faire redescendre le personnage
+//            if (itsCharacter->getYSpeed() < 0)
+//            {
+//                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
+//                if(itsCharacter->getYSpeed() == 0)
+//                {
+//                    itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
+//                }
+//            }
+//            // Si le personnage est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
+//            else if (itsCharacter->getYSpeed() > 0)
+//            {
+//                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
+//            }
+
+//            else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - (itsCharacter->getItsRect().height() + 1)) && !itsCharacter->getOnPlatform())
+//            {
+//                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
+//            }
+//        }
+//    }
 
     itsCharacter->calculatePosition();
     itsCharacter->updateAsset(elapsedTime);
