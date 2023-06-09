@@ -8,6 +8,7 @@
 #include <thread>
 #include <chrono>
 #include <QDir>
+#include <QFontDatabase>
 
 using namespace std;
 
@@ -22,9 +23,9 @@ GameForm::GameForm(QWidget *parent)
     // Fixe la taille du widget
     setFixedSize(800, 1200);
 
-    // ---------------------------------------------------------------------------------------------
+    //=============================================================
 
-    // Temps écoulé depuis le début du niveau
+    // Initialisation du temps écoulé depuis le début de la partie
     elapsedTime = 0;
 
     // Création du gestionnaire de son
@@ -33,7 +34,29 @@ GameForm::GameForm(QWidget *parent)
     // Ouverture de la base de données
     itsScoreBoard = new ScoreBoard;
 
-    // ---------------------------------------------------------------------------------------------
+    //=============================================================
+
+    // Charger la police depuis le fichier
+    QString fontPath = ":Fonts/Fonts/policeMario2.ttf";
+    int fontId = QFontDatabase::addApplicationFont(fontPath);
+    QString fontFamily = QFontDatabase::applicationFontFamilies(fontId).at(0);
+    QFont font(fontFamily, 22);
+
+    // Créer une étiquette pour afficher le temps écoulé
+    timeLabel = new QLabel(this);
+    timeLabel->setStyleSheet("font-size: 21px; color: white");
+    timeLabel->setFont(font);
+    timeLabel->setAlignment(Qt::AlignLeft);
+    timeLabel->setGeometry(30, 800, 200, 300);
+
+    // Créer une étiquette pour afficher le temps écoulé
+    levelLabel = new QLabel(this);
+    levelLabel->setStyleSheet("font-size: 21px; color: white");
+    levelLabel->setFont(font);
+    levelLabel->setAlignment(Qt::AlignLeft);
+    levelLabel->setGeometry(30, 830, 200, 300);
+
+    //====================================================================
 
     // Chargement des assets d'aide au joueur
     rightArrow.load(":Assets/Assets/other/rightarrow.png");
@@ -51,7 +74,7 @@ GameForm::GameForm(QWidget *parent)
     itsScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     itsScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff); // désactiver la barre de défilement
 
-    // ---------------------------------------------------------------------------------------------
+    //====================================================================
 
     // Chargement du premier niveau
     itsLevel = 1;
@@ -63,7 +86,7 @@ GameForm::GameForm(QWidget *parent)
     itsCharacter = new Mario(50, height() - 100, ":Assets/Assets/mario/mario4.png");
     itsBoss = new Bowser(width()-80, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
 
-    // ---------------------------------------------------------------------------------------------
+    //====================================================================
 
     // Création et lancement du timer
     itsTimer = new QTimer(this);
@@ -71,12 +94,15 @@ GameForm::GameForm(QWidget *parent)
     start();
 }
 
+
 GameForm::~GameForm()
 {
     delete itsCharacter;
     delete itsBoss;
     delete itsScoreBoard;
     delete sound;
+    delete levelLabel;
+    delete timeLabel;
     delete itsTimer;
     delete ui;
 }
@@ -160,9 +186,11 @@ void GameForm::loadLevel(int levelNumber) {
         itsLevel = 1;
         loadLevel(itsLevel);
         emit quitButtonClicked();
-        return; // Sortir de la boucle car une boule de feu a touché Mario
-
+        return;
     }
+    // Mettre à jour le label du niveau
+    levelLabel->setText(QString("world %1").arg(itsLevel));
+
 }
 
 // ---------------------------------------------------------------------------------------------------------
@@ -424,7 +452,8 @@ void GameForm::updateFireBalls()
         fireball->calculatePosition();
     }
 
-    if(elapsedTime % 1000 == 0)
+    double coefficient = (1 - (0.1 * (itsLevel - 1))); // Accélérer la fréquence en fonction du niveau
+    if(elapsedTime % int(1000 * coefficient) == 0)
     {
         itsBoss->dropFireBall();
     }
@@ -500,6 +529,7 @@ void GameForm::checkCollisionFireBalls()
 void GameForm::gameloop()
 {
     elapsedTime += 10;
+    displayChrono();
     checkCharacterCollision();
     checkBowserCollision();
     checkCollisionFireBalls();
@@ -586,16 +616,16 @@ void GameForm::paintEvent(QPaintEvent *event)
     delete painter;
 }
 
-void GameForm::paintPlayerHelps(QPainter * painter)
+void GameForm::paintPlayerHelps(QPainter* painter)
 {
-    if(itsCharacter->getItsY() > height() - 300)
+    if (itsCharacter->getItsY() > height() - 300)
     {
-        painter->drawImage(600, height()-65, leftArrow);
-        painter->drawImage(650, height()-65, spaceBar);
-        painter->drawImage(750, height()-65, rightArrow);
-        painter->drawImage(itsChest->getRect().x(), height()-600, chestArrow);
+        painter->drawImage(600, height() - 65, leftArrow);
+        painter->drawImage(650, height() - 65, spaceBar);
+        painter->drawImage(750, height() - 65, rightArrow);
+        painter->drawImage(itsChest->getRect().x(), height() - 600, chestArrow);
     }
-    else if(itsCharacter->getItsY() - 300 < 0)
+    else if (itsCharacter->getItsY() - 300 < 0)
     {
         painter->drawImage(600, 535, leftArrow);
         painter->drawImage(650, 535, spaceBar);
@@ -603,15 +633,34 @@ void GameForm::paintPlayerHelps(QPainter * painter)
     }
     else
     {
-        painter->drawImage(600, itsCharacter->getItsY()+235, leftArrow);
-        painter->drawImage(650, itsCharacter->getItsY()+235, spaceBar);
-        painter->drawImage(750, itsCharacter->getItsY()+235, rightArrow);
-        if(itsCharacter->getItsY()-300 > itsChest->getRect().y())
+        painter->drawImage(600, itsCharacter->getItsY() + 235, leftArrow);
+        painter->drawImage(650, itsCharacter->getItsY() + 235, spaceBar);
+        painter->drawImage(750, itsCharacter->getItsY() + 235, rightArrow);
+        if (itsCharacter->getItsY() - 300 > itsChest->getRect().y())
         {
-            painter->drawImage(itsChest->getRect().x(), itsCharacter->getItsY()-300, chestArrow);
+            painter->drawImage(itsChest->getRect().x(), itsCharacter->getItsY() - 300, chestArrow);
         }
     }
+    // Position du chrono
+    int timerX = width() - 80; // Position en X du timeLabel (à droite de l'écran)
+    int timerY = itsBoss->getItsY()-20; // Position en Y du timeLabel ajustée en fonction de la position de itsBoss
+    timeLabel->move(timerX, timerY); // Déplacer le timeLabel à la position calculée
+
+    // Position du nom du niveau
+    int levelx = 10;
+    int levely = itsBoss->getItsY()-20;
+    levelLabel->move(levelx, levely); // Déplacer le timeLabel à la position calculée
 }
+
+void GameForm::displayChrono()
+{
+    // Mettre à jour l'affichage du temps écoulé
+    int seconds = elapsedTime / 1000;
+    int milliseconds = elapsedTime % 1000;
+    QString timeString = QString("time\n%1.%2").arg(seconds).arg(milliseconds / 100, 1, 10, QChar('0'));
+    timeLabel->setText(timeString);
+}
+
 
 
 
