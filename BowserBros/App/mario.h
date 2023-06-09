@@ -39,6 +39,12 @@ public:
     // --------------------------------------------------------------------------------------------
 
     /**
+      * @brief Return if the the player is on a platform
+      * @author PILOTTE Clément
+      * @return Returns true if the player is on a platform
+    */
+    bool getOnPlatform();
+    /**
       * @brief Sets whether Mario is on a platform or not.
       * @param onPlatform Flag indicating if Mario is on a platform.
     */

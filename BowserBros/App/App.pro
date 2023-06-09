@@ -19,6 +19,7 @@ SOURCES += \
     mario.cpp \
     menuform.cpp \
     scoreboardform.cpp \
+    scoreboard.cpp \
     soundcontroller.cpp \
     widget.cpp
 
@@ -31,6 +32,7 @@ HEADERS += \
     mario.h \
     menuform.h \
     scoreboardform.h \
+    scoreboard.h \
     soundcontroller.h \
     widget.h
 

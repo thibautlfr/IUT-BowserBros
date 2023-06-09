@@ -50,6 +50,12 @@ void Mario::updateAsset(int timeElapsed)
     itsRect = itsImage.rect();
 }
 
+
+bool Mario::getOnPlatform()
+{
+    return isOnPlatform;
+}
+
 void Mario::setOnPlatform(bool onPlatform)
 {
     isOnPlatform = onPlatform;
