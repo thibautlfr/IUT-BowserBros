@@ -15,11 +15,7 @@
 #include <QScrollArea>
 #include <QLabel>
 #include <list>
-//Song
-//#include <QMediaPlayer>
-//#include <QSoundEffect>
 
-//#include "soundcontroller.h"
 #include "soundmanager.h"
 #include "mario.h"
 #include "bowser.h"
@@ -116,8 +112,6 @@ public slots:
      */
     void start();
 
-    void onSoundFinished();
-
 signals:
     /**
       * @brief Signal emitted when the quit button is clicked.
@@ -155,11 +149,9 @@ private:
     ScoreBoard * itsScoreBoard;
     QScrollArea *itsScrollArea; /**< The scroll area for the game. */
     QTimer *itsTimer; /**< The timer for the game loop. */
-    //SoundController * sound; /**< The sound controller for the game */
     vector<Element*> itsBlocks; /**< The list of blocks in the game. */
 
-    //QThread *soundThread;
-    SoundManager *soundManager;
+    SoundManager *soundManager; /**< Attribute used to mange sounds during the game */
 
     // --------------------------------------------------------------------------------------------
 

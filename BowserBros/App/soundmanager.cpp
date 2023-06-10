@@ -4,6 +4,8 @@
 
 SoundManager::SoundManager(QObject *parent) : QObject(parent)
 {
+    // Création et pré-chargement de tout les sons du jeu
+
     jumpEffect = new QSoundEffect(this);
     jumpEffect->setSource(QUrl::fromLocalFile(":Song/Song/JumpSound.wav"));
 
@@ -33,10 +35,15 @@ SoundManager::~SoundManager()
     menuMusic->deleteLater();
 }
 
+// ---------------------------------------------------------------------------------------------------------
+
+
 void SoundManager::playJumpEffect()
 {
     jumpEffect->play();
 }
+
+// ---------------------------------------------------------------------------------------------------------
 
 void SoundManager::playMainMusic()
 {
@@ -51,8 +58,6 @@ void SoundManager::playMenuMusic()
     menuMusic->setLoopCount(QSoundEffect::Infinite);
     menuMusic->play();
 }
-
-
 
 void SoundManager::playDeathMusic()
 {
@@ -95,6 +100,9 @@ void SoundManager::playLevelPassedMusic()
 
     levelPassedMusic->play();
 }
+
+// ---------------------------------------------------------------------------------------------------------
+
 
 void SoundManager::stopAllSounds()
 {

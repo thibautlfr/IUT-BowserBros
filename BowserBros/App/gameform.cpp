@@ -87,7 +87,7 @@ GameForm::GameForm(QWidget *parent)
 
     // Création du sol, du personnage et du boss
     itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
-    itsCharacter = new Mario(50, height() - 100, ":Assets/Assets/mario/mario4.png");
+    itsCharacter = new Mario(50, height() - 50, ":Assets/Assets/mario/mario4.png");
     itsBoss = new Bowser(width()-80, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
 
     //====================================================================
@@ -102,15 +102,11 @@ GameForm::GameForm(QWidget *parent)
 GameForm::~GameForm()
 {
     // Suppression du gestionnaire de son
-//    soundThread->quit();
-//    soundThread->wait();
-//    delete soundThread;
     delete soundManager;
 
     delete itsCharacter;
     delete itsBoss;
     delete itsScoreBoard;
-    //delete sound;
     delete levelLabel;
     delete timeLabel;
     delete itsTimer;
@@ -230,19 +226,23 @@ void GameForm::checkCharacterCollision()
         }
     }
 
+    // Le joueur n'est pas sur une plateforme au départ
     itsCharacter->setOnPlatform(false);
 
-    //Vérifier que le character n'atteint pas la bordure du jeu
+    // On vérifie que le joueur n'a pas atteint la bordure de gauche du jeu
     if(itsCharacter->getItsRect().left() <= 0)
     {
+        // On le replace si jamais il franchit cette bordure
         itsCharacter->setItsX(1) ;
     }
+    // On vérifie que le joueur n'a pas atteint la bordure de droite du jeu
     else if(itsCharacter->getItsRect().right() >= 800)
     {
+        // On le replace si jamais il franchit cette bordure
         itsCharacter->setItsX(800 - itsCharacter->getItsRect().width()) ;
     }
 
-    // Vérification de collision avec le coffre pour fin du jeu
+    // On vérifie si le joueur touche le coffre
     if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
     {
         // Arrêtez le jeu et revenez au menu
@@ -270,90 +270,115 @@ void GameForm::checkCharacterCollision()
         return;
     }
 
-    // On vérifie que le cube n'est pas sur le sol
+        // On regarde si le cube est sur le sol
     if ((itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
+        // Ou si il chute vers le sol
         itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1  )
     {
+        // On confirme que le joueur est sur quelque chose (le sol ici)
+        itsCharacter->setOnPlatform(true);
+
         for (Element * block : nearlyBlocks)
         {
-            // Récupérer les rectangles du personnage et de la plateforme
+            // On récupère le rectangle de la plateforme courante
             QRect platformRect = block->getRect();
 
+            // Si le joueur est en contact avec le bloc ci-dessus
             if(itsCharacter->intersect(platformRect))
             {
-                // Si il arrive de la droite
-                if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
+                // On vérifie si le joueur, sur le sol, rentre en contact avec le bloc par la droite
+                if(itsCharacter->getXSpeed() < 0)
                 {
+                    // On le replace pour pas que le joueur traverse le bloc
                     itsCharacter->setItsX(platformRect.right()+1);
                 }
-                else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
+                // On vérifie si le joueur, sur le sol, rentre en contact avec le bloc par la gauche
+                else if(itsCharacter->getXSpeed() > 0)
                 {
+                    // On le replace pour pas que le joueur traverse le bloc
                     itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
                 }
             }
         }
         itsCharacter->setOnPlatform(true);
+
+        // Dans le cas où le joueur est en train de chuter vers le sol
         if (itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
         {
+            // On le replace correctement
             itsCharacter->setItsY(itsCharacter->getItsY() + 5);
         }
+        // On met la position du joueur à jour
         itsCharacter->calculatePosition();
         itsCharacter->updateAsset(elapsedTime);
         return;
     }
-    // On vérifie que le cube n'est sur aucunes des plateformes
-    for (Element * block : nearlyBlocks)
+
+    // On vérifie si le joueur est sur un cube
+    for (Element *block : nearlyBlocks)
     {
-        if (
-            // Si le rectangle est déjà sur la plateforme
-            ((block->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
-             (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)) &&
-            // ...ET qu'il n'est PAS PAS sur la plateforme (sur l'axe X)
-            !( (itsCharacter->getItsRect().right() < block->getRect().left()) ||
-              (itsCharacter->getItsRect().left() > block->getRect().right()) )
-            )
+            // Si le joueur est sur un bloc
+        if (((block->getRect().top() - itsCharacter->getItsRect().bottom()) == 1) ||
+            // Ou qu'il chute vers un bloc
+            ((block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5)) == 1))
         {
-            for (Element * otherBlock : nearlyBlocks)
+             // On confirme que le joueur est sur quelque chose (un bloc ici)
+            itsCharacter->setOnPlatform(true);
+
+            // Boucle qui va permettre de vérifier, dans le cas où le joueur est sur un bloc,
+            // si il rentre en contact avec un autre bloc
+            for (Element *otherBlock : nearlyBlocks)
             {
-                // Récupérer les rectangles de la plateforme
+                // On récupère le rectangle de la plateforme courante
                 QRect platformRect = otherBlock->getRect();
 
-                if(itsCharacter->intersect(platformRect))
+                 // Si le joueur est en contact avec le bloc ci-dessus
+                if (itsCharacter->intersect(platformRect))
                 {
-                    // Si il arrive de la droite
-                    if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
+                    // On vérifie si le joueur, sur un bloc, rentre en contact avec un autre bloc par la droite
+                    if (itsCharacter->getXSpeed() < 0 && (itsCharacter->getItsRect().left() - platformRect.left() > 0))
                     {
-                        itsCharacter->setItsX(platformRect.right()+1);
+                        // On le replace pour pas que le joueur traverse le bloc
+                        itsCharacter->setItsX(platformRect.right() + 1);
                     }
-                    else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
+                     // On vérifie si le joueur, sur un bloc, rentre en contact avec un autre bloc par la gauche
+                    else if (itsCharacter->getXSpeed() > 0 && (itsCharacter->getItsRect().right() - platformRect.right() < 0))
                     {
-                        itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
+                         // On le replace pour pas que le joueur traverse le bloc
+                        itsCharacter->setItsX(platformRect.left() - itsCharacter->getItsRect().width());
                     }
                 }
             }
-            itsCharacter->setOnPlatform(true);
+            // Dans le cas où le joueur est en train de chuter vers un bloc
             if (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
             {
+                // On le replace correctement
                 itsCharacter->setItsY(itsCharacter->getItsY() + 5);
             }
+            // On met la position du joueur à jour
             itsCharacter->calculatePosition();
             itsCharacter->updateAsset(elapsedTime);
             return;
         }
     }
 
-    // Si il est ni sur le sol ni sur une plateforme alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
-    if (itsCharacter->getOnPlatform() == false)
+    // Si le joueur est ni sur le sol, ni sur une plateforme, alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
+    // Gérer les collisions avec les plateformes
+    for (Element * block : nearlyBlocks)
     {
-        // Gérer les collisions avec les plateformes
-        for (Element * block : nearlyBlocks)
-        {
-            // Récupérer les rectangles du personnage et de la plateforme
-            QRect platformRect = block->getRect();
+        // On récupère le rectangle de la plateforme courante
+        QRect platformRect = block->getRect();
 
-            // Si le personnage touche une plateforme
-            if(itsCharacter->intersect(platformRect))
+        // Si le personnage touche un bloc
+        if(itsCharacter->intersect(platformRect))
+        {
+            // On vérifie si le joueur rentre en contact avec un bloc par la droite
+            if((itsCharacter->getItsRect().left() - platformRect.right() <= 0 and itsCharacter->getItsRect().left() - platformRect.right() >=-1) )
             {
+                // On le replace correctement
+                itsCharacter->setItsX(itsCharacter->getItsX()+1);
+                // On met sa vitesse à 0 pour éviter qu'il tremble contre le mur
+                itsCharacter->setXSpeed(0);
 
                 // Si le joueur arrive de la droite
                 if((itsCharacter->getItsRect().left() - platformRect.right() <= 0 and itsCharacter->getItsRect().left() - platformRect.right() >=-1) )
@@ -383,44 +408,79 @@ void GameForm::checkCharacterCollision()
                     itsCharacter->setYSpeed(0);
                     itsCharacter->setOnPlatform(true);
                 }
-            }
-        }
 
-        // Gérer les collision avec le sol
-        if (itsCharacter->getItsRect().intersects(itsFloor->getRect()))
-        {
-            itsCharacter->setYSpeed(0);
-            itsCharacter->setItsY(itsFloor->getRect().top() - itsCharacter->getItsRect().height());
-        }
-        else
-        {
-            // Si le personnage est en train de sauter, appliquez une force de gravité pour faire redescendre le personnage
-            if (itsCharacter->getYSpeed() < 0)
-            {
-                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-                if(itsCharacter->getYSpeed() == 0)
-                {
-                    itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-                }
             }
-            // Si le personnage est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
-            else if (itsCharacter->getYSpeed() > 0)
+            // On vérifie si le joueur rentre en contact avec un bloc par la gauche
+            if (itsCharacter->getItsRect().right() - platformRect.left() >= 0 and itsCharacter->getItsRect().right() - platformRect.left() <=1)
             {
-                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
+                // On le replace correctement
+                itsCharacter->setItsX(itsCharacter->getItsX()-1);
+                // On met sa vitesse à 0 pour éviter qu'il tremble contre le mur
+                itsCharacter->setXSpeed(0);
+                //collisionLeft = true;
+
+            }
+            // On vérifie si le joueur rentre en contact avec un bloc par le bas
+            else if(itsCharacter->getYSpeed() < 0)
+            {
+                // On le replace correctement
+                itsCharacter->setItsY(platformRect.bottom()+1);
+                // On inverse sa vitesse pour le faire retomber
+                itsCharacter->reverseYSpeed();
             }
 
-            else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - (itsCharacter->getItsRect().height() + 1)) && !itsCharacter->getOnPlatform())
+            // On vérifie si le joueur rentre en contact avec un bloc par le haut
+            else if ( (itsCharacter->getYSpeed() >= 0) && ( platformRect.top() - itsCharacter->getItsY() >= 0) )
             {
-                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
+                // On le replace correctement
+                itsCharacter->setItsY(platformRect.top() - itsCharacter->getItsRect().height());
+                // On arrête de le faire tomnber
+                itsCharacter->setYSpeed(0);
+                // On confirme que le joueur est sur un bloc
+                itsCharacter->setOnPlatform(true);
             }
         }
     }
 
+    // Si le joueur est sur le sol
+    if (itsCharacter->getItsRect().intersects(itsFloor->getRect()))
+    {
+        // On évite qu'il tombe ou monte
+        itsCharacter->setYSpeed(0);
+        // On le replace correctement
+        itsCharacter->setItsY(itsFloor->getRect().top() - itsCharacter->getItsRect().height());
+    }
+    // Si il est pas sur le sol
+    else
+    {
+        // Si le personnage est en train de sauter, appliquez une force de gravité pour faire redescendre le personnage
+        if (itsCharacter->getYSpeed() < 0)
+        {
+            itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
+            if(itsCharacter->getYSpeed() == 0)
+            {
+                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
+            }
+        }
+        // Si le personnage est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
+        else if (itsCharacter->getYSpeed() > 0)
+        {
+            itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
+        }
+
+        // Si le personnage ne bouge pas dans les airs et qu'il n'est pas sur une plateforme, on applique une force de gravité
+        else if(itsCharacter->getYSpeed()==0 && !itsCharacter->getOnPlatform())
+        {
+            itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
+        }
+    }
+    // On met à jour la position du joueur
     itsCharacter->calculatePosition();
     itsCharacter->updateAsset(elapsedTime);
 
 }
 
+// Gère les déplacements de Bowser
 void GameForm::checkBowserCollision()
 {
     // Vitesse minimum et maximum pour Bowser
@@ -455,44 +515,7 @@ void GameForm::checkBowserCollision()
     itsBoss->calculatePosition();
 }
 
-void GameForm::updateScroll() {
-    int characterY = itsCharacter->getItsY();
-    //qDebug() << characterY;
-
-    // Si le personnage est dans la partie inférieure de la fenêtre
-    if (characterY > height() - 300) {
-        itsScrollArea->verticalScrollBar()->setValue(height() - 600);
-        itsBoss->setItsY(height() - 570);
-        backgroundY = height() - itsBackground.height();  // fixe l'arrière plan
-    }
-    // Sinon, si le personnage est dans la partie superieur de la fenêtre
-    else {
-        // Assurez-vous que le personnage reste au milieu de la fenêtre
-        itsScrollArea->verticalScrollBar()->setValue(characterY - 300);
-        characterY - 270 > 30 ? itsBoss->setItsY(characterY - 270): itsBoss->setItsY(30);
-        if (characterY - 300 > 0 && characterY + 300 < height() - 20)
-        {
-            backgroundY = 0.5 * characterY - (600*0.5*0.5);  // déplace l'arrière-plan vers le haut
-        }
-    }
-
-    itsBoss->calculatePosition();
-}
-
-void GameForm::updateFireBalls()
-{
-    for (FireBall * fireball : *itsBoss->getItsFireBalls())
-    {
-        fireball->calculatePosition();
-    }
-
-    double coefficient = (1 - (0.1 * (itsLevel - 1))); // Accélérer la fréquence en fonction du niveau
-    if(elapsedTime % int(1000 * coefficient) == 0)
-    {
-        itsBoss->dropFireBall();
-    }
-}
-
+// Gère les collisions des boules de feu
 void GameForm::checkCollisionFireBalls()
 {
     vector<FireBall *> *fireBalls = itsBoss->getItsFireBalls();
@@ -506,7 +529,7 @@ void GameForm::checkCollisionFireBalls()
 
             soundManager->playDeathMusic();
 
-            QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {                
+            QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
                 emit quitButtonClicked();
             });
 
@@ -558,6 +581,44 @@ void GameForm::checkCollisionFireBalls()
     }
 }
 
+// ---------------------------------------------------------------------------------------------------------
+
+void GameForm::updateScroll() {
+    int characterY = itsCharacter->getItsY();
+
+    // Si le personnage est dans la partie inférieure de la fenêtre
+    if (characterY > height() - 300) {
+        itsScrollArea->verticalScrollBar()->setValue(height() - 600);
+        itsBoss->setItsY(height() - 570);
+        backgroundY = height() - itsBackground.height();  // fixe l'arrière plan
+    }
+    // Sinon, si le personnage est dans la partie superieur de la fenêtre
+    else {
+        // Assurez-vous que le personnage reste au milieu de la fenêtre
+        itsScrollArea->verticalScrollBar()->setValue(characterY - 300);
+        characterY - 270 > 30 ? itsBoss->setItsY(characterY - 270): itsBoss->setItsY(30);
+        if (characterY - 300 > 0 && characterY + 300 < height() - 20)
+        {
+            backgroundY = 0.5 * characterY - (600*0.5*0.5);  // déplace l'arrière-plan vers le haut
+        }
+    }
+
+    itsBoss->calculatePosition();
+}
+
+void GameForm::updateFireBalls()
+{
+    for (FireBall * fireball : *itsBoss->getItsFireBalls())
+    {
+        fireball->calculatePosition();
+    }
+
+    double coefficient = (1 - (0.1 * (itsLevel - 1))); // Accélérer la fréquence en fonction du niveau
+    if(elapsedTime % int(1000 * coefficient) == 0)
+    {
+        itsBoss->dropFireBall();
+    }
+}
 
 // ---------------------------------------------------------------------------------------------------------
 
@@ -573,10 +634,13 @@ void GameForm::gameloop()
     repaint();
 }
 
-// Slot qui est appelé lorsque le son a fini de jouer
-void GameForm::onSoundFinished()
+void GameForm::displayChrono()
 {
-    emit quitButtonClicked();
+    // Mettre à jour l'affichage du temps écoulé
+    int seconds = elapsedTime / 1000;
+    int milliseconds = elapsedTime % 1000;
+    QString timeString = QString("time\n%1.%2").arg(seconds).arg(milliseconds / 100, 1, 10, QChar('0'));
+    timeLabel->setText(timeString);
 }
 
 void GameForm::start()
@@ -690,15 +754,6 @@ void GameForm::paintPlayerHelps(QPainter* painter)
     int levelx = 10;
     int levely = itsBoss->getItsY()-20;
     levelLabel->move(levelx, levely); // Déplacer le timeLabel à la position calculée
-}
-
-void GameForm::displayChrono()
-{
-    // Mettre à jour l'affichage du temps écoulé
-    int seconds = elapsedTime / 1000;
-    int milliseconds = elapsedTime % 1000;
-    QString timeString = QString("time\n%1.%2").arg(seconds).arg(milliseconds / 100, 1, 10, QChar('0'));
-    timeLabel->setText(timeString);
 }
 
 
