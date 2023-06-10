@@ -10,6 +10,7 @@
 #include <QDir>
 #include <QFontDatabase>
 #include <QThread>
+#include <QSoundEffect>
 
 using namespace std;
 
@@ -35,14 +36,7 @@ GameForm::GameForm(QWidget *parent)
     //=============================================================
 
     // Gestionnaire de son
-    soundThread = new QThread;
     soundManager = new SoundManager;
-    soundManager->moveToThread(soundThread);
-    soundThread->start();
-
-    // Connectez le signal finished() du soundManager au slot onSoundFinished()
-    connect(soundManager, &SoundManager::finished, this, &GameForm::onSoundFinished);
-
 
     //=============================================================
 
@@ -108,9 +102,9 @@ GameForm::GameForm(QWidget *parent)
 GameForm::~GameForm()
 {
     // Suppression du gestionnaire de son
-    soundThread->quit();
-    soundThread->wait();
-    delete soundThread;
+//    soundThread->quit();
+//    soundThread->wait();
+//    delete soundThread;
     delete soundManager;
 
     delete itsCharacter;
@@ -146,7 +140,7 @@ void GameForm::loadLevel() {
     // Lancement de la musique si on est au niveau 1
     if (itsLevel == 1)
     {
-        QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
+        soundManager->playMainMusic();
     }
 
     // Chargement du fichier texte du niveau ainsi que du background
@@ -199,11 +193,6 @@ void GameForm::loadLevel() {
             }
         }
         levelFile.close();
-//        if (itsLevel > 1)
-//        {
-//            QMetaObject::invokeMethod(soundManager, "stopEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
-//            QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
-//        }
 
         // Mettre à jour le label du niveau
         levelLabel->setText(QString("world %1").arg(itsLevel));
@@ -260,17 +249,23 @@ void GameForm::checkCharacterCollision()
         if (itsLevel == itsAvalaibleLevelsNb)
         {
             itsTimer->stop();
-            QMetaObject::invokeMethod(soundManager, "stopEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
+            soundManager->playWinMusic();
 
-            QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/win.wav"));
-            //soundManager->checkIfSoundPlays(":Song/Song/win.wav");
+            QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                emit quitButtonClicked();
+            });
         }
         else
         {
-            QMetaObject::invokeMethod(soundManager, "stopEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
-            itsLevel ++;
-            loadLevel();
-            QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
+            itsTimer->stop();
+            soundManager->playLevelPassedMusic();
+
+            QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                soundManager->playMainMusic();
+                itsLevel ++;
+                itsTimer->start();
+                loadLevel();
+            });
         }
         return;
     }
@@ -506,16 +501,15 @@ void GameForm::checkCollisionFireBalls()
     {
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
-            // Arrêtez le jeu et revenez au menu
-            QMetaObject::invokeMethod(soundManager, "stopEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
-            //this_thread::sleep_for(chrono::milliseconds(100));
-            QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/gameover.wav"));
-            //this_thread::sleep_for(chrono::milliseconds(3000));
-            //QMetaObject::invokeMethod(soundManager, "checkIfSoundPlays", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/gameover.wav"));
+            /// Arrêtez le jeu et revenez au menu
             itsTimer->stop();
-            itsLevel = 1;
-            //loadLevel(itsLevel);
-            emit quitButtonClicked();
+
+            soundManager->playDeathMusic();
+
+            QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {                
+                emit quitButtonClicked();
+            });
+
             return; // Sortir de la boucle car une boule de feu a touché Mario
         }
     }
@@ -616,7 +610,7 @@ void GameForm::keyPressEvent (QKeyEvent * event)
     if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 )
     {
         //sound->JumpSound();
-        QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/JumpSound.wav"));
+        soundManager->playJumpEffect();
         itsCharacter->jump();
         qDebug() << "Space Key";
     }

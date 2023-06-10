@@ -31,14 +31,23 @@ Widget::Widget(QWidget *parent)
 
     // Connect pour lancer une partie avec le bouton Jouer
     connect(menuForm, &MenuForm::playButtonClicked, this, [=]() {
+        // Arret de la musique du menu
+        menuForm->stopMusic();
+
+        // Création et affichage du widget pour la partie
         gameForm = new GameForm;
         stackedWidget->addWidget(gameForm->getScrollArea());
         stackedWidget->setCurrentWidget(gameForm->getScrollArea());
         gameForm->setFocus();
 
         connect(gameForm, &GameForm::quitButtonClicked, this, [=]() {
+            if (gameForm != nullptr)
+            {
+                qDebug() << "GameForm deleted";
+                delete gameForm;
+            }
             stackedWidget->setCurrentWidget(menuForm);
-            //delete gameForm;
+            menuForm->playMusic();
         });
     });
 
@@ -65,5 +74,9 @@ Widget::Widget(QWidget *parent)
 
 Widget::~Widget()
 {
+    if (menuForm != nullptr)
+    {
+        delete menuForm;
+    }
     delete ui;
 }

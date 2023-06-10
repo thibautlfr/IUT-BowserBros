@@ -1,27 +1,37 @@
 #ifndef SOUNDMANAGER_H
 #define SOUNDMANAGER_H
 
-#include <QObject>
 #include <QSoundEffect>
-#include <QMap>
 
-class SoundManager : public QObject {
+class SoundManager : public QObject
+{
     Q_OBJECT
 
 public:
     explicit SoundManager(QObject *parent = nullptr);
     ~SoundManager();
 
-public slots:
-    void playEffect(const QString &file);
-    void stopEffect(const QString &file);
-    void clear();
+    void playJumpEffect();
 
-signals:
-    void finished();
+    void playMainMusic();
+    void playDeathMusic();
+    void playWinMusic();
+    void playLevelPassedMusic();
+    void playMenuMusic();
+
+    void stopAllSounds();
 
 private:
-    QMap<QString, QSoundEffect*> m_soundEffects; // Chaque effet sonore est associé à un fichier
+    QSoundEffect *jumpEffect;
+    QSoundEffect *mainMusic;
+    QSoundEffect *deathMusic;
+    QSoundEffect *winMusic;
+    QSoundEffect *levelPassedMusic;
+    QSoundEffect *menuMusic;
+
+signals:
+    void musicFinished();
 };
+
 
 #endif // SOUNDMANAGER_H

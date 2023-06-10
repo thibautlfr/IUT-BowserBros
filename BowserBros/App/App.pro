@@ -1,5 +1,5 @@
 QT       += core gui
-QT       += multimedia
+QT += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,7 +19,6 @@ SOURCES += \
     mario.cpp \
     menuform.cpp \
     scoreboard.cpp \
-    soundcontroller.cpp \
     soundmanager.cpp \
     widget.cpp
 
@@ -32,7 +31,6 @@ HEADERS += \
     mario.h \
     menuform.h \
     scoreboard.h \
-    soundcontroller.h \
     soundmanager.h \
     widget.h
 

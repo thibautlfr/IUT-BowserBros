@@ -1,86 +1,123 @@
 #include "soundmanager.h"
 
-#include <QTimer>
+#include <QThread>
 
-//SoundManager::SoundManager(QObject *parent) : QObject(parent) {}
-
-//SoundManager::~SoundManager() {
-//    for(SoundEffectWrapper *wrapper : m_soundEffects) {
-//        delete wrapper->effect;
-//        delete wrapper;
-//    }
-//}
-
-//void SoundManager::playEffect(const QString &file) {
-//    SoundEffectWrapper *wrapper = new SoundEffectWrapper;
-//    wrapper->effect = new QSoundEffect;
-//    wrapper->effect->setSource(QUrl::fromLocalFile(file));
-//    wrapper->filePath = file;
-//    if(file == ":Song/Song/MainMusic.wav" ) {   wrapper->effect->setLoopCount(QSoundEffect::Infinite); }
-//    wrapper->effect->play();
-//    m_soundEffects.append(wrapper);
-//}
-
-//void SoundManager::stopEffect(const QString &file) {
-//    for(SoundEffectWrapper *wrapper : m_soundEffects) {
-//        if(wrapper->filePath == file) {
-//            wrapper->effect->stop();
-//            break;
-//        }
-//    }
-//}
-
-//void SoundManager::clear() {
-//    for(SoundEffectWrapper *wrapper : m_soundEffects) {
-//        delete wrapper->effect;
-//        delete wrapper;
-//    }
-//    m_soundEffects.clear();
-//}
-
-SoundManager::SoundManager(QObject *parent)
-    : QObject(parent)
+SoundManager::SoundManager(QObject *parent) : QObject(parent)
 {
+    jumpEffect = new QSoundEffect(this);
+    jumpEffect->setSource(QUrl::fromLocalFile(":Song/Song/JumpSound.wav"));
+
+    mainMusic = new QSoundEffect(this);
+    mainMusic->setSource(QUrl::fromLocalFile(":Song/Song/MainMusic.wav"));
+
+    deathMusic = new QSoundEffect(this);
+    deathMusic->setSource(QUrl::fromLocalFile(":Song/Song/gameover.wav"));
+
+    winMusic = new QSoundEffect(this);
+    winMusic->setSource(QUrl::fromLocalFile(":Song/Song/win.wav"));
+
+    menuMusic = new QSoundEffect(this);
+    menuMusic->setSource(QUrl::fromLocalFile(":Song/Song/menumusic.wav"));
+
+    levelPassedMusic = new QSoundEffect(this);
+    levelPassedMusic->setSource(QUrl::fromLocalFile(":Song/Song/endlevel.wav"));
 }
 
 SoundManager::~SoundManager()
 {
-    // Libérer la mémoire allouée pour chaque effet sonore.
-    for(auto &effect : m_soundEffects) {
-        effect->stop();
-        delete effect;
-    }
-    m_soundEffects.clear();
+    jumpEffect->deleteLater();
+    mainMusic->deleteLater();
+    deathMusic->deleteLater();
+    winMusic->deleteLater();
+    levelPassedMusic->deleteLater();
+    menuMusic->deleteLater();
 }
 
-void SoundManager::playEffect(const QString &file) {
-    QSoundEffect *effect = m_soundEffects.value(file);
-    if (!effect) {
-        effect = new QSoundEffect;
-        effect->setSource(QUrl::fromLocalFile(file));
-        m_soundEffects.insert(file, effect);
-    }
-    effect->play();
+void SoundManager::playJumpEffect()
+{
+    jumpEffect->play();
+}
 
-    QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, [this, effect, timer]() {
-        if (!effect->isPlaying()) {
-            emit finished();
-            timer->stop();
-            timer->deleteLater();
+void SoundManager::playMainMusic()
+{
+    stopAllSounds();
+    mainMusic->setLoopCount(QSoundEffect::Infinite);
+    mainMusic->play();
+}
+
+void SoundManager::playMenuMusic()
+{
+    stopAllSounds();
+    menuMusic->setLoopCount(QSoundEffect::Infinite);
+    menuMusic->play();
+}
+
+
+
+void SoundManager::playDeathMusic()
+{
+    stopAllSounds();
+
+    //deathMusic->setSource(QUrl::fromLocalFile(":Song/Song/gameover.wav"));
+    QObject::connect(deathMusic, &QSoundEffect::playingChanged, this, [this]() {
+        if (!deathMusic->isPlaying()) {
+            emit musicFinished();
         }
     });
-    timer->start(100); // Vérifiez toutes les 100 millisecondes
+
+    deathMusic->play();
 }
 
-void SoundManager::stopEffect(const QString &file) {
-    QSoundEffect *effect = m_soundEffects.value(file);
-    if (effect) {
-        effect->stop();
+void SoundManager::playWinMusic()
+{
+    stopAllSounds();
+
+    //winMusic->setSource(QUrl::fromLocalFile(":Song/Song/win.wav"));
+    QObject::connect(winMusic, &QSoundEffect::playingChanged, this, [this]() {
+        if (!winMusic->isPlaying()) {
+            emit musicFinished();
+        }
+    });
+
+    winMusic->play();
+}
+
+void SoundManager::playLevelPassedMusic()
+{
+    stopAllSounds();
+
+    //levelPassedMusic->setSource(QUrl::fromLocalFile(":Song/Song/endl.wav"));
+    QObject::connect(levelPassedMusic, &QSoundEffect::playingChanged, this, [this]() {
+        if (!levelPassedMusic->isPlaying()) {
+            emit musicFinished();
+        }
+    });
+
+    levelPassedMusic->play();
+}
+
+void SoundManager::stopAllSounds()
+{
+    if (mainMusic->isPlaying())
+    {
+        mainMusic->stop();
     }
+    if (menuMusic->isPlaying())
+    {
+        menuMusic->stop();
+    }
+    if (jumpEffect->isPlaying())
+    {
+        jumpEffect->stop();
+    }
+    if (deathMusic->isPlaying())
+    {
+        deathMusic->stop();
+    }
+    if (winMusic->isPlaying())
+    {
+        winMusic->stop();
+    }
+
 }
 
-void SoundManager::clear() {
-    qDeleteAll(m_soundEffects);
-    m_soundEffects.clear();
-}

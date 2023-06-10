@@ -158,7 +158,7 @@ private:
     //SoundController * sound; /**< The sound controller for the game */
     vector<Element*> itsBlocks; /**< The list of blocks in the game. */
 
-    QThread *soundThread;
+    //QThread *soundThread;
     SoundManager *soundManager;
 
     // --------------------------------------------------------------------------------------------

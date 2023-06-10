@@ -11,12 +11,19 @@ MenuForm::MenuForm(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Définition de la taille
     setFixedSize(800, 600);
+
+    // Chargement des images
     itsBackground.load(":Assets/Assets/background/backgroundMenu.png");
     itsFloor.load(":Assets/Assets/other/floor.png");
     itsGameTitle.load(":Assets/Assets/menu/gametitle.png");
     itsMario.load(":Assets/Assets/mario/mario6.png");
     itsBowser.load(":Assets/Assets/bowser/bowsermenu.png");
+
+    // Création du manager de son
+    soundManager = new SoundManager;
+    soundManager->playMenuMusic();
 
     // Création des images des boutons du jeu
     QPixmap playAsset(":Assets/Assets/menu/playbutton.png");
@@ -36,6 +43,16 @@ MenuForm::MenuForm(QWidget *parent) :
 MenuForm::~MenuForm()
 {
     delete ui;
+}
+
+void MenuForm::playMusic()
+{
+    soundManager->playMenuMusic();
+}
+
+void MenuForm::stopMusic()
+{
+    soundManager->stopAllSounds();
 }
 
 void MenuForm::paintEvent(QPaintEvent *event)
