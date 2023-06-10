@@ -123,6 +123,12 @@ QScrollArea* GameForm::getScrollArea() const {
 
 // Charger un niveau à partir du fichier texte correspondant
 void GameForm::loadLevel() {
+
+    if(itsLevel > itsAvalaibleLevelsNb)
+    {
+        return ;
+    }
+
     if(itsLevel > 1)
     {
         // Repositionement des acteurs du jeu
@@ -138,6 +144,8 @@ void GameForm::loadLevel() {
     {
         soundManager->playMainMusic();
     }
+
+
 
     // Chargement du fichier texte du niveau ainsi que du background
     QString filename = ":Levels/Levels/level" + QString::number(itsLevel) + ".txt";
