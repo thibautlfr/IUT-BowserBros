@@ -9,6 +9,7 @@
 #include <chrono>
 #include <QDir>
 #include <QFontDatabase>
+#include <QThread>
 
 using namespace std;
 
@@ -28,11 +29,20 @@ GameForm::GameForm(QWidget *parent)
     // Initialisation du temps écoulé depuis le début de la partie
     elapsedTime = 0;
 
-    // Création du gestionnaire de son
-    sound = new SoundController;
-
     // Ouverture de la base de données
     itsScoreBoard = new ScoreBoard;
+
+    //=============================================================
+
+    // Gestionnaire de son
+    soundThread = new QThread;
+    soundManager = new SoundManager;
+    soundManager->moveToThread(soundThread);
+    soundThread->start();
+
+    // Connectez le signal finished() du soundManager au slot onSoundFinished()
+    connect(soundManager, &SoundManager::finished, this, &GameForm::onSoundFinished);
+
 
     //=============================================================
 
@@ -79,7 +89,7 @@ GameForm::GameForm(QWidget *parent)
     // Chargement du premier niveau
     itsLevel = 1;
     itsAvalaibleLevelsNb = QDir(":Levels/Levels").entryInfoList().count();
-    loadLevel(itsLevel);
+    loadLevel();
 
     // Création du sol, du personnage et du boss
     itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
@@ -97,10 +107,16 @@ GameForm::GameForm(QWidget *parent)
 
 GameForm::~GameForm()
 {
+    // Suppression du gestionnaire de son
+    soundThread->quit();
+    soundThread->wait();
+    delete soundThread;
+    delete soundManager;
+
     delete itsCharacter;
     delete itsBoss;
     delete itsScoreBoard;
-    delete sound;
+    //delete sound;
     delete levelLabel;
     delete timeLabel;
     delete itsTimer;
@@ -116,8 +132,8 @@ QScrollArea* GameForm::getScrollArea() const {
 // ---------------------------------------------------------------------------------------------------------
 
 // Charger un niveau à partir du fichier texte correspondant
-void GameForm::loadLevel(int levelNumber) {
-    if(levelNumber > 1)
+void GameForm::loadLevel() {
+    if(itsLevel > 1)
     {
         // Repositionement des acteurs du jeu
         itsCharacter->setItsX(50);
@@ -126,12 +142,19 @@ void GameForm::loadLevel(int levelNumber) {
         itsBoss->setItsY(height()-570);
         itsBlocks.clear();
     }
-    QString filename = ":Levels/Levels/level" + QString::number(levelNumber) + ".txt";
-    QString backgroundName = ":Assets/Assets/background/background" + QString::number(levelNumber) + ".png";
+
+    // Lancement de la musique si on est au niveau 1
+    if (itsLevel == 1)
+    {
+        QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
+    }
+
+    // Chargement du fichier texte du niveau ainsi que du background
+    QString filename = ":Levels/Levels/level" + QString::number(itsLevel) + ".txt";
+    QString backgroundName = ":Assets/Assets/background/background" + QString::number(itsLevel) + ".png";
     itsBackground.load(backgroundName);
     qDebug() << filename;
     QFile levelFile(filename);
-    //QFile levelFile("qrc:///Levels/level1.txt");
     if (levelFile.open(QIODevice::ReadOnly))
     {
         QTextStream in(&levelFile);
@@ -176,23 +199,21 @@ void GameForm::loadLevel(int levelNumber) {
             }
         }
         levelFile.close();
-        if (itsLevel > 1)
-        {
-            start();
-        }
+//        if (itsLevel > 1)
+//        {
+//            QMetaObject::invokeMethod(soundManager, "stopEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
+//            QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
+//        }
+
+        // Mettre à jour le label du niveau
+        levelLabel->setText(QString("world %1").arg(itsLevel));
+
     }
     else
     {
-        qDebug() << "Impossible d'ouvrir le fichier du niveau!";
-        sound->StopMainSound();
-        itsTimer->stop();
-        itsLevel = 1;
-        loadLevel(itsLevel);
-        emit quitButtonClicked();
+        qDebug() << "Erreur lors de l'ouverture du fichier";
         return;
     }
-    // Mettre à jour le label du niveau
-    levelLabel->setText(QString("world %1").arg(itsLevel));
 
 }
 
@@ -236,15 +257,21 @@ void GameForm::checkCharacterCollision()
     if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
     {
         // Arrêtez le jeu et revenez au menu
-        sound->StopMainSound();
         if (itsLevel == itsAvalaibleLevelsNb)
         {
-            sound->WinSound();
+            itsTimer->stop();
+            QMetaObject::invokeMethod(soundManager, "stopEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
+
+            QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/win.wav"));
+            //soundManager->checkIfSoundPlays(":Song/Song/win.wav");
         }
-        this_thread::sleep_for(chrono::milliseconds(300));
-        itsTimer->stop();
-        itsLevel ++;
-        loadLevel(itsLevel);
+        else
+        {
+            QMetaObject::invokeMethod(soundManager, "stopEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
+            itsLevel ++;
+            loadLevel();
+            QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
+        }
         return;
     }
 
@@ -270,7 +297,6 @@ void GameForm::checkCharacterCollision()
                 }
             }
         }
-        //isOnPlatform = true;
         itsCharacter->setOnPlatform(true);
         if (itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
         {
@@ -339,7 +365,6 @@ void GameForm::checkCharacterCollision()
                 {
                     itsCharacter->setItsX(itsCharacter->getItsX()+1);
                     itsCharacter->setXSpeed(0);
-                    //collisionRight = true;
 
                 }
                 // Si le joueur arrive de la gauche
@@ -347,7 +372,6 @@ void GameForm::checkCharacterCollision()
                 {
                     itsCharacter->setItsX(itsCharacter->getItsX()-1);
                     itsCharacter->setXSpeed(0);
-                    //collisionLeft = true;
 
                 }
                 // Si il arrive d'en bas
@@ -483,9 +507,11 @@ void GameForm::checkCollisionFireBalls()
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
             // Arrêtez le jeu et revenez au menu
-            sound->StopMainSound();
-            sound->GameoverSound();
-            this_thread::sleep_for(chrono::milliseconds(300));
+            QMetaObject::invokeMethod(soundManager, "stopEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/MainMusic.wav"));
+            //this_thread::sleep_for(chrono::milliseconds(100));
+            QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/gameover.wav"));
+            //this_thread::sleep_for(chrono::milliseconds(3000));
+            //QMetaObject::invokeMethod(soundManager, "checkIfSoundPlays", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/gameover.wav"));
             itsTimer->stop();
             itsLevel = 1;
             //loadLevel(itsLevel);
@@ -553,6 +579,12 @@ void GameForm::gameloop()
     repaint();
 }
 
+// Slot qui est appelé lorsque le son a fini de jouer
+void GameForm::onSoundFinished()
+{
+    emit quitButtonClicked();
+}
+
 void GameForm::start()
 {
     if(itsTimer->isActive())
@@ -562,9 +594,7 @@ void GameForm::start()
     else
     {
         qDebug() << "Timer lancé";
-        sound->MainSound();
         itsTimer->start(10);
-
     }
 }
 
@@ -585,7 +615,8 @@ void GameForm::keyPressEvent (QKeyEvent * event)
 
     if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 )
     {
-        sound->JumpSound();
+        //sound->JumpSound();
+        QMetaObject::invokeMethod(soundManager, "playEffect", Qt::QueuedConnection, Q_ARG(QString, ":Song/Song/JumpSound.wav"));
         itsCharacter->jump();
         qDebug() << "Space Key";
     }

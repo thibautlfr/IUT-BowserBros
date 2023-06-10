@@ -20,6 +20,7 @@ SOURCES += \
     menuform.cpp \
     scoreboard.cpp \
     soundcontroller.cpp \
+    soundmanager.cpp \
     widget.cpp
 
 HEADERS += \
@@ -32,6 +33,7 @@ HEADERS += \
     menuform.h \
     scoreboard.h \
     soundcontroller.h \
+    soundmanager.h \
     widget.h
 
 FORMS += \
