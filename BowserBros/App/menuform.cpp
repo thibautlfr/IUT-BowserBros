@@ -34,8 +34,13 @@ MenuForm::MenuForm(QWidget *parent) :
     ui->quitButton->setIcon(quitAsset);
     ui->quitButton->setIconSize(quitAsset.size());
 
+    QPixmap podiumAsset(":/Assets/Assets/other/podium.png");
+    ui->podiumButton->setIcon(podiumAsset);
+    ui->podiumButton->setIconSize(QSize(80, 80));
+
     connect(ui->playButton, &QPushButton::clicked, this, &MenuForm::playButtonClicked);
     connect(ui->quitButton, &QPushButton::clicked, this, &MenuForm::quitButtonClicked);
+    connect(ui->podiumButton, &QPushButton::clicked, this, &MenuForm::podiumButtonClicked);
 
     repaint();
 }
@@ -62,8 +67,8 @@ void MenuForm::paintEvent(QPaintEvent *event)
     painter->drawImage(0, 0, itsBackground);
     painter->drawImage(0, height()-20, itsFloor);
     painter->drawImage(135, 100, itsGameTitle);
-    painter->drawImage(70, height()-20-45, itsMario);
-    painter->drawImage(width() - 150, height()-20-86, itsBowser);
+    painter->drawImage(90, height()-20-45, itsMario);
+    painter->drawImage(width() - 170, height()-20-86, itsBowser);
     delete painter;
 }
 

@@ -40,6 +40,9 @@
         <file>Assets/other/spacebar.png</file>
         <file>Assets/background/backgroundMenu.png</file>
         <file>Assets/score/score-title.png</file>
+        <file>Assets/other/enter_key.png</file>
+        <file>Assets/other/podium.png</file>
+        <file>Assets/menu/menu.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>

@@ -58,7 +58,13 @@ Widget::Widget(QWidget *parent)
                 stackedWidget->setCurrentWidget(scoreboardForm);
                 scoreboardForm->setFocus();
                 qDebug() << "GameForm deleted";
-                delete gameForm;            }
+                delete gameForm;
+                connect(scoreboardForm, &ScoreboardForm::menuButtonClicked, this, [=](){
+                    stackedWidget->setCurrentWidget(menuForm);
+                    menuForm->setFocus();
+                    delete scoreboardForm;
+                });
+            }
         });
 
     });
@@ -67,6 +73,21 @@ Widget::Widget(QWidget *parent)
     connect(menuForm, &MenuForm::quitButtonClicked, this, [=]() {
         QApplication::quit(); // Cette ligne de code quitte l'application
     });
+
+    connect(menuForm, &MenuForm::podiumButtonClicked, this, [=]() {
+        scoreboardForm = new ScoreboardForm(this, 0);
+        stackedWidget->addWidget(scoreboardForm);
+        stackedWidget->setCurrentWidget(scoreboardForm);
+        scoreboardForm->setFocus();
+
+        connect(scoreboardForm, &ScoreboardForm::menuButtonClicked, this, [=](){
+            stackedWidget->setCurrentWidget(menuForm);
+            menuForm->setFocus();
+            delete scoreboardForm;
+        });
+    });
+
+
     //=======================================================================
 
     // Créez un layout pour centrer la fenêtre en plsin écran

@@ -63,6 +63,22 @@
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="podiumButton">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>510</y>
+     <width>71</width>
+     <height>59</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {border: none; padding: 0; margin: 0; background: transparent;}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

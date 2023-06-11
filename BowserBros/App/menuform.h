@@ -64,6 +64,11 @@ signals:
      */
     void quitButtonClicked();
 
+    /**
+      * @brief Signal emitted when the podium button is clicked.
+     */
+    void podiumButtonClicked();
+
 private:
     Ui::MenuForm *ui;
 

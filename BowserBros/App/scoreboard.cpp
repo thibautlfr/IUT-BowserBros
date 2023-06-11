@@ -52,7 +52,6 @@ QList<QPair<QString, double>> ScoreBoard::getTopPlayers(int count) {
         }
     }
 
-
     // Tri des scores par ordre croissant
     std::sort(topPlayers.begin(), topPlayers.end(), [](const QPair<QString, double>& a, const QPair<QString, double>& b) {
         return a.second < b.second;
