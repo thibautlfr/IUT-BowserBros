@@ -114,10 +114,13 @@ public slots:
 
 signals:
     /**
-      * @brief Signal emitted when the quit button is clicked.
+      * @brief Signal emitted when the game is losed.
     */
     void gameLosed();
 
+    /**
+      * @brief Signal emitted when the game is won.
+    */
     void gameWon(int elapsedTime);
 
 

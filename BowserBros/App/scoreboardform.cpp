@@ -76,6 +76,18 @@ ScoreboardForm::ScoreboardForm(QWidget *parent, int elapsedTime) :
                                          "padding: 5px;"
                                          "color: black;");
 
+        // Connecter le signal returnPressed() de itsPseudoLineEdit à un slot
+        connect(itsPseudoLineEdit, &QLineEdit::returnPressed, this, &ScoreboardForm::onPseudoLineEditReturnPressed);
+
+        // Créer le bouton de validation
+        validateButton = new QPushButton("Valider", this);
+        validateButton->setGeometry(570, 500, 100, 30);
+
+        // Connecter le signal clicked() du bouton à un slot
+        connect(validateButton, &QPushButton::clicked, this, &ScoreboardForm::onValidateButtonClicked);
+
+
+
         // Calculer la position X pour centrer les éléments
         int labelX = (width() - itsInstructionsLabel->width()) / 2;
         int lineEditX = (width() - itsPseudoLineEdit->width()) / 2;
@@ -96,6 +108,28 @@ ScoreboardForm::ScoreboardForm(QWidget *parent, int elapsedTime) :
 ScoreboardForm::~ScoreboardForm()
 {
     delete ui;
+}
+
+void ScoreboardForm::onPseudoLineEditReturnPressed()
+{
+    // Récupérer le texte saisi par l'utilisateur
+    playerName = itsPseudoLineEdit->text();
+
+    // Faire ce que vous souhaitez avec le pseudo (par exemple, enregistrer dans le fichier JSON)
+
+    // Afficher le pseudo dans la console pour vérification
+    qDebug() << "Pseudo: " << playerName;
+}
+
+void ScoreboardForm::onValidateButtonClicked()
+{
+    // Récupérer le texte saisi par l'utilisateur
+    playerName = itsPseudoLineEdit->text();
+
+    // Faire ce que vous souhaitez avec le pseudo (par exemple, enregistrer dans le fichier JSON)
+
+    // Afficher le pseudo dans la console pour vérification
+    qDebug() << "Pseudo: " << playerName;
 }
 
 void ScoreboardForm::setSettingsTable()
@@ -181,7 +215,6 @@ void ScoreboardForm::paintEvent(QPaintEvent *event)
     QPainter * painter = new QPainter(this);
     painter->drawImage(0, 0, itsBackground);
     painter->drawImage(0, height()-20, itsFloor);
-    //painter->drawImage(135, 100, itsGameTitle);
     painter->drawImage(70, height()-20-45, itsMario);
     painter->drawImage(width() - 150, height()-20-86, itsBowser);
     delete painter;

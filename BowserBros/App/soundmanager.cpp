@@ -106,6 +106,7 @@ void SoundManager::playLevelPassedMusic()
 
 void SoundManager::stopAllSounds()
 {
+
     if (mainMusic->isPlaying())
     {
         mainMusic->stop();

@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QPainter>
 #include <QTableWidget>
+#include <QPushButton>
 
 namespace Ui {
 class ScoreboardForm;
@@ -35,22 +36,17 @@ public:
 
     ScoreBoard * itsScoreBoard;
 
-    QLabel* itsInstructionsLabel; // Label pour afficher les instructions
-    QLineEdit* itsPseudoLineEdit; // LineEdit pour saisir le pseudo
+    QLabel * itsInstructionsLabel; // Label pour afficher les instructions
+    QLineEdit * itsPseudoLineEdit; // LineEdit pour saisir le pseudo
+    QPushButton * validateButton ;
 
     float playerScore ;
 
-signals:
-    /**
-      * @brief Signal emitted when the play button is clicked.
-    */
+    QString playerName ;
 
-    void playButtonClicked();
-
-    /**
-      * @brief Signal emitted when the quit button is clicked.
-     */
-    void quitButtonClicked();
+private slots:
+    void onPseudoLineEditReturnPressed();
+    void onValidateButtonClicked();
 
 private:
     Ui::ScoreboardForm *ui;
