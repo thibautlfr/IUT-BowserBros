@@ -46,6 +46,8 @@
         <file>Song/MainMusic.wav</file>
         <file>Song/gameover.wav</file>
         <file>Song/win.wav</file>
+        <file>Song/endlevel.wav</file>
+        <file>Song/menumusic.wav</file>
     </qresource>
     <qresource prefix="/Fonts">
         <file>Fonts/policeMario2.ttf</file>

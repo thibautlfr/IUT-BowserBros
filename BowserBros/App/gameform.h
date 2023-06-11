@@ -15,11 +15,8 @@
 #include <QScrollArea>
 #include <QLabel>
 #include <list>
-//Song
-#include <QMediaPlayer>
-#include <QSoundEffect>
 
-#include "soundcontroller.h"
+#include "soundmanager.h"
 #include "mario.h"
 #include "bowser.h"
 #include "element.h"
@@ -97,9 +94,8 @@ public:
 
     /**
       * @brief Loads a specific level.
-      * @param levelNumber The number of the level to load.
      */
-    void loadLevel(int levelNumber);
+    void loadLevel();
 
     /**
      * @brief Displays the chrono at the top right corner
@@ -156,8 +152,9 @@ private:
 
     QScrollArea *itsScrollArea; /**< The scroll area for the game. */
     QTimer *itsTimer; /**< The timer for the game loop. */
-    SoundController * sound; /**< The sound controller for the game */
     vector<Element*> itsBlocks; /**< The list of blocks in the game. */
+
+    SoundManager *soundManager; /**< Attribute used to mange sounds during the game */
 
     // --------------------------------------------------------------------------------------------
 

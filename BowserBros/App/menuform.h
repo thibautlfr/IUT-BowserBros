@@ -12,6 +12,8 @@
 #include <QPaintEvent>
 #include <list>
 
+#include "soundmanager.h"
+
 namespace Ui {
 class MenuForm;
 }
@@ -32,6 +34,8 @@ public:
     QImage itsBowser; /**< The Bowser image of the menu form. */
     QImage itsGameTitle; /**< The game title image of the menu form. */
 
+    SoundManager *soundManager;
+
     // --------------------------------------------------------------------------------------------
 
     /**
@@ -39,6 +43,10 @@ public:
       * @param parent The parent QWidget object.
     */
     explicit MenuForm(QWidget *parent = nullptr);
+
+    void playMusic();
+
+    void stopMusic();
 
     /**
       * @brief Destructs the MenuForm object.

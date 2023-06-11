@@ -1,5 +1,5 @@
 QT       += core gui
-QT       += multimedia
+QT += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,7 +20,7 @@ SOURCES += \
     menuform.cpp \
     scoreboardform.cpp \
     scoreboard.cpp \
-    soundcontroller.cpp \
+    soundmanager.cpp \
     widget.cpp
 
 HEADERS += \
@@ -33,7 +33,7 @@ HEADERS += \
     menuform.h \
     scoreboardform.h \
     scoreboard.h \
-    soundcontroller.h \
+    soundmanager.h \
     widget.h
 
 FORMS += \

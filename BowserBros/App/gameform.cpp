@@ -9,6 +9,8 @@
 #include <chrono>
 #include <QDir>
 #include <QFontDatabase>
+#include <QThread>
+#include <QSoundEffect>
 
 using namespace std;
 
@@ -28,10 +30,11 @@ GameForm::GameForm(QWidget *parent)
     // Initialisation du temps écoulé depuis le début de la partie
     elapsedTime = 0;
 
-    // Création du gestionnaire de son
-    sound = new SoundController;
+    // Gestionnaire de son
+    soundManager = new SoundManager;
 
     //=============================================================
+
 
     // Charger la police depuis le fichier
     QString fontPath = ":Fonts/Fonts/policeMario2.ttf";
@@ -76,11 +79,11 @@ GameForm::GameForm(QWidget *parent)
     // Chargement du premier niveau
     itsLevel = 1;
     itsAvalaibleLevelsNb = QDir(":Levels/Levels").entryInfoList().count();
-    loadLevel(itsLevel);
+    loadLevel();
 
     // Création du sol, du personnage et du boss
     itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
-    itsCharacter = new Mario(50, height() - 100, ":Assets/Assets/mario/mario4.png");
+    itsCharacter = new Mario(50, height() - 50, ":Assets/Assets/mario/mario4.png");
     itsBoss = new Bowser(width()-80, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
 
     //====================================================================
@@ -94,9 +97,10 @@ GameForm::GameForm(QWidget *parent)
 
 GameForm::~GameForm()
 {
+    // Suppression du gestionnaire de son
+    delete soundManager;
     delete itsCharacter;
     delete itsBoss;
-    delete sound;
     delete levelLabel;
     delete timeLabel;
     delete itsTimer;
@@ -112,34 +116,37 @@ QScrollArea* GameForm::getScrollArea() const {
 // ---------------------------------------------------------------------------------------------------------
 
 // Charger un niveau à partir du fichier texte correspondant
-void GameForm::loadLevel(int levelNumber) {
+void GameForm::loadLevel() {
 
-    //Si on dépasse le nombre de niveau existant, alors stoppez le jeu
     if(itsLevel > itsAvalaibleLevelsNb)
     {
-        sound->StopMainSound();
-        itsTimer->stop();
-        itsLevel = 1;
-        loadLevel(itsLevel);
-        emit gameLosed();
-        // Mettre à jour le label du niveau
-        levelLabel->setText(QString("world %1").arg(itsLevel));
-        return; // Sortir de la boucle car une boule de feu a touché Mario
+        return ;
     }
-    // Mettre à jour le label du niveau
-    levelLabel->setText(QString("world %1").arg(itsLevel));
-    if(levelNumber > 1)
+
+    if(itsLevel > 1)
     {
+        // Repositionement des acteurs du jeu
         itsCharacter->setItsX(50);
         itsCharacter->setItsY(height() - 100);
+        itsBoss->setItsX(width()-80);
+        itsBoss->setItsY(height()-570);
         itsBlocks.clear();
     }
-    QString filename = ":Levels/Levels/level" + QString::number(levelNumber) + ".txt";
-    QString backgroundName = ":Assets/Assets/background/background" + QString::number(levelNumber) + ".png";
+
+    // Lancement de la musique si on est au niveau 1
+    if (itsLevel == 1)
+    {
+        soundManager->playMainMusic();
+    }
+
+
+
+    // Chargement du fichier texte du niveau ainsi que du background
+    QString filename = ":Levels/Levels/level" + QString::number(itsLevel) + ".txt";
+    QString backgroundName = ":Assets/Assets/background/background" + QString::number(itsLevel) + ".png";
     itsBackground.load(backgroundName);
     qDebug() << filename;
     QFile levelFile(filename);
-    //QFile levelFile("qrc:///Levels/level1.txt");
     if (levelFile.open(QIODevice::ReadOnly))
     {
         QTextStream in(&levelFile);
@@ -184,15 +191,17 @@ void GameForm::loadLevel(int levelNumber) {
             }
         }
         levelFile.close();
-        if (itsLevel > 1)
-        {
-            start();
-        }
+
+        // Mettre à jour le label du niveau
+        levelLabel->setText(QString("world %1").arg(itsLevel));
+
     }
     else
     {
         qDebug() << "Impossible d'ouvrir le fichier du niveau!";
+        return;
     }
+
 }
 
 // ---------------------------------------------------------------------------------------------------------
@@ -231,25 +240,32 @@ void GameForm::checkCharacterCollision()
         itsCharacter->setItsX(800 - itsCharacter->getItsRect().width()) ;
     }
 
-    // Vérification de collision avec le coffre pour fin du jeu
+    // On vérifie si le joueur touche le coffre
     if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
     {
         // Arrêtez le jeu et revenez au menu
-        sound->StopMainSound();
         if (itsLevel == itsAvalaibleLevelsNb)
         {
-            sound->WinSound();
             itsTimer->stop();
-            emit gameWon(elapsedTime);
+            soundManager->playWinMusic();
+
+            QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                emit gameWon(elapsedTime);
+            });
         }
         else
         {
-            this_thread::sleep_for(chrono::milliseconds(300));
             itsTimer->stop();
-            itsLevel ++;
-            loadLevel(itsLevel);
-            return;
+            soundManager->playLevelPassedMusic();
+
+            QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                soundManager->playMainMusic();
+                itsLevel ++;
+                itsTimer->start();
+                loadLevel();
+            });
         }
+        return;
     }
 
     // On vérifie que le cube n'est pas sur le sol
@@ -406,6 +422,9 @@ void GameForm::checkCharacterCollision()
 
 }
 
+
+
+// Gère les déplacements de Bowser
 void GameForm::checkBowserCollision()
 {
     // Vitesse minimum et maximum pour Bowser
@@ -440,44 +459,6 @@ void GameForm::checkBowserCollision()
     itsBoss->calculatePosition();
 }
 
-void GameForm::updateScroll() {
-    int characterY = itsCharacter->getItsY();
-    //qDebug() << characterY;
-
-    // Si le personnage est dans la partie inférieure de la fenêtre
-    if (characterY > height() - 300) {
-        itsScrollArea->verticalScrollBar()->setValue(height() - 600);
-        itsBoss->setItsY(height() - 570);
-        backgroundY = height() - itsBackground.height();  // fixe l'arrière plan
-    }
-    // Sinon, si le personnage est dans la partie superieur de la fenêtre
-    else {
-        // Assurez-vous que le personnage reste au milieu de la fenêtre
-        itsScrollArea->verticalScrollBar()->setValue(characterY - 300);
-        characterY - 270 > 30 ? itsBoss->setItsY(characterY - 270): itsBoss->setItsY(30);
-        if (characterY - 300 > 0 && characterY + 300 < height() - 20)
-        {
-            backgroundY = 0.5 * characterY - (600*0.5*0.5);  // déplace l'arrière-plan vers le haut
-        }
-    }
-
-    itsBoss->calculatePosition();
-}
-
-void GameForm::updateFireBalls()
-{
-    for (FireBall * fireball : *itsBoss->getItsFireBalls())
-    {
-        fireball->calculatePosition();
-    }
-
-    double coefficient = (1 - (0.1 * (itsLevel - 1))); // Accélérer la fréquence en fonction du niveau
-    if(elapsedTime % int(1000 * coefficient) == 0)
-    {
-        //itsBoss->dropFireBall();
-    }
-}
-
 void GameForm::checkCollisionFireBalls()
 {
     vector<FireBall *> *fireBalls = itsBoss->getItsFireBalls();
@@ -486,16 +467,15 @@ void GameForm::checkCollisionFireBalls()
     {
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
-
-            // Arrêtez le jeu et revenez au menu
-            sound->StopMainSound();
-            sound->GameoverSound();
-            this_thread::sleep_for(chrono::milliseconds(300));
+            /// Arrêtez le jeu et revenez au menu
             itsTimer->stop();
-            itsLevel = 1;
-            emit gameLosed();
-            // Mettre à jour le label du niveau
-            levelLabel->setText(QString("world %1").arg(itsLevel));
+
+            soundManager->playDeathMusic();
+
+            QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                emit gameLosed();
+            });
+
             return; // Sortir de la boucle car une boule de feu a touché Mario
         }
     }
@@ -544,6 +524,44 @@ void GameForm::checkCollisionFireBalls()
     }
 }
 
+// ---------------------------------------------------------------------------------------------------------
+
+void GameForm::updateScroll() {
+    int characterY = itsCharacter->getItsY();
+
+    // Si le personnage est dans la partie inférieure de la fenêtre
+    if (characterY > height() - 300) {
+        itsScrollArea->verticalScrollBar()->setValue(height() - 600);
+        itsBoss->setItsY(height() - 570);
+        backgroundY = height() - itsBackground.height();  // fixe l'arrière plan
+    }
+    // Sinon, si le personnage est dans la partie superieur de la fenêtre
+    else {
+        // Assurez-vous que le personnage reste au milieu de la fenêtre
+        itsScrollArea->verticalScrollBar()->setValue(characterY - 300);
+        characterY - 270 > 30 ? itsBoss->setItsY(characterY - 270): itsBoss->setItsY(30);
+        if (characterY - 300 > 0 && characterY + 300 < height() - 20)
+        {
+            backgroundY = 0.5 * characterY - (600*0.5*0.5);  // déplace l'arrière-plan vers le haut
+        }
+    }
+
+    itsBoss->calculatePosition();
+}
+
+void GameForm::updateFireBalls()
+{
+    for (FireBall * fireball : *itsBoss->getItsFireBalls())
+    {
+        fireball->calculatePosition();
+    }
+
+    double coefficient = (1 - (0.1 * (itsLevel - 1))); // Accélérer la fréquence en fonction du niveau
+    if(elapsedTime % int(1000 * coefficient) == 0)
+    {
+        itsBoss->dropFireBall();
+    }
+}
 
 // ---------------------------------------------------------------------------------------------------------
 
@@ -559,6 +577,15 @@ void GameForm::gameloop()
     repaint();
 }
 
+void GameForm::displayChrono()
+{
+    // Mettre à jour l'affichage du temps écoulé
+    int seconds = elapsedTime / 1000;
+    int milliseconds = elapsedTime % 1000;
+    QString timeString = QString("time\n%1.%2").arg(seconds).arg(milliseconds / 100, 1, 10, QChar('0'));
+    timeLabel->setText(timeString);
+}
+
 void GameForm::start()
 {
     if(itsTimer->isActive())
@@ -568,9 +595,7 @@ void GameForm::start()
     else
     {
         qDebug() << "Timer lancé";
-        sound->MainSound();
         itsTimer->start(10);
-
     }
 }
 
@@ -591,7 +616,8 @@ void GameForm::keyPressEvent (QKeyEvent * event)
 
     if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 )
     {
-        sound->JumpSound();
+        //sound->JumpSound();
+        soundManager->playJumpEffect();
         itsCharacter->jump();
         qDebug() << "Space Key";
     }
@@ -671,15 +697,6 @@ void GameForm::paintPlayerHelps(QPainter* painter)
     int levelx = 10;
     int levely = itsBoss->getItsY()-20;
     levelLabel->move(levelx, levely); // Déplacer le timeLabel à la position calculée
-}
-
-void GameForm::displayChrono()
-{
-    // Mettre à jour l'affichage du temps écoulé
-    int seconds = elapsedTime / 1000;
-    int milliseconds = elapsedTime % 1000;
-    QString timeString = QString("time\n%1.%2").arg(seconds).arg(milliseconds / 100, 1, 10, QChar('0'));
-    timeLabel->setText(timeString);
 }
 
 
