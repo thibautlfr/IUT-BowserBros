@@ -17,7 +17,6 @@ Widget::Widget(QWidget *parent)
     // Change le titre et l'icone de la fenêtre
     setWindowTitle("BowserBros");
     QIcon newIcon(":Assets/Assets/other/chest.png");
-    setWindowTitle("BowserBros");
     setWindowIcon(newIcon);
 
     // Création du stacked widget
@@ -32,7 +31,7 @@ Widget::Widget(QWidget *parent)
 
     // Connect pour lancer une partie avec le bouton Jouer
     connect(menuForm, &MenuForm::playButtonClicked, this, [=]() {
-        // Arret de la musique du menu
+        // Arrêt de la musique du menu
         menuForm->stopMusic();
 
         // Création et affichage du widget pour la partie
@@ -41,6 +40,7 @@ Widget::Widget(QWidget *parent)
         stackedWidget->setCurrentWidget(gameForm->getScrollArea());
         gameForm->setFocus();
 
+        // Connect pour gérer la fin de la partie
         connect(gameForm, &GameForm::gameLosed, this, [=]() {
             if (gameForm != nullptr)
             {
@@ -50,8 +50,11 @@ Widget::Widget(QWidget *parent)
                 menuForm->playMusic();
             }
         });
+
+        // Connect pour gérer la victoire dans le jeu
         connect(gameForm, &GameForm::gameWon, this, [=](int elapsedTime) {
-            if(gameForm != nullptr)
+            menuForm->playMusic();
+            if (gameForm != nullptr)
             {
                 scoreboardForm = new ScoreboardForm(this, elapsedTime);
                 stackedWidget->addWidget(scoreboardForm);
@@ -59,38 +62,38 @@ Widget::Widget(QWidget *parent)
                 scoreboardForm->setFocus();
                 qDebug() << "GameForm deleted";
                 delete gameForm;
-                connect(scoreboardForm, &ScoreboardForm::menuButtonClicked, this, [=](){
+
+                // Connect pour revenir au menu depuis le formulaire de classement
+                connect(scoreboardForm, &ScoreboardForm::menuButtonClicked, this, [=]() {
                     stackedWidget->setCurrentWidget(menuForm);
                     menuForm->setFocus();
                     delete scoreboardForm;
                 });
             }
         });
-
     });
 
     // Connect pour quitter le jeu avec le bouton quitter
-    connect(menuForm, &MenuForm::quitButtonClicked, this, [=]() {
-        QApplication::quit(); // Cette ligne de code quitte l'application
-    });
+    connect(menuForm, &MenuForm::quitButtonClicked, this, &QApplication::quit);
 
+    // Connect pour afficher le formulaire de classement
     connect(menuForm, &MenuForm::podiumButtonClicked, this, [=]() {
         scoreboardForm = new ScoreboardForm(this, 0);
         stackedWidget->addWidget(scoreboardForm);
         stackedWidget->setCurrentWidget(scoreboardForm);
         scoreboardForm->setFocus();
 
-        connect(scoreboardForm, &ScoreboardForm::menuButtonClicked, this, [=](){
+        // Connect pour revenir au menu depuis le formulaire de classement
+        connect(scoreboardForm, &ScoreboardForm::menuButtonClicked, this, [=]() {
             stackedWidget->setCurrentWidget(menuForm);
             menuForm->setFocus();
             delete scoreboardForm;
         });
     });
 
-
     //=======================================================================
 
-    // Créez un layout pour centrer la fenêtre en plsin écran
+    // Création d'un layout pour centrer la fenêtre en plein écran
     QVBoxLayout *vLayout = new QVBoxLayout;
     vLayout->addStretch(1);
     QHBoxLayout *hLayout = new QHBoxLayout;
@@ -100,8 +103,7 @@ Widget::Widget(QWidget *parent)
     vLayout->addLayout(hLayout);
     vLayout->addStretch(1);
 
-    this->setLayout(vLayout);
-
+    setLayout(vLayout);
 }
 
 Widget::~Widget()

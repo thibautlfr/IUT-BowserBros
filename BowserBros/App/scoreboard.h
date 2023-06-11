@@ -21,7 +21,7 @@ class ScoreBoard {
 
 private:
     QJsonObject scoreboard; /**< The scoreboard implemented with a Json file. */
-    const QString filePath = "ScoreBoard.json"; /**< The path to the json file. */
+    const QString filePath = "../../Database/ScoreBoard.json"; /**< The path to the json file. */
 
 public:
     /**
