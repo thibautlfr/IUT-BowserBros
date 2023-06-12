@@ -1,7 +1,7 @@
 #include "scoreboard.h"
 
 ScoreBoard::ScoreBoard() {
-    QFile file(filePath);
+    QFile file(getFilePath());
     if (!file.exists()) {
         // Crée un nouveau fichier JSON s'il n'existe pas
         file.open(QIODevice::WriteOnly);
@@ -19,7 +19,7 @@ ScoreBoard::ScoreBoard() {
 }
 
 ScoreBoard::~ScoreBoard() {
-    QFile file(filePath);
+    QFile file(getFilePath());
     if (!file.open(QIODevice::WriteOnly)) {
         qWarning("Couldn't open scoreboard file for writing.");
         return;
@@ -64,4 +64,12 @@ QList<QPair<QString, double>> ScoreBoard::getTopPlayers(int count) {
         // Sinon, retourner seulement les 'count' premiers scores
         return topPlayers.mid(0, count);
     }
+}
+
+QString ScoreBoard::getFilePath() {
+    #if defined _WIN32
+        return QStringLiteral("../../Database/ScoreBoard.json");
+    #elif defined(__LINUX__) || defined(__gnu_linux__) || defined(__linux__) || defined (__APPLE__)
+        return QStringLiteral("../../../../../DataBase/ScoreBoard.json");
+    #endif
 }

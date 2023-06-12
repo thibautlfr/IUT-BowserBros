@@ -21,7 +21,6 @@ class ScoreBoard {
 
 private:
     QJsonObject scoreboard; /**< The scoreboard implemented with a Json file. */
-    const QString filePath = "../../Database/ScoreBoard.json"; /**< The path to the json file. */
 
 public:
     /**
@@ -51,6 +50,12 @@ public:
      * @author Colin
      */
     QList<QPair<QString, double>> getTopPlayers(int count);
+
+    /**
+     * @brief Get the path to the JSON file based on the current operating system
+     * @return The path to the JSON file
+     */
+    QString getFilePath();
 };
 
 #endif // SCOREBOARD_H
