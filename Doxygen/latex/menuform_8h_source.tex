@@ -1,4 +1,5 @@
 \hypertarget{menuform_8h_source}{}\doxysection{menuform.\+h}
+\label{menuform_8h_source}\index{/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23\_BowserBros/BowserBros/App/menuform.h@{/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23\_BowserBros/BowserBros/App/menuform.h}}
 \mbox{\hyperlink{menuform_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
@@ -12,38 +13,48 @@
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QPaintEvent>}}
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <list>}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }Ui\ \{}
-\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu_form}{MenuForm}};}
-\DoxyCodeLine{00017\ \}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu_form}{MenuForm}}\ :\ \textcolor{keyword}{public}\ QWidget}
-\DoxyCodeLine{00026\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00029\ \ \ \ \ QImage\ \mbox{\hyperlink{class_menu_form_ab337166203f67e366b13820d3736f3f6}{itsBackground}};\ }
-\DoxyCodeLine{00030\ \ \ \ \ QImage\ \mbox{\hyperlink{class_menu_form_a7e677d26c885317462d009e57af36b3e}{itsFloor}};\ }
-\DoxyCodeLine{00031\ \ \ \ \ QImage\ \mbox{\hyperlink{class_menu_form_ab1518926630806b1d2d90d39caabfd07}{itsMario}};\ }
-\DoxyCodeLine{00032\ \ \ \ \ QImage\ \mbox{\hyperlink{class_menu_form_a0ca014313d0eb5c638441276ce5008a3}{itsBowser}};\ }
-\DoxyCodeLine{00033\ \ \ \ \ QImage\ \mbox{\hyperlink{class_menu_form_a96679a536f3b4c4875ef0cd05efdd6a1}{itsGameTitle}};\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_menu_form}{MenuForm}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_menu_form_ab20e7f52b30cb65140d1b7a6a80a89e6}{\string~MenuForm}}();}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ signals:}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_form_a5b6a1433f9bc85f8802f8d7a37c9d547}{playButtonClicked}}();}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_form_aa8720bd59c2dca3d8ab0271b364052bf}{quitButtonClicked}}();}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00060\ \ \ \ \ Ui::MenuForm\ *ui;}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{soundmanager_8h}{soundmanager.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu_form}{MenuForm}};}
+\DoxyCodeLine{00019\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu_form}{MenuForm}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ QImage\ \mbox{\hyperlink{class_menu_form_ab337166203f67e366b13820d3736f3f6}{itsBackground}};\ }
+\DoxyCodeLine{00032\ \ \ \ \ QImage\ \mbox{\hyperlink{class_menu_form_a7e677d26c885317462d009e57af36b3e}{itsFloor}};\ }
+\DoxyCodeLine{00033\ \ \ \ \ QImage\ \mbox{\hyperlink{class_menu_form_ab1518926630806b1d2d90d39caabfd07}{itsMario}};\ }
+\DoxyCodeLine{00034\ \ \ \ \ QImage\ \mbox{\hyperlink{class_menu_form_a0ca014313d0eb5c638441276ce5008a3}{itsBowser}};\ }
+\DoxyCodeLine{00035\ \ \ \ \ QImage\ \mbox{\hyperlink{class_menu_form_a96679a536f3b4c4875ef0cd05efdd6a1}{itsGameTitle}};\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}\ *soundManager;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_menu_form}{MenuForm}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ playMusic();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ stopMusic();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_menu_form_ab20e7f52b30cb65140d1b7a6a80a89e6}{\string~MenuForm}}();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ signals:}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_form_a5b6a1433f9bc85f8802f8d7a37c9d547}{playButtonClicked}}();}
 \DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ paintEvent(QPaintEvent\ *event);}
-\DoxyCodeLine{00069\ \};}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MENUFORM\_H}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_form_aa8720bd59c2dca3d8ab0271b364052bf}{quitButtonClicked}}();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_form_ac2eed775b966c149121e43bcadb86640}{podiumButtonClicked}}();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00073\ \ \ \ \ Ui::MenuForm\ *ui;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ paintEvent(QPaintEvent\ *event);}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MENUFORM\_H}}
 
 \end{DoxyCode}

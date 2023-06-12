@@ -1,0 +1,126 @@
+\hypertarget{class_score_board}{}\doxysection{Score\+Board Class Reference}
+\label{class_score_board}\index{ScoreBoard@{ScoreBoard}}
+
+
+This class is used to interact with the players \mbox{\hyperlink{class_score_board}{Score\+Board}}.  
+
+
+
+
+{\ttfamily \#include $<$scoreboard.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_score_board_a7d0760d6ff5bd6440dd682a016db31e3}{Score\+Board}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{class_score_board}{Score\+Board}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_score_board_a013e4595d35ab03d6f480c9388cc7b8a}{$\sim$\+Score\+Board}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{class_score_board}{Score\+Board}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_score_board_aa3057b98cc197b5f0acf2f81a9f29442}{add\+Score}} (const QString \&player\+Name, double score)
+\begin{DoxyCompactList}\small\item\em Adds a score to the JSON \mbox{\hyperlink{class_score_board}{Score\+Board}} File (only if the players does not exists or if the score is below the previous) \end{DoxyCompactList}\item 
+QList$<$ QPair$<$ QString, double $>$ $>$ \mbox{\hyperlink{class_score_board_aa030b3eda0158df0ddf02ba43352f0d6}{get\+Top\+Players}} (int count)
+\begin{DoxyCompactList}\small\item\em Gets the top X players in the players ranking. \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{class_score_board_a6646a7b4d903c46158a192d2a078eaf4}{get\+File\+Path}} ()
+\begin{DoxyCompactList}\small\item\em Get the path to the JSON file based on the current operating system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to interact with the players \mbox{\hyperlink{class_score_board}{Score\+Board}}. 
+
+\begin{DoxyAuthor}{Author}
+Colin
+
+Colin, Lilian, Pierre 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_score_board_a7d0760d6ff5bd6440dd682a016db31e3}\label{class_score_board_a7d0760d6ff5bd6440dd682a016db31e3}} 
+\index{ScoreBoard@{ScoreBoard}!ScoreBoard@{ScoreBoard}}
+\index{ScoreBoard@{ScoreBoard}!ScoreBoard@{ScoreBoard}}
+\doxysubsubsection{\texorpdfstring{ScoreBoard()}{ScoreBoard()}}
+{\footnotesize\ttfamily Score\+Board\+::\+Score\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \mbox{\hyperlink{class_score_board}{Score\+Board}} class. 
+
+\begin{DoxyAuthor}{Author}
+Colin 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_score_board_a013e4595d35ab03d6f480c9388cc7b8a}\label{class_score_board_a013e4595d35ab03d6f480c9388cc7b8a}} 
+\index{ScoreBoard@{ScoreBoard}!````~ScoreBoard@{$\sim$ScoreBoard}}
+\index{````~ScoreBoard@{$\sim$ScoreBoard}!ScoreBoard@{ScoreBoard}}
+\doxysubsubsection{\texorpdfstring{$\sim$ScoreBoard()}{~ScoreBoard()}}
+{\footnotesize\ttfamily Score\+Board\+::$\sim$\+Score\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for the \mbox{\hyperlink{class_score_board}{Score\+Board}} class. 
+
+\begin{DoxyAuthor}{Author}
+Colin 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_score_board_aa3057b98cc197b5f0acf2f81a9f29442}\label{class_score_board_aa3057b98cc197b5f0acf2f81a9f29442}} 
+\index{ScoreBoard@{ScoreBoard}!addScore@{addScore}}
+\index{addScore@{addScore}!ScoreBoard@{ScoreBoard}}
+\doxysubsubsection{\texorpdfstring{addScore()}{addScore()}}
+{\footnotesize\ttfamily void Score\+Board\+::add\+Score (\begin{DoxyParamCaption}\item[{const QString \&}]{player\+Name,  }\item[{double}]{score }\end{DoxyParamCaption})}
+
+
+
+Adds a score to the JSON \mbox{\hyperlink{class_score_board}{Score\+Board}} File (only if the players does not exists or if the score is below the previous) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Name} & \+: the name of the player \\
+\hline
+{\em score} & \+: the time of the player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Colin 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_score_board_a6646a7b4d903c46158a192d2a078eaf4}\label{class_score_board_a6646a7b4d903c46158a192d2a078eaf4}} 
+\index{ScoreBoard@{ScoreBoard}!getFilePath@{getFilePath}}
+\index{getFilePath@{getFilePath}!ScoreBoard@{ScoreBoard}}
+\doxysubsubsection{\texorpdfstring{getFilePath()}{getFilePath()}}
+{\footnotesize\ttfamily QString Score\+Board\+::get\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the path to the JSON file based on the current operating system. 
+
+\begin{DoxyReturn}{Returns}
+The path to the JSON file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_score_board_aa030b3eda0158df0ddf02ba43352f0d6}\label{class_score_board_aa030b3eda0158df0ddf02ba43352f0d6}} 
+\index{ScoreBoard@{ScoreBoard}!getTopPlayers@{getTopPlayers}}
+\index{getTopPlayers@{getTopPlayers}!ScoreBoard@{ScoreBoard}}
+\doxysubsubsection{\texorpdfstring{getTopPlayers()}{getTopPlayers()}}
+{\footnotesize\ttfamily QList$<$ QPair$<$ QString, double $>$ $>$ Score\+Board\+::get\+Top\+Players (\begin{DoxyParamCaption}\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Gets the top X players in the players ranking. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & \+: the number of players we want to extract \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a list of paire of the top X players 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Colin 
+\end{DoxyAuthor}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/\mbox{\hyperlink{scoreboard_8h}{scoreboard.\+h}}\item 
+/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/scoreboard.\+cpp\end{DoxyCompactItemize}

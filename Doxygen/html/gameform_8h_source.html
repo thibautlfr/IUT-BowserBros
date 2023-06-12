@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>BowserBros - RG23D21: gameform.h Source File</title>
+<title>BowserBros - RG23D21: /Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23_BowserBros/BowserBros/App/gameform.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="tumblr_maff0m6Y0j1rfjowdo1_500.gif"/></td>
   <td id="projectalign">
-   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Verion 1.0</span>
+   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 2.0</span>
    </div>
    <div id="projectbrief">Jeu de plateforme du style Mario Bros implémenté en C++ avec Qt Creator</div>
   </td>
@@ -48,7 +48,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -70,6 +69,11 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_712571e4a3b0a270fbf7d97d73def702.html">BowserBros</a></li><li class="navelem"><a class="el" href="dir_5d883f2ca634069f4a75b7bf6a08bd7f.html">App</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">gameform.h</div></div>
 </div><!--header-->
@@ -85,117 +89,127 @@ $(function() {
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;QPaintEvent&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;QScrollBar&gt;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;QScrollArea&gt;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;list&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//Song</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;QMediaPlayer&gt;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;QSoundEffect&gt;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="soundcontroller_8h.html">soundcontroller.h</a>&quot;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="mario_8h.html">mario.h</a>&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="bowser_8h.html">bowser.h</a>&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="element_8h.html">element.h</a>&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">using namespace </span>std;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span>Ui {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">class </span><a class="code hl_class" href="class_game_form.html">GameForm</a>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_game_form.html">   37</a></span><span class="keyword">class </span><a class="code hl_class" href="class_game_form.html">GameForm</a> : <span class="keyword">public</span> QWidget</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    Q_OBJECT</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="class_game_form.html">GameForm</a>(QWidget *parent = 0);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_function" href="class_game_form.html#a9a68a99923b27abccde9562cf43a5195">~GameForm</a>();</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    QScrollArea* <a class="code hl_function" href="class_game_form.html#a2dbb54a96ca9be0c91db5c1b5bc0c3bc">getScrollArea</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a527a1f3aa5c4115f25a0724a50068866">checkCharacterCollision</a>();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a23b137c85d4bae5c8e2b07ce270abb7d">checkBowserCollision</a>();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a085119e87e8f5220a3da2a2311b1ed71">checkCollisionFireBalls</a>();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a8386c0313181b8b39549e5c53490c943">paintPlayerHelps</a>(QPainter *painter);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#aab9cda161194e2f0013fd61cdd76fafa">updateScroll</a>();</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#aa6bc375695665688925ed87bbbc005ba">updateFireBalls</a>();</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a0b814dd05c17c1056706609a89a51e12">loadLevel</a>(<span class="keywordtype">int</span> levelNumber);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keyword">public</span> slots:</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_game_form.html#a91c7ea0d51aa02f436f5fcbc04833950">gameloop</a>();</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_game_form.html#a7b1bfa851740c8c62b617621e5a9991e">start</a>();</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>signals:</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="class_game_form.html#ae0d0ab858de99ec8935c98e6ad0b9a46">  116</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_game_form.html#ae0d0ab858de99ec8935c98e6ad0b9a46">quitButtonClicked</a>();</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    Ui::GameForm *ui; </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">int</span> itsLevel; </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordtype">int</span> itsAvalaibleLevelsNb; </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">int</span> elapsedTime; </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">int</span> backgroundY; </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordtype">bool</span> isGameEnded; </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;QLabel&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="soundmanager_8h.html">soundmanager.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="mario_8h.html">mario.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="bowser_8h.html">bowser.h</a>&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="element_8h.html">element.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="scoreboard_8h.html">scoreboard.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">namespace </span>Ui {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">class </span><a class="code hl_class" href="class_game_form.html">GameForm</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_game_form.html">   36</a></span><span class="keyword">class </span><a class="code hl_class" href="class_game_form.html">GameForm</a> : <span class="keyword">public</span> QWidget</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    Q_OBJECT</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="class_game_form.html">GameForm</a>(QWidget *parent = 0);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_function" href="class_game_form.html#a9a68a99923b27abccde9562cf43a5195">~GameForm</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    QScrollArea* <a class="code hl_function" href="class_game_form.html#a2dbb54a96ca9be0c91db5c1b5bc0c3bc">getScrollArea</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a527a1f3aa5c4115f25a0724a50068866">checkCharacterCollision</a>();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a23b137c85d4bae5c8e2b07ce270abb7d">checkBowserCollision</a>();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a085119e87e8f5220a3da2a2311b1ed71">checkCollisionFireBalls</a>();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a8386c0313181b8b39549e5c53490c943">paintPlayerHelps</a>(QPainter *painter);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#aab9cda161194e2f0013fd61cdd76fafa">updateScroll</a>();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#aa6bc375695665688925ed87bbbc005ba">updateFireBalls</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a84f3d4616130ad4b319be532eff8c95a">loadLevel</a>();</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_form.html#a07ecc9468504b29d479445d78a03a3b8">displayChrono</a>();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keyword">public</span> slots:</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_game_form.html#a91c7ea0d51aa02f436f5fcbc04833950">gameloop</a>();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_game_form.html#a7b1bfa851740c8c62b617621e5a9991e">start</a>();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>signals:</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="class_game_form.html#a68a3bb229c812702fd5d2475f6851ea7">  119</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_game_form.html#a68a3bb229c812702fd5d2475f6851ea7">gameLosed</a>();</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="class_game_form.html#a324273bd6ab9b281af55427c219d2d3d">  124</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_game_form.html#a324273bd6ab9b281af55427c219d2d3d">gameWon</a>(<span class="keywordtype">int</span> elapsedTime);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_class" href="class_mario.html">Mario</a> *itsCharacter; </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <a class="code hl_class" href="class_bowser.html">Bowser</a> *itsBoss; </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <a class="code hl_class" href="class_element.html">Element</a> *itsFloor; </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <a class="code hl_class" href="class_element.html">Element</a> *itsChest; </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    QImage itsBackground; </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    QImage leftArrow; </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    QImage rightArrow; </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    QImage chestArrow; </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    QImage spaceBar; </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    QScrollArea *itsScrollArea; </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    QTimer *itsTimer; </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <a class="code hl_class" href="class_sound_controller.html">SoundController</a> * sound; </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    list&lt;Element*&gt; itsBlocks; </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordtype">void</span> keyPressEvent(QKeyEvent *event);</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordtype">void</span> keyReleaseEvent(QKeyEvent *event);</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">void</span> paintEvent(QPaintEvent *event);</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>};</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    Ui::GameForm *ui; </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">int</span> itsLevel; </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">int</span> itsAvalaibleLevelsNb; </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordtype">int</span> elapsedTime; </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordtype">int</span> backgroundY; </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordtype">bool</span> isGameEnded; </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    QLabel *timeLabel; </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    QLabel* levelLabel; </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <a class="code hl_class" href="class_mario.html">Mario</a> *itsCharacter; </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <a class="code hl_class" href="class_bowser.html">Bowser</a> *itsBoss; </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <a class="code hl_class" href="class_element.html">Element</a> *itsFloor; </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_class" href="class_element.html">Element</a> *itsChest; </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    QImage itsBackground; </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    QImage leftArrow; </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    QImage rightArrow; </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    QImage chestArrow; </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    QImage spaceBar; </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    QScrollArea *itsScrollArea; </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    QTimer *itsTimer; </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    vector&lt;Element*&gt; itsBlocks; </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <a class="code hl_class" href="class_sound_manager.html">SoundManager</a> *soundManager; </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">void</span> keyPressEvent(QKeyEvent *event);</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="preprocessor">#endif </span><span class="comment">// GAMEFORM_H</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordtype">void</span> keyReleaseEvent(QKeyEvent *event);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordtype">void</span> paintEvent(QPaintEvent *event);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>};</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#endif </span><span class="comment">// GAMEFORM_H</span></div>
 <div class="ttc" id="abowser_8h_html"><div class="ttname"><a href="bowser_8h.html">bowser.h</a></div><div class="ttdoc">Defines the Bowser class.</div></div>
 <div class="ttc" id="aclass_bowser_html"><div class="ttname"><a href="class_bowser.html">Bowser</a></div><div class="ttdoc">Represents the Bowser enemy. The Bowser class is derived from the Entity class and provides functiona...</div><div class="ttdef"><b>Definition:</b> bowser.h:22</div></div>
 <div class="ttc" id="aclass_element_html"><div class="ttname"><a href="class_element.html">Element</a></div><div class="ttdoc">Represents a game element. The Element class provides common attributes and functionalities for game ...</div><div class="ttdef"><b>Definition:</b> element.h:35</div></div>
-<div class="ttc" id="aclass_game_form_html"><div class="ttname"><a href="class_game_form.html">GameForm</a></div><div class="ttdoc">Represents the game interface. The GameForm class represents the game interface where the game is pla...</div><div class="ttdef"><b>Definition:</b> gameform.h:38</div></div>
-<div class="ttc" id="aclass_game_form_html_a085119e87e8f5220a3da2a2311b1ed71"><div class="ttname"><a href="class_game_form.html#a085119e87e8f5220a3da2a2311b1ed71">GameForm::checkCollisionFireBalls</a></div><div class="ttdeci">void checkCollisionFireBalls()</div><div class="ttdoc">Checks for collisions with fireballs.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:431</div></div>
-<div class="ttc" id="aclass_game_form_html_a0b814dd05c17c1056706609a89a51e12"><div class="ttname"><a href="class_game_form.html#a0b814dd05c17c1056706609a89a51e12">GameForm::loadLevel</a></div><div class="ttdeci">void loadLevel(int levelNumber)</div><div class="ttdoc">Loads a specific level.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:82</div></div>
-<div class="ttc" id="aclass_game_form_html_a23b137c85d4bae5c8e2b07ce270abb7d"><div class="ttname"><a href="class_game_form.html#a23b137c85d4bae5c8e2b07ce270abb7d">GameForm::checkBowserCollision</a></div><div class="ttdeci">void checkBowserCollision()</div><div class="ttdoc">Checks for collisions with Bowser.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:360</div></div>
-<div class="ttc" id="aclass_game_form_html_a2dbb54a96ca9be0c91db5c1b5bc0c3bc"><div class="ttname"><a href="class_game_form.html#a2dbb54a96ca9be0c91db5c1b5bc0c3bc">GameForm::getScrollArea</a></div><div class="ttdeci">QScrollArea * getScrollArea() const</div><div class="ttdoc">Getter for itsScrollArea.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:75</div></div>
-<div class="ttc" id="aclass_game_form_html_a527a1f3aa5c4115f25a0724a50068866"><div class="ttname"><a href="class_game_form.html#a527a1f3aa5c4115f25a0724a50068866">GameForm::checkCharacterCollision</a></div><div class="ttdeci">void checkCharacterCollision()</div><div class="ttdoc">Checks for character collisions.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:160</div></div>
-<div class="ttc" id="aclass_game_form_html_a7b1bfa851740c8c62b617621e5a9991e"><div class="ttname"><a href="class_game_form.html#a7b1bfa851740c8c62b617621e5a9991e">GameForm::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Starts the game.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:509</div></div>
-<div class="ttc" id="aclass_game_form_html_a8386c0313181b8b39549e5c53490c943"><div class="ttname"><a href="class_game_form.html#a8386c0313181b8b39549e5c53490c943">GameForm::paintPlayerHelps</a></div><div class="ttdeci">void paintPlayerHelps(QPainter *painter)</div><div class="ttdoc">Paints the player's helps.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:587</div></div>
-<div class="ttc" id="aclass_game_form_html_a91c7ea0d51aa02f436f5fcbc04833950"><div class="ttname"><a href="class_game_form.html#a91c7ea0d51aa02f436f5fcbc04833950">GameForm::gameloop</a></div><div class="ttdeci">void gameloop()</div><div class="ttdoc">The game loop that updates the game state.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:498</div></div>
-<div class="ttc" id="aclass_game_form_html_a9a68a99923b27abccde9562cf43a5195"><div class="ttname"><a href="class_game_form.html#a9a68a99923b27abccde9562cf43a5195">GameForm::~GameForm</a></div><div class="ttdeci">~GameForm()</div><div class="ttdoc">Destructs the GameForm object.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:63</div></div>
-<div class="ttc" id="aclass_game_form_html_aa6bc375695665688925ed87bbbc005ba"><div class="ttname"><a href="class_game_form.html#aa6bc375695665688925ed87bbbc005ba">GameForm::updateFireBalls</a></div><div class="ttdeci">void updateFireBalls()</div><div class="ttdoc">Updates the fireballs in the game.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:418</div></div>
-<div class="ttc" id="aclass_game_form_html_aab9cda161194e2f0013fd61cdd76fafa"><div class="ttname"><a href="class_game_form.html#aab9cda161194e2f0013fd61cdd76fafa">GameForm::updateScroll</a></div><div class="ttdeci">void updateScroll()</div><div class="ttdoc">Updates the scrolling of the game.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:394</div></div>
-<div class="ttc" id="aclass_game_form_html_ae0d0ab858de99ec8935c98e6ad0b9a46"><div class="ttname"><a href="class_game_form.html#ae0d0ab858de99ec8935c98e6ad0b9a46">GameForm::quitButtonClicked</a></div><div class="ttdeci">void quitButtonClicked()</div><div class="ttdoc">Signal emitted when the quit button is clicked.</div></div>
+<div class="ttc" id="aclass_game_form_html"><div class="ttname"><a href="class_game_form.html">GameForm</a></div><div class="ttdoc">Represents the game interface. The GameForm class represents the game interface where the game is pla...</div><div class="ttdef"><b>Definition:</b> gameform.h:37</div></div>
+<div class="ttc" id="aclass_game_form_html_a07ecc9468504b29d479445d78a03a3b8"><div class="ttname"><a href="class_game_form.html#a07ecc9468504b29d479445d78a03a3b8">GameForm::displayChrono</a></div><div class="ttdeci">void displayChrono()</div><div class="ttdoc">Displays the chrono at the top right corner.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:561</div></div>
+<div class="ttc" id="aclass_game_form_html_a085119e87e8f5220a3da2a2311b1ed71"><div class="ttname"><a href="class_game_form.html#a085119e87e8f5220a3da2a2311b1ed71">GameForm::checkCollisionFireBalls</a></div><div class="ttdeci">void checkCollisionFireBalls()</div><div class="ttdoc">Checks for collisions with fireballs.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:443</div></div>
+<div class="ttc" id="aclass_game_form_html_a23b137c85d4bae5c8e2b07ce270abb7d"><div class="ttname"><a href="class_game_form.html#a23b137c85d4bae5c8e2b07ce270abb7d">GameForm::checkBowserCollision</a></div><div class="ttdeci">void checkBowserCollision()</div><div class="ttdoc">Checks for collisions with Bowser.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:409</div></div>
+<div class="ttc" id="aclass_game_form_html_a2dbb54a96ca9be0c91db5c1b5bc0c3bc"><div class="ttname"><a href="class_game_form.html#a2dbb54a96ca9be0c91db5c1b5bc0c3bc">GameForm::getScrollArea</a></div><div class="ttdeci">QScrollArea * getScrollArea() const</div><div class="ttdoc">Getter for itsScrollArea.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:112</div></div>
+<div class="ttc" id="aclass_game_form_html_a324273bd6ab9b281af55427c219d2d3d"><div class="ttname"><a href="class_game_form.html#a324273bd6ab9b281af55427c219d2d3d">GameForm::gameWon</a></div><div class="ttdeci">void gameWon(int elapsedTime)</div><div class="ttdoc">Signal emitted when the game is won.</div></div>
+<div class="ttc" id="aclass_game_form_html_a527a1f3aa5c4115f25a0724a50068866"><div class="ttname"><a href="class_game_form.html#a527a1f3aa5c4115f25a0724a50068866">GameForm::checkCharacterCollision</a></div><div class="ttdeci">void checkCharacterCollision()</div><div class="ttdoc">Checks for character collisions.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:191</div></div>
+<div class="ttc" id="aclass_game_form_html_a68a3bb229c812702fd5d2475f6851ea7"><div class="ttname"><a href="class_game_form.html#a68a3bb229c812702fd5d2475f6851ea7">GameForm::gameLosed</a></div><div class="ttdeci">void gameLosed()</div><div class="ttdoc">Signal emitted when the game is losed.</div></div>
+<div class="ttc" id="aclass_game_form_html_a7b1bfa851740c8c62b617621e5a9991e"><div class="ttname"><a href="class_game_form.html#a7b1bfa851740c8c62b617621e5a9991e">GameForm::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Starts the game.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:570</div></div>
+<div class="ttc" id="aclass_game_form_html_a8386c0313181b8b39549e5c53490c943"><div class="ttname"><a href="class_game_form.html#a8386c0313181b8b39549e5c53490c943">GameForm::paintPlayerHelps</a></div><div class="ttdeci">void paintPlayerHelps(QPainter *painter)</div><div class="ttdoc">Paints the player's helps.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:647</div></div>
+<div class="ttc" id="aclass_game_form_html_a84f3d4616130ad4b319be532eff8c95a"><div class="ttname"><a href="class_game_form.html#a84f3d4616130ad4b319be532eff8c95a">GameForm::loadLevel</a></div><div class="ttdeci">void loadLevel()</div><div class="ttdoc">Loads a specific level.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:119</div></div>
+<div class="ttc" id="aclass_game_form_html_a91c7ea0d51aa02f436f5fcbc04833950"><div class="ttname"><a href="class_game_form.html#a91c7ea0d51aa02f436f5fcbc04833950">GameForm::gameloop</a></div><div class="ttdeci">void gameloop()</div><div class="ttdoc">The game loop that updates the game state.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:549</div></div>
+<div class="ttc" id="aclass_game_form_html_a9a68a99923b27abccde9562cf43a5195"><div class="ttname"><a href="class_game_form.html#a9a68a99923b27abccde9562cf43a5195">GameForm::~GameForm</a></div><div class="ttdeci">~GameForm()</div><div class="ttdoc">Destructs the GameForm object.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:98</div></div>
+<div class="ttc" id="aclass_game_form_html_aa6bc375695665688925ed87bbbc005ba"><div class="ttname"><a href="class_game_form.html#aa6bc375695665688925ed87bbbc005ba">GameForm::updateFireBalls</a></div><div class="ttdeci">void updateFireBalls()</div><div class="ttdoc">Updates the fireballs in the game.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:533</div></div>
+<div class="ttc" id="aclass_game_form_html_aab9cda161194e2f0013fd61cdd76fafa"><div class="ttname"><a href="class_game_form.html#aab9cda161194e2f0013fd61cdd76fafa">GameForm::updateScroll</a></div><div class="ttdeci">void updateScroll()</div><div class="ttdoc">Updates the scrolling of the game.</div><div class="ttdef"><b>Definition:</b> gameform.cpp:510</div></div>
 <div class="ttc" id="aclass_mario_html"><div class="ttname"><a href="class_mario.html">Mario</a></div><div class="ttdoc">Represents the player character Mario. The Mario class represents the player character in the game....</div><div class="ttdef"><b>Definition:</b> mario.h:17</div></div>
-<div class="ttc" id="aclass_sound_controller_html"><div class="ttname"><a href="class_sound_controller.html">SoundController</a></div><div class="ttdoc">This class is used to manage the sound of the game.</div><div class="ttdef"><b>Definition:</b> soundcontroller.h:20</div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="class_sound_manager.html">SoundManager</a></div><div class="ttdef"><b>Definition:</b> soundmanager.h:17</div></div>
 <div class="ttc" id="aelement_8h_html"><div class="ttname"><a href="element_8h.html">element.h</a></div><div class="ttdoc">Defines the Element class.</div></div>
 <div class="ttc" id="amario_8h_html"><div class="ttname"><a href="mario_8h.html">mario.h</a></div><div class="ttdoc">Defines the Mario class.</div></div>
-<div class="ttc" id="asoundcontroller_8h_html"><div class="ttname"><a href="soundcontroller_8h.html">soundcontroller.h</a></div><div class="ttdoc">Defines the SoundController class.</div></div>
+<div class="ttc" id="ascoreboard_8h_html"><div class="ttname"><a href="scoreboard_8h.html">scoreboard.h</a></div><div class="ttdoc">Defines the ScoreBoard class.</div></div>
+<div class="ttc" id="asoundmanager_8h_html"><div class="ttname"><a href="soundmanager_8h.html">soundmanager.h</a></div><div class="ttdoc">Defines the SoundManager class.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

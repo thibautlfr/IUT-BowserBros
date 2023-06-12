@@ -17,7 +17,6 @@ private slots:
 
 private:
     Element *testElement1;
-    Element *testElement2;
     QPainter *painter;
     QImage *image;
 };

@@ -1,0 +1,164 @@
+\hypertarget{class_scoreboard_form}{}\doxysection{Scoreboard\+Form Class Reference}
+\label{class_scoreboard_form}\index{ScoreboardForm@{ScoreboardForm}}
+Inheritance diagram for Scoreboard\+Form\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_scoreboard_form}
+\end{center}
+\end{figure}
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scoreboard_form_a8ceb99b236bd7c13ce8bedc860d035db}\label{class_scoreboard_form_a8ceb99b236bd7c13ce8bedc860d035db}} 
+void {\bfseries menu\+Button\+Clicked} ()
+\begin{DoxyCompactList}\small\item\em Signal emitted when the menu button is clicked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scoreboard_form_a569c63f1a18444edbef5ae51a471a2f7}{Scoreboard\+Form}} (QWidget $\ast$parent=nullptr, int elapsed\+Time=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_scoreboard_form}{Scoreboard\+Form}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scoreboard_form_ac6ea56df338260fc336f9ffffe8b9e78}\label{class_scoreboard_form_ac6ea56df338260fc336f9ffffe8b9e78}} 
+{\bfseries $\sim$\+Scoreboard\+Form} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{class_scoreboard_form}{Scoreboard\+Form}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scoreboard_form_a75402362d38ced1124d50783f0d146c8}\label{class_scoreboard_form_a75402362d38ced1124d50783f0d146c8}} 
+void {\bfseries fill\+Scoreboard\+Table} ()
+\begin{DoxyCompactList}\small\item\em Fills the scoreboard table with player names and scores. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scoreboard_form_ad4bfe344a4b41620c9b429c64aa683b0}\label{class_scoreboard_form_ad4bfe344a4b41620c9b429c64aa683b0}} 
+void {\bfseries set\+Settings\+Table} ()
+\begin{DoxyCompactList}\small\item\em Sets the settings for the scoreboard table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_score_board}{Score\+Board}} $\ast$ \mbox{\hyperlink{class_scoreboard_form_a0bd5280a553858578cc0adc4760dc4d8}{its\+Score\+Board}}
+\item 
+QTable\+Widget $\ast$ \mbox{\hyperlink{class_scoreboard_form_a93fd3bec78706236f748e67a65140dc6}{its\+Ranking\+Table}}
+\item 
+QImage \mbox{\hyperlink{class_scoreboard_form_a24c5786cc92599d6805ce81042ed5aa9}{its\+Background}}
+\item 
+QImage \mbox{\hyperlink{class_scoreboard_form_a252a765ed16233ac7b9ba78323913efe}{its\+Floor}}
+\item 
+QImage \mbox{\hyperlink{class_scoreboard_form_ab283e831c146b88f2db29d1df7ed997a}{its\+Mario}}
+\item 
+QImage \mbox{\hyperlink{class_scoreboard_form_a68289fabaa74c47535578aad4b652167}{its\+Bowser}}
+\item 
+QString \mbox{\hyperlink{class_scoreboard_form_ad9c82b9ac268df2ce307c949e8f43f88}{player\+Name}}
+\item 
+float \mbox{\hyperlink{class_scoreboard_form_a8780542afcba7f07969a240c93714724}{player\+Score}}
+\item 
+QLabel $\ast$ \mbox{\hyperlink{class_scoreboard_form_a2468682593788a4b0663519fd647336e}{its\+Title}}
+\item 
+QLabel $\ast$ \mbox{\hyperlink{class_scoreboard_form_ac4035f51bbc68a5d192566c5232e6ae0}{its\+Player\+Time\+Label}}
+\item 
+QLabel $\ast$ \mbox{\hyperlink{class_scoreboard_form_a46508109b4cde0ebcd6c80e6df372ade}{its\+Instructions\+Label}}
+\item 
+QLine\+Edit $\ast$ \mbox{\hyperlink{class_scoreboard_form_a8dcaeb202c8a039ff6289f1484938138}{its\+Pseudo\+Line\+Edit}}
+\item 
+QPush\+Button $\ast$ \mbox{\hyperlink{class_scoreboard_form_a6870688f3c7b7017f75ef4b29c06d010}{enter\+Button}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_scoreboard_form_a569c63f1a18444edbef5ae51a471a2f7}\label{class_scoreboard_form_a569c63f1a18444edbef5ae51a471a2f7}} 
+\index{ScoreboardForm@{ScoreboardForm}!ScoreboardForm@{ScoreboardForm}}
+\index{ScoreboardForm@{ScoreboardForm}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{ScoreboardForm()}{ScoreboardForm()}}
+{\footnotesize\ttfamily Scoreboard\+Form\+::\+Scoreboard\+Form (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr},  }\item[{int}]{elapsed\+Time = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \mbox{\hyperlink{class_scoreboard_form}{Scoreboard\+Form}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent widget (default is nullptr). \\
+\hline
+{\em elapsed\+Time} & The elapsed time for the player\textquotesingle{}s score in milliseconds (default is 0). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_scoreboard_form_a6870688f3c7b7017f75ef4b29c06d010}\label{class_scoreboard_form_a6870688f3c7b7017f75ef4b29c06d010}} 
+\index{ScoreboardForm@{ScoreboardForm}!enterButton@{enterButton}}
+\index{enterButton@{enterButton}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{enterButton}{enterButton}}
+{\footnotesize\ttfamily QPush\+Button$\ast$ Scoreboard\+Form\+::enter\+Button}
+
+The button for entering the player\textquotesingle{}s name. \mbox{\Hypertarget{class_scoreboard_form_a24c5786cc92599d6805ce81042ed5aa9}\label{class_scoreboard_form_a24c5786cc92599d6805ce81042ed5aa9}} 
+\index{ScoreboardForm@{ScoreboardForm}!itsBackground@{itsBackground}}
+\index{itsBackground@{itsBackground}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{itsBackground}{itsBackground}}
+{\footnotesize\ttfamily QImage Scoreboard\+Form\+::its\+Background}
+
+The background image of the scoreboard form. \mbox{\Hypertarget{class_scoreboard_form_a68289fabaa74c47535578aad4b652167}\label{class_scoreboard_form_a68289fabaa74c47535578aad4b652167}} 
+\index{ScoreboardForm@{ScoreboardForm}!itsBowser@{itsBowser}}
+\index{itsBowser@{itsBowser}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{itsBowser}{itsBowser}}
+{\footnotesize\ttfamily QImage Scoreboard\+Form\+::its\+Bowser}
+
+The \mbox{\hyperlink{class_bowser}{Bowser}} image of the scoreboard form. \mbox{\Hypertarget{class_scoreboard_form_a252a765ed16233ac7b9ba78323913efe}\label{class_scoreboard_form_a252a765ed16233ac7b9ba78323913efe}} 
+\index{ScoreboardForm@{ScoreboardForm}!itsFloor@{itsFloor}}
+\index{itsFloor@{itsFloor}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{itsFloor}{itsFloor}}
+{\footnotesize\ttfamily QImage Scoreboard\+Form\+::its\+Floor}
+
+The floor image of the scoreboard form. \mbox{\Hypertarget{class_scoreboard_form_a46508109b4cde0ebcd6c80e6df372ade}\label{class_scoreboard_form_a46508109b4cde0ebcd6c80e6df372ade}} 
+\index{ScoreboardForm@{ScoreboardForm}!itsInstructionsLabel@{itsInstructionsLabel}}
+\index{itsInstructionsLabel@{itsInstructionsLabel}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{itsInstructionsLabel}{itsInstructionsLabel}}
+{\footnotesize\ttfamily QLabel$\ast$ Scoreboard\+Form\+::its\+Instructions\+Label}
+
+The label for displaying instructions. \mbox{\Hypertarget{class_scoreboard_form_ab283e831c146b88f2db29d1df7ed997a}\label{class_scoreboard_form_ab283e831c146b88f2db29d1df7ed997a}} 
+\index{ScoreboardForm@{ScoreboardForm}!itsMario@{itsMario}}
+\index{itsMario@{itsMario}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{itsMario}{itsMario}}
+{\footnotesize\ttfamily QImage Scoreboard\+Form\+::its\+Mario}
+
+The \mbox{\hyperlink{class_mario}{Mario}} image of the scoreboard form. \mbox{\Hypertarget{class_scoreboard_form_ac4035f51bbc68a5d192566c5232e6ae0}\label{class_scoreboard_form_ac4035f51bbc68a5d192566c5232e6ae0}} 
+\index{ScoreboardForm@{ScoreboardForm}!itsPlayerTimeLabel@{itsPlayerTimeLabel}}
+\index{itsPlayerTimeLabel@{itsPlayerTimeLabel}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{itsPlayerTimeLabel}{itsPlayerTimeLabel}}
+{\footnotesize\ttfamily QLabel$\ast$ Scoreboard\+Form\+::its\+Player\+Time\+Label}
+
+The label for displaying the player\textquotesingle{}s time. \mbox{\Hypertarget{class_scoreboard_form_a8dcaeb202c8a039ff6289f1484938138}\label{class_scoreboard_form_a8dcaeb202c8a039ff6289f1484938138}} 
+\index{ScoreboardForm@{ScoreboardForm}!itsPseudoLineEdit@{itsPseudoLineEdit}}
+\index{itsPseudoLineEdit@{itsPseudoLineEdit}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{itsPseudoLineEdit}{itsPseudoLineEdit}}
+{\footnotesize\ttfamily QLine\+Edit$\ast$ Scoreboard\+Form\+::its\+Pseudo\+Line\+Edit}
+
+The line edit for entering the player\textquotesingle{}s name. \mbox{\Hypertarget{class_scoreboard_form_a93fd3bec78706236f748e67a65140dc6}\label{class_scoreboard_form_a93fd3bec78706236f748e67a65140dc6}} 
+\index{ScoreboardForm@{ScoreboardForm}!itsRankingTable@{itsRankingTable}}
+\index{itsRankingTable@{itsRankingTable}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{itsRankingTable}{itsRankingTable}}
+{\footnotesize\ttfamily QTable\+Widget$\ast$ Scoreboard\+Form\+::its\+Ranking\+Table}
+
+The table widget for displaying the scoreboard. \mbox{\Hypertarget{class_scoreboard_form_a0bd5280a553858578cc0adc4760dc4d8}\label{class_scoreboard_form_a0bd5280a553858578cc0adc4760dc4d8}} 
+\index{ScoreboardForm@{ScoreboardForm}!itsScoreBoard@{itsScoreBoard}}
+\index{itsScoreBoard@{itsScoreBoard}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{itsScoreBoard}{itsScoreBoard}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_score_board}{Score\+Board}}$\ast$ Scoreboard\+Form\+::its\+Score\+Board}
+
+The scoreboard object for managing scores. \mbox{\Hypertarget{class_scoreboard_form_a2468682593788a4b0663519fd647336e}\label{class_scoreboard_form_a2468682593788a4b0663519fd647336e}} 
+\index{ScoreboardForm@{ScoreboardForm}!itsTitle@{itsTitle}}
+\index{itsTitle@{itsTitle}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{itsTitle}{itsTitle}}
+{\footnotesize\ttfamily QLabel$\ast$ Scoreboard\+Form\+::its\+Title}
+
+The title label of the scoreboard form. \mbox{\Hypertarget{class_scoreboard_form_ad9c82b9ac268df2ce307c949e8f43f88}\label{class_scoreboard_form_ad9c82b9ac268df2ce307c949e8f43f88}} 
+\index{ScoreboardForm@{ScoreboardForm}!playerName@{playerName}}
+\index{playerName@{playerName}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{playerName}{playerName}}
+{\footnotesize\ttfamily QString Scoreboard\+Form\+::player\+Name}
+
+The name of the player. \mbox{\Hypertarget{class_scoreboard_form_a8780542afcba7f07969a240c93714724}\label{class_scoreboard_form_a8780542afcba7f07969a240c93714724}} 
+\index{ScoreboardForm@{ScoreboardForm}!playerScore@{playerScore}}
+\index{playerScore@{playerScore}!ScoreboardForm@{ScoreboardForm}}
+\doxysubsubsection{\texorpdfstring{playerScore}{playerScore}}
+{\footnotesize\ttfamily float Scoreboard\+Form\+::player\+Score}
+
+The score of the player. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/\mbox{\hyperlink{scoreboardform_8h}{scoreboardform.\+h}}\item 
+/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/scoreboardform.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,61 @@
+\hypertarget{scoreboardform_8h_source}{}\doxysection{scoreboardform.\+h}
+\label{scoreboardform_8h_source}\index{/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23\_BowserBros/BowserBros/App/scoreboardform.h@{/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23\_BowserBros/BowserBros/App/scoreboardform.h}}
+\mbox{\hyperlink{scoreboardform_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ SCOREBOARDFORM\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ SCOREBOARDFORM\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scoreboard_8h}{scoreboard.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}ui\_scoreboardform.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QPainter>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <QTableWidget>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <QLineEdit>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scoreboard_form}{ScoreboardForm}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_scoreboard_form}{ScoreboardForm}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{int}\ elapsedTime\ =\ 0);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_scoreboard_form_ac6ea56df338260fc336f9ffffe8b9e78}{\string~ScoreboardForm}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scoreboard_form_a75402362d38ced1124d50783f0d146c8}{fillScoreboardTable}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scoreboard_form_ad4bfe344a4b41620c9b429c64aa683b0}{setSettingsTable}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_score_board}{ScoreBoard}}\ *\ \mbox{\hyperlink{class_scoreboard_form_a0bd5280a553858578cc0adc4760dc4d8}{itsScoreBoard}};\ }
+\DoxyCodeLine{00053\ \ \ \ \ QTableWidget*\ \mbox{\hyperlink{class_scoreboard_form_a93fd3bec78706236f748e67a65140dc6}{itsRankingTable}};\ }
+\DoxyCodeLine{00055\ \ \ \ \ QImage\ \mbox{\hyperlink{class_scoreboard_form_a24c5786cc92599d6805ce81042ed5aa9}{itsBackground}};\ }
+\DoxyCodeLine{00056\ \ \ \ \ QImage\ \mbox{\hyperlink{class_scoreboard_form_a252a765ed16233ac7b9ba78323913efe}{itsFloor}};\ }
+\DoxyCodeLine{00057\ \ \ \ \ QImage\ \mbox{\hyperlink{class_scoreboard_form_ab283e831c146b88f2db29d1df7ed997a}{itsMario}};\ }
+\DoxyCodeLine{00058\ \ \ \ \ QImage\ \mbox{\hyperlink{class_scoreboard_form_a68289fabaa74c47535578aad4b652167}{itsBowser}};\ }
+\DoxyCodeLine{00060\ \ \ \ \ QString\ \mbox{\hyperlink{class_scoreboard_form_ad9c82b9ac268df2ce307c949e8f43f88}{playerName}};\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_scoreboard_form_a8780542afcba7f07969a240c93714724}{playerScore}};\ }
+\DoxyCodeLine{00063\ \ \ \ \ QLabel\ *\ \mbox{\hyperlink{class_scoreboard_form_a2468682593788a4b0663519fd647336e}{itsTitle}};\ }
+\DoxyCodeLine{00064\ \ \ \ \ QLabel\ *\ \mbox{\hyperlink{class_scoreboard_form_ac4035f51bbc68a5d192566c5232e6ae0}{itsPlayerTimeLabel}};\ }
+\DoxyCodeLine{00065\ \ \ \ \ QLabel\ *\ \mbox{\hyperlink{class_scoreboard_form_a46508109b4cde0ebcd6c80e6df372ade}{itsInstructionsLabel}};\ }
+\DoxyCodeLine{00066\ \ \ \ \ QLineEdit\ *\ \mbox{\hyperlink{class_scoreboard_form_a8dcaeb202c8a039ff6289f1484938138}{itsPseudoLineEdit}};\ }
+\DoxyCodeLine{00068\ \ \ \ \ QPushButton\ *\ \mbox{\hyperlink{class_scoreboard_form_a6870688f3c7b7017f75ef4b29c06d010}{enterButton}};\ }
+\DoxyCodeLine{00070\ signals:}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scoreboard_form_a8ceb99b236bd7c13ce8bedc860d035db}{menuButtonClicked}}();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ onNameEntered();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ \ \ Ui::ScoreboardForm\ *ui;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ paintEvent(QPaintEvent\ *event);}
+\DoxyCodeLine{00090\ \};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SCOREBOARDFORM\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,50 @@
+\hypertarget{soundmanager_8h_source}{}\doxysection{soundmanager.\+h}
+\label{soundmanager_8h_source}\index{/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23\_BowserBros/BowserBros/App/soundmanager.h@{/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23\_BowserBros/BowserBros/App/soundmanager.h}}
+\mbox{\hyperlink{soundmanager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ SOUNDMANAGER\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SOUNDMANAGER\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QSoundEffect>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_manager}{SoundManager}}\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_sound_manager}{SoundManager}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_sound_manager_ad5dbf8eab22db48ff8f3db51b02f8938}{\string~SoundManager}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a731e77036e5dff6dc7e200bbae94631d}{playJumpEffect}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a773c01a5cadf25de0b31f0ae90ba2ed2}{playMainMusic}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a8b60e29894d21df2c2e48f898d6e0da7}{playDeathMusic}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_afb42de26e643d5fa91a6835763174c7e}{playWinMusic}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_afef8416d8ded26f6b597d50d6549b899}{playLevelPassedMusic}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_ac8dae0514bc7f73779bbb8ada97d64b7}{playMenuMusic}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_ae1838019fe2b6407ef697b81527ae3a8}{stopAllSounds}}();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00070\ \ \ \ \ QSoundEffect\ *jumpEffect;\ }
+\DoxyCodeLine{00071\ \ \ \ \ QSoundEffect\ *mainMusic;\ }
+\DoxyCodeLine{00072\ \ \ \ \ QSoundEffect\ *deathMusic;\ }
+\DoxyCodeLine{00073\ \ \ \ \ QSoundEffect\ *winMusic;\ }
+\DoxyCodeLine{00074\ \ \ \ \ QSoundEffect\ *levelPassedMusic;\ }
+\DoxyCodeLine{00075\ \ \ \ \ QSoundEffect\ *menuMusic;\ }
+\DoxyCodeLine{00077\ signals:}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a4294cbd9c215a38aaa396a913e0b2611}{musicFinished}}();}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SOUNDMANAGER\_H}}
+
+\end{DoxyCode}
