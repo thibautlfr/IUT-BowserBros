@@ -38,6 +38,7 @@ private:
     float itsY; /**< The y-coordinate of the element's position. */
     QRect itsRect; /**< The bounding rectangle of the element. */
     QImage itsImage; /**< The image of the element. */
+    ElementType itsType ;
 
 public:
     /**
@@ -47,7 +48,7 @@ public:
       * @param width The width of the element.
       * @param height The height of the element.
      */
-    Element(float x, float y, int width, int height);
+    Element(float x, float y, ElementType type);
 
     /**
       * @brief Constructs an Element object with position and asset.

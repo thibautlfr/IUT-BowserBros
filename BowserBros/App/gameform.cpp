@@ -158,33 +158,14 @@ void GameForm::loadLevel() {
                 int y = coords[1].toInt();
                 int type = coords[2].toInt();
                 qDebug() << "Bloc créé en " << x << " ; " << y ;
-
-                switch (ElementType(type)) {
-                case BREAKABLE1:
-                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block1.jpg"));
-                    break;
-                case BREAKABLE2:
-                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block5.jpg"));
-                    break;
-                case UNBREAKABLE:
-                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block6.jpg"));
-                    break;
-                case LUCKYBLOCK1:
-                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block3.jpg"));
-                    break;
-                case LUCKYBLOCK2:
-                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block2.jpg"));
-                    break;
-                case CRACKELED:
-                    itsBlocks.push_back(new Element(x, height() - y, ":Assets/Assets/block/block4.jpg"));
-                    break;
-                case CHEST:
-                    itsChest = new Element(x, height() - y, ":Assets/Assets/other/chest.png");
-                    break;
-                default:
-                    break;
+                if(type == CHEST)
+                {
+                    itsChest = new Element(x, height() - y, CHEST) ;
                 }
-                ;
+                else
+                {
+                    itsBlocks.push_back(new Element(x, height() - y, ElementType(type)));
+                }
             } else {
                 qDebug() << "Erreur de lecture du fichier du niveau!";
                 break;
@@ -698,10 +679,3 @@ void GameForm::paintPlayerHelps(QPainter* painter)
     int levely = itsBoss->getItsY()-20;
     levelLabel->move(levelx, levely); // Déplacer le timeLabel à la position calculée
 }
-
-
-
-
-
-
-

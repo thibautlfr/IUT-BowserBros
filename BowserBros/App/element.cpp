@@ -1,11 +1,38 @@
 #include "element.h"
 
-Element::Element(float x, float y, int width, int height)
+Element::Element(float x, float y, ElementType type)
 {
     itsX = x;
     itsY = y;
+    itsType = type;
 
-    itsRect = QRect(itsX, itsY, width, height);
+    switch (type) {
+    case BREAKABLE1:
+        itsImage.load(QString::fromStdString(":Assets/Assets/block/block1.jpg"));
+        break;
+    case BREAKABLE2:
+        itsImage.load(QString::fromStdString(":Assets/Assets/block/block5.jpg"));
+        break;
+    case UNBREAKABLE:
+        itsImage.load(QString::fromStdString(":Assets/Assets/block/block6.jpg"));
+        break;
+    case LUCKYBLOCK1:
+        itsImage.load(QString::fromStdString(":Assets/Assets/block/block3.jpg"));
+        break;
+    case LUCKYBLOCK2:
+        itsImage.load(QString::fromStdString(":Assets/Assets/block/block2.jpg"));
+        break;
+    case CRACKELED:
+        itsImage.load(QString::fromStdString(":Assets/Assets/block/block4.jpg"));
+        break;
+    case CHEST:
+        itsImage.load(QString::fromStdString(":Assets/Assets/other/chest.png"));
+        break;
+    default:
+        break;
+    }
+    itsRect = QRect(itsX, itsY, itsImage.width(), itsImage.height());
+    Q_ASSERT(!itsImage.isNull());
 }
 
 Element::Element(float x, float y, string asset)
