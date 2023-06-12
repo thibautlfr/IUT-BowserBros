@@ -224,9 +224,11 @@ void GameForm::checkCharacterCollision()
     // On vérifie si le joueur touche le coffre
     if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
     {
+
         // Arrêtez le jeu et revenez au menu
         if (itsLevel == itsAvalaibleLevelsNb)
         {
+            qDebug() << "dernier niveau gagné" ;
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
             itsCharacter->setItsY(itsCharacter->getItsY() - 5); // Déplace vers le haut de 10 pixels
             itsTimer->stop();
@@ -242,13 +244,14 @@ void GameForm::checkCharacterCollision()
             itsCharacter->setItsY(itsCharacter->getItsY() - 5); // Déplace vers le haut de 10 pixels
             itsTimer->stop();
             soundManager->playLevelPassedMusic();
+            itsLevel ++;
 
             QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
                 soundManager->playMainMusic();
-                itsLevel ++;
                 itsTimer->start();
                 loadLevel();
             });
+
         }
         return;
     }
@@ -560,6 +563,7 @@ void GameForm::updateFireBalls()
 
 void GameForm::gameloop()
 {
+    qDebug() << "niveau actuel :" << itsLevel ;
     elapsedTime += 10;
     displayChrono();
     checkCharacterCollision();
