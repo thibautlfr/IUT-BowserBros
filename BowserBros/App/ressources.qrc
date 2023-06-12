@@ -2,7 +2,6 @@
     <qresource prefix="/Levels">
         <file>Levels/level1.txt</file>
         <file>Levels/level2.txt</file>
-        <file>Levels/level3.txt</file>
     </qresource>
     <qresource prefix="/Assets">
         <file>Assets/background/background1.png</file>
@@ -56,7 +55,6 @@
         <file>Assets/ennemis/ennemiLrun.png</file>
         <file>Assets/ennemis/ennemiR.png</file>
         <file>Assets/ennemis/ennemiRrun.png</file>
-        <file>Assets/background/background3.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>
