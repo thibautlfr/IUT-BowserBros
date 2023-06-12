@@ -43,6 +43,8 @@
         <file>Assets/other/enter_key.png</file>
         <file>Assets/other/podium.png</file>
         <file>Assets/menu/menu.png</file>
+        <file>Assets/mario/mariowin.png</file>
+        <file>Assets/mario/mariodead.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>
