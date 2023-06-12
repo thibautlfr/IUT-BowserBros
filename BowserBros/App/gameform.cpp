@@ -227,6 +227,7 @@ void GameForm::checkCharacterCollision()
         // Arrêtez le jeu et revenez au menu
         if (itsLevel == itsAvalaibleLevelsNb)
         {
+            itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
             itsTimer->stop();
             soundManager->playWinMusic();
 
@@ -236,6 +237,7 @@ void GameForm::checkCharacterCollision()
         }
         else
         {
+            itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
             itsTimer->stop();
             soundManager->playLevelPassedMusic();
 
@@ -449,6 +451,7 @@ void GameForm::checkCollisionFireBalls()
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
             /// Arrêtez le jeu et revenez au menu
+            itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
             itsTimer->stop();
 
             soundManager->playDeathMusic();
