@@ -228,6 +228,7 @@ void GameForm::checkCharacterCollision()
         if (itsLevel == itsAvalaibleLevelsNb)
         {
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
+            itsCharacter->setItsY(itsCharacter->getItsY() - 5); // Déplace vers le haut de 10 pixels
             itsTimer->stop();
             soundManager->playWinMusic();
 
@@ -238,6 +239,7 @@ void GameForm::checkCharacterCollision()
         else
         {
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
+            itsCharacter->setItsY(itsCharacter->getItsY() - 5); // Déplace vers le haut de 10 pixels
             itsTimer->stop();
             soundManager->playLevelPassedMusic();
 
@@ -477,7 +479,7 @@ void GameForm::checkCollisionFireBalls()
                 if (block->getItsType() == CRACKELED)
                 {
                     delete block;
-                    itsBlocks.erase(std::remove(itsBlocks.begin(), itsBlocks.end(), block), itsBlocks.end());
+                    itsBlocks.erase(remove(itsBlocks.begin(), itsBlocks.end(), block), itsBlocks.end());
                 }
 
                 isCollision = true;
