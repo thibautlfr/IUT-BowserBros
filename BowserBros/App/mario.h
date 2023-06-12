@@ -56,6 +56,7 @@ public:
       * @brief Makes Mario jump.
      */
     void jump();
+
     /**
       * @brief Updates the asset of Mario based on the elapsed time.
       * @param timeElapsed The elapsed time since the last update.

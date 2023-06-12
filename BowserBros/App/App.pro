@@ -16,6 +16,7 @@ SOURCES += \
     fireball.cpp \
     gameform.cpp \
     goomba.cpp \
+    koopa.cpp \
     main.cpp \
     mario.cpp \
     menuform.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     fireball.h \
     gameform.h \
     goomba.h \
+    koopa.h \
     mario.h \
     menuform.h \
     scoreboardform.h \

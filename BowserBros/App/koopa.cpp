@@ -1,6 +1,6 @@
-#include "goomba.h"
+#include "koopa.h"
 
-Goomba::Goomba(float x, float y, string asset)
+Koopa::Koopa(float x, float y, string asset)
     :Entity(x, y, asset)
 {
     itsX = x;
@@ -15,43 +15,43 @@ Goomba::Goomba(float x, float y, string asset)
 
 // ---------------------------------------------------------------------------------------------
 
-bool Goomba::getOnPlatform()
+bool Koopa::getOnPlatform()
 {
     return isOnPlatform;
 }
 
-void Goomba::setOnPlatform(bool onPlatform)
+void Koopa::setOnPlatform(bool onPlatform)
 {
     isOnPlatform = onPlatform;
 }
 
-bool Goomba::getIsDead() const
+bool Koopa::getIsDead() const
 {
     return isDead;
 }
 
-void Goomba::setIsDead(bool newIsDead)
+void Koopa::setIsDead(bool newIsDead)
 {
     isDead = newIsDead;
 }
 
 // ---------------------------------------------------------------------------------------------
 
-void Goomba::updateAsset(int timeElapsed)
+void Koopa::updateAsset(int timeElapsed)
 {
     if (isDead)
     {
-        itsImage.load(":Assets/Assets/ennemis/goombaDead.png");
+        itsImage.load(":Assets/Assets/ennemis/koopaDead.png");
     }
     else
     {
         if(itsXSpeed > 0)
         {
-            int(timeElapsed / 150) % 2 == 1? itsImage.load(":Assets/Assets/ennemis/goombaR1.png"): itsImage.load(":Assets/Assets/ennemis/goombaR2.png");
+            int(timeElapsed / 150) % 2 == 1? itsImage.load(":Assets/Assets/ennemis/koopaR1.png"): itsImage.load(":Assets/Assets/ennemis/koopaR2.png");
         }
         else if(itsXSpeed < 0)
         {
-            int(timeElapsed / 150) % 2 == 1? itsImage.load(":Assets/Assets/ennemis/goombaL1.png"): itsImage.load(":Assets/Assets/ennemis/goombaL2.png");
+            int(timeElapsed / 150) % 2 == 1? itsImage.load(":Assets/Assets/ennemis/koopaL1.png"): itsImage.load(":Assets/Assets/ennemis/koopaL2.png");
         }
     }
     itsRect = itsImage.rect();

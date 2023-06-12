@@ -20,6 +20,7 @@
 #include "mario.h"
 #include "bowser.h"
 #include "goomba.h"
+#include "koopa.h"
 #include "element.h"
 
 using namespace std;
@@ -76,7 +77,11 @@ public:
 
     void checkGoombasCollision();
 
+    void checkKoopasCollision();
+
+
     // --------------------------------------------------------------------------------------------
+
 
     /**
       * @brief Paints the player's helps.
@@ -142,6 +147,7 @@ private:
     Mario *itsCharacter; /**< The player character. */
     Bowser *itsBoss; /**< The boss character. */
     vector<Goomba*> itsGoombas;
+    vector<Koopa*> itsKoopas;
     Element *itsFloor; /**< The floor element. */
     Element *itsChest; /**< The chest element. */
 
