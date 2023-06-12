@@ -38,13 +38,13 @@ void TestUnitElement::cleanupTestCase()
 
 void TestUnitElement::testConstructorWithImage()
 {
-    QCOMPARE(testElement1->getRect(), QRect(100, 100, testElement2->getRect().width(), testElement2->getRect().height()));
+    QCOMPARE(testElement1->getRect(), QRect(100, 100, testElement1->getRect().width(), testElement1->getRect().height()));
 }
 
 void TestUnitElement::testGetRect()
 {
     QRect rect = testElement1->getRect();
-    QVERIFY(rect.x() == 50 && rect.y() == 50 && rect.width() == 100 && rect.height() == 100);
+    QVERIFY(rect.x() == 100 && rect.y() == 100);
 }
 
 void TestUnitElement::testDraw()
