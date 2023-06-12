@@ -19,8 +19,8 @@
 #include "soundmanager.h"
 #include "mario.h"
 #include "bowser.h"
+#include "goomba.h"
 #include "element.h"
-#include "scoreboard.h"
 
 using namespace std;
 namespace Ui {
@@ -73,6 +73,8 @@ public:
       * @brief Checks for collisions with fireballs.
      */
     void checkCollisionFireBalls();
+
+    void checkGoombasCollision();
 
     // --------------------------------------------------------------------------------------------
 
@@ -139,6 +141,7 @@ private:
 
     Mario *itsCharacter; /**< The player character. */
     Bowser *itsBoss; /**< The boss character. */
+    vector<Goomba*> itsGoombas;
     Element *itsFloor; /**< The floor element. */
     Element *itsChest; /**< The chest element. */
 
@@ -156,7 +159,6 @@ private:
     QScrollArea *itsScrollArea; /**< The scroll area for the game. */
     QTimer *itsTimer; /**< The timer for the game loop. */
     vector<Element*> itsBlocks; /**< The list of blocks in the game. */
-
     SoundManager *soundManager; /**< Attribute used to mange sounds during the game */
 
     // --------------------------------------------------------------------------------------------

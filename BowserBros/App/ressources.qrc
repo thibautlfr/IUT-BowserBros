@@ -45,16 +45,16 @@
         <file>Assets/menu/menu.png</file>
         <file>Assets/mario/mariowin.png</file>
         <file>Assets/mario/mariodead.png</file>
-        <file>Assets/ennemis/ennemi2dead.png</file>
-        <file>Assets/ennemis/ennemi2L.png</file>
-        <file>Assets/ennemis/ennemi2Lrun.png</file>
-        <file>Assets/ennemis/ennemi2R.png</file>
-        <file>Assets/ennemis/ennemi2Rrun.png</file>
-        <file>Assets/ennemis/ennemidead.png</file>
-        <file>Assets/ennemis/ennemiL.png</file>
-        <file>Assets/ennemis/ennemiLrun.png</file>
-        <file>Assets/ennemis/ennemiR.png</file>
-        <file>Assets/ennemis/ennemiRrun.png</file>
+        <file>Assets/ennemis/goombaDead.png</file>
+        <file>Assets/ennemis/goombaL1.png</file>
+        <file>Assets/ennemis/goombaL2.png</file>
+        <file>Assets/ennemis/goombaR1.png</file>
+        <file>Assets/ennemis/goombaR2.png</file>
+        <file>Assets/ennemis/koopaDead.png</file>
+        <file>Assets/ennemis/koopaL1.png</file>
+        <file>Assets/ennemis/koopaL2.png</file>
+        <file>Assets/ennemis/koopaR1.png</file>
+        <file>Assets/ennemis/koopaR2.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>

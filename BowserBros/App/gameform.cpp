@@ -35,7 +35,6 @@ GameForm::GameForm(QWidget *parent)
 
     //=============================================================
 
-
     // Charger la police depuis le fichier
     QString fontPath = ":Fonts/Fonts/policeMario2.ttf";
     int fontId = QFontDatabase::addApplicationFont(fontPath);
@@ -98,6 +97,7 @@ GameForm::GameForm(QWidget *parent)
 GameForm::~GameForm()
 {
     // Suppression du gestionnaire de son
+    itsBlocks.clear();
     delete soundManager;
     delete itsCharacter;
     delete itsBoss;
@@ -130,6 +130,7 @@ void GameForm::loadLevel() {
         itsCharacter->setItsY(height() - 100);
         itsBoss->setItsX(width()-80);
         itsBoss->setItsY(height()-570);
+        itsBoss->getItsFireBalls()->clear();
         itsBlocks.clear();
     }
 
@@ -138,8 +139,6 @@ void GameForm::loadLevel() {
     {
         soundManager->playMainMusic();
     }
-
-
 
     // Chargement du fichier texte du niveau ainsi que du background
     QString filename = ":Levels/Levels/level" + QString::number(itsLevel) + ".txt";
@@ -156,14 +155,18 @@ void GameForm::loadLevel() {
             if (coords.size() == 3) {
                 int x = coords[0].toInt();
                 int y = coords[1].toInt();
-                int type = coords[2].toInt();
-                qDebug() << "Bloc créé en " << x << " ; " << y ;
+                int type = coords[2].toInt();            
                 if(type == CHEST)
                 {
                     itsChest = new Element(x, height() - y, CHEST) ;
                 }
+                else if(type == 11)
+                {
+                    itsGoombas.push_back(new Goomba(x, height()-y, ":Assets/Assets/ennemis/goombaR1.png"));
+                }
                 else
                 {
+                    qDebug() << "Bloc créé en " << x << " ; " << y ;
                     itsBlocks.push_back(new Element(x, height() - y, ElementType(type)));
                 }
             } else {
@@ -405,8 +408,6 @@ void GameForm::checkCharacterCollision()
 
 }
 
-
-
 // Gère les déplacements de Bowser
 void GameForm::checkBowserCollision()
 {
@@ -508,6 +509,245 @@ void GameForm::checkCollisionFireBalls()
     }
 }
 
+void GameForm::checkGoombasCollision()
+{
+
+    // Maximum distance for the blocks concerned
+    const int DISTANCE_THRESHOLD = 25;
+
+    // Vecteur contenant les goombas dans le champ de vision de mario
+    vector<Goomba*> visibleGoombas;
+
+    float characterY = itsCharacter->getItsY();
+    for (Goomba * goomba : itsGoombas)
+    {
+        if (characterY > height()-300 && goomba->getItsY() >= height()-600)
+        {
+            visibleGoombas.push_back(goomba);
+        }
+        else if (characterY < height()-300 && characterY > 300 && goomba->getItsY() > characterY-300)
+        {
+            visibleGoombas.push_back(goomba);
+        }
+        else if (characterY < 300 && goomba->getItsY() < 600)
+        {
+            visibleGoombas.push_back(goomba);
+        }
+
+    }
+
+    // On parcours chaque goomba du vecteur
+    for (Goomba * goomba : visibleGoombas)
+    {
+        QRect goombaRect = goomba->getItsRect();
+        QRect characterRect = itsCharacter->getItsRect();
+
+        // Changement de la vitesse du goomba si il vient d'apparaitre dans le champ de vision du joueur
+        if (goomba->getXSpeed() == 0 and !goomba->getIsDead())
+        {
+            goomba->getItsX() > itsCharacter->getItsX() ? goomba->setXSpeed(-0.4) : goomba->setXSpeed(0.4);
+        }
+
+        // Vérifie les collisions entre le goomba et mario
+        if (goombaRect.intersects(characterRect))
+        {
+            // Si le joueur arrive du haut
+            if ( (itsCharacter->getYSpeed() > 0) && ( goombaRect.top() - characterRect.top() > 0) && !goomba->getIsDead())
+            {
+                goomba->setXSpeed(0);
+                goomba->setIsDead(true);
+                itsCharacter->setYSpeed(-5);
+            }
+            // Sinon, le joueur perds
+            else if(!goomba->getIsDead())
+            {
+                /// Arrêtez le jeu et revenez au menu
+                itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
+                itsTimer->stop();
+
+                soundManager->playDeathMusic();
+
+                QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                    emit gameLosed();
+                });
+
+                return; // Sortir de la boucle car un ennemi à touché mario
+            }
+
+        }
+
+
+        // ---------------------------------------------------------------------------------------------
+
+        // Vecteur contenant les blocs proche du goomba
+        vector<Element*> nearlyBlocks;
+
+        for (Element * block : itsBlocks)
+        {
+            int distanceX = abs(goomba->getItsRect().center().x() - block->getRect().center().x());
+
+            // Add only the block near to the player
+            if (distanceX < DISTANCE_THRESHOLD)
+            {
+                nearlyBlocks.push_back(block);
+
+            }
+        }
+
+        // ---------------------------------------------------------------------------------------------
+
+        goomba->setOnPlatform(false);
+        // On vérifie que le cube n'est pas sur le sol
+        if ((itsFloor->getRect().top() - (goomba->getItsRect().bottom()) == 1) ||
+            itsFloor->getRect().top() - (goomba->getItsRect().bottom() + 5) == 1  )
+        {
+            for (Element * block : nearlyBlocks)
+            {
+                // Récupérer les rectangles du personnage et de la plateforme
+                QRect platformRect = block->getRect();
+
+                if(goomba->getItsRect().intersects(platformRect))
+                {
+                    // Si il arrive de la droite
+                    if(goomba->getXSpeed() < 0 and goomba->getItsRect().left() - platformRect.left() > 0)
+                    {
+                        goomba->setItsX(platformRect.right()+1);
+                    }
+                    else if(goomba->getXSpeed() > 0 and goomba->getItsRect().right() - platformRect.right() < 0)
+                    {
+                        goomba->setItsX(platformRect.left()-goomba->getItsRect().width());
+                    }
+                }
+            }
+            goomba->setOnPlatform(true);
+            if (itsFloor->getRect().top() - (goomba->getItsRect().bottom() + 5) == 1)
+            {
+                goomba->setItsY(goomba->getItsY() + 5);
+            }
+            goomba->calculatePosition();
+            goomba->updateAsset(elapsedTime);
+        }
+
+        // On vérifie que le cube n'est sur aucunes des plateformes
+        for (Element * block : nearlyBlocks)
+        {
+            if (
+                // Si le rectangle est déjà sur la plateforme
+                ((block->getRect().top() - (goomba->getItsRect().bottom()) == 1) ||
+                 (block->getRect().top() - (goomba->getItsRect().bottom() + 5) == 1)) &&
+                // ...ET qu'il n'est PAS PAS sur la plateforme (sur l'axe X)
+                !( (goomba->getItsRect().right() < block->getRect().left()) ||
+                  (goomba->getItsRect().left() > block->getRect().right()) )
+                )
+            {
+                for (Element * otherBlock : nearlyBlocks)
+                {
+                    // Récupérer les rectangles de la plateforme
+                    QRect platformRect = otherBlock->getRect();
+
+                    if(goomba->getItsRect().intersects(platformRect))
+                    {
+                        // Si il arrive de la droite
+                        if(goomba->getXSpeed() < 0 and goomba->getItsRect().left() - platformRect.left() > 0)
+                        {
+                            goomba->setItsX(platformRect.right()+1);
+                        }
+                        else if(goomba->getXSpeed() > 0 and goomba->getItsRect().right() - platformRect.right() < 0)
+                        {
+                            goomba->setItsX(platformRect.left()-goomba->getItsRect().width());
+                        }
+                    }
+                }
+                goomba->setOnPlatform(true);
+                if (block->getRect().top() - (goomba->getItsRect().bottom() + 5) == 1)
+                {
+                    goomba->setItsY(goomba->getItsY() + 5);
+                }
+                goomba->calculatePosition();
+                goomba->updateAsset(elapsedTime);
+            }
+        }
+
+        // Si il est ni sur le sol ni sur une plateforme alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
+        if (goomba->getOnPlatform() == false)
+        {
+            // Gérer les collisions avec les plateformes
+            for (Element * block : nearlyBlocks)
+            {
+                // Récupérer les rectangles du personnage et de la plateforme
+                QRect platformRect = block->getRect();
+
+                // Si le personnage touche une plateforme
+                if(goomba->getItsRect().intersects(platformRect))
+                {
+
+                    // Si le joueur arrive de la droite
+                    if((goomba->getItsRect().left() - platformRect.right() <= 0 and goomba->getItsRect().left() - platformRect.right() >=-1) )
+                    {
+                        goomba->setItsX(goomba->getItsX()+1);
+                        goomba->setXSpeed(0);
+
+                    }
+                    // Si le joueur arrive de la gauche
+                    else if (goomba->getItsRect().right() - platformRect.left() >= 0 and goomba->getItsRect().right() - platformRect.left() <=1)
+                    {
+                        goomba->setItsX(goomba->getItsX()-1);
+                        goomba->setXSpeed(0);
+
+                    }
+                    // Si il arrive d'en bas
+                    else if(goomba->getYSpeed() < 0)
+                    {
+                        goomba->setItsY(platformRect.bottom()+1);
+                        goomba->reverseYSpeed();
+                    }
+
+                    // Si il arrive d'en haut
+                    else if ( (goomba->getYSpeed() >= 0) && ( platformRect.top() - goomba->getItsY() >= 0) )
+                    {
+                        goomba->setItsY(platformRect.top() - goomba->getItsRect().height());
+                        goomba->setYSpeed(0);
+                        goomba->setOnPlatform(true);
+                    }
+                }
+            }
+
+            // Gérer les collision avec le sol
+            if (goomba->getItsRect().intersects(itsFloor->getRect()))
+            {
+                goomba->setYSpeed(0);
+                goomba->setItsY(itsFloor->getRect().top() - goomba->getItsRect().height());
+            }
+            else
+            {
+                // Si le personnage est en train de sauter, appliquez une force de gravité pour faire redescendre le personnage
+                if (goomba->getYSpeed() < 0)
+                {
+                    goomba->setYSpeed(goomba->getYSpeed() + GRAVITY);
+                    if(goomba->getYSpeed() == 0)
+                    {
+                        goomba->setYSpeed(goomba->getYSpeed() + GRAVITY);
+                    }
+                }
+                // Si le personnage est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
+                else if (goomba->getYSpeed() > 0)
+                {
+                    goomba->setYSpeed(goomba->getYSpeed() + GRAVITY);
+                }
+
+                else if(goomba->getYSpeed()==0 && goomba->getItsY() != (this->height() - (goomba->getItsRect().height() + 1)) && !goomba->getOnPlatform())
+                {
+                    goomba->setYSpeed(goomba->getYSpeed() + GRAVITY);
+                }
+            }
+        }
+
+
+        goomba->calculatePosition();
+        goomba->updateAsset(elapsedTime);
+    }
+}
+
 // ---------------------------------------------------------------------------------------------------------
 
 void GameForm::updateScroll() {
@@ -554,6 +794,7 @@ void GameForm::gameloop()
     elapsedTime += 10;
     displayChrono();
     checkCharacterCollision();
+    checkGoombasCollision();
     checkBowserCollision();
     checkCollisionFireBalls();
     updateScroll();
@@ -643,6 +884,11 @@ void GameForm::paintEvent(QPaintEvent *event)
 
     itsCharacter->draw(painter);
     itsBoss->draw(painter);
+
+    for (Goomba * goomba : itsGoombas)
+    {
+        goomba->draw(painter);
+    }
 
     delete painter;
 }
