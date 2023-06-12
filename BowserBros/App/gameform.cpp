@@ -450,7 +450,7 @@ void GameForm::checkCollisionFireBalls()
     {
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
-            /// Arrêtez le jeu et revenez au menu
+            // Arrêtez le jeu et revenez au menu
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
             itsTimer->stop();
 
@@ -473,6 +473,13 @@ void GameForm::checkCollisionFireBalls()
         {
             if ((*it)->getItsRect().intersects(block->getRect()))
             {
+                // Vérifier si le bloc est de type 6 (BREAKABLE2) et détruire le bloc
+                if (block->getItsType() == CRACKELED)
+                {
+                    delete block;
+                    itsBlocks.erase(std::remove(itsBlocks.begin(), itsBlocks.end(), block), itsBlocks.end());
+                }
+
                 isCollision = true;
                 break;
             }
