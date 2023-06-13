@@ -14,10 +14,20 @@ Widget::Widget(QWidget *parent)
 
     //=======================================================================
 
-    // Change le titre et l'icone de la fenêtre
-    setWindowTitle("BowserBros");
-    QIcon newIcon(":Assets/Assets/other/chest.png");
-    setWindowIcon(newIcon);
+    // Change le titre de la fenêtre
+    setWindowTitle("Bowser Bros");
+
+    /// Change le titre de la fenêtre
+    setWindowTitle("Bowser Bros");
+
+    // Changer l'icône de l'application
+    QApplication::setWindowIcon(QIcon(":Assets/Assets/other/logo.ico"));
+
+    // Changer l'icône du widget
+    setWindowIcon(QIcon(":Assets/Assets/other/chest.png"));
+
+
+    //=======================================================================
 
     // Création du stacked widget
     stackedWidget = new QStackedWidget;

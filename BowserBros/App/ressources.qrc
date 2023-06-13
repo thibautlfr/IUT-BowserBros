@@ -57,6 +57,7 @@
         <file>Assets/ennemis/ennemiR.png</file>
         <file>Assets/ennemis/ennemiRrun.png</file>
         <file>Assets/background/background3.png</file>
+        <file>Assets/other/logo.ico</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>
