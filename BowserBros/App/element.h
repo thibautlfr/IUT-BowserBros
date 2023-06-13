@@ -23,8 +23,8 @@ enum ElementType {
     LUCKYBLOCK1, /**< LuckyBlock1 element type. */
     LUCKYBLOCK2, /**< LuckyBlock2 element type. */
     UNBREAKABLE, /**< Unbreakable element type. */
-    CRACKELED, /**< Cracked element type. */
-    LADDER
+    CRACKELED, /**< Crackeled element type. */
+    LADDER /**< Ladder type */
 };
 
 /**
@@ -39,15 +39,14 @@ private:
     float itsY; /**< The y-coordinate of the element's position. */
     QRect itsRect; /**< The bounding rectangle of the element. */
     QImage itsImage; /**< The image of the element. */
-    ElementType itsType ;
+    ElementType itsType ; /**< The type of the element. */
 
 public:
     /**
       * @brief Constructs an Element object with position and size.
       * @param x The x-coordinate of the element's position.
       * @param y The y-coordinate of the element's position.
-      * @param width The width of the element.
-      * @param height The height of the element.
+      * @param type The type of the element created.
      */
     Element(float x, float y, ElementType type);
 
@@ -68,22 +67,22 @@ public:
     QRect getRect();
 
     /**
-      * @brief Returns the y-speed of the element.
-      * @return The y-speed of the element.
-     */
-    float getYSpeed();
-
-    /**
-     * @brief Getter for itsX
-     * @return the X of the element
+     * @brief Returns the x-coordinate of the element
+     * @return The X of the element
      */
     int getItsX();
 
     /**
-     * @brief Getter for itsY
-     * @return the Y of the element
+     * @brief Returns the y-coordinate of the element
+     * @return The Y of the element
      */
     int getItsY();
+
+    /**
+      * @brief Returns the y-speed of the element.
+      * @return The y-speed of the element.
+     */
+    float getYSpeed();
 
     /**
       * @brief Returns the type of the element.

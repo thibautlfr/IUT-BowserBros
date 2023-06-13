@@ -32,7 +32,6 @@ public:
      * @param elapsedTime The elapsed time for the player's score in milliseconds (default is 0).
      */
     explicit ScoreboardForm(QWidget *parent = nullptr, int elapsedTime = 0);
-
     /**
      * @brief Destructor for the ScoreboardForm object.
      */
@@ -48,7 +47,7 @@ public:
      */
     void setSettingsTable();
 
-        ScoreBoard * itsScoreBoard; /**< The scoreboard object for managing scores. */
+    ScoreBoard * itsScoreBoard; /**< The scoreboard object for managing scores. */
 
     QTableWidget* itsRankingTable; /**< The table widget for displaying the scoreboard. */
 

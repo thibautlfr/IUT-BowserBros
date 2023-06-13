@@ -22,6 +22,7 @@ class Bowser : public Entity
 {
 private:
     vector<FireBall*> * itsFireBalls; /**< Pointer to the vector of FireBall objects. */
+
 public:
     /**
       * @brief Constructs a Bowser object.
@@ -50,15 +51,9 @@ public:
 
     /**
       * @brief Drops a FireBall.
-      *
       * Creates a new FireBall object and adds it to the vector of FireBall objects.
      */
     void dropFireBall();
 
-    /**
-      * @brief Erases a FireBall.
-      * @param it An iterator pointing to the FireBall to be erased.
-     */
-    void eraseFireBall(vector<FireBall*>::iterator it);
 };
 #endif // BOWSER_H

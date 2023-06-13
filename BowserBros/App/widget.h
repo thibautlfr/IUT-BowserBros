@@ -28,7 +28,7 @@ class Widget : public QWidget
     Q_OBJECT
     MenuForm * menuForm; /**< The menu form object. */
     GameForm * gameForm; /**< The game form object. */
-    ScoreboardForm * scoreboardForm ;
+    ScoreboardForm * scoreboardForm ; /**< The score board form object */
 public:
     /**
       * @brief Constructs a Widget object.

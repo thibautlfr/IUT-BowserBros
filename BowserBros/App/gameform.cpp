@@ -198,17 +198,15 @@ void GameForm::loadLevel() {
 
 void GameForm::checkLadderCollision()
 {
-    // Maximum distance for the blocks concerned
+    // Distance maximum des échelles considérés comme "proche" de Mario
     const int DISTANCE_THRESHOLD = 25;
 
-    // Vector with ladders near to the character
     vector<Element*> nearlyLadders;
 
     for (Element* ladder : itsLadders)
     {
         int distanceX = abs(itsCharacter->getItsRect().center().x() - ladder->getRect().center().x());
 
-        // Add only the ladders near to the player
         if (distanceX < DISTANCE_THRESHOLD)
         {
             nearlyLadders.push_back(ladder);
@@ -258,17 +256,15 @@ void GameForm::checkLadderCollision()
 void GameForm::checkCharacterCollision()
 {
 
-    // Maximum distance for the blocks concerned
+    // Distance maximum des blocs considérés comme "proche" de Mario
     const int DISTANCE_THRESHOLD = 25;
 
-    // Vector with blocs near to Mario
     vector<Element*> nearlyBlocks;
 
     for (Element * block : itsBlocks)
     {
         int distanceX = abs(itsCharacter->getItsRect().center().x() - block->getRect().center().x());
 
-        // Add only the block near to the player
         if (distanceX < DISTANCE_THRESHOLD and !itsCharacter->getOnLadder())
         {
            nearlyBlocks.push_back(block);
@@ -703,12 +699,12 @@ void GameForm::keyPressEvent (QKeyEvent * event)
     {
         if(!itsCharacter->intersect(block->getRect()))
         {
-            if(event->key() == Qt::Key_Up and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0)
+            if(event->key() == Qt::Key_Up and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 and itsCharacter->getYSpeed() == 0 )
             {
                 itsCharacter->setYSpeed(-2);
                 itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
             }
-            if(event->key() == Qt::Key_Down and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 )
+            if(event->key() == Qt::Key_Down and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 and itsCharacter->getYSpeed() == 0)
             {
                 itsCharacter->setYSpeed(2);
                 itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
