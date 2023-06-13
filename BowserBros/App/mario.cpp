@@ -61,6 +61,16 @@ void Mario::setOnPlatform(bool onPlatform)
     isOnPlatform = onPlatform;
 }
 
+bool Mario::getOnLadder()
+{
+    return isOnLadder;
+}
+
+void Mario::setOnLadder(bool onLadder)
+{
+    isOnLadder = onLadder;
+}
+
 bool Mario::intersect(QRect anObstacle)
 {
     if(itsImage.isNull())

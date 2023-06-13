@@ -23,7 +23,8 @@ enum ElementType {
     LUCKYBLOCK1, /**< LuckyBlock1 element type. */
     LUCKYBLOCK2, /**< LuckyBlock2 element type. */
     UNBREAKABLE, /**< Unbreakable element type. */
-    CRACKELED /**< Cracked element type. */
+    CRACKELED, /**< Cracked element type. */
+    LADDER
 };
 
 /**
@@ -71,6 +72,10 @@ public:
       * @return The y-speed of the element.
      */
     float getYSpeed();
+
+    int getItsX();
+
+    int getItsY();
 
     // --------------------------------------------------------------------------------------------
 

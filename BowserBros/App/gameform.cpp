@@ -84,6 +84,7 @@ GameForm::GameForm(QWidget *parent)
     // Création du sol, du personnage et du boss
     itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
     itsCharacter = new Mario(50, height() - 50, ":Assets/Assets/mario/mario4.png");
+    itsCharacter->setOnLadder(false);
     itsBoss = new Bowser(width()-80, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
 
     //====================================================================
@@ -162,6 +163,10 @@ void GameForm::loadLevel() {
                 {
                     itsChest = new Element(x, height() - y, CHEST) ;
                 }
+                else if (type == LADDER)
+                {
+                    itsLadders.push_back(new Element(x, height() - y, ElementType(type)));
+                }
                 else
                 {
                     itsBlocks.push_back(new Element(x, height() - y, ElementType(type)));
@@ -187,6 +192,64 @@ void GameForm::loadLevel() {
 
 // ---------------------------------------------------------------------------------------------------------
 
+void GameForm::checkLadderCollision()
+{
+    // Maximum distance for the blocks concerned
+    const int DISTANCE_THRESHOLD = 25;
+
+    // Vector with ladders near to the character
+    vector<Element*> nearlyLadders;
+
+    for (Element* ladder : itsLadders)
+    {
+        int distanceX = abs(itsCharacter->getItsRect().center().x() - ladder->getRect().center().x());
+
+        // Add only the ladders near to the player
+        if (distanceX < DISTANCE_THRESHOLD)
+        {
+            nearlyLadders.push_back(ladder);
+        }
+    }
+
+    for (Element* ladder : nearlyLadders)
+    {
+
+        if (itsCharacter->getItsRect().bottom() - ladder->getRect().top() >= -1 &&
+                itsCharacter->getItsRect().bottom() - ladder->getRect().bottom() <= 0 &&
+                itsCharacter->getItsRect().center().x() >= ladder->getRect().left() &&
+                itsCharacter->getItsRect().center().x() <= ladder->getRect().right())
+        {
+            if (itsCharacter->getItsRect().bottom() == ladder->getRect().top())
+            {
+                itsCharacter->setOnPlatform(true);
+                // Check if the player is at the top of the ladder
+                if (itsCharacter->getYSpeed() < 0 && !itsCharacter->getOnPlatform())
+                {
+                    itsCharacter->setItsY(ladder->getRect().top() - itsCharacter->getItsRect().height());
+                }
+            }
+            else
+            {
+                  itsCharacter->setOnLadder(true);
+            }
+
+            break;
+        }
+
+        else
+        {
+            if(ladder->getRect().top() - itsCharacter->getItsRect().bottom() <= 5 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() >= 0 and itsCharacter->getYSpeed() > 0)
+            {
+                itsCharacter->setItsY(ladder->getRect().top() - 1);
+                itsCharacter->setOnPlatform(true);
+            }
+            itsCharacter->setOnLadder(false);
+        }
+    }
+}
+
+
+
 // Gère les collisions entre le personnage et les éléments du jeu
 void GameForm::checkCharacterCollision()
 {
@@ -202,11 +265,11 @@ void GameForm::checkCharacterCollision()
         int distanceX = abs(itsCharacter->getItsRect().center().x() - block->getRect().center().x());
 
         // Add only the block near to the player
-        if (distanceX < DISTANCE_THRESHOLD)
+        if (distanceX < DISTANCE_THRESHOLD and !itsCharacter->getOnLadder())
         {
-            nearlyBlocks.push_back(block);
-
+           nearlyBlocks.push_back(block);
         }
+
     }
 
     itsCharacter->setOnPlatform(false);
@@ -248,6 +311,7 @@ void GameForm::checkCharacterCollision()
         }
         return;
     }
+
 
     // On vérifie que le cube n'est pas sur le sol
     if ((itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
@@ -301,11 +365,11 @@ void GameForm::checkCharacterCollision()
                 if(itsCharacter->intersect(platformRect))
                 {
                     // Si il arrive de la droite
-                    if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
+                    if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0 and !itsCharacter->getOnLadder())
                     {
                         itsCharacter->setItsX(platformRect.right()+1);
                     }
-                    else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
+                    else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0 and !itsCharacter->getOnLadder())
                     {
                         itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
                     }
@@ -352,15 +416,16 @@ void GameForm::checkCharacterCollision()
 
                 }
                 // Si il arrive d'en bas
-                else if(itsCharacter->getYSpeed() < 0)
+                else if(itsCharacter->getYSpeed() < 0 )
                 {
                     itsCharacter->setItsY(platformRect.bottom()+1);
                     itsCharacter->reverseYSpeed();
                 }
 
                 // Si il arrive d'en haut
-                else if ( (itsCharacter->getYSpeed() >= 0) && ( platformRect.top() - itsCharacter->getItsY() >= 0) )
+                else if ( (itsCharacter->getYSpeed() >= 0) && ( platformRect.top() - itsCharacter->getItsY() >= 0))
                 {
+                    qDebug() << "HAAAAAAAA";
                     itsCharacter->setItsY(platformRect.top() - itsCharacter->getItsRect().height());
                     itsCharacter->setYSpeed(0);
                     itsCharacter->setOnPlatform(true);
@@ -377,7 +442,7 @@ void GameForm::checkCharacterCollision()
         else
         {
             // Si le personnage est en train de sauter, appliquez une force de gravité pour faire redescendre le personnage
-            if (itsCharacter->getYSpeed() < 0)
+            if (itsCharacter->getYSpeed() < 0 and !itsCharacter->getOnLadder())
             {
                 itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
                 if(itsCharacter->getYSpeed() == 0)
@@ -386,12 +451,12 @@ void GameForm::checkCharacterCollision()
                 }
             }
             // Si le personnage est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
-            else if (itsCharacter->getYSpeed() > 0)
+            else if (itsCharacter->getYSpeed() > 0 and !itsCharacter->getOnLadder())
             {
                 itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
             }
 
-            else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - (itsCharacter->getItsRect().height() + 1)) && !itsCharacter->getOnPlatform())
+            else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - (itsCharacter->getItsRect().height() + 1)) && !itsCharacter->getOnPlatform() and !itsCharacter->getOnLadder())
             {
                 itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
             }
@@ -553,6 +618,7 @@ void GameForm::gameloop()
     checkCharacterCollision();
     checkBowserCollision();
     checkCollisionFireBalls();
+    checkLadderCollision();
     updateScroll();
     updateFireBalls();
     repaint();
@@ -580,6 +646,7 @@ void GameForm::start()
     }
 }
 
+
 // ---------------------------------------------------------------------------------------------------------
 
 void GameForm::keyPressEvent (QKeyEvent * event)
@@ -602,6 +669,26 @@ void GameForm::keyPressEvent (QKeyEvent * event)
         itsCharacter->jump();
         qDebug() << "Space Key";
     }
+    for (Element *block : itsBlocks)
+    {
+        if(!itsCharacter->intersect(block->getRect()))
+        {
+            if(event->key() == Qt::Key_Up and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0)
+            {
+                itsCharacter->setYSpeed(-2);
+                itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
+            }
+            if(event->key() == Qt::Key_Down and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0)
+            {
+                itsCharacter->setYSpeed(2);
+                itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
+            }
+        }
+        else
+        {
+            itsCharacter->setItsImage(":Assets/Assets/mario/mario4.png");
+        }
+    }
 }
 
 void GameForm::keyReleaseEvent (QKeyEvent * event)
@@ -609,6 +696,10 @@ void GameForm::keyReleaseEvent (QKeyEvent * event)
     if ((event->key() == Qt::Key_Left) || event->key() == Qt::Key_Right)
     {
         itsCharacter->setXSpeed(0);
+    }
+    if((event->key() == Qt::Key_Up || event->key() == Qt::Key_Down) and itsCharacter->getOnLadder())
+    {
+        itsCharacter->setYSpeed(0);
     }
 }
 
@@ -633,6 +724,10 @@ void GameForm::paintEvent(QPaintEvent *event)
         fireball->draw(painter);
     }
 
+    for(Element * ladder : itsLadders)
+    {
+        ladder->draw(painter);
+    }
     itsChest->draw(painter);
 
     // Afficher les aides au joueur

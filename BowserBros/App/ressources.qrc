@@ -45,6 +45,7 @@
         <file>Assets/menu/menu.png</file>
         <file>Assets/mario/mariowin.png</file>
         <file>Assets/mario/mariodead.png</file>
+        <file>Assets/other/ladder.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>

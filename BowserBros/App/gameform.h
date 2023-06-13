@@ -74,6 +74,8 @@ public:
      */
     void checkCollisionFireBalls();
 
+
+    void checkLadderCollision();
     // --------------------------------------------------------------------------------------------
 
     /**
@@ -156,6 +158,7 @@ private:
     QScrollArea *itsScrollArea; /**< The scroll area for the game. */
     QTimer *itsTimer; /**< The timer for the game loop. */
     vector<Element*> itsBlocks; /**< The list of blocks in the game. */
+    vector<Element*> itsLadders;
 
     SoundManager *soundManager; /**< Attribute used to mange sounds during the game */
 
