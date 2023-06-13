@@ -43,8 +43,11 @@ Widget::Widget(QWidget *parent)
 
         // Création et affichage du widget pour la partie
         gameForm = new GameForm;
+
         // Initialise les volumes sonores identiques aux volumes du Menu
         gameForm->setVolume(menuForm->getSoundManager());
+
+        // Ajoute la scrollArea au stackedWidget ce qui permet de suivre le joueur
         stackedWidget->addWidget(gameForm->getScrollArea());
         stackedWidget->setCurrentWidget(gameForm->getScrollArea());
         gameForm->setFocus();

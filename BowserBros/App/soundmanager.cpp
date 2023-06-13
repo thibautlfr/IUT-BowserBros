@@ -3,10 +3,13 @@
 
 #include <QThread>
 
-SoundManager::SoundManager(QObject *parent) : QObject(parent), itsVolume(1.0f), itsEffectsVolume(1.0f)
+SoundManager::SoundManager(QObject *parent) : QObject(parent)
 {
-    // Création et pré-chargement de tout les sons du jeu
+    // Initialise les volume à 1 lors de la création du soundManager
+    itsVolume = 1.0f;
+    itsEffectsVolume = 1.0f;
 
+    // Création et pré-chargement de tout les sons du jeu
     jumpEffect = new QSoundEffect(this);
     jumpEffect->setSource(QUrl::fromLocalFile(":Song/Song/JumpSound.wav"));
 
