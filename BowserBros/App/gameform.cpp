@@ -205,6 +205,7 @@ void GameForm::checkLadderCollision()
     const int DISTANCE_THRESHOLD = 25;
 
     vector<Element*> nearlyLadders;
+    bool characterIntersectsLadder = false;
 
     for (Element* ladder : itsLadders)
     {
@@ -214,12 +215,23 @@ void GameForm::checkLadderCollision()
         {
             nearlyLadders.push_back(ladder);
         }
+
+        if (itsCharacter->intersect(ladder->getRect()))
+        {
+            characterIntersectsLadder = true;
+        }
+    }
+
+    if (!characterIntersectsLadder)
+    {
+        itsCharacter->setOnLadder(false);
+        return;
     }
 
     for(Element* ladder : nearlyLadders)
     {
-        if(itsCharacter->getItsRect().center().x() >= ladder->getRect().left() &&
-           itsCharacter->getItsRect().center().x() <= ladder->getRect().right() &&
+        if(itsCharacter->getItsRect().center().x()+5 >= ladder->getRect().left() &&
+           itsCharacter->getItsRect().center().x()-5 <= ladder->getRect().right() &&
             ladder->getRect().bottom() >= itsCharacter->getItsRect().bottom()
              )
         {
@@ -230,7 +242,7 @@ void GameForm::checkLadderCollision()
                 itsCharacter->setOnPlatform(true);
                 itsCharacter->setYSpeed(0);
             }
-            else if(ladder->getRect().top() <= itsCharacter->getItsRect().bottom() - 3 )
+            else if(ladder->getRect().top() <= itsCharacter->getItsRect().top() - 1 )
             {
                 itsCharacter->setOnLadder(true);
                 itsCharacter->setOnPlatform(false);
@@ -255,7 +267,6 @@ void GameForm::checkLadderCollision()
 // Gère les collisions entre le personnage et les éléments du jeu
 void GameForm::checkCharacterCollision()
 {
-
     // Distance maximum des blocs considérés comme "proche" de Mario
     const int DISTANCE_THRESHOLD = 25;
 
@@ -642,10 +653,13 @@ void GameForm::gameloop()
 {
     elapsedTime += 10;
     displayChrono();
+
+    checkLadderCollision();
     checkCharacterCollision();
+
     checkBowserCollision();
     checkCollisionFireBalls();
-    checkLadderCollision();
+
     updateScroll();
     updateFireBalls();
     repaint();
