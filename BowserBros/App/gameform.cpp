@@ -1,5 +1,6 @@
 #include "gameform.h"
 #include "ui_gameform.h"
+#include "soundsettingsform.h"
 
 #include <iostream>
 #include <QDebug>
@@ -686,4 +687,14 @@ void GameForm::paintPlayerHelps(QPainter* painter)
 SoundManager* GameForm::getSoundManager() const
 {
     return soundManager;
+}
+
+void GameForm::setVolume(SoundManager * menuSoundManager){
+    //Récupère les volumes sonores du MenuForm en récupérant son SoundManager
+    itsVolumesGen = menuSoundManager->getVolume();
+    itsVolumesEffect = menuSoundManager->getEffectsVolume();
+
+    //Modifie les volumes du gameForm
+    soundManager->setEffectsVolume(itsVolumesEffect);
+    soundManager->setMainVolume(itsVolumesGen);
 }

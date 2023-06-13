@@ -15,6 +15,7 @@
 #include <QScrollArea>
 #include <QLabel>
 #include <list>
+#include <vector>
 
 #include "soundmanager.h"
 #include "mario.h"
@@ -103,6 +104,9 @@ public:
     void displayChrono();
 
     SoundManager* getSoundManager() const;
+
+    void setVolume(SoundManager *menuSoundManager);
+
 public slots:
     /**
       * @brief The game loop that updates the game state.
@@ -159,6 +163,8 @@ private:
     vector<Element*> itsBlocks; /**< The list of blocks in the game. */
 
     SoundManager *soundManager; /**< Attribute used to mange sounds during the game */
+    float itsVolumesGen;
+    float itsVolumesEffect;
 
     // --------------------------------------------------------------------------------------------
 

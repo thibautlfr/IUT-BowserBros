@@ -40,6 +40,8 @@ Widget::Widget(QWidget *parent)
 
         // Création et affichage du widget pour la partie
         gameForm = new GameForm;
+        // Initialise les volumes sonores identiques aux volumes du Menu
+        gameForm->setVolume(menuForm->getSoundManager());
         stackedWidget->addWidget(gameForm->getScrollArea());
         stackedWidget->setCurrentWidget(gameForm->getScrollArea());
         gameForm->setFocus();
@@ -97,7 +99,7 @@ Widget::Widget(QWidget *parent)
 
     // Connect pour afficher le widget des paramètres
     connect(menuForm, &MenuForm::soundSettingsButtonClicked, this, [=]() {
-        SoundSettingsForm* soundSettingsForm = new SoundSettingsForm(this, gameForm->getSoundManager(), menuForm->getSoundManager());
+        SoundSettingsForm* soundSettingsForm = new SoundSettingsForm(this, menuForm->getSoundManager());
         stackedWidget->addWidget(soundSettingsForm);
 
         stackedWidget->setCurrentWidget(soundSettingsForm);

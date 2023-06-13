@@ -1,3 +1,8 @@
+/**
+ * @file SoundSettingsForm.h
+ * @brief The SoundSettingsForm class represents a form for sound settings.
+ */
+
 #ifndef SOUNDSSETTINGSFORM_H
 #define SOUNDSSETTINGSFORM_H
 
@@ -8,26 +13,54 @@ namespace Ui {
 class SoundSettingsForm;
 }
 
+/**
+ * @class SoundSettingsForm
+ * @brief The SoundSettingsForm class represents a form for sound settings.
+ *
+ * The SoundSettingsForm class provides a graphical user interface for adjusting sound settings.
+ * It allows the user to control the general volume and effects volume using sliders.
+ * The class emits a signal when the user has finished with the sound settings.
+ */
 class SoundSettingsForm : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit SoundSettingsForm(QWidget *parent = nullptr, SoundManager *soundGameManager = nullptr, SoundManager *soundMenuManager = nullptr);
+    /**
+     * @brief Constructs a SoundSettingsForm object.
+     * @param parent The parent widget (default is nullptr).
+     * @param soundMenuManager The sound manager object for menu sounds (default is nullptr).
+     */
+    explicit SoundSettingsForm(QWidget *parent = nullptr, SoundManager *soundMenuManager = nullptr);
+
+    /**
+     * @brief Destroys the SoundSettingsForm object.
+     */
     ~SoundSettingsForm();
 
-signals:
-    void finished();  // Ce signal est émis lorsque l'utilisateur a terminé avec les paramètres sonores
+    SoundManager * menuSoundManager; /**< The sound manager object for menu sounds. */
 
-private slots: // Ce slot est appelé lorsque le bouton "Terminé" est cliqué
-    void on_generalVolumeSlider_valueChanged(int value);  // Ce slot est appelé lorsque la valeur du slider de volume général change
-    void on_effectsVolumeSlider_valueChanged(int value);  // Ce slot est appelé lorsque la valeur du slider de volume des effets change
+signals:
+    /**
+     * @brief Signal emitted when the user has finished with the sound settings.
+     */
+    void finished();
+
+private slots:
+    /**
+     * @brief Slot called when the "generalVolumeSlider" value changes.
+     * @param value The new value of the general volume slider.
+     */
+    void on_generalVolumeSlider_valueChanged(int value);
+
+    /**
+     * @brief Slot called when the "effectsVolumeSlider" value changes.
+     * @param value The new value of the effects volume slider.
+     */
+    void on_effectsVolumeSlider_valueChanged(int value);
 
 private:
-    Ui::SoundSettingsForm *ui;
-    SoundManager * menuSoundManager;
-    SoundManager * gameSoundManager;
+    Ui::SoundSettingsForm *ui; /**< The user interface object for the sound settings form. */
 };
-
 
 #endif // SOUNDSSETTINGSFORM_H

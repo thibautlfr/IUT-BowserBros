@@ -3,7 +3,7 @@
 
 #include <QThread>
 
-SoundManager::SoundManager(QObject *parent) : QObject(parent), volume(1.0f), effectsVolume(1.0f)
+SoundManager::SoundManager(QObject *parent) : QObject(parent), itsVolume(1.0f), itsEffectsVolume(1.0f)
 {
     // Création et pré-chargement de tout les sons du jeu
 
@@ -34,6 +34,19 @@ SoundManager::~SoundManager()
     winMusic->deleteLater();
     levelPassedMusic->deleteLater();
     menuMusic->deleteLater();
+}
+// ---------------------------------------------------------------------------------------------------------
+
+//Catch les attributs qui sont une copie de ceux du MenuForm
+
+float SoundManager::getVolume() const
+{
+    return itsVolume;
+}
+
+float SoundManager::getEffectsVolume() const
+{
+    return itsEffectsVolume;
 }
 
 // ---------------------------------------------------------------------------------------------------------
@@ -97,19 +110,28 @@ void SoundManager::playLevelPassedMusic()
 
 // ---------------------------------------------------------------------------------------------------------
 
-void SoundManager::setVolume(float volume)
+void SoundManager::setMainVolume(float volume)
 {
+    //Change tous les volumes
     mainMusic->setVolume(volume);
     deathMusic->setVolume(volume);
     menuMusic->setVolume(volume);
     winMusic->setVolume(volume);
     qDebug()<<"Volume Général : " << volume;
+
+    //Initialise l'attribut pour le sauvegarder et le copier dans le gameform
+    itsVolume=volume;
+
 }
 
 void SoundManager::setEffectsVolume(float volume)
 {
+    //Modifie tous les sons
     jumpEffect->setVolume(volume);
     levelPassedMusic->setVolume(volume);
+
+    //Initialise l'attribut pour le sauvegarder et le copier dans le gameform
+    itsEffectsVolume=volume;
 }
 
 // ---------------------------------------------------------------------------------------------------------
@@ -142,12 +164,4 @@ void SoundManager::stopAllSounds()
     }
 }
 
-float SoundManager::getVolume() const
-{
-    return volume;
-}
 
-float SoundManager::getEffectsVolume() const
-{
-    return effectsVolume;
-}
