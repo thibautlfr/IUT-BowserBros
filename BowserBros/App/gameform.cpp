@@ -129,11 +129,14 @@ void GameForm::loadLevel() {
 
     if(itsLevel > 1)
     {
-        // Repositionement des acteurs du jeu
+        // Repositionement des acteurs du jeu et suppression des éléments du niveau précédent
         itsCharacter->setItsX(50);
         itsCharacter->setItsY(height() - 100);
+
         itsBoss->setItsX(width()-80);
         itsBoss->setItsY(height()-570);
+
+        itsBoss->getItsFireBalls()->clear();
         itsBlocks.clear();
         itsLadders.clear();
     }
@@ -220,7 +223,7 @@ void GameForm::checkLadderCollision()
             ladder->getRect().bottom() >= itsCharacter->getItsRect().bottom()
              )
         {
-            if(itsCharacter->getYSpeed() > 0 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() >= 10 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() <= 15)
+            if(itsCharacter->getYSpeed() > 0 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() >= 2 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() <= 10)
             {
                 itsCharacter->setItsY(ladder->getRect().top()-47);
                 itsCharacter->setOnLadder(false);
@@ -244,10 +247,7 @@ void GameForm::checkLadderCollision()
             itsCharacter->setOnLadder(false);
             itsCharacter->setOnPlatform(true);
         }
-         qDebug() << "diff : " << ladder->getRect().top() - itsCharacter->getItsRect().bottom();
     }
-
-
 }
 
 
@@ -432,7 +432,6 @@ void GameForm::checkCharacterCollision()
                 // Si il arrive d'en haut
                 else if ( (itsCharacter->getYSpeed() >= 0) && ( platformRect.top() - itsCharacter->getItsY() >= 0))
                 {
-                    qDebug() << "HAAAAAAAA";
                     itsCharacter->setItsY(platformRect.top() - itsCharacter->getItsRect().height());
                     itsCharacter->setYSpeed(0);
                     itsCharacter->setOnPlatform(true);
@@ -522,9 +521,19 @@ void GameForm::checkCollisionFireBalls()
         {
             // Arrêtez le jeu et revenez au menu
             soundManager->playDeathMusic();
+
+            // On regle l'asset et la vitesse de mario
             itsCharacter->setIsDead(true);
+            itsCharacter->setXSpeed(0);
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
+
+            // Arret du timer principal
             itsTimer->stop();
+
+            // Désactive le focus pour ne plus controler mario lors de l'animation
+            this->setEnabled(false);
+
+            // Lancement de l'animation de mort de mario
             marioTimer->start(10);
             itsCharacter->setYSpeed(-5);
 
