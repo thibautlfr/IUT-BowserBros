@@ -64,6 +64,8 @@
         <file>Song/win.wav</file>
         <file>Song/endlevel.wav</file>
         <file>Song/menumusic.wav</file>
+        <file>Song/EnnemiDeathEffect.wav</file>
+        <file>Song/KoopaBump.wav</file>
     </qresource>
     <qresource prefix="/Fonts">
         <file>Fonts/policeMario2.ttf</file>

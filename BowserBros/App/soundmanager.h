@@ -36,6 +36,14 @@ public:
      */
     void playJumpEffect();
 
+    void playKoopaBumpEffect();
+
+    void playEnnemyDeathEffect();
+
+
+
+    // ---------------------------------------------------------------------------------------------------------
+
     /**
      * @brief Plays the main music of the game
      */
@@ -68,6 +76,11 @@ public:
 
 private:
     QSoundEffect *jumpEffect; /**< A jump sound effect. */
+    QSoundEffect *koopaBumpEffect;
+    QSoundEffect *ennemyDeathEffect;
+
+    // -----------------------------------------------------------------------------------------
+
     QSoundEffect *mainMusic; /**< The main music of the game. */
     QSoundEffect *deathMusic; /**< Music theme for loosing the game. */
     QSoundEffect *winMusic; /**< Music theme when winning the game. */

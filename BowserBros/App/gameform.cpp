@@ -445,6 +445,7 @@ void GameForm::checkGoombasCollision()
             // Si le joueur arrive du haut
             if ( (itsCharacter->getYSpeed() > 0) && ( goombaRect.top() - characterRect.top() > 0) && !goomba->getIsDead())
             {
+                soundManager->playEnnemyDeathEffect();
                 goomba->setXSpeed(0);
                 goomba->setIsDead(true);
                 itsCharacter->setYSpeed(-5);
@@ -554,11 +555,20 @@ void GameForm::checkKoopasCollision()
         //Vérifier que le koopa n'atteint pas la bordure du jeu
         if(koopaRect.left() <= 0)
         {
+            if(koopa->getIsDead())
+            {
+                soundManager->playKoopaBumpEffect();
+            }
             koopa->setItsX(1) ;
             koopa->reverseXSpeed();
+
         }
         else if(koopa->getItsRect().right() >= 800)
         {
+            if(koopa->getIsDead())
+            {
+                soundManager->playKoopaBumpEffect();
+            }
             koopa->setItsX(800 - koopaRect.width());
             koopa->reverseXSpeed();
         }
@@ -573,6 +583,7 @@ void GameForm::checkKoopasCollision()
             // Si le joueur arrive du haut et que le koopa est vivant
             if ( (itsCharacter->getYSpeed() > 0) && ( koopaRect.top() - characterRect.top() > 0) && !koopa->getIsDead())
             {
+                soundManager->playEnnemyDeathEffect();
                 koopa->setXSpeed(0);
                 koopa->setIsDead(true);
                 itsCharacter->setYSpeed(-5);
@@ -601,19 +612,11 @@ void GameForm::checkKoopasCollision()
                 if (characterCenter > koopaCenter && itsCharacter->getXSpeed() < 0)
                 {
                     itsCharacter->setItsX(koopa->getItsRect().right() + 1);
-//                    if (koopa->getXSpeed() == 0)
-//                    {
-//                        koopa->setXSpeed(-1.5);
-//                    }
                 }
                 // Si il arrive de la gauche
                 else if (characterCenter < koopaCenter && itsCharacter->getXSpeed() > 0)
                 {
                     itsCharacter->setItsX(koopa->getItsRect().left() - itsCharacter->getItsRect().width() - 1);
-//                    if (koopa->getXSpeed() == 0)
-//                    {
-//                        koopa->setXSpeed(1.5);
-//                    }
                 }
             }
             // Sinon, le joueur perds
@@ -907,14 +910,18 @@ bool GameForm::checkEntityOnFloor(Entity * anEntity, vector<Element*> nearlyBloc
                     // Si la vitesse correspond a celle d'un koopa ou d'un goomba alors on reverse la xspeed
                     if (anEntity->getXSpeed() == float(-0.4) || anEntity->getXSpeed() == float(-0.5) || anEntity->getXSpeed() == float(-1.5))
                     {
+                        // Son de bump si koopa est mort et touche bump un objet
+                        if(anEntity->getXSpeed() == float(-1.5)) { soundManager->playKoopaBumpEffect(); }
                         anEntity->reverseXSpeed();
                     }
+
                 }
                 else if(anEntity->getXSpeed() > 0 and anEntity->getItsRect().right() - platformRect.right() < 0)
                 {
                     anEntity->setItsX(platformRect.left()-anEntity->getItsRect().width());
                     if (anEntity->getXSpeed() == float(0.4) || anEntity->getXSpeed() == float(0.5) || anEntity->getXSpeed() == float(1.5))
                     {
+                        if(anEntity->getXSpeed() == float(1.5)) { soundManager->playKoopaBumpEffect(); }
                         anEntity->reverseXSpeed();
                     }
                 }

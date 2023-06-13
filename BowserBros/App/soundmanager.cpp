@@ -5,9 +5,16 @@
 SoundManager::SoundManager(QObject *parent) : QObject(parent)
 {
     // Création et pré-chargement de tout les sons du jeu
-
     jumpEffect = new QSoundEffect(this);
     jumpEffect->setSource(QUrl::fromLocalFile(":Song/Song/JumpSound.wav"));
+
+    koopaBumpEffect = new QSoundEffect(this);
+    koopaBumpEffect->setSource(QUrl::fromLocalFile(":Song/Song/KoopaBump.wav"));
+
+    ennemyDeathEffect = new QSoundEffect(this);
+    ennemyDeathEffect->setSource(QUrl::fromLocalFile(":Song/Song/EnnemiDeathEffect.wav"));
+
+    // ---------------------------------------------------------------------------------------
 
     mainMusic = new QSoundEffect(this);
     mainMusic->setSource(QUrl::fromLocalFile(":Song/Song/MainMusic.wav"));
@@ -28,6 +35,11 @@ SoundManager::SoundManager(QObject *parent) : QObject(parent)
 SoundManager::~SoundManager()
 {
     jumpEffect->deleteLater();
+    ennemyDeathEffect->deleteLater();
+    koopaBumpEffect->deleteLater();
+
+    //====================================
+
     mainMusic->deleteLater();
     deathMusic->deleteLater();
     winMusic->deleteLater();
@@ -37,10 +49,19 @@ SoundManager::~SoundManager()
 
 // ---------------------------------------------------------------------------------------------------------
 
-
 void SoundManager::playJumpEffect()
 {
     jumpEffect->play();
+}
+
+void SoundManager::playEnnemyDeathEffect()
+{
+    ennemyDeathEffect->play();
+}
+
+void SoundManager::playKoopaBumpEffect()
+{
+    koopaBumpEffect->play();
 }
 
 // ---------------------------------------------------------------------------------------------------------
