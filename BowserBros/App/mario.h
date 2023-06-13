@@ -28,6 +28,8 @@ public:
      */
     Mario(float x, float y, int width, int height);
 
+    //~Mario();
+
     /**
       * @brief Constructs a Mario object.
       * @param x The initial x-coordinate of Mario.

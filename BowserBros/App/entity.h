@@ -44,6 +44,11 @@ public:
      */
     Entity(float x, float y, string asset);
 
+    /**
+     * @brief Destructor for entity
+     */
+    virtual ~Entity();
+
     // --------------------------------------------------------------------------------------------
 
     /**
@@ -76,6 +81,12 @@ public:
      */
     void setItsImage(string newAssetPath);
 
+    /**
+     * @brief Set the attribute onPlatform
+     * @param onPlatform : boolean
+     */
+    virtual void setOnPlatform(bool onPlatform);
+
     // --------------------------------------------------------------------------------------------
 
     /**
@@ -107,6 +118,12 @@ public:
       * @return The bounding rectangle of the entity.
      */
     QRect getItsRect();
+
+    /**
+     * @brief Getter for the onPlatform attribute
+     * @return
+     */
+    virtual bool getOnPlatform();
 
     // --------------------------------------------------------------------------------------------
 

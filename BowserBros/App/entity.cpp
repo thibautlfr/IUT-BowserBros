@@ -21,6 +21,13 @@ Entity::Entity(float x, float y, string asset)
     Q_ASSERT(! itsImage.isNull());
 }
 
+Entity::~Entity()
+{
+
+}
+
+// -------------------------------------------------------------------------------------------------
+
 void Entity::draw(QPainter * aPainter)
 {
     if (itsImage.isNull())
@@ -52,6 +59,8 @@ void Entity::calculatePosition()
     itsY += itsYSpeed;
 }
 
+// ------------------------------------------------------------------------
+
 QRect Entity::getItsRect()
 {
     if(itsImage.isNull())
@@ -64,6 +73,10 @@ QRect Entity::getItsRect()
         return entityRect;
     }
 }
+
+bool Entity::getOnPlatform(){ return false;}
+
+void Entity::setOnPlatform(bool onPlatform){ if (onPlatform) { return; }}
 
 void Entity::setItsY(float Y)
 {

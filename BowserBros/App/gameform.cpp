@@ -202,11 +202,6 @@ void GameForm::loadLevel() {
 void GameForm::checkCharacterCollision()
 {
 
-    // Maximum distance for the blocks concerned
-    const int DISTANCE_THRESHOLD = 25;
-
-
-
     //Vérifier que le character n'atteint pas la bordure du jeu
     if(itsCharacter->getItsRect().left() <= 0)
     {
@@ -250,169 +245,32 @@ void GameForm::checkCharacterCollision()
     //------------------------------------------------------------------------------------------------------
 
     // Vector with blocs near to Mario
-    vector<Element*> nearlyBlocks;
-
-    for (Element * block : itsBlocks)
-    {
-        int distanceX = abs(itsCharacter->getItsRect().center().x() - block->getRect().center().x());
-
-        // Add only the block near to the player
-        if (distanceX < DISTANCE_THRESHOLD)
-        {
-            nearlyBlocks.push_back(block);
-
-        }
-    }
-
-    itsCharacter->setOnPlatform(false);
+    vector<Element*> nearlyBlocks = getNearlyBlocks(itsCharacter);
 
     // On vérifie que le cube n'est pas sur le sol
-    if ((itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
-        itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1  )
+    itsCharacter->setOnPlatform(false);
+    if(checkEntityOnFloor(itsCharacter, nearlyBlocks))
     {
-        for (Element * block : nearlyBlocks)
-        {
-            // Récupérer les rectangles du personnage et de la plateforme
-            QRect platformRect = block->getRect();
-
-            if(itsCharacter->intersect(platformRect))
-            {
-                // Si il arrive de la droite
-                if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
-                {
-                    itsCharacter->setItsX(platformRect.right()+1);
-                }
-                else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
-                {
-                    itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
-                }
-            }
-        }
-        //isOnPlatform = true;
-        itsCharacter->setOnPlatform(true);
-        if (itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
-        {
-            itsCharacter->setItsY(itsCharacter->getItsY() + 5);
-        }
-        itsCharacter->calculatePosition();
         itsCharacter->updateAsset(elapsedTime);
         return;
     }
-    // On vérifie que le cube n'est sur aucunes des plateformes
-    for (Element * block : nearlyBlocks)
-    {
-        if (
-            // Si le rectangle est déjà sur la plateforme
-            ((block->getRect().top() - (itsCharacter->getItsRect().bottom()) == 1) ||
-             (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)) &&
-            // ...ET qu'il n'est PAS PAS sur la plateforme (sur l'axe X)
-            !( (itsCharacter->getItsRect().right() < block->getRect().left()) ||
-              (itsCharacter->getItsRect().left() > block->getRect().right()) )
-            )
-        {
-            for (Element * otherBlock : nearlyBlocks)
-            {
-                // Récupérer les rectangles de la plateforme
-                QRect platformRect = otherBlock->getRect();
 
-                if(itsCharacter->intersect(platformRect))
-                {
-                    // Si il arrive de la droite
-                    if(itsCharacter->getXSpeed() < 0 and itsCharacter->getItsRect().left() - platformRect.left() > 0)
-                    {
-                        itsCharacter->setItsX(platformRect.right()+1);
-                    }
-                    else if(itsCharacter->getXSpeed() > 0 and itsCharacter->getItsRect().right() - platformRect.right() < 0)
-                    {
-                        itsCharacter->setItsX(platformRect.left()-itsCharacter->getItsRect().width());
-                    }
-                }
-            }
-            itsCharacter->setOnPlatform(true);
-            if (block->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
-            {
-                itsCharacter->setItsY(itsCharacter->getItsY() + 5);
-            }
-            itsCharacter->calculatePosition();
-            itsCharacter->updateAsset(elapsedTime);
-            return;
-        }
+    // On vérifie que le cube n'est sur aucunes des plateformes
+    if(checkEntityOnBlocks(itsCharacter, nearlyBlocks))
+    {
+        itsCharacter->updateAsset(elapsedTime);
+        return;
     }
 
     // Si il est ni sur le sol ni sur une plateforme alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
     if (itsCharacter->getOnPlatform() == false)
     {
         // Gérer les collisions avec les plateformes
-        for (Element * block : nearlyBlocks)
-        {
-            // Récupérer les rectangles du personnage et de la plateforme
-            QRect platformRect = block->getRect();
-
-            // Si le personnage touche une plateforme
-            if(itsCharacter->intersect(platformRect))
-            {
-
-                // Si le joueur arrive de la droite
-                if((itsCharacter->getItsRect().left() - platformRect.right() <= 0 and itsCharacter->getItsRect().left() - platformRect.right() >=-1) )
-                {
-                    itsCharacter->setItsX(itsCharacter->getItsX()+1);
-                    itsCharacter->setXSpeed(0);
-                    //collisionRight = true;
-
-                }
-                // Si le joueur arrive de la gauche
-                else if (itsCharacter->getItsRect().right() - platformRect.left() >= 0 and itsCharacter->getItsRect().right() - platformRect.left() <=1)
-                {
-                    itsCharacter->setItsX(itsCharacter->getItsX()-1);
-                    itsCharacter->setXSpeed(0);
-                    //collisionLeft = true;
-
-                }
-                // Si il arrive d'en bas
-                else if(itsCharacter->getYSpeed() < 0)
-                {
-                    itsCharacter->setItsY(platformRect.bottom()+1);
-                    itsCharacter->reverseYSpeed();
-                }
-
-                // Si il arrive d'en haut
-                else if ( (itsCharacter->getYSpeed() >= 0) && ( platformRect.top() - itsCharacter->getItsY() >= 0) )
-                {
-                    itsCharacter->setItsY(platformRect.top() - itsCharacter->getItsRect().height());
-                    itsCharacter->setYSpeed(0);
-                    itsCharacter->setOnPlatform(true);
-                }
-            }
-        }
+        checkPlatformCollision(itsCharacter, nearlyBlocks);
 
         // Gérer les collision avec le sol
-        if (itsCharacter->getItsRect().intersects(itsFloor->getRect()))
-        {
-            itsCharacter->setYSpeed(0);
-            itsCharacter->setItsY(itsFloor->getRect().top() - itsCharacter->getItsRect().height());
-        }
-        else
-        {
-            // Si le personnage est en train de sauter, appliquez une force de gravité pour faire redescendre le personnage
-            if (itsCharacter->getYSpeed() < 0)
-            {
-                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-                if(itsCharacter->getYSpeed() == 0)
-                {
-                    itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-                }
-            }
-            // Si le personnage est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
-            else if (itsCharacter->getYSpeed() > 0)
-            {
-                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-            }
+        checkFloorCollision(itsCharacter);
 
-            else if(itsCharacter->getYSpeed()==0 && itsCharacter->getItsY() != (this->height() - (itsCharacter->getItsRect().height() + 1)) && !itsCharacter->getOnPlatform())
-            {
-                itsCharacter->setYSpeed(itsCharacter->getYSpeed() + GRAVITY);
-            }
-        }
     }
 
     itsCharacter->calculatePosition();
@@ -455,6 +313,7 @@ void GameForm::checkBowserCollision()
     itsBoss->calculatePosition();
 }
 
+// Gère les collisions des boules de feu
 void GameForm::checkCollisionFireBalls()
 {
     vector<FireBall *> *fireBalls = itsBoss->getItsFireBalls();
@@ -521,12 +380,9 @@ void GameForm::checkCollisionFireBalls()
     }
 }
 
+// Gère les collisions des goomba
 void GameForm::checkGoombasCollision()
 {
-
-    // Maximum distance for the blocks concerned
-    const int DISTANCE_THRESHOLD = 25;
-
     // Vecteur contenant les goombas dans le champ de vision de mario
     vector<Goomba*> visibleGoombas;
 
@@ -545,7 +401,6 @@ void GameForm::checkGoombasCollision()
         {
             visibleGoombas.push_back(goomba);
         }
-
     }
 
     // On parcours chaque goomba du vecteur
@@ -612,154 +467,32 @@ void GameForm::checkGoombasCollision()
        // ---------------------------------------------------------------------------------------------
 
         // Vecteur contenant les blocs proche du goomba
-        vector<Element*> nearlyBlocks;
-
-        for (Element * block : itsBlocks)
-        {
-            int distanceX = abs(goomba->getItsRect().center().x() - block->getRect().center().x());
-
-            // Add only the block near to the player
-            if (distanceX < DISTANCE_THRESHOLD)
-            {
-                nearlyBlocks.push_back(block);
-
-            }
-        }
+        vector<Element*> nearlyBlocks = getNearlyBlocks(goomba);
 
         // ---------------------------------------------------------------------------------------------
 
         goomba->setOnPlatform(false);
-        // On vérifie que le cube n'est pas sur le sol
-        if ((itsFloor->getRect().top() - (goomba->getItsRect().bottom()) == 1) ||
-            itsFloor->getRect().top() - (goomba->getItsRect().bottom() + 5) == 1  )
+        // On vérifie que le goomba n'est pas sur le sol
+        if(checkEntityOnFloor(goomba, nearlyBlocks))
         {
-            for (Element * block : nearlyBlocks)
-            {
-                // Récupérer les rectangles du personnage et de la plateforme
-                QRect platformRect = block->getRect();
-
-                if(goomba->getItsRect().intersects(platformRect))
-                {
-                    // Si il arrive de la droite
-                    if(goomba->getXSpeed() < 0 and goomba->getItsRect().left() - platformRect.left() > 0)
-                    {
-                        goomba->setItsX(platformRect.right()+1);
-                        goomba->reverseXSpeed();
-                    }
-                    else if(goomba->getXSpeed() > 0 and goomba->getItsRect().right() - platformRect.right() < 0)
-                    {
-                        goomba->setItsX(platformRect.left()-goomba->getItsRect().width());
-                        goomba->reverseXSpeed();
-                    }
-                }
-            }
-            goomba->setOnPlatform(true);
-            if (itsFloor->getRect().top() - (goomba->getItsRect().bottom() + 5) == 1)
-            {
-                goomba->setItsY(goomba->getItsY() + 5);
-            }
-            goomba->calculatePosition();
             goomba->updateAsset(elapsedTime);
         }
 
-        // On vérifie que le cube n'est sur aucunes des plateformes
-        for (Element * block : nearlyBlocks)
+        // On vérifie que le goomba n'est sur aucunes des plateformes
+        if(checkEntityOnBlocks(goomba, nearlyBlocks))
         {
-            if (
-                // Si le rectangle est déjà sur la plateforme
-                ((block->getRect().top() - (goomba->getItsRect().bottom()) == 1) ||
-                 (block->getRect().top() - (goomba->getItsRect().bottom() + 5) == 1)) &&
-                // ...ET qu'il n'est PAS PAS sur la plateforme (sur l'axe X)
-                !( (goomba->getItsRect().right() < block->getRect().left()) ||
-                  (goomba->getItsRect().left() > block->getRect().right()) )
-                )
-            {
-                for (Element * otherBlock : nearlyBlocks)
-                {
-                    // Récupérer les rectangles de la plateforme
-                    QRect platformRect = otherBlock->getRect();
-
-                    if(goomba->getItsRect().intersects(platformRect))
-                    {
-                        // Si il arrive de la droite
-                        if(goomba->getXSpeed() < 0 and goomba->getItsRect().left() - platformRect.left() > 0)
-                        {
-                            goomba->setItsX(platformRect.right()+1);
-                            goomba->reverseXSpeed();
-                        }
-                        else if(goomba->getXSpeed() > 0 and goomba->getItsRect().right() - platformRect.right() < 0)
-                        {
-                            goomba->setItsX(platformRect.left()-goomba->getItsRect().width());
-                            goomba->reverseXSpeed();
-                        }
-                    }
-                }
-                goomba->setOnPlatform(true);
-                if (block->getRect().top() - (goomba->getItsRect().bottom() + 5) == 1)
-                {
-                    goomba->setItsY(goomba->getItsY() + 5);
-                }
-                goomba->calculatePosition();
-                goomba->updateAsset(elapsedTime);
-            }
+            goomba->updateAsset(elapsedTime);
+            return;
         }
 
         // Si il est ni sur le sol ni sur une plateforme alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
         if (goomba->getOnPlatform() == false)
         {
             // Gérer les collisions avec les plateformes
-            for (Element * block : nearlyBlocks)
-            {
-                // Récupérer les rectangles du personnage et de la plateforme
-                QRect platformRect = block->getRect();
-
-                // Si le goomba touche une plateforme
-                if(goomba->getItsRect().intersects(platformRect))
-                {
-
-                    // Si le goomba arrive de la droite
-                    if((goomba->getItsRect().left() - platformRect.right() <= 0 and goomba->getItsRect().left() - platformRect.right() >=-1) )
-                    {
-                        goomba->setItsX(goomba->getItsX()+1);
-                        goomba->reverseXSpeed();
-
-                    }
-                    // Si le goomba arrive de la gauche
-                    else if (goomba->getItsRect().right() - platformRect.left() >= 0 and goomba->getItsRect().right() - platformRect.left() <=1)
-                    {
-                        goomba->setItsX(goomba->getItsX()-1);
-                        goomba->reverseXSpeed();
-
-                    }
-                    // Si il arrive d'en haut
-                    else if ( (goomba->getYSpeed() >= 0) && ( platformRect.top() - goomba->getItsY() >= 0) )
-                    {
-                        goomba->setItsY(platformRect.top() - goomba->getItsRect().height());
-                        goomba->setYSpeed(0);
-                        goomba->setOnPlatform(true);
-                    }
-                }
-            }
+            checkPlatformCollision(goomba, nearlyBlocks);
 
             // Gérer les collision avec le sol
-            if (goomba->getItsRect().intersects(itsFloor->getRect()))
-            {
-                goomba->setYSpeed(0);
-                goomba->setItsY(itsFloor->getRect().top() - goomba->getItsRect().height());
-            }
-            else
-            {
-                // Si le goomba est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
-                if (goomba->getYSpeed() > 0)
-                {
-                    goomba->setYSpeed(goomba->getYSpeed() + GRAVITY/1.7);
-                }
-
-                else if(goomba->getYSpeed()==0 && goomba->getItsY() != (this->height() - (goomba->getItsRect().height() + 1)) && !goomba->getOnPlatform())
-                {
-                    goomba->setYSpeed(goomba->getYSpeed() + GRAVITY/1.7);
-                }
-            }
+            checkFloorCollision(goomba);
         }
 
         goomba->calculatePosition();
@@ -767,10 +500,9 @@ void GameForm::checkGoombasCollision()
     }
 }
 
+// Gère les collisions des koopas
 void GameForm::checkKoopasCollision()
 {
-    // Maximum distance for the blocks concerned
-    const int DISTANCE_THRESHOLD = 25;
 
     // Vecteur contenant les koopas dans le champ de vision de mario
     vector<Koopa*> visibleKoopas;
@@ -821,7 +553,7 @@ void GameForm::checkKoopasCollision()
 
         // -----------------------------------------------------------------------------
 
-        // Vérifie les collisions entre le goomba et mario
+        // Vérifie les collisions entre le koopa et mario
         if (koopaRect.intersects(characterRect))
         {
             float characterCenter = itsCharacter->getItsRect().center().x();
@@ -912,57 +644,18 @@ void GameForm::checkKoopasCollision()
         // ---------------------------------------------------------------------------------------------
 
         // Vecteur contenant les blocs proche du koopa
-        vector<Element*> nearlyBlocks;
-
-        for (Element * block : itsBlocks)
-        {
-            int distanceX = abs(koopa->getItsRect().center().x() - block->getRect().center().x());
-
-            // Add only the block near to the player
-            if (distanceX < DISTANCE_THRESHOLD)
-            {
-                nearlyBlocks.push_back(block);
-
-            }
-        }
+        vector<Element*> nearlyBlocks = getNearlyBlocks(koopa);
 
         // ---------------------------------------------------------------------------------------------
 
-        koopa->setOnPlatform(false);
         // On vérifie que le cube n'est pas sur le sol
-        if ((itsFloor->getRect().top() - (koopa->getItsRect().bottom()) == 1) ||
-            itsFloor->getRect().top() - (koopa->getItsRect().bottom() + 5) == 1  )
+        koopa->setOnPlatform(false);
+        if(checkEntityOnFloor(koopa, nearlyBlocks))
         {
-            for (Element * block : nearlyBlocks)
-            {
-                // Récupérer les rectangles du personnage et de la plateforme
-                QRect platformRect = block->getRect();
-
-                if(koopa->getItsRect().intersects(platformRect))
-                {
-                    // Si il arrive de la droite
-                    if(koopa->getXSpeed() < 0 and koopa->getItsRect().left() - platformRect.left() > 0)
-                    {
-                        koopa->setItsX(platformRect.right()+1);
-                        koopa->reverseXSpeed();
-                    }
-                    else if(koopa->getXSpeed() > 0 and koopa->getItsRect().right() - platformRect.right() < 0)
-                    {
-                        koopa->setItsX(platformRect.left()-koopa->getItsRect().width());
-                        koopa->reverseXSpeed();
-                    }
-                }
-            }
-            koopa->setOnPlatform(true);
-            if (itsFloor->getRect().top() - (koopa->getItsRect().bottom() + 5) == 1)
-            {
-                koopa->setItsY(koopa->getItsY() + 5);
-            }
-            koopa->calculatePosition();
             koopa->updateAsset(elapsedTime);
         }
 
-        // On vérifie que le cube n'est sur aucunes des plateformes
+        // On vérifie que le cube n'est sur aucunes des plateformes (on utilise pas la fonction générique car koopa ne peux pas tomber d'une plateforme)
         for (Element * block : nearlyBlocks)
         {
             if (
@@ -1017,67 +710,199 @@ void GameForm::checkKoopasCollision()
         if (koopa->getOnPlatform() == false && koopa->getIsDead())
         {
             // Gérer les collisions avec les plateformes
-            for (Element * block : nearlyBlocks)
-            {
-                // Récupérer les rectangles du personnage et de la plateforme
-                QRect platformRect = block->getRect();
-
-                // Si le goomba touche une plateforme
-                if(koopa->getItsRect().intersects(platformRect))
-                {
-
-                    // Si le goomba arrive de la droite
-                    if((koopa->getItsRect().left() - platformRect.right() <= 0 and koopa->getItsRect().left() - platformRect.right() >=-1) )
-                    {
-                        koopa->setItsX(koopa->getItsX()+1);
-                        koopa->reverseXSpeed();
-
-                    }
-                    // Si le goomba arrive de la gauche
-                    else if (koopa->getItsRect().right() - platformRect.left() >= 0 and koopa->getItsRect().right() - platformRect.left() <=1)
-                    {
-                        koopa->setItsX(koopa->getItsX()-1);
-                        koopa->reverseXSpeed();
-
-                    }
-                    // Si il arrive d'en haut
-                    else if ( (koopa->getYSpeed() >= 0) && ( platformRect.top() - koopa->getItsY() >= 0) )
-                    {
-                        koopa->setItsY(platformRect.top() - koopa->getItsRect().height());
-                        koopa->setYSpeed(0);
-                        koopa->setOnPlatform(true);
-                    }
-                }
-            }
+            checkPlatformCollision(koopa, nearlyBlocks);
 
             // Gérer les collision avec le sol
-            if (koopa->getItsRect().intersects(itsFloor->getRect()))
-            {
-                koopa->setYSpeed(0);
-                koopa->setItsY(itsFloor->getRect().top() - koopa->getItsRect().height());
-            }
-            else
-            {
-                // Si le goomba est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
-                if (koopa->getYSpeed() > 0)
-                {
-                    koopa->setYSpeed(koopa->getYSpeed() + GRAVITY/1.9);
-                }
+            checkFloorCollision(koopa);
 
-                else if(koopa->getYSpeed()==0 && koopa->getItsY() != (this->height() - (koopa->getItsRect().height() + 1)) && !koopa->getOnPlatform())
-                {
-                    koopa->setYSpeed(koopa->getYSpeed() + GRAVITY/1.9);
-                }
-            }
         }
-
-        // ============================================================================================
-        // SI IL EST MORT
-
 
         koopa->calculatePosition();
         koopa->updateAsset(elapsedTime);
     }
+}
+
+// Gère les collisions avec le sol
+void GameForm::checkFloorCollision(Entity * anEntity)
+{
+    if (anEntity->getItsRect().intersects(itsFloor->getRect()))
+    {
+        anEntity->setYSpeed(0);
+        anEntity->setItsY(itsFloor->getRect().top() - anEntity->getItsRect().height());
+    }
+    else
+    {
+        // Si le personnage est en train de sauter, appliquez une force de gravité pour faire redescendre le personnage
+        if (anEntity->getYSpeed() < 0)
+        {
+            anEntity->setYSpeed(anEntity->getYSpeed() + GRAVITY);
+            if(anEntity->getYSpeed() == 0)
+            {
+                anEntity->setYSpeed(anEntity->getYSpeed() + GRAVITY);
+            }
+        }
+        // Si le personnage est en train de tomber, appliquer une force de gravité pour le faire descendre plus vite
+        else if (anEntity->getYSpeed() > 0)
+        {
+            anEntity->setYSpeed(anEntity->getYSpeed() + GRAVITY);
+        }
+
+        else if(anEntity->getYSpeed()==0 && anEntity->getItsY() != (this->height() - (anEntity->getItsRect().height() + 1)) && !anEntity->getOnPlatform())
+        {
+            anEntity->setYSpeed(anEntity->getYSpeed() + GRAVITY);
+        }
+    }
+}
+
+// Gère les collisions avec les blocks
+void GameForm::checkPlatformCollision(Entity * anEntity, vector<Element*> nearlyBlocks)
+{
+    for (Element * block : nearlyBlocks)
+    {
+        // Récupérer les rectangles du personnage et de la plateforme
+        QRect platformRect = block->getRect();
+        QRect entityRect = anEntity->getItsRect();
+
+        // Si le personnage touche une plateforme
+        if(entityRect.intersects(platformRect))
+        {
+
+            // Si le joueur arrive de la droite
+            if((entityRect.left() - platformRect.right() <= 0 and entityRect.left() - platformRect.right() >=-1) )
+            {
+                anEntity->setItsX(anEntity->getItsX()+1);
+                anEntity->setXSpeed(0);
+            }
+            // Si le joueur arrive de la gauche
+            else if (entityRect.right() - platformRect.left() >= 0 and entityRect.right() - platformRect.left() <=1)
+            {
+                anEntity->setItsX(anEntity->getItsX()-1);
+                anEntity->setXSpeed(0);
+            }
+            // Si il arrive d'en bas
+            else if(anEntity->getYSpeed() < 0)
+            {
+                anEntity->setItsY(platformRect.bottom()+1);
+                anEntity->reverseYSpeed();
+            }
+
+            // Si il arrive d'en haut
+            else if ( (anEntity->getYSpeed() >= 0) && ( platformRect.top() - anEntity->getItsY() >= 0) )
+            {
+                anEntity->setItsY(platformRect.top() - entityRect.height());
+                anEntity->setYSpeed(0);
+                anEntity->setOnPlatform(true);
+            }
+        }
+    }
+}
+
+// ----------------------------------------------------------------------------------------------------------
+
+// Vérifie si une entité est sur une plateforme (retourne true si c'est le cas)
+bool GameForm::checkEntityOnBlocks(Entity * anEntity, vector<Element*> nearlyBlocks)
+{
+    for (Element * block : nearlyBlocks)
+    {
+        // On récupère le rectangle de l'entité et du bloc
+        QRect blockRect = block->getRect();
+
+        if (
+            // Si le rectangle est déjà sur la plateforme
+            ((blockRect.top() - (anEntity->getItsRect().bottom()) == 1) ||
+             (blockRect.top() - (anEntity->getItsRect().bottom() + 5) == 1)) &&
+            // ...ET qu'il n'est PAS PAS sur la plateforme (sur l'axe X)
+            !( (anEntity->getItsRect().right() < blockRect.left()) ||
+              (anEntity->getItsRect().left() > blockRect.right()) )
+            )
+        {
+            for (Element * otherBlock : nearlyBlocks)
+            {
+                // Récupérer les rectangles de la plateforme
+                QRect platformRect = otherBlock->getRect();
+
+                if(anEntity->getItsRect().intersects(platformRect))
+                {
+                    // Si il arrive de la droite
+                    if(anEntity->getXSpeed() < 0 and anEntity->getItsRect().left() - platformRect.left() > 0)
+                    {
+                        anEntity->setItsX(platformRect.right()+1);
+                    }
+                    else if(anEntity->getXSpeed() > 0 and anEntity->getItsRect().right() - platformRect.right() < 0)
+                    {
+                        anEntity->setItsX(platformRect.left()-anEntity->getItsRect().width());
+                    }
+                }
+            }
+            anEntity->setOnPlatform(true);
+            if (block->getRect().top() - (anEntity->getItsRect().bottom() + 5) == 1)
+            {
+                anEntity->setItsY(anEntity->getItsY() + 5);
+            }
+            anEntity->calculatePosition();
+            //anEntity->updateAsset(elapsedTime);
+            return true;
+        }
+    }
+    return false;
+}
+
+// Vérifie si une entité est sur le sol (retourne true si c'est le cas)
+bool GameForm::checkEntityOnFloor(Entity * anEntity, vector<Element*> nearlyBlocks)
+{
+    if ((itsFloor->getRect().top() - (anEntity->getItsRect().bottom()) == 1) ||
+        itsFloor->getRect().top() - (anEntity->getItsRect().bottom() + 5) == 1  )
+    {
+        for (Element * block : nearlyBlocks)
+        {
+            // Récupérer les rectangles du personnage et de la plateforme
+            QRect platformRect = block->getRect();
+
+            if(anEntity->getItsRect().intersects(platformRect))
+            {
+                // Si il arrive de la droite
+                if(anEntity->getXSpeed() < 0 and anEntity->getItsRect().left() - platformRect.left() > 0)
+                {
+                    anEntity->setItsX(platformRect.right()+1);
+                }
+                else if(anEntity->getXSpeed() > 0 and anEntity->getItsRect().right() - platformRect.right() < 0)
+                {
+                    anEntity->setItsX(platformRect.left()-anEntity->getItsRect().width());
+                }
+            }
+        }
+        //isOnPlatform = true;
+        anEntity->setOnPlatform(true);
+        if (itsFloor->getRect().top() - (anEntity->getItsRect().bottom() + 5) == 1)
+        {
+            anEntity->setItsY(anEntity->getItsY() + 5);
+        }
+        anEntity->calculatePosition();
+        //itsCharacter->updateAsset(elapsedTime);
+        return true;
+    }
+    return false;
+}
+
+// Récupère les blocs proche d'une entité
+vector<Element *> GameForm::getNearlyBlocks(Entity * anEntity)
+{
+    const int DISTANCE_THRESHOLD = 25;
+    vector<Element*> nearlyBlocks;
+
+    for (Element * block : itsBlocks)
+    {
+        int distanceX = abs(anEntity->getItsRect().center().x() - block->getRect().center().x());
+
+        // Add only the block near to the player
+        if (distanceX < DISTANCE_THRESHOLD)
+        {
+            nearlyBlocks.push_back(block);
+
+        }
+    }
+
+    return nearlyBlocks;
 }
 
 // ---------------------------------------------------------------------------------------------------------

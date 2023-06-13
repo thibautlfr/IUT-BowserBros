@@ -75,13 +75,56 @@ public:
      */
     void checkCollisionFireBalls();
 
+    /**
+     * @brief Check for the goombas collisions
+     */
     void checkGoombasCollision();
 
+    /**
+     * @brief Checks for the koopas collisions
+     */
     void checkKoopasCollision();
+
+    /**
+     * @brief Checks the collisions between the floor and an entity
+     * @param anEntity : the entity we want to verify
+     */
+    void checkFloorCollision(Entity * anEntity);
+
+    // ----------------------------------------------------------------------------------------------
+
+    /**
+     * @brief Checks the collisions between an entity and the blocks near theme
+     * @param anEntity : the entity we want to verify
+     * @param nearlyBlocks : the blocks near the entity
+     */
+    void checkPlatformCollision(Entity * anEntity, vector<Element*> nearlyBlocks);
+
+    /**
+     * @brief Checks if an entity is on a block and the collisions associated
+     * @param anEntity : the entity we want to verify
+     * @param nearlyBlocks : the blocks near the entity
+     * @return true if the entity is on a block and false either
+     */
+    bool checkEntityOnBlocks(Entity * anEntity, vector<Element*> nearlyBlocks);
+
+    /**
+     * @brief Checks if an entity is on the floor and the collisions associated
+     * @param anEntity : the entity we want to verify
+     * @param nearlyBlocks : the blocks near the entity
+     * @return true if the entity is on the floor and false either
+     */
+    bool checkEntityOnFloor(Entity * anEntity, vector<Element*> nearlyBlocks);
+
+    /**
+     * @brief Gets the blocks near an entity
+     * @param anEntity : the entity we want to check
+     * @return
+     */
+    vector<Element*> getNearlyBlocks(Entity * anEntity);
 
 
     // --------------------------------------------------------------------------------------------
-
 
     /**
       * @brief Paints the player's helps.

@@ -14,6 +14,13 @@ Mario::Mario(float x, float y, string asset) :
     itsImage.load(QString::fromStdString(asset));
 }
 
+//Mario::~Mario()
+//{
+
+//}
+
+// ------------------------------------------------------------------
+
 void Mario::jump()
 {
     itsYSpeed = itsJumpSpeed;
