@@ -1,5 +1,6 @@
 #include "widget.h"
 #include "qicon.h"
+#include "soundsettingsform.h"
 #include "ui_widget.h"
 
 #include <QStackedWidget>
@@ -28,6 +29,9 @@ Widget::Widget(QWidget *parent)
     stackedWidget->addWidget(menuForm);
 
     //=======================================================================
+
+    // Création de GameForm
+
 
     // Connect pour lancer une partie avec le bouton Jouer
     connect(menuForm, &MenuForm::playButtonClicked, this, [=]() {
@@ -89,6 +93,24 @@ Widget::Widget(QWidget *parent)
             menuForm->setFocus();
             delete scoreboardForm;
         });
+    });
+
+    // Connect pour afficher le widget des paramètres
+    connect(menuForm, &MenuForm::soundSettingsButtonClicked, this, [=]() {
+        SoundSettingsForm* soundSettingsForm = new SoundSettingsForm(this, gameForm->getSoundManager(), menuForm->getSoundManager());
+        stackedWidget->addWidget(soundSettingsForm);
+
+        stackedWidget->setCurrentWidget(soundSettingsForm);
+        soundSettingsForm->setFocus();
+        menuForm->hide();// Cachez le formulaire de menu lorsque le formulaire de paramètres sonores est affiché
+
+        // Connect pour revenir au menu depuis le formulaire de classement
+        connect(soundSettingsForm, &SoundSettingsForm::finished, this, [=]() {
+            stackedWidget->setCurrentWidget(menuForm);
+            menuForm->setFocus();
+            delete soundSettingsForm;
+        });
+
     });
 
     //=======================================================================

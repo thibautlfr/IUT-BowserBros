@@ -36,6 +36,8 @@ public:
 
     SoundManager *soundManager;
 
+    SoundManager* getSoundManager() const;
+
     // --------------------------------------------------------------------------------------------
 
     /**
@@ -47,6 +49,7 @@ public:
     void playMusic();
 
     void stopMusic();
+
 
     /**
       * @brief Destructs the MenuForm object.
@@ -68,6 +71,8 @@ signals:
       * @brief Signal emitted when the podium button is clicked.
      */
     void podiumButtonClicked();
+
+    void soundSettingsButtonClicked();
 
 private:
     Ui::MenuForm *ui;

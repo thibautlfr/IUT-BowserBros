@@ -102,6 +102,7 @@ public:
      */
     void displayChrono();
 
+    SoundManager* getSoundManager() const;
 public slots:
     /**
       * @brief The game loop that updates the game state.

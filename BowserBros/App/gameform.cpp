@@ -682,3 +682,8 @@ void GameForm::paintPlayerHelps(QPainter* painter)
     int levely = itsBoss->getItsY()-20;
     levelLabel->move(levelx, levely); // Déplacer le timeLabel à la position calculée
 }
+
+SoundManager* GameForm::getSoundManager() const
+{
+    return soundManager;
+}

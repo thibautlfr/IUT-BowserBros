@@ -1,5 +1,6 @@
 #include "menuform.h"
 #include "QtGui/qpainter.h"
+#include "soundsettingsform.h"
 #include "ui_menuform.h"
 
 #include <QPixmap>
@@ -38,9 +39,16 @@ MenuForm::MenuForm(QWidget *parent) :
     ui->podiumButton->setIcon(podiumAsset);
     ui->podiumButton->setIconSize(QSize(80, 80));
 
+    QPixmap soundSettingsAsset(":/Assets/Assets/menu/setting.png");
+    ui->soundSettingsButton->setIcon(soundSettingsAsset);
+    ui->soundSettingsButton->setIconSize(soundSettingsAsset.size());
+
+
     connect(ui->playButton, &QPushButton::clicked, this, &MenuForm::playButtonClicked);
     connect(ui->quitButton, &QPushButton::clicked, this, &MenuForm::quitButtonClicked);
     connect(ui->podiumButton, &QPushButton::clicked, this, &MenuForm::podiumButtonClicked);
+    connect(ui->soundSettingsButton, &QPushButton::clicked, this, &MenuForm::soundSettingsButtonClicked);
+
 
     repaint();
 }
@@ -48,6 +56,11 @@ MenuForm::MenuForm(QWidget *parent) :
 MenuForm::~MenuForm()
 {
     delete ui;
+}
+
+SoundManager* MenuForm::getSoundManager() const
+{
+    return soundManager;
 }
 
 void MenuForm::playMusic()
@@ -71,5 +84,4 @@ void MenuForm::paintEvent(QPaintEvent *event)
     painter->drawImage(width() - 170, height()-20-86, itsBowser);
     delete painter;
 }
-
 

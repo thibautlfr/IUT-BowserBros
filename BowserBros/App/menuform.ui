@@ -79,6 +79,28 @@
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="soundSettingsButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>10</y>
+     <width>225</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>800</width>
+     <height>600</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {border: none; padding: 0; margin: 0; background: transparent;}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

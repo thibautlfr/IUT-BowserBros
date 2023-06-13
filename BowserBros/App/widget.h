@@ -26,24 +26,18 @@ It inherits from the QWidget class.
 class Widget : public QWidget
 {
     Q_OBJECT
-    MenuForm * menuForm; /**< The menu form object. */
-    GameForm * gameForm; /**< The game form object. */
-    ScoreboardForm * scoreboardForm ;
-public:
-    /**
-      * @brief Constructs a Widget object.
-      * @param parent The parent QWidget object.
-     */
-    Widget(QWidget *parent = nullptr);
 
-    /**
-      * @brief Destructs the Widget object.
-     */
+public:
+    explicit Widget(QWidget *parent = nullptr);
     ~Widget();
 
 private:
     Ui::Widget *ui;
-    QStackedWidget* stackedWidget; /**< The stack widget to switch between level and menu */
+    QStackedWidget* stackedWidget;
+    MenuForm * menuForm;
+    GameForm * gameForm;
+    ScoreboardForm * scoreboardForm;
+    SoundManager *soundManager;  // Ajoutez SoundManager comme membre de la classe
 };
 
 #endif // WIDGET_H
