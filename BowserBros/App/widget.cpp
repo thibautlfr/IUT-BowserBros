@@ -30,10 +30,13 @@ Widget::Widget(QWidget *parent)
 
     // Création du widget de paramètres
     SoundSettingsForm* soundSettingsForm = new SoundSettingsForm(this, menuForm->getSoundManager());
+    stackedWidget->addWidget(soundSettingsForm);
 
     //=======================================================================
 
-    // Connect pour lancer une partie avec le bouton Jouer
+    // CONNECT POUR CHAQUE BOUTONS DU MENU
+
+    // Bouton JOUER
     connect(menuForm, &MenuForm::playButtonClicked, this, [=]() {
         // Arrêt de la musique du menu
         menuForm->stopMusic();
@@ -46,7 +49,7 @@ Widget::Widget(QWidget *parent)
         stackedWidget->setCurrentWidget(gameForm->getScrollArea());
         gameForm->setFocus();
 
-        // Connect pour gérer la fin de la partie
+        // Retou au MENU quand la partie est perdue
         connect(gameForm, &GameForm::gameLosed, this, [=]() {
             if (gameForm != nullptr)
             {
@@ -57,7 +60,7 @@ Widget::Widget(QWidget *parent)
             }
         });
 
-        // Connect pour gérer la victoire dans le jeu
+        // Affichage du temps et CLASSEMENT quand la partie est gagnée
         connect(gameForm, &GameForm::gameWon, this, [=](int elapsedTime) {
             menuForm->playMusic();
             if (gameForm != nullptr)
@@ -69,7 +72,7 @@ Widget::Widget(QWidget *parent)
                 qDebug() << "GameForm deleted";
                 delete gameForm;
 
-                // Connect pour revenir au menu depuis le formulaire de classement
+                // Bouton MENU dans CLASSEMENT
                 connect(scoreboardForm, &ScoreboardForm::menuButtonClicked, this, [=]() {
                     stackedWidget->setCurrentWidget(menuForm);
                     menuForm->setFocus();
@@ -79,17 +82,17 @@ Widget::Widget(QWidget *parent)
         });
     });
 
-    // Connect pour quitter le jeu avec le bouton quitter
+    // Bouton QUITTER
     connect(menuForm, &MenuForm::quitButtonClicked, this, &QApplication::quit);
 
-    // Connect pour afficher le formulaire de classement
+    // Bouton CLASSEMENT
     connect(menuForm, &MenuForm::podiumButtonClicked, this, [=]() {
         scoreboardForm = new ScoreboardForm(this, 0);
         stackedWidget->addWidget(scoreboardForm);
         stackedWidget->setCurrentWidget(scoreboardForm);
         scoreboardForm->setFocus();
 
-        // Connect pour revenir au menu depuis le formulaire de classement
+        // Bouton MENU dans CLASSEMENT
         connect(scoreboardForm, &ScoreboardForm::menuButtonClicked, this, [=]() {
             stackedWidget->setCurrentWidget(menuForm);
             menuForm->setFocus();
@@ -97,16 +100,13 @@ Widget::Widget(QWidget *parent)
         });
     });
 
-    // Connect pour afficher le widget des paramètres
+    // Bouton PARAMÈTRES
     connect(menuForm, &MenuForm::soundSettingsButtonClicked, this, [=]() {
-
-        stackedWidget->addWidget(soundSettingsForm);
 
         stackedWidget->setCurrentWidget(soundSettingsForm);
         soundSettingsForm->setFocus();
-        menuForm->hide();// Cachez le formulaire de menu lorsque le formulaire de paramètres sonores est affiché
 
-        // Connect pour revenir au menu depuis le formulaire de classement
+        // Bouton MENU dans les PARAMÈTRES
         connect(soundSettingsForm, &SoundSettingsForm::finished, this, [=]() {
             stackedWidget->setCurrentWidget(menuForm);
             menuForm->setFocus();
@@ -131,15 +131,10 @@ Widget::Widget(QWidget *parent)
 
 Widget::~Widget()
 {
-    if (soundSettingsForm != nullptr)
+    if (stackedWidget != nullptr)
     {
-        delete soundSettingsForm;
+        delete stackedWidget;
     }
-    if (menuForm != nullptr)
-    {
-        delete menuForm;
-    }
-    delete stackedWidget;
 
     delete ui;
 }
