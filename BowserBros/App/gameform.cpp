@@ -594,6 +594,28 @@ void GameForm::checkKoopasCollision()
                     koopa->setXSpeed(0);
                 }
             }
+            // Si koopa est mort
+            else if (koopa->getIsDead() && koopa->getXSpeed() == 0)
+            {
+                // Si le joueur arrive de la droite
+                if (characterCenter > koopaCenter && itsCharacter->getXSpeed() < 0)
+                {
+                    itsCharacter->setItsX(koopa->getItsRect().right() + 1);
+//                    if (koopa->getXSpeed() == 0)
+//                    {
+//                        koopa->setXSpeed(-1.5);
+//                    }
+                }
+                // Si il arrive de la gauche
+                else if (characterCenter < koopaCenter && itsCharacter->getXSpeed() > 0)
+                {
+                    itsCharacter->setItsX(koopa->getItsRect().left() - itsCharacter->getItsRect().width() - 1);
+//                    if (koopa->getXSpeed() == 0)
+//                    {
+//                        koopa->setXSpeed(1.5);
+//                    }
+                }
+            }
             // Sinon, le joueur perds
             else if(!koopa->getIsDead() || (koopa->getIsDead() && koopa->getXSpeed() != 0) )
             {
@@ -636,14 +658,20 @@ void GameForm::checkKoopasCollision()
             {
                 if (!otherKoopa->getIsDead() && !koopa->getIsDead())
                 {
-                    otherKoopa->reverseXSpeed();
                     koopa->reverseXSpeed();
+                    otherKoopa->reverseXSpeed();
                 }
-                if(koopa->getIsDead() && !otherKoopa->getIsDead())
+                else if(koopa->getIsDead() && !otherKoopa->getIsDead() && koopa->getXSpeed() != 0)
                 {
+                    koopa->reverseXSpeed();
                     otherKoopa->setXSpeed(0);
                     otherKoopa->setIsDead(true);
-                    koopa->reverseXSpeed();
+                }
+                else if(otherKoopa->getIsDead() && !koopa->getIsDead() && otherKoopa->getXSpeed() != 0)
+                {
+                    otherKoopa->reverseXSpeed();
+                    koopa->setXSpeed(0);
+                    koopa->setIsDead(true);
                 }
                 else if (koopa->getIsDead() && otherKoopa->getIsDead() && koopa->getXSpeed() != 0)
                 {
@@ -876,21 +904,28 @@ bool GameForm::checkEntityOnFloor(Entity * anEntity, vector<Element*> nearlyBloc
                 if(anEntity->getXSpeed() < 0 and anEntity->getItsRect().left() - platformRect.left() > 0)
                 {
                     anEntity->setItsX(platformRect.right()+1);
+                    // Si la vitesse correspond a celle d'un koopa ou d'un goomba alors on reverse la xspeed
+                    if (anEntity->getXSpeed() == float(-0.4) || anEntity->getXSpeed() == float(-0.5) || anEntity->getXSpeed() == float(-1.5))
+                    {
+                        anEntity->reverseXSpeed();
+                    }
                 }
                 else if(anEntity->getXSpeed() > 0 and anEntity->getItsRect().right() - platformRect.right() < 0)
                 {
                     anEntity->setItsX(platformRect.left()-anEntity->getItsRect().width());
+                    if (anEntity->getXSpeed() == float(0.4) || anEntity->getXSpeed() == float(0.5) || anEntity->getXSpeed() == float(1.5))
+                    {
+                        anEntity->reverseXSpeed();
+                    }
                 }
             }
         }
-        //isOnPlatform = true;
         anEntity->setOnPlatform(true);
         if (itsFloor->getRect().top() - (anEntity->getItsRect().bottom() + 5) == 1)
         {
             anEntity->setItsY(anEntity->getItsY() + 5);
         }
         anEntity->calculatePosition();
-        //itsCharacter->updateAsset(elapsedTime);
         return true;
     }
     return false;
@@ -960,7 +995,6 @@ void GameForm::updateFireBalls()
 
 void GameForm::gameloop()
 {
-    qDebug() << "niveau actuel :" << itsLevel ;
     elapsedTime += 10;
     displayChrono();
     checkCharacterCollision();
