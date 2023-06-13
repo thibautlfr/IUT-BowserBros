@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['paintplayerhelps_0',['paintPlayerHelps',['../class_game_form.html#a8386c0313181b8b39549e5c53490c943',1,'GameForm']]],
-  ['playbuttonclicked_1',['playButtonClicked',['../class_menu_form.html#a5b6a1433f9bc85f8802f8d7a37c9d547',1,'MenuForm']]]
+  ['mario_0',['Mario',['../class_mario.html',1,'Mario'],['../class_mario.html#ab95512785b18f8be80facfcae0894efb',1,'Mario::Mario(float x, float y, int width, int height)'],['../class_mario.html#a18dc19a04b05c2e6502a5633e05cbc18',1,'Mario::Mario(float x, float y, string asset)']]],
+  ['mario_2eh_1',['mario.h',['../mario_8h.html',1,'']]],
+  ['menubuttonclicked_2',['menuButtonClicked',['../class_scoreboard_form.html#a8ceb99b236bd7c13ce8bedc860d035db',1,'ScoreboardForm']]],
+  ['menuform_3',['MenuForm',['../class_menu_form.html',1,'MenuForm'],['../class_menu_form.html#acaab5223ef7986a0e55157632db86265',1,'MenuForm::MenuForm()']]],
+  ['menuform_2eh_4',['menuform.h',['../menuform_8h.html',1,'']]],
+  ['musicfinished_5',['musicFinished',['../class_sound_manager.html#a4294cbd9c215a38aaa396a913e0b2611',1,'SoundManager']]]
 ];

@@ -73,9 +73,24 @@ public:
      */
     float getYSpeed();
 
+    /**
+     * @brief Getter for itsX
+     * @return the X of the element
+     */
     int getItsX();
 
+    /**
+     * @brief Getter for itsY
+     * @return the Y of the element
+     */
     int getItsY();
+
+    /**
+      * @brief Returns the type of the element.
+      * @return The type of the element.
+      */
+     ElementType getItsType() const;
+
 
     // --------------------------------------------------------------------------------------------
 

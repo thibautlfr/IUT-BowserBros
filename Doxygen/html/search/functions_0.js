@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bowser_0',['Bowser',['../class_bowser.html#a540b6afd1cc1738496a2806f50bcd31b',1,'Bowser']]]
+  ['addscore_0',['addScore',['../class_score_board.html#aa3057b98cc197b5f0acf2f81a9f29442',1,'ScoreBoard']]]
 ];

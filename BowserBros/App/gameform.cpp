@@ -91,7 +91,9 @@ GameForm::GameForm(QWidget *parent)
 
     // Création et lancement du timer
     itsTimer = new QTimer(this);
+    marioTimer = new QTimer(this);
     connect(itsTimer, SIGNAL(timeout()), this, SLOT(gameloop()));
+    connect(marioTimer, SIGNAL(timeout()), this, SLOT(animationDeath()));
     start();
 }
 
@@ -105,6 +107,7 @@ GameForm::~GameForm()
     delete levelLabel;
     delete timeLabel;
     delete itsTimer;
+    delete marioTimer;
     delete ui;
 }
 
@@ -287,9 +290,12 @@ void GameForm::checkCharacterCollision()
     // On vérifie si le joueur touche le coffre
     if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
     {
+
         // Arrêtez le jeu et revenez au menu
         if (itsLevel == itsAvalaibleLevelsNb)
         {
+            itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
+            itsCharacter->setItsY(itsCharacter->getItsY() - 5); // Déplace vers le haut de 10 pixels
             itsTimer->stop();
             soundManager->playWinMusic();
 
@@ -299,15 +305,18 @@ void GameForm::checkCharacterCollision()
         }
         else
         {
+            itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
+            itsCharacter->setItsY(itsCharacter->getItsY() - 5); // Déplace vers le haut de 10 pixels
             itsTimer->stop();
             soundManager->playLevelPassedMusic();
+            itsLevel ++;
 
             QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
                 soundManager->playMainMusic();
-                itsLevel ++;
                 itsTimer->start();
                 loadLevel();
             });
+
         }
         return;
     }
@@ -514,12 +523,16 @@ void GameForm::checkCollisionFireBalls()
     {
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
-            /// Arrêtez le jeu et revenez au menu
-            itsTimer->stop();
-
+            // Arrêtez le jeu et revenez au menu
             soundManager->playDeathMusic();
+            itsCharacter->setIsDead(true);
+            itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
+            itsTimer->stop();
+            marioTimer->start(10);
+            itsCharacter->setYSpeed(-5);
 
             QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                marioTimer->stop();
                 emit gameLosed();
             });
 
@@ -536,6 +549,13 @@ void GameForm::checkCollisionFireBalls()
         {
             if ((*it)->getItsRect().intersects(block->getRect()))
             {
+                // Vérifier si le bloc est de type 6 (BREAKABLE2) et détruire le bloc
+                if (block->getItsType() == CRACKELED)
+                {
+                    delete block;
+                    itsBlocks.erase(remove(itsBlocks.begin(), itsBlocks.end(), block), itsBlocks.end());
+                }
+
                 isCollision = true;
                 break;
             }
@@ -624,6 +644,14 @@ void GameForm::gameloop()
     updateFireBalls();
     repaint();
 }
+
+void GameForm::animationDeath()
+{
+    itsCharacter->setYSpeed(itsCharacter->getYSpeed()+ GRAVITY/2 );
+    itsCharacter->calculatePosition();
+    repaint();
+}
+
 
 void GameForm::displayChrono()
 {
@@ -732,7 +760,10 @@ void GameForm::paintEvent(QPaintEvent *event)
     itsChest->draw(painter);
 
     // Afficher les aides au joueur
-    paintPlayerHelps(painter);
+    if(!itsCharacter->getIsDead())
+    {
+        paintPlayerHelps(painter);
+    }
 
     itsCharacter->draw(painter);
     itsBoss->draw(painter);
@@ -742,6 +773,7 @@ void GameForm::paintEvent(QPaintEvent *event)
 
 void GameForm::paintPlayerHelps(QPainter* painter)
 {
+
     if (itsCharacter->getItsY() > height() - 300)
     {
         painter->drawImage(600, height() - 65, leftArrow);
@@ -774,4 +806,5 @@ void GameForm::paintPlayerHelps(QPainter* painter)
     int levelx = 10;
     int levely = itsBoss->getItsY()-20;
     levelLabel->move(levelx, levely); // Déplacer le timeLabel à la position calculée
+
 }

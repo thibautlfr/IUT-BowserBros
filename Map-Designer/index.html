@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="block-buttons">
+            <button class="block-button" data-type="0" style="background-image: url('other/chest.png')"></button>
+            <button class="block-button" data-type="1" style="background-image: url('block/block1.jpg')"></button>
+            <button class="block-button" data-type="2" style="background-image: url('block/block5.jpg')"></button>
+            <button class="block-button" data-type="3" style="background-image: url('block/block3.jpg')"></button>
+            <button class="block-button" data-type="4" style="background-image: url('block/block2.jpg')"></button>
+            <button class="block-button" data-type="5" style="background-image: url('block/block6.jpg')"></button>
+            <button class="block-button" data-type="6" style="background-image: url('block/block4.jpg')"></button>
+        </div>
+        <div id="gridContainer">
+            <div id="grid"></div>
+        </div>
+        <div class="controls">
+            <div class="mousehelp">
+                <img src="./other/rightclick.png" alt="Mode Gomme">
+                <p>Erase</p>
+                <img src="./other/leftclick.png" alt="Mode Crayon">
+                <p>Draw</p>
+            </div>
+
+            <button id="clearButton">Effacer tout</button>
+            <button id="export">Exporter</button>
+
+            <button id="load">Charger</button>
+            <input type="file" id="file" style="display: none;">
+        </div>
+    </div>
+    <script>
+        const gridWidth = 40;
+        const gridHeight = 60;
+        const grid = document.getElementById('grid');
+        const blockType = document.getElementById('blockType');
+        const clearButton = document.getElementById('clearButton');
+        const exportButton = document.getElementById('export');
+
+        const map = [];
+        let mode = 'pencil';
+        let isMouseDown = false;
+        let chestPlaced = false;
+        let selectedBlockType;
+
+        const blockButtons = document.querySelectorAll('.block-button');
+
+        // Ajouter ce code au début de votre script
+        const fileInput = document.getElementById('file');
+        const loadButton = document.getElementById('load');
+
+        
+        blockButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                blockButtons.forEach(b => b.classList.remove('block-button-selected')); // retire la classe 'block-button-selected' des autres boutons
+                button.classList.add('block-button-selected'); // ajoute la classe 'block-button-selected' au bouton cliqué
+                selectedBlockType = button.dataset.type;
+                mode = 'pencil';
+            });
+        });
+
+        clearButton.addEventListener('click', () => {
+            map.length = 0;
+            chestPlaced = false;
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(cell => {
+                cell.style.backgroundImage = '';
+                cell.dataset.type = '';
+            });
+        });
+
+        for (let i = 0; i < gridHeight; i++) {
+            for (let j = 0; j < gridWidth; j++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.dataset.x = j;
+                cell.dataset.y = i;
+                if (i === gridHeight - 1) {
+                    cell.classList.add('unusable');
+                    cell.style.pointerEvents = 'none';
+                }
+                if (i === gridHeight - 2) {
+                    cell.classList.add('ground');
+                }
+                cell.addEventListener('mousedown', (event) => {
+                    isMouseDown = true;
+                    if (event.button == 0) { // 0 corresponds to the left mouse button
+                        mode = 'pencil';
+                    } else if (event.button == 2) { // 2 corresponds to the right mouse button
+                        mode = 'eraser';
+                    }
+                    handleCellClick(cell);
+                });
+
+                cell.addEventListener('contextmenu', (event) => {
+                    event.preventDefault();
+                    isMouseDown = true;
+                    mode = 'eraser';
+                    handleCellClick(cell);
+                });
+
+                cell.addEventListener('mouseenter', () => {
+                    if (isMouseDown) {
+                        handleCellClick(cell);
+                    }
+                });
+
+                cell.addEventListener('mouseup', () => {
+                    isMouseDown = false;
+                });
+
+                grid.appendChild(cell);
+            }
+        }
+
+        exportButton.addEventListener('click', () => {
+            const text = map.join('\n');
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'level.txt';
+            a.click();
+        });
+
+        function handleCellClick(cell) {
+            if (mode === 'pencil') {
+                if (selectedBlockType === '0' && chestPlaced) {  // Modifiez cette ligne
+                    return;
+                }
+
+                cell.style.backgroundImage = `url(${getBlockImageUrl(selectedBlockType)})`;  // Modifiez cette ligne
+                cell.dataset.type = selectedBlockType;  // Modifiez cette ligne
+                map.push(`${cell.dataset.x * 20};${(gridHeight - cell.dataset.y) * 20};${selectedBlockType}`);
+
+                if (selectedBlockType === '0') {  // Modifiez cette ligne
+                    chestPlaced = true;
+                }
+            } else if (mode === 'eraser') {
+                cell.style.backgroundImage = '';
+                const index = map.findIndex(block => block.split(';')[0] == cell.dataset.x * 20 && block.split(';')[1] == (gridHeight - cell.dataset.y - 1) * 20);
+                if (index > -1) {
+                    map.splice(index, 1);
+                }
+                cell.dataset.type = '';
+                if (selectedBlockType === '0') {  // Modifiez cette ligne
+                    chestPlaced = false;
+                }
+            }
+        }
+
+        loadButton.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const lines = e.target.result.split('\n');
+                lines.forEach(line => {
+                    const [x, y, type] = line.split(';');
+                    const cell = document.querySelector(`.cell[data-x="${x / 20}"][data-y="${gridHeight - y / 20}"]`);
+                    if (cell) {
+                        cell.style.backgroundImage = `url(${getBlockImageUrl(type)})`;
+                        cell.dataset.type = type;
+                        map.push(line);
+                        if (type === '0') {
+                            chestPlaced = true;
+                        }
+                    }
+                });
+            };
+            reader.readAsText(file);
+        });
+
+
+        function getBlockImageUrl(type) {
+            if (type === '0') {
+                return 'other/chest.png';
+            } else if (type === '1') {
+                return 'block/block1.jpg';
+            } else if (type === '2') {
+                return 'block/block5.jpg';
+            } else if (type === '3') {
+                return 'block/block3.jpg';
+            } else if (type === '4') {
+                return 'block/block2.jpg';
+            } else if (type === '5') {
+                return 'block/block6.jpg';
+            } else if (type === '6') {
+                return 'block/block4.jpg';
+            }
+            return '';
+        }
+    </script>
+</body>
+
+</html>

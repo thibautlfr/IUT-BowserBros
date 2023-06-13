@@ -1,0 +1,161 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(187, 211, 241);
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #d7d7d7;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.mousehelp{
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ebebeb;
+    margin-bottom: 30px;
+    padding-top: 15px;
+    width: 80px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.mousehelp img {
+    width: 50px;
+}
+
+
+.block-button {
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    margin: 15px 0;
+}
+
+.block-button-selected {
+    border: 3px solid #ff0000; /* vous pouvez modifier cette couleur comme vous voulez */
+}
+
+.block-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #d7d7d7;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+#gridContainer {
+    flex-grow: 1;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+    /* box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2); */
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(40, 20px);
+    grid-template-rows: repeat(60, 20px);
+    gap: 1px;
+    width: 840px;
+    height: 1240px;
+    background-image: url('background/background1.png'); 
+    /* Chemin vers votre image d'arrière-plan */
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+}
+
+.cell {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.block {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.block[data-type="0"] {
+    background-image: url('other/chest.png');
+}
+
+.block[data-type="1"] {
+    background-image: url('block/block1.jpg');
+}
+
+button,
+select {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+button:hover,
+select:hover {
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+}
+
+#export {
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#export:hover {
+    background-color: #45a049;
+}
+
+#load{
+    margin-top: 20px;
+    background-color: #c0ba54;
+    color: white;
+}
+
+#load:hover {
+    background-color: #b0a44c;
+}
+
+.unusable {
+    width: 20px;
+    /* Largeur fixe de la grille */
+    height: 20px;
+    /* Hauteur de la grille */
+    gap: 1px;
+    background-image: url('other/floor.png');
+    background-size: cover;
+    background-position: center;
+}

@@ -19,6 +19,7 @@ private:
     float itsJumpSpeed; /**< The jump speed of Mario. */
     bool isOnPlatform; /**< Flag indicating if Mario is on a platform. */
     bool isOnLadder;
+    bool isDead;
 public:
     /**
       * @brief Constructs a Mario object.
@@ -54,6 +55,9 @@ public:
     bool getOnLadder();
 
     void setOnLadder(bool onLadder);
+    bool getIsDead();
+
+    void setIsDead(bool dead);
 
     // --------------------------------------------------------------------------------------------
 

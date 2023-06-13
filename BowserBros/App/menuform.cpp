@@ -36,7 +36,7 @@ MenuForm::MenuForm(QWidget *parent) :
 
     QPixmap podiumAsset(":/Assets/Assets/other/podium.png");
     ui->podiumButton->setIcon(podiumAsset);
-    ui->podiumButton->setIconSize(QSize(80, 80));
+    ui->podiumButton->setIconSize(QSize(110, 110));
 
     connect(ui->playButton, &QPushButton::clicked, this, &MenuForm::playButtonClicked);
     connect(ui->quitButton, &QPushButton::clicked, this, &MenuForm::quitButtonClicked);

@@ -15,6 +15,8 @@
 - **`/Executable`** : Exécutable du projet. Contient les exécutables de l'application pour Mac OS et Windows.
 - **`/Images`** : Images utilisées dans le README.
 - **`/.gitlab-ci.yml`** : Fichier de configuration de GitLab CI. Permet la mise en ligne de la documentation du projet.
+- **`/Map-Designer`** : Dossier contenant le site HTML/CSS/JS permettant de créer/modifier des niveaux pour le jeu.
+- **`/Database`** : Dossier contenant le fichier JSON de la base de données du jeu.
 
 ---
 
@@ -40,7 +42,7 @@ L'application est un jeu de plateforme du style **Mario Bros**. Le but du jeu es
 Menu principal de l'application. Permet de choisir entre jouer, voir le classement ou quitter l'application.
 
 <div align="center">
-  <img src="./Images/screen-v1-menu.png" width="700">
+  <img src="./Images/screen-v2-menu.png" width="700">
 </div>
 
 - **Début du niveau**
@@ -57,6 +59,22 @@ Etat du niveau lorsque le joueur est monté dans le niveau.
 
 <div align="center">
   <img src="./Images/screen-v1-endlevel.png" width="700">
+</div>
+
+- **Classement**
+
+Affichage du top 5 du jeu et proposition d'inscription.
+
+<div align="center">
+  <img src="./Images/screen-v2-classement.png" width="700">
+</div>
+
+- **Map Editor**
+
+Site HTML/CS/JS permettant de créer des niveaux pour le jeu.
+
+<div align="center">
+  <img src="./Images/screen-v2-map-editor.png" width="700">
 </div>
 
 ---

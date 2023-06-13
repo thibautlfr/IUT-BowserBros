@@ -5,6 +5,7 @@ Mario::Mario(float x, float y, int width, int height) :
     Entity(x, y, width, height)
 {
     itsJumpSpeed = -8;
+    isDead = false;
 }
 
 Mario::Mario(float x, float y, string asset) :
@@ -29,11 +30,11 @@ void Mario::updateAsset(int timeElapsed)
         }
         else if(itsXSpeed > 0)
         {
-            int(timeElapsed / 150) % 2 == 1? itsImage.load(":Assets/Assets/mario/mario9.png"): itsImage.load(":Assets/Assets/mario/mario10.png");
+            (int)(timeElapsed / 150) % 2 == 1? itsImage.load(":Assets/Assets/mario/mario9.png"): itsImage.load(":Assets/Assets/mario/mario10.png");
         }
         else if(itsXSpeed < 0)
         {
-            int(timeElapsed / 150) % 2 == 1? itsImage.load(":Assets/Assets/mario/mario1.png"): itsImage.load(":Assets/Assets/mario/mario2.png");
+            (int)(timeElapsed / 150) % 2 == 1? itsImage.load(":Assets/Assets/mario/mario1.png"): itsImage.load(":Assets/Assets/mario/mario2.png");
         }
     }
     else if(isOnLadder)
@@ -91,4 +92,14 @@ bool Mario::intersect(QRect anObstacle)
         return anObstacle.intersects(marioRect);
     }
 
+}
+
+bool Mario::getIsDead()
+{
+    return isDead;
+}
+
+void Mario::setIsDead(bool dead)
+{
+    isDead = dead;
 }

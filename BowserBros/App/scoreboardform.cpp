@@ -123,8 +123,8 @@ ScoreboardForm::ScoreboardForm(QWidget *parent, int elapsedTime) :
         QPixmap enterButtonImage(":/Assets/Assets/other/enter_key.png");
         enterButton->setIcon(enterButtonImage);
         enterButton->setStyleSheet("QPushButton { border: none; }");
-        enterButton->setIconSize(QSize(200, 68)); // Définir la taille de l'icône du bouton
-        enterButton->move(295, 500);
+        enterButton->setIconSize(QSize(100, 34)); // Définir la taille de l'icône du bouton
+        enterButton->move(600, 450);
         // Connecter le signal clicked() du bouton à un slot
         connect(enterButton, &QPushButton::clicked, this, &ScoreboardForm::onNameEntered);
     }

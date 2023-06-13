@@ -53,6 +53,11 @@ QRect Element::getRect()
     return itsRect;
 }
 
+ElementType Element::getItsType() const
+{
+    return itsType;
+}
+
 void Element::draw(QPainter *aPainter)
 {
     if (itsImage.isNull())
