@@ -5,11 +5,13 @@
 
 SoundSettingsForm::SoundSettingsForm(QWidget *parent,  SoundManager *soundMenuManager) :
     QWidget(parent),
-    ui(new Ui::SoundSettingsForm),
-    menuSoundManager(soundMenuManager)
+    menuSoundManager(soundMenuManager),
+    ui(new Ui::SoundSettingsForm)
 
 {
     ui->setupUi(this);
+
+    setFixedSize(800, 600);
 
     // Initialise les valeurs des sliders avec les valeurs actuelles du SoundManager
     ui->generalVolumeSlider->setValue(static_cast<int>(100));

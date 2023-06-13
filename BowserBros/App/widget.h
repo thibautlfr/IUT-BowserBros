@@ -11,6 +11,7 @@
 
 #include "menuform.h"
 #include "gameform.h"
+#include "soundsettingsform.h"
 #include "scoreboardform.h"
 
 QT_BEGIN_NAMESPACE
@@ -36,8 +37,8 @@ private:
     QStackedWidget* stackedWidget;
     MenuForm * menuForm;
     GameForm * gameForm;
+    SoundSettingsForm * soundSettingsForm;
     ScoreboardForm * scoreboardForm;
-    SoundManager *soundManager;  // Ajoutez SoundManager comme membre de la classe
 };
 
 #endif // WIDGET_H

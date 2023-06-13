@@ -28,10 +28,10 @@ Widget::Widget(QWidget *parent)
     menuForm = new MenuForm;
     stackedWidget->addWidget(menuForm);
 
+    // Création du widget de paramètres
+    SoundSettingsForm* soundSettingsForm = new SoundSettingsForm(this, menuForm->getSoundManager());
+
     //=======================================================================
-
-    // Création de GameForm
-
 
     // Connect pour lancer une partie avec le bouton Jouer
     connect(menuForm, &MenuForm::playButtonClicked, this, [=]() {
@@ -99,7 +99,7 @@ Widget::Widget(QWidget *parent)
 
     // Connect pour afficher le widget des paramètres
     connect(menuForm, &MenuForm::soundSettingsButtonClicked, this, [=]() {
-        SoundSettingsForm* soundSettingsForm = new SoundSettingsForm(this, menuForm->getSoundManager());
+
         stackedWidget->addWidget(soundSettingsForm);
 
         stackedWidget->setCurrentWidget(soundSettingsForm);
@@ -110,7 +110,6 @@ Widget::Widget(QWidget *parent)
         connect(soundSettingsForm, &SoundSettingsForm::finished, this, [=]() {
             stackedWidget->setCurrentWidget(menuForm);
             menuForm->setFocus();
-            delete soundSettingsForm;
         });
 
     });
@@ -132,9 +131,15 @@ Widget::Widget(QWidget *parent)
 
 Widget::~Widget()
 {
+    if (soundSettingsForm != nullptr)
+    {
+        delete soundSettingsForm;
+    }
     if (menuForm != nullptr)
     {
         delete menuForm;
     }
+    delete stackedWidget;
+
     delete ui;
 }
