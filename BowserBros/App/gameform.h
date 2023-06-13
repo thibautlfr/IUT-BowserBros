@@ -20,7 +20,6 @@
 #include "mario.h"
 #include "bowser.h"
 #include "element.h"
-#include "scoreboard.h"
 using namespace std;
 namespace Ui {
 class GameForm;
@@ -158,9 +157,9 @@ private:
 
     QScrollArea *itsScrollArea; /**< The scroll area for the game. */
     QTimer *itsTimer; /**< The timer for the game loop. */
-    vector<Element*> itsLadders;
     QTimer * marioTimer;
     list<Element*> itsBlocks; /**< The list of blocks in the game. */
+    list<Element*> itsLadders;
 
     SoundManager *soundManager; /**< Attribute used to mange sounds during the game */
 

@@ -135,6 +135,7 @@ void GameForm::loadLevel() {
         itsBoss->setItsX(width()-80);
         itsBoss->setItsY(height()-570);
         itsBlocks.clear();
+        itsLadders.clear();
     }
 
     // Lancement de la musique si on est au niveau 1
