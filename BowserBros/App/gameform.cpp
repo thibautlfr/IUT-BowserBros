@@ -215,10 +215,13 @@ void GameForm::checkCharacterCollision()
     // On vérifie si le joueur touche le coffre
     if (itsCharacter->getItsRect().intersects(itsChest->getRect()))
     {
+
         // Arrêtez le jeu et revenez au menu
         if (itsLevel == itsAvalaibleLevelsNb)
         {
+            qDebug() << "dernier niveau gagné" ;
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
+            itsCharacter->setItsY(itsCharacter->getItsY() - 5); // Déplace vers le haut de 10 pixels
             itsTimer->stop();
             soundManager->playWinMusic();
 
@@ -229,15 +232,17 @@ void GameForm::checkCharacterCollision()
         else
         {
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
+            itsCharacter->setItsY(itsCharacter->getItsY() - 5); // Déplace vers le haut de 10 pixels
             itsTimer->stop();
             soundManager->playLevelPassedMusic();
+            itsLevel ++;
 
             QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
                 soundManager->playMainMusic();
-                itsLevel ++;
                 itsTimer->start();
                 loadLevel();
             });
+
         }
         return;
     }
@@ -322,7 +327,7 @@ void GameForm::checkCollisionFireBalls()
     {
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
-            /// Arrêtez le jeu et revenez au menu
+            // Arrêtez le jeu et revenez au menu
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
             itsTimer->stop();
 
@@ -345,6 +350,13 @@ void GameForm::checkCollisionFireBalls()
         {
             if ((*it)->getItsRect().intersects(block->getRect()))
             {
+                // Vérifier si le bloc est de type 6 (BREAKABLE2) et détruire le bloc
+                if (block->getItsType() == CRACKELED)
+                {
+                    delete block;
+                    itsBlocks.erase(remove(itsBlocks.begin(), itsBlocks.end(), block), itsBlocks.end());
+                }
+
                 isCollision = true;
                 break;
             }
@@ -948,6 +960,7 @@ void GameForm::updateFireBalls()
 
 void GameForm::gameloop()
 {
+    qDebug() << "niveau actuel :" << itsLevel ;
     elapsedTime += 10;
     displayChrono();
     checkCharacterCollision();

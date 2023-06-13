@@ -72,6 +72,13 @@ public:
      */
     float getYSpeed();
 
+    /**
+         * @brief Returns the type of the element.
+         * @return The type of the element.
+        */
+       ElementType getItsType() const;
+
+
     // --------------------------------------------------------------------------------------------
 
     /**
