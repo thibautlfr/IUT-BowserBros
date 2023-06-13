@@ -228,7 +228,6 @@ void GameForm::checkCharacterCollision()
         // Arrêtez le jeu et revenez au menu
         if (itsLevel == itsAvalaibleLevelsNb)
         {
-            qDebug() << "dernier niveau gagné" ;
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
             itsCharacter->setItsY(itsCharacter->getItsY() - 5); // Déplace vers le haut de 10 pixels
             itsTimer->stop();
@@ -563,7 +562,6 @@ void GameForm::updateFireBalls()
 
 void GameForm::gameloop()
 {
-    qDebug() << "niveau actuel :" << itsLevel ;
     elapsedTime += 10;
     displayChrono();
     checkCharacterCollision();
