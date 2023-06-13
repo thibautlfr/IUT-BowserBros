@@ -111,6 +111,8 @@ public slots:
      */
     void start();
 
+    void animationDeath();
+
 signals:
     /**
       * @brief Signal emitted when the game is losed.
@@ -154,6 +156,7 @@ private:
 
     QScrollArea *itsScrollArea; /**< The scroll area for the game. */
     QTimer *itsTimer; /**< The timer for the game loop. */
+    QTimer * marioTimer;
     list<Element*> itsBlocks; /**< The list of blocks in the game. */
 
     SoundManager *soundManager; /**< Attribute used to mange sounds during the game */

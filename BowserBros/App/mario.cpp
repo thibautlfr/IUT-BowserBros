@@ -5,6 +5,7 @@ Mario::Mario(float x, float y, int width, int height) :
     Entity(x, y, width, height)
 {
     itsJumpSpeed = -8;
+    isDead = false;
 }
 
 Mario::Mario(float x, float y, string asset) :
@@ -74,4 +75,14 @@ bool Mario::intersect(QRect anObstacle)
         return anObstacle.intersects(marioRect);
     }
 
+}
+
+bool Mario::getIsDead()
+{
+    return isDead;
+}
+
+void Mario::setIsDead(bool dead)
+{
+    isDead = dead;
 }

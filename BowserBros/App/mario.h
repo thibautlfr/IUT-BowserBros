@@ -18,6 +18,7 @@ class Mario : public Entity
 private:
     float itsJumpSpeed; /**< The jump speed of Mario. */
     bool isOnPlatform; /**< Flag indicating if Mario is on a platform. */
+    bool isDead;
 public:
     /**
       * @brief Constructs a Mario object.
@@ -49,6 +50,10 @@ public:
       * @param onPlatform Flag indicating if Mario is on a platform.
     */
     void setOnPlatform(bool onPlatform);
+
+    bool getIsDead();
+
+    void setIsDead(bool dead);
 
     // --------------------------------------------------------------------------------------------
 

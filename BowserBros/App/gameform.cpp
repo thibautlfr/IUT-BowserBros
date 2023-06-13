@@ -90,7 +90,9 @@ GameForm::GameForm(QWidget *parent)
 
     // Création et lancement du timer
     itsTimer = new QTimer(this);
+    marioTimer = new QTimer(this);
     connect(itsTimer, SIGNAL(timeout()), this, SLOT(gameloop()));
+    connect(marioTimer, SIGNAL(timeout()), this, SLOT(animationDeath()));
     start();
 }
 
@@ -104,6 +106,7 @@ GameForm::~GameForm()
     delete levelLabel;
     delete timeLabel;
     delete itsTimer;
+    delete marioTimer;
     delete ui;
 }
 
@@ -455,12 +458,20 @@ void GameForm::checkCollisionFireBalls()
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
             // Arrêtez le jeu et revenez au menu
+            itsCharacter->setIsDead(true);
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
             itsTimer->stop();
-
+            qDebug() << "Avant";
+            marioTimer->start(10);
+            itsCharacter->setYSpeed(-5);
+            qDebug() << "Après";
             soundManager->playDeathMusic();
 
+            qDebug() << itsCharacter->getItsY();
+
+
             QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                marioTimer->stop();
                 emit gameLosed();
             });
 
@@ -572,6 +583,14 @@ void GameForm::gameloop()
     repaint();
 }
 
+void GameForm::animationDeath()
+{
+    itsCharacter->setYSpeed(itsCharacter->getYSpeed()+ GRAVITY/2 );
+    itsCharacter->calculatePosition();
+    repaint();
+}
+
+
 void GameForm::displayChrono()
 {
     // Mettre à jour l'affichage du temps écoulé
@@ -593,6 +612,7 @@ void GameForm::start()
         itsTimer->start(10);
     }
 }
+
 
 // ---------------------------------------------------------------------------------------------------------
 
@@ -650,7 +670,10 @@ void GameForm::paintEvent(QPaintEvent *event)
     itsChest->draw(painter);
 
     // Afficher les aides au joueur
-    paintPlayerHelps(painter);
+    if(!itsCharacter->getIsDead())
+    {
+        paintPlayerHelps(painter);
+    }
 
     itsCharacter->draw(painter);
     itsBoss->draw(painter);
@@ -660,6 +683,7 @@ void GameForm::paintEvent(QPaintEvent *event)
 
 void GameForm::paintPlayerHelps(QPainter* painter)
 {
+
     if (itsCharacter->getItsY() > height() - 300)
     {
         painter->drawImage(600, height() - 65, leftArrow);
@@ -692,4 +716,5 @@ void GameForm::paintPlayerHelps(QPainter* painter)
     int levelx = 10;
     int levely = itsBoss->getItsY()-20;
     levelLabel->move(levelx, levely); // Déplacer le timeLabel à la position calculée
+
 }
