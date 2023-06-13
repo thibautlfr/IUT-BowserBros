@@ -211,47 +211,41 @@ void GameForm::checkLadderCollision()
         }
     }
 
-    for (Element* ladder : nearlyLadders)
+    for(Element* ladder : nearlyLadders)
     {
-
-           // Vérifie si le joueur est sur l'axe X de l'échelle
-        if (itsCharacter->getItsRect().bottom() - ladder->getRect().top() >= -1 &&
-                itsCharacter->getItsRect().bottom() - ladder->getRect().bottom() <= -1 &&
-                // Vérifie si le joueur est sur l'axe Y de l'échelle
-                itsCharacter->getItsRect().center().x() >= ladder->getRect().left() &&
-                itsCharacter->getItsRect().center().x() <= ladder->getRect().right())
+        if(itsCharacter->getItsRect().center().x() >= ladder->getRect().left() &&
+           itsCharacter->getItsRect().center().x() <= ladder->getRect().right() &&
+            ladder->getRect().bottom() >= itsCharacter->getItsRect().bottom()
+             )
         {
-            // Vérifie si le joueur est tout en haut de l'échelle
-            if (itsCharacter->getItsRect().bottom() <= ladder->getRect().top() +1)
+            if(itsCharacter->getYSpeed() > 0 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() >= 10 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() <= 15)
             {
-                qDebug() << "EJKFNEFB";
+                itsCharacter->setItsY(ladder->getRect().top()-47);
+                itsCharacter->setOnLadder(false);
                 itsCharacter->setOnPlatform(true);
-                // Check if the player is at the top of the ladder
-                if (itsCharacter->getYSpeed() < 0 && itsCharacter->getOnPlatform())
-                {
-                    itsCharacter->setItsY(ladder->getRect().top() - itsCharacter->getItsRect().height());
-                }
+                itsCharacter->setYSpeed(0);
             }
-            else
+            else if(ladder->getRect().top() <= itsCharacter->getItsRect().bottom() - 3 )
             {
-                  itsCharacter->setOnLadder(true);
+                itsCharacter->setOnLadder(true);
+                itsCharacter->setOnPlatform(false);
             }
-
-            break;
+            else if(itsCharacter->getItsRect().bottom() == ladder->getRect().top())
+            {
+                itsCharacter->setOnLadder(false);
+                itsCharacter->setOnPlatform(true);
+                itsCharacter->setItsY(ladder->getRect().top()-47);
+            }
         }
-
         else
         {
-            if(ladder->getRect().top() - itsCharacter->getItsRect().bottom() <= 5 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() >= 0 and itsCharacter->getYSpeed() > 0)
-            {
-
-                itsCharacter->setItsY(ladder->getRect().top() - 5);
-                itsCharacter->setYSpeed(0);
-                itsCharacter->setOnPlatform(true);
-            }
             itsCharacter->setOnLadder(false);
+            itsCharacter->setOnPlatform(true);
         }
+         qDebug() << "diff : " << ladder->getRect().top() - itsCharacter->getItsRect().bottom();
     }
+
+
 }
 
 
