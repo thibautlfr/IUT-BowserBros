@@ -36,6 +36,13 @@ void Mario::updateAsset(int timeElapsed)
             int(timeElapsed / 150) % 2 == 1? itsImage.load(":Assets/Assets/mario/mario1.png"): itsImage.load(":Assets/Assets/mario/mario2.png");
         }
     }
+    else if(isOnLadder)
+    {
+        if(itsYSpeed != 0)
+        {
+            itsImage.load(":Assets/Assets/mario/mario8.png");
+        }
+    }
     else if(itsYSpeed != 0)
     {
         if (itsXSpeed > 0)

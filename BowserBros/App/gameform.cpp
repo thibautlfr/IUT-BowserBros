@@ -214,16 +214,20 @@ void GameForm::checkLadderCollision()
     for (Element* ladder : nearlyLadders)
     {
 
+           // Vérifie si le joueur est sur l'axe X de l'échelle
         if (itsCharacter->getItsRect().bottom() - ladder->getRect().top() >= -1 &&
-                itsCharacter->getItsRect().bottom() - ladder->getRect().bottom() <= 0 &&
+                itsCharacter->getItsRect().bottom() - ladder->getRect().bottom() <= -1 &&
+                // Vérifie si le joueur est sur l'axe Y de l'échelle
                 itsCharacter->getItsRect().center().x() >= ladder->getRect().left() &&
                 itsCharacter->getItsRect().center().x() <= ladder->getRect().right())
         {
-            if (itsCharacter->getItsRect().bottom() == ladder->getRect().top())
+            // Vérifie si le joueur est tout en haut de l'échelle
+            if (itsCharacter->getItsRect().bottom() <= ladder->getRect().top() +1)
             {
+                qDebug() << "EJKFNEFB";
                 itsCharacter->setOnPlatform(true);
                 // Check if the player is at the top of the ladder
-                if (itsCharacter->getYSpeed() < 0 && !itsCharacter->getOnPlatform())
+                if (itsCharacter->getYSpeed() < 0 && itsCharacter->getOnPlatform())
                 {
                     itsCharacter->setItsY(ladder->getRect().top() - itsCharacter->getItsRect().height());
                 }
@@ -240,7 +244,9 @@ void GameForm::checkLadderCollision()
         {
             if(ladder->getRect().top() - itsCharacter->getItsRect().bottom() <= 5 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() >= 0 and itsCharacter->getYSpeed() > 0)
             {
-                itsCharacter->setItsY(ladder->getRect().top() - 1);
+
+                itsCharacter->setItsY(ladder->getRect().top() - 5);
+                itsCharacter->setYSpeed(0);
                 itsCharacter->setOnPlatform(true);
             }
             itsCharacter->setOnLadder(false);
@@ -337,6 +343,7 @@ void GameForm::checkCharacterCollision()
         }
         //isOnPlatform = true;
         itsCharacter->setOnPlatform(true);
+        //qDebug() << itsCharacter->getOnPlatform();
         if (itsFloor->getRect().top() - (itsCharacter->getItsRect().bottom() + 5) == 1)
         {
             itsCharacter->setItsY(itsCharacter->getItsY() + 5);
@@ -662,7 +669,7 @@ void GameForm::keyPressEvent (QKeyEvent * event)
         qDebug() << "Right Key";
     }
 
-    if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 )
+    if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 and !itsCharacter->getOnLadder())
     {
         //sound->JumpSound();
         soundManager->playJumpEffect();
@@ -678,7 +685,7 @@ void GameForm::keyPressEvent (QKeyEvent * event)
                 itsCharacter->setYSpeed(-2);
                 itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
             }
-            if(event->key() == Qt::Key_Down and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0)
+            if(event->key() == Qt::Key_Down and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 )
             {
                 itsCharacter->setYSpeed(2);
                 itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
