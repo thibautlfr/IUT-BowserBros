@@ -50,6 +50,8 @@ public:
 
     void setIsOnPaused(bool newIsOnPaused);
 
+    bool getIsOnPaused() const;
+
 signals:
     /**
      * @brief Signal emitted when the user has finished with the sound settings.

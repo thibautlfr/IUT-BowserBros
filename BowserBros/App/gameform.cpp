@@ -1159,6 +1159,8 @@ void GameForm::animationDeath()
 void GameForm::setIsOnGamed(bool newIsOnGamed)
 {
     isOnGamed = newIsOnGamed;
+
+    // Si le setter passe à vrai, c'est qu'une partie redémarre et qu'il faut donc relancer le timer et la musique
     if(newIsOnGamed == true)
     {
         itsTimer->start();

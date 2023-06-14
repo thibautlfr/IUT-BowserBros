@@ -83,8 +83,6 @@ SoundSettingsForm::SoundSettingsForm(QWidget *parent,  SoundManager *soundMenuMa
     effectsVolumeLabel->setFont(labelFont);
     musicVolumeLabel->setStyleSheet("QLabel { color : rgb(223,178,73); }");
     effectsVolumeLabel->setStyleSheet("QLabel { color : rgb(223,178,73); }");
-
-
 }
 
 
@@ -106,10 +104,7 @@ void SoundSettingsForm::on_effectsVolumeSlider_valueChanged(int value)
 
 void SoundSettingsForm::paintEvent(QPaintEvent *event)
 {
-    qDebug() << isOnPaused ;
-
-    // Bouton restart
-
+    // Si on est en pause, on affiche le bouton pour reprendre, sinon on le cache
     if(isOnPaused)
     {
         ui->itsRestartButton->show();
@@ -159,6 +154,11 @@ void SoundSettingsForm::paintEvent(QPaintEvent *event)
     effectsVolumeLabel->resize(labelWidth, labelHeight);
 
     delete painter;
+}
+
+bool SoundSettingsForm::getIsOnPaused() const
+{
+    return isOnPaused;
 }
 
 void SoundSettingsForm::setIsOnPaused(bool newIsOnPaused)
