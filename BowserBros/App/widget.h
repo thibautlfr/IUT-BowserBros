@@ -45,6 +45,7 @@ private:
     TrainingForm * trainingForm;
     SoundSettingsForm * soundSettingsForm; /**< The sound settings board form object */
     ScoreboardForm * scoreboardForm; /**< The score board form object */
+    QMetaObject::Connection gamePausedConnection;
 };
 
 #endif // WIDGET_H

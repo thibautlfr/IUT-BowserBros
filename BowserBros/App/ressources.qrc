@@ -66,6 +66,7 @@
         <file>Assets/menu/screenlvl3.png</file>
         <file>Assets/menu/screenlvl4.png</file>
         <file>Assets/menu/screenlvl5.png</file>
+        <file>Assets/menu/restart.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>

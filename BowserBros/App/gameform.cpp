@@ -1138,21 +1138,24 @@ void GameForm::replaceAndDeleteActors()
 
 void GameForm::gameloop()
 {
-    elapsedTime += 10;
-    displayChrono();
+    if(isOnGamed)
+    {
+        elapsedTime += 10;
+        displayChrono();
 
-    checkLadderCollision();
-    checkCharacterCollision();
+        checkLadderCollision();
+        checkCharacterCollision();
 
-    checkGoombasCollision();
-    checkKoopasCollision();
+        checkGoombasCollision();
+        checkKoopasCollision();
 
-    checkBowserCollision();
-    checkCollisionFireBalls();
+        checkBowserCollision();
+        checkCollisionFireBalls();
 
-    updateScroll();
-    updateFireBalls();
-    repaint();
+        updateScroll();
+        updateFireBalls();
+        repaint();
+    }
 }
 
 void GameForm::animationDeath()
@@ -1162,6 +1165,16 @@ void GameForm::animationDeath()
     repaint();
 }
 
+void GameForm::setIsOnGamed(bool newIsOnGamed)
+{
+    isOnGamed = newIsOnGamed;
+
+    // Si le setter passe à vrai, c'est qu'une partie redémarre et qu'il faut donc relancer le timer et la musique
+    if(newIsOnGamed == true)
+    {
+        itsTimer->start();
+    }
+}
 
 void GameForm::displayChrono()
 {
@@ -1182,6 +1195,7 @@ void GameForm::start()
     {
         qDebug() << "Timer lancé";
         itsTimer->start(10);
+        isOnGamed = true ;
     }
 }
 
@@ -1218,8 +1232,14 @@ void GameForm::keyPressEvent (QKeyEvent * event)
         itsCharacter->setYSpeed(2);
         itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
     }
-
-
+    if (event->key() == Qt::Key_Escape)
+    {
+        emit gamePaused();
+        soundManager->stopAllSounds();
+        qDebug() << "Escape Key" ;
+        itsTimer->stop();
+        isOnGamed = false ;
+    }
 }
 
 void GameForm::keyReleaseEvent (QKeyEvent * event)
@@ -1333,4 +1353,6 @@ void GameForm::setVolume(SoundManager * menuSoundManager){
     //Modifie les volumes du gameForm
     soundManager->setEffectsVolume(itsVolumesEffect);
     soundManager->setMainVolume(itsVolumesGen);
+
+    soundManager->playMainMusic();
 }

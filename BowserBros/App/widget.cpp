@@ -46,6 +46,7 @@ Widget::Widget(QWidget *parent)
 
         // Création et affichage du widget pour la partie
         gameForm = new GameForm(0, 0);
+        qDebug() << "GameForme Created" ;
 
         // Initialise les volumes sonores identiques aux volumes du Menu
         gameForm->setVolume(menuForm->getSoundManager());
@@ -54,6 +55,44 @@ Widget::Widget(QWidget *parent)
         stackedWidget->addWidget(gameForm->getScrollArea());
         stackedWidget->setCurrentWidget(gameForm->getScrollArea());
         gameForm->setFocus();
+
+        //Menu PAUSE en partie
+        connect(gameForm, &GameForm::gamePaused, this, [=](){
+
+            // Prévenir le widget que le jeu est en pause pour afficher les boutons correspondants à ce cas d'utilisation
+            soundSettingsForm->setIsOnPaused(true);
+
+            menuForm->soundManager->playMenuMusic();
+
+            stackedWidget->setCurrentWidget(soundSettingsForm);
+            soundSettingsForm->setFocus();
+
+            // Supprime la connexion précédente si elle existe.
+            // Cela permet d'éviter les connexions multiples et les suppressions incorrectes de l'objet gameForm.
+            disconnect(gamePausedConnection);
+
+            // Bouton MENU dans les PARAMÈTRES
+
+            gamePausedConnection = connect(soundSettingsForm, &SoundSettingsForm::finished, this, [=]() {
+                // Si il y a un gameform et que le joueur revient sur le menu depuis le menu pause, alors on supprime le gameForm
+                if (gameForm != nullptr && soundSettingsForm->getIsOnPaused() == true)
+                {
+                        qDebug() << "GameForm deleted 1";
+                        delete gameForm;
+                }
+                    stackedWidget->setCurrentWidget(menuForm);
+                    menuForm->setFocus();
+            });
+
+            // Si le joueur reprend sa partie, on remet le widget gameForm et on coupe la musique du menu
+            connect(soundSettingsForm, &SoundSettingsForm::restarted, this, [=](){
+                stackedWidget->setCurrentWidget(gameForm->getScrollArea());
+                gameForm->setFocus();
+                gameForm->setIsOnGamed(true);
+                gameForm->setVolume(menuForm->getSoundManager());
+                menuForm->soundManager->stopAllSounds();
+            });
+        });
 
         // Retour au MENU quand la partie est perdue
         connect(gameForm, &GameForm::gameLosed, this, [=]() {
@@ -169,6 +208,8 @@ Widget::Widget(QWidget *parent)
 
     // Bouton PARAMÈTRES
     connect(menuForm, &MenuForm::soundSettingsButtonClicked, this, [=]() {
+
+        soundSettingsForm->setIsOnPaused(false);
 
         stackedWidget->setCurrentWidget(soundSettingsForm);
         soundSettingsForm->setFocus();
