@@ -82,9 +82,9 @@
   <widget class="QPushButton" name="soundSettingsButton">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-10</x>
      <y>10</y>
-     <width>225</width>
+     <width>111</width>
      <height>60</height>
     </rect>
    </property>

@@ -7,6 +7,7 @@
 #define SOUNDMANAGER_H
 
 #include <QObject>
+#include <QThread>
 #include <QSoundEffect>
 
 /**

@@ -16,9 +16,9 @@
   <widget class="QSlider" name="generalVolumeSlider">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>90</y>
-     <width>160</width>
+     <x>230</x>
+     <y>230</y>
+     <width>231</width>
      <height>16</height>
     </rect>
    </property>
@@ -29,9 +29,9 @@
   <widget class="QSlider" name="effectsVolumeSlider">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>110</y>
-     <width>160</width>
+     <x>230</x>
+     <y>280</y>
+     <width>241</width>
      <height>16</height>
     </rect>
    </property>
@@ -42,8 +42,8 @@
   <widget class="QPushButton" name="finishedButton">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
+     <x>290</x>
+     <y>500</y>
      <width>224</width>
      <height>59</height>
     </rect>

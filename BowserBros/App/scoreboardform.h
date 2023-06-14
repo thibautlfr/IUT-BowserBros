@@ -11,7 +11,12 @@
 
 #include "scoreboard.h"
 #include "ui_scoreboardform.h"
+
+#include <QHeaderView>
+#include <QTime>
 #include <QLabel>
+#include <QFontDatabase>
+#include <QGraphicsDropShadowEffect>
 #include <QWidget>
 #include <QPainter>
 #include <QTableWidget>
@@ -48,7 +53,7 @@ public:
      */
     void setSettingsTable();
 
-        ScoreBoard * itsScoreBoard; /**< The scoreboard object for managing scores. */
+    ScoreBoard * itsScoreBoard; /**< The scoreboard object for managing scores. */
 
     QTableWidget* itsRankingTable; /**< The table widget for displaying the scoreboard. */
 

@@ -7,6 +7,7 @@
 #define SOUNDSSETTINGSFORM_H
 
 #include <QWidget>
+#include "qlabel.h"
 #include "soundmanager.h"
 
 namespace Ui {
@@ -40,6 +41,13 @@ public:
 
     SoundManager * menuSoundManager; /**< The sound manager object for menu sounds. */
 
+    QImage itsBackground; /**< The background image of the scoreboard form. */
+    QImage itsFloor; /**< The floor image of the scoreboard form. */
+    QImage itsMario; /**< The Mario image of the scoreboard form. */
+    QImage itsBowser; /**< The Bowser image of the scoreboard form. */
+
+    QLabel * itsTitle;
+
 signals:
     /**
      * @brief Signal emitted when the user has finished with the sound settings.
@@ -61,6 +69,9 @@ private slots:
 
 private:
     Ui::SoundSettingsForm *ui; /**< The user interface object for the sound settings form. */
+    void paintEvent(QPaintEvent *event);
+    QLabel* musicVolumeLabel;
+    QLabel* effectsVolumeLabel;
 };
 
 #endif // SOUNDSSETTINGSFORM_H

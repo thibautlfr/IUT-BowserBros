@@ -1,7 +1,4 @@
 #include "soundmanager.h"
-#include "qdebug.h"
-
-#include <QThread>
 
 SoundManager::SoundManager(QObject *parent) : QObject(parent)
 {
@@ -120,7 +117,6 @@ void SoundManager::setMainVolume(float volume)
     deathMusic->setVolume(volume);
     menuMusic->setVolume(volume);
     winMusic->setVolume(volume);
-    qDebug()<<"Volume Général : " << volume;
 
     //Initialise l'attribut pour le sauvegarder et le copier dans le gameform
     itsVolume=volume;

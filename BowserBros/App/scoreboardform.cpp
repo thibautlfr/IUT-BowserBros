@@ -1,12 +1,4 @@
 #include "scoreboardform.h"
-#include "ui_scoreboardform.h"
-
-#include <QHeaderView>
-#include <QTime>
-#include <QLabel>
-#include <QFontDatabase>
-#include <QLineEdit>
-#include <QGraphicsDropShadowEffect>
 
 ScoreboardForm::ScoreboardForm(QWidget *parent, int elapsedTime) :
     QWidget(parent),
