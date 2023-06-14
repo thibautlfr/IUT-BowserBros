@@ -1,13 +1,13 @@
 var searchData=
 [
   ['intersect_0',['intersect',['../class_mario.html#a4aa96bb8f6d098098a5ea175364ad085',1,'Mario']]],
-  ['itsbackground_1',['itsBackground',['../class_menu_form.html#ab337166203f67e366b13820d3736f3f6',1,'MenuForm::itsBackground()'],['../class_scoreboard_form.html#a24c5786cc92599d6805ce81042ed5aa9',1,'ScoreboardForm::itsBackground()']]],
-  ['itsbowser_2',['itsBowser',['../class_menu_form.html#a0ca014313d0eb5c638441276ce5008a3',1,'MenuForm::itsBowser()'],['../class_scoreboard_form.html#a68289fabaa74c47535578aad4b652167',1,'ScoreboardForm::itsBowser()']]],
-  ['itsfloor_3',['itsFloor',['../class_menu_form.html#a7e677d26c885317462d009e57af36b3e',1,'MenuForm::itsFloor()'],['../class_scoreboard_form.html#a252a765ed16233ac7b9ba78323913efe',1,'ScoreboardForm::itsFloor()']]],
+  ['itsbackground_1',['itsBackground',['../class_menu_form.html#ab337166203f67e366b13820d3736f3f6',1,'MenuForm::itsBackground()'],['../class_scoreboard_form.html#a24c5786cc92599d6805ce81042ed5aa9',1,'ScoreboardForm::itsBackground()'],['../class_sound_settings_form.html#ad52a09e0bab3f4b20e8274423bb7f464',1,'SoundSettingsForm::itsBackground()']]],
+  ['itsbowser_2',['itsBowser',['../class_menu_form.html#a0ca014313d0eb5c638441276ce5008a3',1,'MenuForm::itsBowser()'],['../class_scoreboard_form.html#a68289fabaa74c47535578aad4b652167',1,'ScoreboardForm::itsBowser()'],['../class_sound_settings_form.html#a551b04ef84fdca023a90bb561d7965d0',1,'SoundSettingsForm::itsBowser()']]],
+  ['itsfloor_3',['itsFloor',['../class_menu_form.html#a7e677d26c885317462d009e57af36b3e',1,'MenuForm::itsFloor()'],['../class_scoreboard_form.html#a252a765ed16233ac7b9ba78323913efe',1,'ScoreboardForm::itsFloor()'],['../class_sound_settings_form.html#a478f15994e682310862ed452648813a1',1,'SoundSettingsForm::itsFloor()']]],
   ['itsgametitle_4',['itsGameTitle',['../class_menu_form.html#a96679a536f3b4c4875ef0cd05efdd6a1',1,'MenuForm']]],
   ['itsimage_5',['itsImage',['../class_entity.html#ac8f5c15659ea04667f2e4280d570e088',1,'Entity']]],
   ['itsinstructionslabel_6',['itsInstructionsLabel',['../class_scoreboard_form.html#a46508109b4cde0ebcd6c80e6df372ade',1,'ScoreboardForm']]],
-  ['itsmario_7',['itsMario',['../class_menu_form.html#ab1518926630806b1d2d90d39caabfd07',1,'MenuForm::itsMario()'],['../class_scoreboard_form.html#ab283e831c146b88f2db29d1df7ed997a',1,'ScoreboardForm::itsMario()']]],
+  ['itsmario_7',['itsMario',['../class_menu_form.html#ab1518926630806b1d2d90d39caabfd07',1,'MenuForm::itsMario()'],['../class_scoreboard_form.html#ab283e831c146b88f2db29d1df7ed997a',1,'ScoreboardForm::itsMario()'],['../class_sound_settings_form.html#a379f0061039a23baa1678b3a72cf3bd2',1,'SoundSettingsForm::itsMario()']]],
   ['itsplayertimelabel_8',['itsPlayerTimeLabel',['../class_scoreboard_form.html#ac4035f51bbc68a5d192566c5232e6ae0',1,'ScoreboardForm']]],
   ['itspseudolineedit_9',['itsPseudoLineEdit',['../class_scoreboard_form.html#a8dcaeb202c8a039ff6289f1484938138',1,'ScoreboardForm']]],
   ['itsrankingtable_10',['itsRankingTable',['../class_scoreboard_form.html#a93fd3bec78706236f748e67a65140dc6',1,'ScoreboardForm']]],

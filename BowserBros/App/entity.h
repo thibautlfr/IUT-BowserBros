@@ -127,6 +127,7 @@ public:
 
     // --------------------------------------------------------------------------------------------
 
+
     /**
       * @brief Calculates the new position of the entity based on its speed.
     */

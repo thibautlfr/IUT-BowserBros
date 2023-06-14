@@ -1,5 +1,4 @@
 \hypertarget{widget_8h_source}{}\doxysection{widget.\+h}
-\label{widget_8h_source}\index{/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23\_BowserBros/BowserBros/App/widget.h@{/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23\_BowserBros/BowserBros/App/widget.h}}
 \mbox{\hyperlink{widget_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
@@ -11,28 +10,30 @@
 \DoxyCodeLine{00011\ }
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menuform_8h}{menuform.h}}"{}}}
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gameform_8h}{gameform.h}}"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scoreboardform_8h}{scoreboardform.h}}"{}}}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ QT\_BEGIN\_NAMESPACE}
-\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }Ui\ \{\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget}{Widget}};\ \}}
-\DoxyCodeLine{00018\ QT\_END\_NAMESPACE}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget}{Widget}}\ :\ \textcolor{keyword}{public}\ QWidget}
-\DoxyCodeLine{00027\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_menu_form}{MenuForm}}\ *\ menuForm;\ }
-\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_game_form}{GameForm}}\ *\ gameForm;\ }
-\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_scoreboard_form}{ScoreboardForm}}\ *\ scoreboardForm\ ;}
-\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_widget}{Widget}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{soundsettingsform_8h}{soundsettingsform.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scoreboardform_8h}{scoreboardform.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }Ui\ \{\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget}{Widget}};\ \}}
+\DoxyCodeLine{00019\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget}{Widget}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_widget}{Widget}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_widget}{\string~Widget}}();}
 \DoxyCodeLine{00038\ }
-\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_widget_aa24f66bcbaaec6d458b0980e8c8eae65}{\string~Widget}}();}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00045\ \ \ \ \ Ui::Widget\ *ui;}
-\DoxyCodeLine{00046\ \ \ \ \ QStackedWidget*\ stackedWidget;\ }
-\DoxyCodeLine{00047\ \};}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ WIDGET\_H}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ Ui::Widget\ *ui;}
+\DoxyCodeLine{00041\ \ \ \ \ QStackedWidget*\ stackedWidget;}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_menu_form}{MenuForm}}\ *\ menuForm;\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_game_form}{GameForm}}\ *\ gameForm;}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}}\ *\ soundSettingsForm;\ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_scoreboard_form}{ScoreboardForm}}\ *\ scoreboardForm;\ }
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ WIDGET\_H}}
 
 \end{DoxyCode}

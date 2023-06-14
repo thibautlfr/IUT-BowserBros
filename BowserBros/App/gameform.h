@@ -15,6 +15,7 @@
 #include <QScrollArea>
 #include <QLabel>
 #include <list>
+#include <vector>
 
 #include "soundmanager.h"
 #include "mario.h"
@@ -54,7 +55,7 @@ public:
 
     /**
      * @brief Getter for itsScrollArea
-     * @return the scroll area element of the GameForm
+     * @return The scroll area element of the GameForm
      */
     QScrollArea* getScrollArea() const;
 
@@ -76,6 +77,7 @@ public:
     void checkCollisionFireBalls();
 
     /**
+<<<<<<< HEAD
      * @brief Check for the goombas collisions
      */
     void checkGoombasCollision();
@@ -123,6 +125,10 @@ public:
      */
     vector<Element*> getNearlyBlocks(Entity * anEntity);
 
+    /**
+     * @brief Checks for collisions with ladders.
+     */
+    void checkLadderCollision();
 
     // --------------------------------------------------------------------------------------------
 
@@ -133,12 +139,12 @@ public:
     void paintPlayerHelps(QPainter *painter);
 
     /**
-      * @brief Updates the scrolling of the game.
+      * @brief Updates the position of the scroll area in the game.
      */
     void updateScroll();
 
     /**
-      * @brief Updates the fireballs in the game.
+      * @brief Updates the position of fireballs in the game.
      */
     void updateFireBalls();
 
@@ -152,6 +158,10 @@ public:
      */
     void displayChrono();
 
+    SoundManager* getSoundManager() const;
+
+    void setVolume(SoundManager *menuSoundManager);
+
 public slots:
     /**
       * @brief The game loop that updates the game state.
@@ -162,6 +172,11 @@ public slots:
      */
     void start();
 
+    /**
+     * @brief Animations of mario's death
+     */
+    void animationDeath();
+
 signals:
     /**
       * @brief Signal emitted when the game is losed.
@@ -170,6 +185,7 @@ signals:
 
     /**
       * @brief Signal emitted when the game is won.
+      * @param The integer of the timer of the game loop
     */
     void gameWon(int elapsedTime);
 
@@ -207,8 +223,14 @@ private:
 
     QScrollArea *itsScrollArea; /**< The scroll area for the game. */
     QTimer *itsTimer; /**< The timer for the game loop. */
-    vector<Element*> itsBlocks; /**< The list of blocks in the game. */
+
+    QTimer * marioTimer; /**< The timer for the mario animation death */
+    list<Element*> itsBlocks; /**< The list of blocks in the game. */
+    list<Element*> itsLadders; /**< The list of ladders in the game. */
+
     SoundManager *soundManager; /**< Attribute used to mange sounds during the game */
+    float itsVolumesGen;
+    float itsVolumesEffect;
 
     // --------------------------------------------------------------------------------------------
 

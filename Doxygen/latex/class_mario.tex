@@ -23,9 +23,17 @@ Inheritance diagram for Mario\+:\begin{figure}[H]
 \mbox{\hyperlink{class_mario_a18dc19a04b05c2e6502a5633e05cbc18}{Mario}} (float x, float y, string asset)
 \begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_mario}{Mario}} object. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_mario_a92dc681fb1bb688a9ed0662aef312e72}{get\+On\+Platform}} ()
-\begin{DoxyCompactList}\small\item\em Return if the the player is on a platform. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns if the the player is on a platform. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_mario_a0801c2edd426c94b35f1e8817c6ab91d}{set\+On\+Platform}} (bool on\+Platform)
 \begin{DoxyCompactList}\small\item\em Sets whether \mbox{\hyperlink{class_mario}{Mario}} is on a platform or not. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_mario_aeff3daaa6c194a6fd71fc7226ffabd48}{get\+On\+Ladder}} ()
+\begin{DoxyCompactList}\small\item\em Returns if the the player is on a ladder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mario_a7083b53e26e0d54227da5556bf381e56}{set\+On\+Ladder}} (bool on\+Ladder)
+\begin{DoxyCompactList}\small\item\em Sets whether \mbox{\hyperlink{class_mario}{Mario}} is on a ladder or not. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_mario_aadc75d3cd6c05cd664b5a9e39b65e27d}{get\+Is\+Dead}} ()
+\begin{DoxyCompactList}\small\item\em Returns if the the player is dead. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mario_a36d1bff03c7fd0d8662ee708cfd60f17}{set\+Is\+Dead}} (bool dead)
+\begin{DoxyCompactList}\small\item\em Sets whether \mbox{\hyperlink{class_mario}{Mario}} is dead or not. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_mario_ac3b75d0650fb2a149d33fd9f1420da99}\label{class_mario_ac3b75d0650fb2a149d33fd9f1420da99}} 
 void {\bfseries jump} ()
 \begin{DoxyCompactList}\small\item\em Makes \mbox{\hyperlink{class_mario}{Mario}} jump. \end{DoxyCompactList}\item 
@@ -40,16 +48,6 @@ bool \mbox{\hyperlink{class_mario_a4aa96bb8f6d098098a5ea175364ad085}{intersect}}
 \begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and size. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_entity_afe525604909cacead8754fed6988349f}{Entity}} (float x, float y, string asset)
 \begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and asset. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_entity_ac8cb9f36ba2c8f8ca112556beeacfca0}{set\+ItsY}} (float Y)
-\begin{DoxyCompactList}\small\item\em Sets the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_entity_a42afe2a0c04394db1f026f46430fee3e}{set\+ItsX}} (float X)
-\begin{DoxyCompactList}\small\item\em Sets the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_entity_a6a99fc0394e8c99e3f2ab626c2da2767}{set\+XSpeed}} (float a\+Speed)
-\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_entity_a6409ad44a9b174490083dabee12f1025}{set\+YSpeed}} (float a\+Speed)
-\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_entity_a9bd1559414607eef261997bf69de63e9}{set\+Its\+Image}} (string new\+Asset\+Path)
-\begin{DoxyCompactList}\small\item\em Sets the image asset of the entity. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_entity_a4c7bd3bd447928ae871833b749fb9dcd}{get\+ItsY}} ()
 \begin{DoxyCompactList}\small\item\em Returns the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_entity_aa0c849c1529ca6c0dde810e5c0741c35}{get\+ItsX}} ()
@@ -60,6 +58,16 @@ float \mbox{\hyperlink{class_entity_a86c9d6debe5cef873e9bb2807cae4125}{get\+XSpe
 \begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
 QRect \mbox{\hyperlink{class_entity_a38553a2451e4963a279129fa10264cb4}{get\+Its\+Rect}} ()
 \begin{DoxyCompactList}\small\item\em Returns the bounding rectangle of the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ac8cb9f36ba2c8f8ca112556beeacfca0}{set\+ItsY}} (float Y)
+\begin{DoxyCompactList}\small\item\em Sets the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a42afe2a0c04394db1f026f46430fee3e}{set\+ItsX}} (float X)
+\begin{DoxyCompactList}\small\item\em Sets the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6a99fc0394e8c99e3f2ab626c2da2767}{set\+XSpeed}} (float a\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6409ad44a9b174490083dabee12f1025}{set\+YSpeed}} (float a\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a9bd1559414607eef261997bf69de63e9}{set\+Its\+Image}} (string new\+Asset\+Path)
+\begin{DoxyCompactList}\small\item\em Sets the image asset of the entity. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_entity_ad745385f5f47550344c9f470980b9ab0}\label{class_entity_ad745385f5f47550344c9f470980b9ab0}} 
 void {\bfseries calculate\+Position} ()
 \begin{DoxyCompactList}\small\item\em Calculates the new position of the entity based on its speed. \end{DoxyCompactList}\item 
@@ -136,6 +144,32 @@ Constructs a \mbox{\hyperlink{class_mario}{Mario}} object.
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_mario_aadc75d3cd6c05cd664b5a9e39b65e27d}\label{class_mario_aadc75d3cd6c05cd664b5a9e39b65e27d}} 
+\index{Mario@{Mario}!getIsDead@{getIsDead}}
+\index{getIsDead@{getIsDead}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{getIsDead()}{getIsDead()}}
+{\footnotesize\ttfamily bool Mario\+::get\+Is\+Dead (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns if the the player is dead. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the player is dead 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mario_aeff3daaa6c194a6fd71fc7226ffabd48}\label{class_mario_aeff3daaa6c194a6fd71fc7226ffabd48}} 
+\index{Mario@{Mario}!getOnLadder@{getOnLadder}}
+\index{getOnLadder@{getOnLadder}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{getOnLadder()}{getOnLadder()}}
+{\footnotesize\ttfamily bool Mario\+::get\+On\+Ladder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns if the the player is on a ladder. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the player is on a ladder 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_mario_a92dc681fb1bb688a9ed0662aef312e72}\label{class_mario_a92dc681fb1bb688a9ed0662aef312e72}} 
 \index{Mario@{Mario}!getOnPlatform@{getOnPlatform}}
 \index{getOnPlatform@{getOnPlatform}!Mario@{Mario}}
@@ -144,11 +178,8 @@ Constructs a \mbox{\hyperlink{class_mario}{Mario}} object.
 
 
 
-Return if the the player is on a platform. 
+Returns if the the player is on a platform. 
 
-\begin{DoxyAuthor}{Author}
-PILOTTE Clément 
-\end{DoxyAuthor}
 \begin{DoxyReturn}{Returns}
 Returns true if the player is on a platform 
 \end{DoxyReturn}
@@ -170,6 +201,36 @@ Checks if \mbox{\hyperlink{class_mario}{Mario}} intersects with an obstacle.
 \begin{DoxyReturn}{Returns}
 True if \mbox{\hyperlink{class_mario}{Mario}} intersects with the obstacle, false otherwise. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_mario_a36d1bff03c7fd0d8662ee708cfd60f17}\label{class_mario_a36d1bff03c7fd0d8662ee708cfd60f17}} 
+\index{Mario@{Mario}!setIsDead@{setIsDead}}
+\index{setIsDead@{setIsDead}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{setIsDead()}{setIsDead()}}
+{\footnotesize\ttfamily void Mario\+::set\+Is\+Dead (\begin{DoxyParamCaption}\item[{bool}]{dead }\end{DoxyParamCaption})}
+
+
+
+Sets whether \mbox{\hyperlink{class_mario}{Mario}} is dead or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Dead} & Flag indicating if \mbox{\hyperlink{class_mario}{Mario}} is dead \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mario_a7083b53e26e0d54227da5556bf381e56}\label{class_mario_a7083b53e26e0d54227da5556bf381e56}} 
+\index{Mario@{Mario}!setOnLadder@{setOnLadder}}
+\index{setOnLadder@{setOnLadder}!Mario@{Mario}}
+\doxysubsubsection{\texorpdfstring{setOnLadder()}{setOnLadder()}}
+{\footnotesize\ttfamily void Mario\+::set\+On\+Ladder (\begin{DoxyParamCaption}\item[{bool}]{on\+Ladder }\end{DoxyParamCaption})}
+
+
+
+Sets whether \mbox{\hyperlink{class_mario}{Mario}} is on a ladder or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+On\+Ladder} & Flag indicating if \mbox{\hyperlink{class_mario}{Mario}} is on a ladder. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_mario_a0801c2edd426c94b35f1e8817c6ab91d}\label{class_mario_a0801c2edd426c94b35f1e8817c6ab91d}} 
 \index{Mario@{Mario}!setOnPlatform@{setOnPlatform}}
 \index{setOnPlatform@{setOnPlatform}!Mario@{Mario}}
@@ -182,7 +243,7 @@ Sets whether \mbox{\hyperlink{class_mario}{Mario}} is on a platform or not.
 
 
 \begin{DoxyParams}{Parameters}
-{\em on\+Platform} & Flag indicating if \mbox{\hyperlink{class_mario}{Mario}} is on a platform. \\
+{\em is\+On\+Platform} & Flag indicating if \mbox{\hyperlink{class_mario}{Mario}} is on a platform. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_mario_af98b58d0ae7ffbd220bbfdab43ec74dc}\label{class_mario_af98b58d0ae7ffbd220bbfdab43ec74dc}} 
@@ -204,5 +265,5 @@ Updates the asset of \mbox{\hyperlink{class_mario}{Mario}} based on the elapsed 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/\mbox{\hyperlink{mario_8h}{mario.\+h}}\item 
-/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/mario.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{mario_8h}{mario.\+h}}\item 
+mario.\+cpp\end{DoxyCompactItemize}

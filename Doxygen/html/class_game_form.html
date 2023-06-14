@@ -20,9 +20,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="tumblr_maff0m6Y0j1rfjowdo1_500.gif"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 2.0</span>
+   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 3.0</span>
    </div>
    <div id="projectbrief">Jeu de plateforme du style Mario Bros implémenté en C++ avec Qt Creator</div>
   </td>
@@ -101,6 +101,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>gameloop</b> ()</td><
 void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
 <tr class="memdesc:a7b1bfa851740c8c62b617621e5a9991e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the game. <br /></td></tr>
 <tr class="separator:a7b1bfa851740c8c62b617621e5a9991e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b1f6c9a2339bb6d70561350826251d0"><td class="memItemLeft" align="right" valign="top"><a id="a9b1f6c9a2339bb6d70561350826251d0" name="a9b1f6c9a2339bb6d70561350826251d0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>animationDeath</b> ()</td></tr>
+<tr class="memdesc:a9b1f6c9a2339bb6d70561350826251d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Animations of mario's death. <br /></td></tr>
+<tr class="separator:a9b1f6c9a2339bb6d70561350826251d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
@@ -108,9 +112,8 @@ Signals</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>gameLosed</b> ()</td></tr>
 <tr class="memdesc:a68a3bb229c812702fd5d2475f6851ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the game is losed. <br /></td></tr>
 <tr class="separator:a68a3bb229c812702fd5d2475f6851ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a324273bd6ab9b281af55427c219d2d3d"><td class="memItemLeft" align="right" valign="top"><a id="a324273bd6ab9b281af55427c219d2d3d" name="a324273bd6ab9b281af55427c219d2d3d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>gameWon</b> (int elapsedTime)</td></tr>
-<tr class="memdesc:a324273bd6ab9b281af55427c219d2d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the game is won. <br /></td></tr>
+<tr class="memitem:a324273bd6ab9b281af55427c219d2d3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#a324273bd6ab9b281af55427c219d2d3d">gameWon</a> (int elapsedTime)</td></tr>
+<tr class="memdesc:a324273bd6ab9b281af55427c219d2d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the game is won.  <br /></td></tr>
 <tr class="separator:a324273bd6ab9b281af55427c219d2d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -133,19 +136,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>checkCharacterCollisi
 void&#160;</td><td class="memItemRight" valign="bottom"><b>checkBowserCollision</b> ()</td></tr>
 <tr class="memdesc:a23b137c85d4bae5c8e2b07ce270abb7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collisions with <a class="el" href="class_bowser.html" title="Represents the Bowser enemy. The Bowser class is derived from the Entity class and provides functiona...">Bowser</a>. <br /></td></tr>
 <tr class="separator:a23b137c85d4bae5c8e2b07ce270abb7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a085119e87e8f5220a3da2a2311b1ed71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#a085119e87e8f5220a3da2a2311b1ed71">checkCollisionFireBalls</a> ()</td></tr>
-<tr class="memdesc:a085119e87e8f5220a3da2a2311b1ed71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collisions with fireballs.  <br /></td></tr>
+<tr class="memitem:a085119e87e8f5220a3da2a2311b1ed71"><td class="memItemLeft" align="right" valign="top"><a id="a085119e87e8f5220a3da2a2311b1ed71" name="a085119e87e8f5220a3da2a2311b1ed71"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>checkCollisionFireBalls</b> ()</td></tr>
+<tr class="memdesc:a085119e87e8f5220a3da2a2311b1ed71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collisions with fireballs. <br /></td></tr>
 <tr class="separator:a085119e87e8f5220a3da2a2311b1ed71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a54c36711a791e5ccbf348a9765016"><td class="memItemLeft" align="right" valign="top"><a id="a86a54c36711a791e5ccbf348a9765016" name="a86a54c36711a791e5ccbf348a9765016"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>checkLadderCollision</b> ()</td></tr>
+<tr class="memdesc:a86a54c36711a791e5ccbf348a9765016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collisions with ladders. <br /></td></tr>
+<tr class="separator:a86a54c36711a791e5ccbf348a9765016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8386c0313181b8b39549e5c53490c943"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#a8386c0313181b8b39549e5c53490c943">paintPlayerHelps</a> (QPainter *painter)</td></tr>
 <tr class="memdesc:a8386c0313181b8b39549e5c53490c943"><td class="mdescLeft">&#160;</td><td class="mdescRight">Paints the player's helps.  <br /></td></tr>
 <tr class="separator:a8386c0313181b8b39549e5c53490c943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab9cda161194e2f0013fd61cdd76fafa"><td class="memItemLeft" align="right" valign="top"><a id="aab9cda161194e2f0013fd61cdd76fafa" name="aab9cda161194e2f0013fd61cdd76fafa"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>updateScroll</b> ()</td></tr>
-<tr class="memdesc:aab9cda161194e2f0013fd61cdd76fafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the scrolling of the game. <br /></td></tr>
+<tr class="memdesc:aab9cda161194e2f0013fd61cdd76fafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position of the scroll area in the game. <br /></td></tr>
 <tr class="separator:aab9cda161194e2f0013fd61cdd76fafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6bc375695665688925ed87bbbc005ba"><td class="memItemLeft" align="right" valign="top"><a id="aa6bc375695665688925ed87bbbc005ba" name="aa6bc375695665688925ed87bbbc005ba"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>updateFireBalls</b> ()</td></tr>
-<tr class="memdesc:aa6bc375695665688925ed87bbbc005ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the fireballs in the game. <br /></td></tr>
+<tr class="memdesc:aa6bc375695665688925ed87bbbc005ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position of fireballs in the game. <br /></td></tr>
 <tr class="separator:aa6bc375695665688925ed87bbbc005ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84f3d4616130ad4b319be532eff8c95a"><td class="memItemLeft" align="right" valign="top"><a id="a84f3d4616130ad4b319be532eff8c95a" name="a84f3d4616130ad4b319be532eff8c95a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>loadLevel</b> ()</td></tr>
@@ -155,6 +163,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>loadLevel</b> ()</td>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>displayChrono</b> ()</td></tr>
 <tr class="memdesc:a07ecc9468504b29d479445d78a03a3b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the chrono at the top right corner. <br /></td></tr>
 <tr class="separator:a07ecc9468504b29d479445d78a03a3b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c03d54e8c467d3eb561bc1a741d6495"><td class="memItemLeft" align="right" valign="top"><a id="a0c03d54e8c467d3eb561bc1a741d6495" name="a0c03d54e8c467d3eb561bc1a741d6495"></a>
+<a class="el" href="class_sound_manager.html">SoundManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getSoundManager</b> () const</td></tr>
+<tr class="separator:a0c03d54e8c467d3eb561bc1a741d6495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea83ccc4ab2540668f5efc22c5b02580"><td class="memItemLeft" align="right" valign="top"><a id="aea83ccc4ab2540668f5efc22c5b02580" name="aea83ccc4ab2540668f5efc22c5b02580"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setVolume</b> (<a class="el" href="class_sound_manager.html">SoundManager</a> *menuSoundManager)</td></tr>
+<tr class="separator:aea83ccc4ab2540668f5efc22c5b02580"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents the game interface. The <a class="el" href="class_game_form.html" title="Represents the game interface. The GameForm class represents the game interface where the game is pla...">GameForm</a> class represents the game interface where the game is played. It handles various game functionalities such as character movement, collisions, level loading, etc. </p>
@@ -194,23 +208,37 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>displayChrono</b> ()<
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a085119e87e8f5220a3da2a2311b1ed71" name="a085119e87e8f5220a3da2a2311b1ed71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a085119e87e8f5220a3da2a2311b1ed71">&#9670;&#160;</a></span>checkCollisionFireBalls()</h2>
+<a id="a324273bd6ab9b281af55427c219d2d3d" name="a324273bd6ab9b281af55427c219d2d3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a324273bd6ab9b281af55427c219d2d3d">&#9670;&#160;</a></span>gameWon</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void GameForm::checkCollisionFireBalls </td>
+          <td class="memname">void GameForm::gameWon </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>elapsedTime</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Checks for collisions with fireballs. </p>
-<p>Arrêtez le jeu et revenez au menu</p>
+<p>Signal emitted when the game is won. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">The</td><td>integer of the timer of the game loop </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -230,7 +258,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>displayChrono</b> ()<
 </div><div class="memdoc">
 
 <p>Getter for itsScrollArea. </p>
-<dl class="section return"><dt>Returns</dt><dd>the scroll area element of the <a class="el" href="class_game_form.html" title="Represents the game interface. The GameForm class represents the game interface where the game is pla...">GameForm</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The scroll area element of the <a class="el" href="class_game_form.html" title="Represents the game interface. The GameForm class represents the game interface where the game is pla...">GameForm</a> </dd></dl>
 
 </div>
 </div>
@@ -261,8 +289,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>displayChrono</b> ()<
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23_BowserBros/BowserBros/App/<a class="el" href="gameform_8h_source.html">gameform.h</a></li>
-<li>/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23_BowserBros/BowserBros/App/gameform.cpp</li>
+<li><a class="el" href="gameform_8h_source.html">gameform.h</a></li>
+<li>gameform.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

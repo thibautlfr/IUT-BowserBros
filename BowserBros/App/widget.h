@@ -11,6 +11,7 @@
 
 #include "menuform.h"
 #include "gameform.h"
+#include "soundsettingsform.h"
 #include "scoreboardform.h"
 
 QT_BEGIN_NAMESPACE
@@ -26,24 +27,22 @@ It inherits from the QWidget class.
 class Widget : public QWidget
 {
     Q_OBJECT
-    MenuForm * menuForm; /**< The menu form object. */
-    GameForm * gameForm; /**< The game form object. */
-    ScoreboardForm * scoreboardForm ;
+
 public:
     /**
       * @brief Constructs a Widget object.
       * @param parent The parent QWidget object.
      */
-    Widget(QWidget *parent = nullptr);
-
-    /**
-      * @brief Destructs the Widget object.
-     */
+    explicit Widget(QWidget *parent = nullptr);
     ~Widget();
 
 private:
     Ui::Widget *ui;
-    QStackedWidget* stackedWidget; /**< The stack widget to switch between level and menu */
+    QStackedWidget* stackedWidget;
+    MenuForm * menuForm; /**< The menu form object. */
+    GameForm * gameForm;/**< The game form object. */
+    SoundSettingsForm * soundSettingsForm; /**< The sound settings board form object */
+    ScoreboardForm * scoreboardForm; /**< The score board form object */
 };
 
 #endif // WIDGET_H

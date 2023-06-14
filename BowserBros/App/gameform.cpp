@@ -83,13 +83,16 @@ GameForm::GameForm(QWidget *parent)
     // Création du sol, du personnage et du boss
     itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
     itsCharacter = new Mario(50, height() - 50, ":Assets/Assets/mario/mario4.png");
+    itsCharacter->setOnLadder(false);
     itsBoss = new Bowser(width()-80, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
 
     //====================================================================
 
     // Création et lancement du timer
     itsTimer = new QTimer(this);
+    marioTimer = new QTimer(this);
     connect(itsTimer, SIGNAL(timeout()), this, SLOT(gameloop()));
+    connect(marioTimer, SIGNAL(timeout()), this, SLOT(animationDeath()));
     start();
 }
 
@@ -104,6 +107,7 @@ GameForm::~GameForm()
     delete levelLabel;
     delete timeLabel;
     delete itsTimer;
+    delete marioTimer;
     delete ui;
 }
 
@@ -125,7 +129,7 @@ void GameForm::loadLevel() {
 
     if(itsLevel > 1)
     {
-        // Repositionement des acteurs du jeu
+        // Repositionement des acteurs du jeu et suppression des éléments du niveau précédent
         itsCharacter->setItsX(50);
         itsCharacter->setItsY(height() - 100);
 
@@ -134,8 +138,10 @@ void GameForm::loadLevel() {
 
         itsBoss->setItsX(width()-80);
         itsBoss->setItsY(height()-570);
+
         itsBoss->getItsFireBalls()->clear();
         itsBlocks.clear();
+        itsLadders.clear();
     }
 
     // Lancement de la musique si on est au niveau 1
@@ -172,6 +178,10 @@ void GameForm::loadLevel() {
                 {
                     itsKoopas.push_back(new Koopa(x, height()-y, ":Assets/Assets/ennemis/koopaR1.png"));
                 }
+                else if (type == LADDER)
+                {
+                    itsLadders.push_back(new Element(x, height() - y, ElementType(type)));
+                }
                 else
                 {
                     qDebug() << "Bloc créé en " << x << " ; " << y ;
@@ -198,10 +208,69 @@ void GameForm::loadLevel() {
 
 // ---------------------------------------------------------------------------------------------------------
 
+// Gère les collisions entre le personnage et les échelles du jeu
+void GameForm::checkLadderCollision()
+{
+    // Distance maximum des échelles considérés comme "proche" de Mario
+    const int DISTANCE_THRESHOLD = 25;
+
+    vector<Element*> nearlyLadders;
+    bool characterIntersectsLadder = false;
+
+    for (Element* ladder : itsLadders)
+    {
+        int distanceX = abs(itsCharacter->getItsRect().center().x() - ladder->getRect().center().x());
+
+        if (distanceX < DISTANCE_THRESHOLD)
+        {
+            nearlyLadders.push_back(ladder);
+        }
+
+        if (itsCharacter->intersect(ladder->getRect()))
+        {
+            characterIntersectsLadder = true;
+        }
+    }
+
+    if (!characterIntersectsLadder)
+    {
+        itsCharacter->setOnLadder(false);
+        return;
+    }
+
+
+    for(Element* ladder : nearlyLadders)
+    {
+        if(itsCharacter->getItsRect().center().x()+5 >= ladder->getRect().left() &&
+           itsCharacter->getItsRect().center().x()-5 <= ladder->getRect().right() &&
+            ladder->getRect().bottom() >= itsCharacter->getItsRect().bottom()
+             )
+        {
+            if(itsCharacter->getYSpeed() > 0 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() >= 0 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() <= 10)
+            {
+                itsCharacter->setItsY(ladder->getRect().top()-47);
+                itsCharacter->setOnLadder(false);
+                itsCharacter->setOnPlatform(true);
+                itsCharacter->setYSpeed(0);
+            }
+            else if(ladder->getRect().top() <= itsCharacter->getItsRect().top() - 1 )
+            {
+                itsCharacter->setOnLadder(true);
+                itsCharacter->setOnPlatform(false);
+            }
+        }
+        else
+        {
+            itsCharacter->setOnLadder(false);
+            itsCharacter->setOnPlatform(true);
+        }
+    }
+
+}
+
 // Gère les collisions entre le personnage et les éléments du jeu
 void GameForm::checkCharacterCollision()
 {
-
     //Vérifier que le character n'atteint pas la bordure du jeu
     if(itsCharacter->getItsRect().left() <= 0)
     {
@@ -219,7 +288,6 @@ void GameForm::checkCharacterCollision()
         // Arrêtez le jeu et revenez au menu
         if (itsLevel == itsAvalaibleLevelsNb)
         {
-            qDebug() << "dernier niveau gagné" ;
             itsCharacter->setItsImage(":/Assets/Assets/mario/mariowin.png");
             itsCharacter->setItsY(itsCharacter->getItsY() - 5); // Déplace vers le haut de 10 pixels
             itsTimer->stop();
@@ -242,7 +310,6 @@ void GameForm::checkCharacterCollision()
                 itsTimer->start();
                 loadLevel();
             });
-
         }
         return;
     }
@@ -254,27 +321,38 @@ void GameForm::checkCharacterCollision()
 
     // On vérifie que le cube n'est pas sur le sol
     itsCharacter->setOnPlatform(false);
-    if(checkEntityOnFloor(itsCharacter, nearlyBlocks))
+
+    if(checkEntityOnFloor(itsCharacter, nearlyBlocks) )
     {
         itsCharacter->updateAsset(elapsedTime);
         return;
     }
 
     // On vérifie que le cube n'est sur aucunes des plateformes
-    if(checkEntityOnBlocks(itsCharacter, nearlyBlocks))
+    if (!itsCharacter->getOnLadder())
     {
-        itsCharacter->updateAsset(elapsedTime);
-        return;
+        if(checkEntityOnBlocks(itsCharacter, nearlyBlocks))
+        {
+            itsCharacter->updateAsset(elapsedTime);
+            return;
+        }
     }
+
 
     // Si il est ni sur le sol ni sur une plateforme alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
     if (itsCharacter->getOnPlatform() == false)
     {
         // Gérer les collisions avec les plateformes
-        checkPlatformCollision(itsCharacter, nearlyBlocks);
+        if (!itsCharacter->getOnLadder())
+        {
+            checkPlatformCollision(itsCharacter, nearlyBlocks);
+        }
 
         // Gérer les collision avec le sol
-        checkFloorCollision(itsCharacter);
+        if (!itsCharacter->getOnLadder())
+        {
+            checkFloorCollision(itsCharacter);
+        }
 
     }
 
@@ -328,12 +406,25 @@ void GameForm::checkCollisionFireBalls()
         if (fireBall->getItsRect().intersects(itsCharacter->getItsRect()))
         {
             // Arrêtez le jeu et revenez au menu
-            itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
-            itsTimer->stop();
-
             soundManager->playDeathMusic();
 
+            // On regle l'asset et la vitesse de mario
+            itsCharacter->setIsDead(true);
+            itsCharacter->setXSpeed(0);
+            itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
+
+            // Arret du timer principal
+            itsTimer->stop();
+
+            // Désactive le focus pour ne plus controler mario lors de l'animation
+            this->setEnabled(false);
+
+            // Lancement de l'animation de mort de mario
+            marioTimer->start(10);
+            itsCharacter->setYSpeed(-5);
+
             QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                marioTimer->stop();
                 emit gameLosed();
             });
 
@@ -986,15 +1077,25 @@ void GameForm::updateScroll() {
 
 void GameForm::updateFireBalls()
 {
-    for (FireBall * fireball : *itsBoss->getItsFireBalls())
+    static int previousTime;
+    if(elapsedTime == 10)
+    {
+        previousTime = 0; // Variable pour conserver le temps précédent
+    }
+
+    int currentTime = elapsedTime;
+
+    for (FireBall* fireball : *itsBoss->getItsFireBalls())
     {
         fireball->calculatePosition();
     }
 
-    double coefficient = (1 - (0.1 * (itsLevel - 1))); // Accélérer la fréquence en fonction du niveau
-    if(elapsedTime % int(1000 * coefficient) == 0)
+    double coefficient = (1 - (0.05 * (itsLevel - 1))); // Accélérer la fréquence en fonction du niveau
+
+    if (currentTime - previousTime >= 1000 * coefficient)
     {
         itsBoss->dropFireBall();
+        previousTime = currentTime; // Mettre à jour le temps précédent
     }
 }
 
@@ -1004,15 +1105,28 @@ void GameForm::gameloop()
 {
     elapsedTime += 10;
     displayChrono();
+
+    checkLadderCollision();
     checkCharacterCollision();
+
     checkGoombasCollision();
     checkKoopasCollision();
+
     checkBowserCollision();
     checkCollisionFireBalls();
+
     updateScroll();
     updateFireBalls();
     repaint();
 }
+
+void GameForm::animationDeath()
+{
+    itsCharacter->setYSpeed(itsCharacter->getYSpeed()+ GRAVITY/2 );
+    itsCharacter->calculatePosition();
+    repaint();
+}
+
 
 void GameForm::displayChrono()
 {
@@ -1036,6 +1150,7 @@ void GameForm::start()
     }
 }
 
+
 // ---------------------------------------------------------------------------------------------------------
 
 void GameForm::keyPressEvent (QKeyEvent * event)
@@ -1051,13 +1166,25 @@ void GameForm::keyPressEvent (QKeyEvent * event)
         qDebug() << "Right Key";
     }
 
-    if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 )
+    if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 and !itsCharacter->getOnLadder())
     {
-        //sound->JumpSound();
         soundManager->playJumpEffect();
         itsCharacter->jump();
         qDebug() << "Space Key";
     }
+
+    if(event->key() == Qt::Key_Up and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 and itsCharacter->getYSpeed() == 0 )
+    {
+        itsCharacter->setYSpeed(-2);
+        itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
+    }
+    if(event->key() == Qt::Key_Down and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 and itsCharacter->getYSpeed() == 0)
+    {
+        itsCharacter->setYSpeed(2);
+        itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
+    }
+
+
 }
 
 void GameForm::keyReleaseEvent (QKeyEvent * event)
@@ -1065,6 +1192,10 @@ void GameForm::keyReleaseEvent (QKeyEvent * event)
     if ((event->key() == Qt::Key_Left) || event->key() == Qt::Key_Right)
     {
         itsCharacter->setXSpeed(0);
+    }
+    if((event->key() == Qt::Key_Up || event->key() == Qt::Key_Down) and itsCharacter->getOnLadder())
+    {
+        itsCharacter->setYSpeed(0);
     }
 }
 
@@ -1087,10 +1218,17 @@ void GameForm::paintEvent(QPaintEvent *event)
         fireball->draw(painter);
     }
 
+    for(Element * ladder : itsLadders)
+    {
+        ladder->draw(painter);
+    }
     itsChest->draw(painter);
 
     // Afficher les aides au joueur
-    paintPlayerHelps(painter);
+    if(!itsCharacter->getIsDead())
+    {
+        paintPlayerHelps(painter);
+    }
 
     // Afficher les entités du jeu
     for (Goomba * goomba : itsGoombas)
@@ -1111,6 +1249,7 @@ void GameForm::paintEvent(QPaintEvent *event)
 
 void GameForm::paintPlayerHelps(QPainter* painter)
 {
+
     if (itsCharacter->getItsY() > height() - 300)
     {
         painter->drawImage(600, height() - 65, leftArrow);
@@ -1143,4 +1282,20 @@ void GameForm::paintPlayerHelps(QPainter* painter)
     int levelx = 10;
     int levely = itsBoss->getItsY()-20;
     levelLabel->move(levelx, levely); // Déplacer le timeLabel à la position calculée
+
+}
+
+SoundManager* GameForm::getSoundManager() const
+{
+    return soundManager;
+}
+
+void GameForm::setVolume(SoundManager * menuSoundManager){
+    //Récupère les volumes sonores du MenuForm en récupérant son SoundManager
+    itsVolumesGen = menuSoundManager->getVolume();
+    itsVolumesEffect = menuSoundManager->getEffectsVolume();
+
+    //Modifie les volumes du gameForm
+    soundManager->setEffectsVolume(itsVolumesEffect);
+    soundManager->setMainVolume(itsVolumesGen);
 }

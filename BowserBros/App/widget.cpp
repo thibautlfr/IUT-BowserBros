@@ -1,5 +1,6 @@
 #include "widget.h"
 #include "qicon.h"
+#include "soundsettingsform.h"
 #include "ui_widget.h"
 
 #include <QStackedWidget>
@@ -18,10 +19,7 @@ Widget::Widget(QWidget *parent)
     setWindowTitle("Bowser Bros");
 
     // Changer l'icône de l'application
-    QApplication::setWindowIcon(QIcon(":Assets/Assets/bowser/bowsermenu.png"));
-
-    // Changer l'icône du widget
-    setWindowIcon(QIcon(":Assets/Assets/bowser/bowsermenu.png"));
+    QApplication::setWindowIcon(QIcon(":Assets/Assets/other/logo.png"));
 
     //=======================================================================
 
@@ -33,20 +31,31 @@ Widget::Widget(QWidget *parent)
     menuForm = new MenuForm;
     stackedWidget->addWidget(menuForm);
 
+    // Création du widget de paramètres
+    SoundSettingsForm* soundSettingsForm = new SoundSettingsForm(this, menuForm->getSoundManager());
+    stackedWidget->addWidget(soundSettingsForm);
+
     //=======================================================================
 
-    // Connect pour lancer une partie avec le bouton Jouer
+    // CONNECT POUR CHAQUE BOUTONS DU MENU
+
+    // Bouton JOUER
     connect(menuForm, &MenuForm::playButtonClicked, this, [=]() {
         // Arrêt de la musique du menu
         menuForm->stopMusic();
 
         // Création et affichage du widget pour la partie
         gameForm = new GameForm;
+
+        // Initialise les volumes sonores identiques aux volumes du Menu
+        gameForm->setVolume(menuForm->getSoundManager());
+
+        // Ajoute la scrollArea au stackedWidget ce qui permet de suivre le joueur
         stackedWidget->addWidget(gameForm->getScrollArea());
         stackedWidget->setCurrentWidget(gameForm->getScrollArea());
         gameForm->setFocus();
 
-        // Connect pour gérer la fin de la partie
+        // Retou au MENU quand la partie est perdue
         connect(gameForm, &GameForm::gameLosed, this, [=]() {
             if (gameForm != nullptr)
             {
@@ -57,7 +66,7 @@ Widget::Widget(QWidget *parent)
             }
         });
 
-        // Connect pour gérer la victoire dans le jeu
+        // Affichage du temps et CLASSEMENT quand la partie est gagnée
         connect(gameForm, &GameForm::gameWon, this, [=](int elapsedTime) {
             menuForm->playMusic();
             if (gameForm != nullptr)
@@ -69,7 +78,7 @@ Widget::Widget(QWidget *parent)
                 qDebug() << "GameForm deleted";
                 delete gameForm;
 
-                // Connect pour revenir au menu depuis le formulaire de classement
+                // Bouton MENU dans CLASSEMENT
                 connect(scoreboardForm, &ScoreboardForm::menuButtonClicked, this, [=]() {
                     stackedWidget->setCurrentWidget(menuForm);
                     menuForm->setFocus();
@@ -79,22 +88,36 @@ Widget::Widget(QWidget *parent)
         });
     });
 
-    // Connect pour quitter le jeu avec le bouton quitter
+    // Bouton QUITTER
     connect(menuForm, &MenuForm::quitButtonClicked, this, &QApplication::quit);
 
-    // Connect pour afficher le formulaire de classement
+    // Bouton CLASSEMENT
     connect(menuForm, &MenuForm::podiumButtonClicked, this, [=]() {
         scoreboardForm = new ScoreboardForm(this, 0);
         stackedWidget->addWidget(scoreboardForm);
         stackedWidget->setCurrentWidget(scoreboardForm);
         scoreboardForm->setFocus();
 
-        // Connect pour revenir au menu depuis le formulaire de classement
+        // Bouton MENU dans CLASSEMENT
         connect(scoreboardForm, &ScoreboardForm::menuButtonClicked, this, [=]() {
             stackedWidget->setCurrentWidget(menuForm);
             menuForm->setFocus();
             delete scoreboardForm;
         });
+    });
+
+    // Bouton PARAMÈTRES
+    connect(menuForm, &MenuForm::soundSettingsButtonClicked, this, [=]() {
+
+        stackedWidget->setCurrentWidget(soundSettingsForm);
+        soundSettingsForm->setFocus();
+
+        // Bouton MENU dans les PARAMÈTRES
+        connect(soundSettingsForm, &SoundSettingsForm::finished, this, [=]() {
+            stackedWidget->setCurrentWidget(menuForm);
+            menuForm->setFocus();
+        });
+
     });
 
     //=======================================================================
@@ -114,9 +137,10 @@ Widget::Widget(QWidget *parent)
 
 Widget::~Widget()
 {
-    if (menuForm != nullptr)
+    if (stackedWidget != nullptr)
     {
-        delete menuForm;
+        delete stackedWidget;
     }
+
     delete ui;
 }

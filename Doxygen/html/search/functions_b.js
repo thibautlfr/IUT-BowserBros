@@ -7,6 +7,7 @@ var searchData=
   ['playlevelpassedmusic_4',['playLevelPassedMusic',['../class_sound_manager.html#afef8416d8ded26f6b597d50d6549b899',1,'SoundManager']]],
   ['playmainmusic_5',['playMainMusic',['../class_sound_manager.html#a773c01a5cadf25de0b31f0ae90ba2ed2',1,'SoundManager']]],
   ['playmenumusic_6',['playMenuMusic',['../class_sound_manager.html#ac8dae0514bc7f73779bbb8ada97d64b7',1,'SoundManager']]],
-  ['playwinmusic_7',['playWinMusic',['../class_sound_manager.html#afb42de26e643d5fa91a6835763174c7e',1,'SoundManager']]],
-  ['podiumbuttonclicked_8',['podiumButtonClicked',['../class_menu_form.html#ac2eed775b966c149121e43bcadb86640',1,'MenuForm']]]
+  ['playmusic_7',['playMusic',['../class_menu_form.html#a125f20265d5cafa039579a88d7ae8bc2',1,'MenuForm']]],
+  ['playwinmusic_8',['playWinMusic',['../class_sound_manager.html#afb42de26e643d5fa91a6835763174c7e',1,'SoundManager']]],
+  ['podiumbuttonclicked_9',['podiumButtonClicked',['../class_menu_form.html#ac2eed775b966c149121e43bcadb86640',1,'MenuForm']]]
 ];

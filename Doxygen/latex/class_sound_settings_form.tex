@@ -1,0 +1,111 @@
+\hypertarget{class_sound_settings_form}{}\doxysection{Sound\+Settings\+Form Class Reference}
+\label{class_sound_settings_form}\index{SoundSettingsForm@{SoundSettingsForm}}
+
+
+The \mbox{\hyperlink{class_sound_settings_form}{Sound\+Settings\+Form}} class represents a form for sound settings.  
+
+
+
+
+{\ttfamily \#include $<$soundsettingsform.\+h$>$}
+
+Inheritance diagram for Sound\+Settings\+Form\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sound_settings_form}
+\end{center}
+\end{figure}
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sound_settings_form_a2598a9224dba0c2f6e48dc1ee5c02343}\label{class_sound_settings_form_a2598a9224dba0c2f6e48dc1ee5c02343}} 
+void {\bfseries finished} ()
+\begin{DoxyCompactList}\small\item\em Signal emitted when the user has finished with the sound settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sound_settings_form_ac22fefc4b5d0486e2b9a1e40925dba41}{Sound\+Settings\+Form}} (QWidget $\ast$parent=nullptr, \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$sound\+Menu\+Manager=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_sound_settings_form}{Sound\+Settings\+Form}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sound_settings_form_a779ffc7039d803a8f31ea1dfe33c6a7c}\label{class_sound_settings_form_a779ffc7039d803a8f31ea1dfe33c6a7c}} 
+{\bfseries $\sim$\+Sound\+Settings\+Form} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{class_sound_settings_form}{Sound\+Settings\+Form}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$ \mbox{\hyperlink{class_sound_settings_form_ad818ed53d1fe5e283e49352680414180}{menu\+Sound\+Manager}}
+\item 
+QImage \mbox{\hyperlink{class_sound_settings_form_ad52a09e0bab3f4b20e8274423bb7f464}{its\+Background}}
+\item 
+QImage \mbox{\hyperlink{class_sound_settings_form_a478f15994e682310862ed452648813a1}{its\+Floor}}
+\item 
+QImage \mbox{\hyperlink{class_sound_settings_form_a379f0061039a23baa1678b3a72cf3bd2}{its\+Mario}}
+\item 
+QImage \mbox{\hyperlink{class_sound_settings_form_a551b04ef84fdca023a90bb561d7965d0}{its\+Bowser}}
+\item 
+\mbox{\Hypertarget{class_sound_settings_form_a22c82501d844a8abf6114499965e8494}\label{class_sound_settings_form_a22c82501d844a8abf6114499965e8494}} 
+QLabel $\ast$ {\bfseries its\+Title}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_sound_settings_form}{Sound\+Settings\+Form}} class represents a form for sound settings. 
+
+The \mbox{\hyperlink{class_sound_settings_form}{Sound\+Settings\+Form}} class provides a graphical user interface for adjusting sound settings. It allows the user to control the general volume and effects volume using sliders. The class emits a signal when the user has finished with the sound settings. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sound_settings_form_ac22fefc4b5d0486e2b9a1e40925dba41}\label{class_sound_settings_form_ac22fefc4b5d0486e2b9a1e40925dba41}} 
+\index{SoundSettingsForm@{SoundSettingsForm}!SoundSettingsForm@{SoundSettingsForm}}
+\index{SoundSettingsForm@{SoundSettingsForm}!SoundSettingsForm@{SoundSettingsForm}}
+\doxysubsubsection{\texorpdfstring{SoundSettingsForm()}{SoundSettingsForm()}}
+{\footnotesize\ttfamily Sound\+Settings\+Form\+::\+Sound\+Settings\+Form (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$}]{sound\+Menu\+Manager = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \mbox{\hyperlink{class_sound_settings_form}{Sound\+Settings\+Form}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent widget (default is nullptr). \\
+\hline
+{\em sound\+Menu\+Manager} & The sound manager object for menu sounds (default is nullptr). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_sound_settings_form_ad52a09e0bab3f4b20e8274423bb7f464}\label{class_sound_settings_form_ad52a09e0bab3f4b20e8274423bb7f464}} 
+\index{SoundSettingsForm@{SoundSettingsForm}!itsBackground@{itsBackground}}
+\index{itsBackground@{itsBackground}!SoundSettingsForm@{SoundSettingsForm}}
+\doxysubsubsection{\texorpdfstring{itsBackground}{itsBackground}}
+{\footnotesize\ttfamily QImage Sound\+Settings\+Form\+::its\+Background}
+
+The background image of the scoreboard form. \mbox{\Hypertarget{class_sound_settings_form_a551b04ef84fdca023a90bb561d7965d0}\label{class_sound_settings_form_a551b04ef84fdca023a90bb561d7965d0}} 
+\index{SoundSettingsForm@{SoundSettingsForm}!itsBowser@{itsBowser}}
+\index{itsBowser@{itsBowser}!SoundSettingsForm@{SoundSettingsForm}}
+\doxysubsubsection{\texorpdfstring{itsBowser}{itsBowser}}
+{\footnotesize\ttfamily QImage Sound\+Settings\+Form\+::its\+Bowser}
+
+The \mbox{\hyperlink{class_bowser}{Bowser}} image of the scoreboard form. \mbox{\Hypertarget{class_sound_settings_form_a478f15994e682310862ed452648813a1}\label{class_sound_settings_form_a478f15994e682310862ed452648813a1}} 
+\index{SoundSettingsForm@{SoundSettingsForm}!itsFloor@{itsFloor}}
+\index{itsFloor@{itsFloor}!SoundSettingsForm@{SoundSettingsForm}}
+\doxysubsubsection{\texorpdfstring{itsFloor}{itsFloor}}
+{\footnotesize\ttfamily QImage Sound\+Settings\+Form\+::its\+Floor}
+
+The floor image of the scoreboard form. \mbox{\Hypertarget{class_sound_settings_form_a379f0061039a23baa1678b3a72cf3bd2}\label{class_sound_settings_form_a379f0061039a23baa1678b3a72cf3bd2}} 
+\index{SoundSettingsForm@{SoundSettingsForm}!itsMario@{itsMario}}
+\index{itsMario@{itsMario}!SoundSettingsForm@{SoundSettingsForm}}
+\doxysubsubsection{\texorpdfstring{itsMario}{itsMario}}
+{\footnotesize\ttfamily QImage Sound\+Settings\+Form\+::its\+Mario}
+
+The \mbox{\hyperlink{class_mario}{Mario}} image of the scoreboard form. \mbox{\Hypertarget{class_sound_settings_form_ad818ed53d1fe5e283e49352680414180}\label{class_sound_settings_form_ad818ed53d1fe5e283e49352680414180}} 
+\index{SoundSettingsForm@{SoundSettingsForm}!menuSoundManager@{menuSoundManager}}
+\index{menuSoundManager@{menuSoundManager}!SoundSettingsForm@{SoundSettingsForm}}
+\doxysubsubsection{\texorpdfstring{menuSoundManager}{menuSoundManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}}$\ast$ Sound\+Settings\+Form\+::menu\+Sound\+Manager}
+
+The sound manager object for menu sounds. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{soundsettingsform_8h}{soundsettingsform.\+h}}\item 
+soundsettingsform.\+cpp\end{DoxyCompactItemize}

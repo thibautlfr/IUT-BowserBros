@@ -56,6 +56,10 @@
         <file>Assets/ennemis/koopaL2.png</file>
         <file>Assets/ennemis/koopaR1.png</file>
         <file>Assets/ennemis/koopaR2.png</file>
+        <file>Assets/other/ladder.png</file>
+        <file>Assets/menu/setting.png</file>
+        <file>Assets/background/background3.png</file>
+        <file>Assets/other/logo.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>

@@ -33,8 +33,9 @@ public:
     QImage itsMario; /**< The Mario image of the menu form. */
     QImage itsBowser; /**< The Bowser image of the menu form. */
     QImage itsGameTitle; /**< The game title image of the menu form. */
+    SoundManager *soundManager; /**< The sound manager of the menu form */
 
-    SoundManager *soundManager;
+    SoundManager* getSoundManager() const;
 
     // --------------------------------------------------------------------------------------------
 
@@ -44,14 +45,18 @@ public:
     */
     explicit MenuForm(QWidget *parent = nullptr);
 
-    void playMusic();
-
-    void stopMusic();
-
     /**
       * @brief Destructs the MenuForm object.
     */
     ~MenuForm();
+    /**
+     * @brief Manage all the musics of the game
+     */
+    void playMusic();
+    /**
+     * @brief Stop all the musics of the game
+     */
+    void stopMusic();
 
 signals:
     /**
@@ -68,6 +73,8 @@ signals:
       * @brief Signal emitted when the podium button is clicked.
      */
     void podiumButtonClicked();
+
+    void soundSettingsButtonClicked();
 
 private:
     Ui::MenuForm *ui;

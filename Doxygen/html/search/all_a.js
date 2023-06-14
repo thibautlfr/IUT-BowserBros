@@ -5,5 +5,6 @@ var searchData=
   ['menubuttonclicked_2',['menuButtonClicked',['../class_scoreboard_form.html#a8ceb99b236bd7c13ce8bedc860d035db',1,'ScoreboardForm']]],
   ['menuform_3',['MenuForm',['../class_menu_form.html',1,'MenuForm'],['../class_menu_form.html#acaab5223ef7986a0e55157632db86265',1,'MenuForm::MenuForm()']]],
   ['menuform_2eh_4',['menuform.h',['../menuform_8h.html',1,'']]],
-  ['musicfinished_5',['musicFinished',['../class_sound_manager.html#a4294cbd9c215a38aaa396a913e0b2611',1,'SoundManager']]]
+  ['menusoundmanager_5',['menuSoundManager',['../class_sound_settings_form.html#ad818ed53d1fe5e283e49352680414180',1,'SoundSettingsForm']]],
+  ['musicfinished_6',['musicFinished',['../class_sound_manager.html#a4294cbd9c215a38aaa396a913e0b2611',1,'SoundManager']]]
 ];
