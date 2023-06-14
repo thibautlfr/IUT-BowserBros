@@ -48,11 +48,18 @@ public:
 
     QLabel * itsTitle;
 
+    void setIsOnPaused(bool newIsOnPaused);
+
 signals:
     /**
      * @brief Signal emitted when the user has finished with the sound settings.
      */
     void finished();
+
+    /**
+     * @brief Signal emitted when the user want to restart the game (if he paused it).
+     */
+    void restarted();
 
 private slots:
     /**
@@ -72,6 +79,8 @@ private:
     void paintEvent(QPaintEvent *event);
     QLabel* musicVolumeLabel;
     QLabel* effectsVolumeLabel;
+
+    bool isOnPaused = false ;
 };
 
 #endif // SOUNDSSETTINGSFORM_H

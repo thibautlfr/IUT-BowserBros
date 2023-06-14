@@ -1129,21 +1129,24 @@ void GameForm::updateFireBalls()
 
 void GameForm::gameloop()
 {
-    elapsedTime += 10;
-    displayChrono();
+    if(isOnGamed)
+    {
+        elapsedTime += 10;
+        displayChrono();
 
-    checkLadderCollision();
-    checkCharacterCollision();
+        checkLadderCollision();
+        checkCharacterCollision();
 
-    checkGoombasCollision();
-    checkKoopasCollision();
+        checkGoombasCollision();
+        checkKoopasCollision();
 
-    checkBowserCollision();
-    checkCollisionFireBalls();
+        checkBowserCollision();
+        checkCollisionFireBalls();
 
-    updateScroll();
-    updateFireBalls();
-    repaint();
+        updateScroll();
+        updateFireBalls();
+        repaint();
+    }
 }
 
 void GameForm::animationDeath()
@@ -1153,6 +1156,15 @@ void GameForm::animationDeath()
     repaint();
 }
 
+void GameForm::setIsOnGamed(bool newIsOnGamed)
+{
+    isOnGamed = newIsOnGamed;
+    if(newIsOnGamed == true)
+    {
+        itsTimer->start();
+        soundManager->playMainMusic();
+    }
+}
 
 void GameForm::displayChrono()
 {
@@ -1173,6 +1185,7 @@ void GameForm::start()
     {
         qDebug() << "Timer lancé";
         itsTimer->start(10);
+        isOnGamed = true ;
     }
 }
 
@@ -1209,8 +1222,14 @@ void GameForm::keyPressEvent (QKeyEvent * event)
         itsCharacter->setYSpeed(2);
         itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
     }
-
-
+    if (event->key() == Qt::Key_Escape)
+    {
+        emit gamePaused();
+        soundManager->stopAllSounds();
+        qDebug() << "Escape Key" ;
+        itsTimer->stop();
+        isOnGamed = false ;
+    }
 }
 
 void GameForm::keyReleaseEvent (QKeyEvent * event)

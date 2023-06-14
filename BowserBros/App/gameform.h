@@ -162,6 +162,8 @@ public:
 
     void setVolume(SoundManager *menuSoundManager);
 
+    void setIsOnGamed(bool newIsOnGamed);
+
 public slots:
     /**
       * @brief The game loop that updates the game state.
@@ -188,6 +190,11 @@ signals:
       * @param The integer of the timer of the game loop
     */
     void gameWon(int elapsedTime);
+
+    /**
+      * @brief Signal emitted when the game is paused.
+    */
+    void gamePaused();
 
 
 private:
@@ -231,6 +238,8 @@ private:
     SoundManager *soundManager; /**< Attribute used to mange sounds during the game */
     float itsVolumesGen;
     float itsVolumesEffect;
+
+    bool isOnGamed ;
 
     // --------------------------------------------------------------------------------------------
 

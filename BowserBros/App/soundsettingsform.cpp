@@ -34,12 +34,22 @@ SoundSettingsForm::SoundSettingsForm(QWidget *parent,  SoundManager *soundMenuMa
 
     // --------------------------------------------------------------------------------------------------------------------------------
 
+
     // Bouton menu
     QPixmap menuAsset(":/Assets/Assets/menu/menu.png");
     ui->finishedButton->setIcon(menuAsset);
     ui->finishedButton->setIconSize(QSize(200, 70));
 
     connect(ui->finishedButton, &QPushButton::clicked, this, &SoundSettingsForm::finished);
+
+    // Bouton reprendre
+    QPixmap restartAsset(":/Assets/Assets/menu/restart.png");
+    ui->itsRestartButton->setIcon(restartAsset);
+    ui->itsRestartButton->setIconSize(QSize(200, 70));
+
+    connect(ui->itsRestartButton, &QPushButton::clicked, this, &::SoundSettingsForm::restarted);
+
+
 
     // --------------------------------------------------------------------------------------------------------------------------------
     // Créer l'effet d'ombre
@@ -96,6 +106,19 @@ void SoundSettingsForm::on_effectsVolumeSlider_valueChanged(int value)
 
 void SoundSettingsForm::paintEvent(QPaintEvent *event)
 {
+    qDebug() << isOnPaused ;
+
+    // Bouton restart
+
+    if(isOnPaused)
+    {
+        ui->itsRestartButton->show();
+    }
+    else
+    {
+        ui->itsRestartButton->hide();
+    }
+
     Q_UNUSED(event);
     QPainter * painter = new QPainter(this);
     painter->drawImage(0, 0, itsBackground);
@@ -136,5 +159,10 @@ void SoundSettingsForm::paintEvent(QPaintEvent *event)
     effectsVolumeLabel->resize(labelWidth, labelHeight);
 
     delete painter;
+}
+
+void SoundSettingsForm::setIsOnPaused(bool newIsOnPaused)
+{
+    isOnPaused = newIsOnPaused;
 }
 
