@@ -7,8 +7,15 @@
 #define SOUNDSSETTINGSFORM_H
 
 #include <QWidget>
+#include <QJsonObject>
+#include <QFile>
 #include "qlabel.h"
 #include "soundmanager.h"
+#include <fstream>
+#include <iostream>
+#include <istream>
+
+using namespace std ;
 
 namespace Ui {
 class SoundSettingsForm;
@@ -52,6 +59,10 @@ public:
 
     bool getIsOnPaused() const;
 
+    void saveSettings();
+
+    void loadSettings();
+
 signals:
     /**
      * @brief Signal emitted when the user has finished with the sound settings.
@@ -83,6 +94,8 @@ private:
     QLabel* effectsVolumeLabel;
 
     bool isOnPaused = false ;
+
+    fstream settingsFile ;
 };
 
 #endif // SOUNDSSETTINGSFORM_H
