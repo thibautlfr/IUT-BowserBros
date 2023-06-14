@@ -645,7 +645,6 @@ void GameForm::updateFireBalls()
     }
 
     double coefficient = (1 - (0.05 * (itsLevel - 1))); // Accélérer la fréquence en fonction du niveau
-    qDebug() << coefficient;
 
     if (currentTime - previousTime >= 1000 * coefficient)
     {
