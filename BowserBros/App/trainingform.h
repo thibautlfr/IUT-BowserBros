@@ -26,6 +26,7 @@ public slots:
     void level2ButtonClicked();
     void level3ButtonClicked();
     void level4ButtonClicked();
+    void level5ButtonClicked();
 
 signals:
     /**

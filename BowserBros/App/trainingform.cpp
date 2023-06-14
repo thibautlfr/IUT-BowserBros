@@ -24,6 +24,29 @@ TrainingForm::TrainingForm(QWidget *parent) :
     ui->menuButton->setIcon(menuAsset);
     ui->menuButton->setIconSize(QSize(200, 70));
 
+    // Création des images des boutons du jeu
+    QPixmap lvl1Asset(":Assets/Assets/menu/screenlvl1.png");
+    ui->level1Button->setIcon(lvl1Asset);
+    ui->level1Button->setIconSize(lvl1Asset.size());
+
+    QPixmap lvl2Asset(":Assets/Assets/menu/screenlvl2.png");
+    ui->level2Button->setIcon(lvl2Asset);
+    ui->level2Button->setIconSize(lvl2Asset.size());
+
+    QPixmap lvl3Asset(":Assets/Assets/menu/screenlvl3.png");
+    ui->level3Button->setIcon(lvl3Asset);
+    ui->level3Button->setIconSize(lvl3Asset.size());
+
+    QPixmap lvl4Asset(":Assets/Assets/menu/screenlvl4.png");
+    ui->level4Button->setIcon(lvl4Asset);
+    ui->level4Button->setIconSize(lvl4Asset.size());
+
+    QPixmap lvl5Asset(":Assets/Assets/menu/screenlvl5.png");
+    ui->level5Button->setIcon(lvl5Asset);
+    ui->level5Button->setIconSize(lvl5Asset.size());
+
+    // --------------------------------------------------------------------------------------------------------------------------------
+
     // Connect du bouton MENU
     connect(ui->menuButton, &QPushButton::clicked, this, &TrainingForm::menuButtonClicked);
 
@@ -32,6 +55,7 @@ TrainingForm::TrainingForm(QWidget *parent) :
     connect(ui->level2Button, &QPushButton::clicked, this, &TrainingForm::level2ButtonClicked);
     connect(ui->level3Button, &QPushButton::clicked, this, &TrainingForm::level3ButtonClicked);
     connect(ui->level4Button, &QPushButton::clicked, this, &TrainingForm::level4ButtonClicked);
+    connect(ui->level5Button, &QPushButton::clicked, this, &TrainingForm::level5ButtonClicked);
 
     repaint();
 }
@@ -59,6 +83,11 @@ void TrainingForm::level3ButtonClicked()
 void TrainingForm::level4ButtonClicked()
 {
     emit levelSelected(4);
+}
+
+void TrainingForm::level5ButtonClicked()
+{
+    emit levelSelected(5);
 }
 
 

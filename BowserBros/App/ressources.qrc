@@ -60,6 +60,12 @@
         <file>Assets/menu/setting.png</file>
         <file>Assets/background/background3.png</file>
         <file>Assets/other/logo.png</file>
+        <file>Assets/menu/training.png</file>
+        <file>Assets/menu/screenlvl1.png</file>
+        <file>Assets/menu/screenlvl2.png</file>
+        <file>Assets/menu/screenlvl3.png</file>
+        <file>Assets/menu/screenlvl4.png</file>
+        <file>Assets/menu/screenlvl5.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>

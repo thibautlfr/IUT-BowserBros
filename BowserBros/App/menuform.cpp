@@ -36,9 +36,9 @@ MenuForm::MenuForm(QWidget *parent) :
     ui->quitButton->setIconSize(quitAsset.size());
 
     // Création des images des boutons du jeu
-    QPixmap trainingAsset(":Assets/Assets/menu/playbutton.png");
-    ui->trainingButton->setIcon(playAsset);
-    ui->trainingButton->setIconSize(playAsset.size());
+    QPixmap trainingAsset(":Assets/Assets/menu/training.png");
+    ui->trainingButton->setIcon(trainingAsset);
+    ui->trainingButton->setIconSize(QSize(200, 50));
 
     QPixmap podiumAsset(":/Assets/Assets/other/podium.png");
     ui->podiumButton->setIcon(podiumAsset);
