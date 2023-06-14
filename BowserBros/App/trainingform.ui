@@ -118,9 +118,9 @@
   <widget class="QLabel" name="niv1Label">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>110</x>
      <y>50</y>
-     <width>58</width>
+     <width>111</width>
      <height>16</height>
     </rect>
    </property>
@@ -131,9 +131,9 @@
   <widget class="QLabel" name="niv2Label">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>350</x>
      <y>50</y>
-     <width>58</width>
+     <width>121</width>
      <height>16</height>
     </rect>
    </property>
@@ -144,9 +144,9 @@
   <widget class="QLabel" name="niv3Label">
    <property name="geometry">
     <rect>
-     <x>610</x>
+     <x>590</x>
      <y>50</y>
-     <width>58</width>
+     <width>101</width>
      <height>16</height>
     </rect>
    </property>
@@ -157,9 +157,9 @@
   <widget class="QLabel" name="niv4Label">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>230</x>
      <y>270</y>
-     <width>58</width>
+     <width>101</width>
      <height>16</height>
     </rect>
    </property>
@@ -170,9 +170,9 @@
   <widget class="QLabel" name="niv5Label">
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>460</x>
      <y>270</y>
-     <width>58</width>
+     <width>111</width>
      <height>16</height>
     </rect>
    </property>

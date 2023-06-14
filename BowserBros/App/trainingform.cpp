@@ -1,6 +1,8 @@
 #include "trainingform.h"
 #include "ui_trainingform.h"
 
+#include <QFontDatabase>
+
 TrainingForm::TrainingForm(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TrainingForm)
@@ -44,6 +46,29 @@ TrainingForm::TrainingForm(QWidget *parent) :
     QPixmap lvl5Asset(":Assets/Assets/menu/screenlvl5.png");
     ui->level5Button->setIcon(lvl5Asset);
     ui->level5Button->setIconSize(lvl5Asset.size());
+
+    // --------------------------------------------------------------------------------------------------------------------------------
+
+    // Charger la police depuis le fichier
+    QString fontPath = ":Fonts/Fonts/policeMario2.ttf";
+    int fontId = QFontDatabase::addApplicationFont(fontPath);
+    QString fontFamily = QFontDatabase::applicationFontFamilies(fontId).at(0);
+    QFont font(fontFamily, 22);
+
+    ui->niv1Label->setFont(font);
+    ui->niv1Label->setStyleSheet("font-size: 15px; color: white;");
+
+    ui->niv2Label->setFont(font);
+    ui->niv2Label->setStyleSheet("font-size: 15px; color: white;");
+
+    ui->niv3Label->setFont(font);
+    ui->niv3Label->setStyleSheet("font-size: 15px; color: white;");
+
+    ui->niv4Label->setFont(font);
+    ui->niv4Label->setStyleSheet("font-size: 15px; color: white;");
+
+    ui->niv5Label->setFont(font);
+    ui->niv5Label->setStyleSheet("font-size: 15px; color: white;");
 
     // --------------------------------------------------------------------------------------------------------------------------------
 
