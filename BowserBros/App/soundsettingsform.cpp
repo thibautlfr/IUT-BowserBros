@@ -204,44 +204,49 @@ void SoundSettingsForm::saveSettings()
     }
 }
 
-
 // Méthode pour restaurer les paramètres
 void SoundSettingsForm::loadSettings()
 {
     if (settingsFile.is_open())
     {
-        // Lire la première ligne du fichier
-        std::string line;
-        getline(settingsFile, line);
+            // Lire la première ligne du fichier
+            std::string line;
+            getline(settingsFile, line);
 
-        // Convertir la ligne en QString
-        QString qLine = QString::fromStdString(line);
-        qDebug() << qLine;
+            // Convertir la ligne en QString
+            QString qLine = QString::fromStdString(line);
+            qDebug() << qLine;
 
-        // Diviser la ligne en deux parties
-        QStringList volume = qLine.split(';');
+            // Vérifier si la ligne est vide
+            if (qLine.isEmpty())
+            {
+                // Définir les valeurs par défaut pour les curseurs
+                ui->generalVolumeSlider->setValue(50);
+                ui->effectsVolumeSlider->setValue(50);
+            }
+            else
+            {
+                // Diviser la ligne en deux parties
+                QStringList volume = qLine.split(';');
 
-        // Vérifier s'il y a deux parties
-        if (volume.size() == 2)
-        {
-            // Récupérer les valeurs des curseurs à partir des parties divisées
-            ui->generalVolumeSlider->setValue(volume[0].toFloat());
-            ui->effectsVolumeSlider->setValue(volume[1].toFloat());
-        }
+                // Vérifier s'il y a deux parties
+                if (volume.size() == 2)
+                {
+                    // Récupérer les valeurs des curseurs à partir des parties divisées
+                    ui->generalVolumeSlider->setValue(volume[0].toFloat());
+                    ui->effectsVolumeSlider->setValue(volume[1].toFloat());
+                }
+            }
 
-        // Fermer le fichier
-        settingsFile.close();
+            // Fermer le fichier
+            settingsFile.close();
     }
     else
     {
-        // Fichier non ouvert, les paramètres n'existent pas
-        qDebug() << "Paramètres non existants, création du fichier lors de la fermeture du jeu";
-        ui->generalVolumeSlider->setValue(50);
-        ui->effectsVolumeSlider->setValue(50);
-        return;
+            // Fichier non ouvert, les paramètres n'existent pas
+            qDebug() << "Paramètres non existants, création du fichier lors de la fermeture du jeu";
+            ui->generalVolumeSlider->setValue(50);
+            ui->effectsVolumeSlider->setValue(50);
+            return;
     }
 }
-
-
-
-
