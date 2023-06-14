@@ -47,6 +47,38 @@ public:
     // --------------------------------------------------------------------------------------------
 
     /**
+      * @brief Returns the y-coordinate of the entity's position.
+      * @return The y-coordinate of the entity's position.
+     */
+    float getItsY();
+
+    /**
+      * @brief Returns the x-coordinate of the entity's position.
+      * @return The x-coordinate of the entity's position.
+     */
+    float getItsX();
+
+    /**
+      * @brief Returns the speed of the entity along the y-axis.
+      * @return The speed of the entity along the y-axis.
+     */
+    float getYSpeed();
+
+    /**
+      * @brief Returns the speed of the entity along the x-axis.
+      * @return The speed of the entity along the x-axis.
+    */
+    float getXSpeed();
+
+    /**
+      * @brief Returns the bounding rectangle of the entity.
+      * @return The bounding rectangle of the entity.
+     */
+    QRect getItsRect();
+
+    // --------------------------------------------------------------------------------------------
+
+    /**
       * @brief Sets the y-coordinate of the entity's position.
       * @param Y The new y-coordinate value.
      */
@@ -78,37 +110,6 @@ public:
 
     // --------------------------------------------------------------------------------------------
 
-    /**
-      * @brief Returns the y-coordinate of the entity's position.
-      * @return The y-coordinate of the entity's position.
-     */
-    float getItsY();
-
-    /**
-      * @brief Returns the x-coordinate of the entity's position.
-      * @return The x-coordinate of the entity's position.
-     */
-    float getItsX();
-
-    /**
-      * @brief Returns the speed of the entity along the y-axis.
-      * @return The speed of the entity along the y-axis.
-     */
-    float getYSpeed();
-
-    /**
-      * @brief Returns the speed of the entity along the x-axis.
-      * @return The speed of the entity along the x-axis.
-    */
-    float getXSpeed();
-
-    /**
-      * @brief Returns the bounding rectangle of the entity.
-      * @return The bounding rectangle of the entity.
-     */
-    QRect getItsRect();
-
-    // --------------------------------------------------------------------------------------------
 
     /**
       * @brief Calculates the new position of the entity based on its speed.

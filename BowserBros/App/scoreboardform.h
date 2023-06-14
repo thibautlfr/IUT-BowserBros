@@ -37,7 +37,6 @@ public:
      * @param elapsedTime The elapsed time for the player's score in milliseconds (default is 0).
      */
     explicit ScoreboardForm(QWidget *parent = nullptr, int elapsedTime = 0);
-
     /**
      * @brief Destructor for the ScoreboardForm object.
      */

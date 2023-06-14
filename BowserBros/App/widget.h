@@ -29,16 +29,20 @@ class Widget : public QWidget
     Q_OBJECT
 
 public:
+    /**
+      * @brief Constructs a Widget object.
+      * @param parent The parent QWidget object.
+     */
     explicit Widget(QWidget *parent = nullptr);
     ~Widget();
 
 private:
     Ui::Widget *ui;
     QStackedWidget* stackedWidget;
-    MenuForm * menuForm;
-    GameForm * gameForm;
-    SoundSettingsForm * soundSettingsForm;
-    ScoreboardForm * scoreboardForm;
+    MenuForm * menuForm; /**< The menu form object. */
+    GameForm * gameForm;/**< The game form object. */
+    SoundSettingsForm * soundSettingsForm; /**< The sound settings board form object */
+    ScoreboardForm * scoreboardForm; /**< The score board form object */
 };
 
 #endif // WIDGET_H

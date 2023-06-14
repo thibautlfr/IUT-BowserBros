@@ -18,6 +18,8 @@ class Mario : public Entity
 private:
     float itsJumpSpeed; /**< The jump speed of Mario. */
     bool isOnPlatform; /**< Flag indicating if Mario is on a platform. */
+    bool isOnLadder; /**< Indicates if Mario is on a ladder. */
+    bool isDead; /**< Indicates if Mario is dead. */
 public:
     /**
       * @brief Constructs a Mario object.
@@ -39,16 +41,36 @@ public:
     // --------------------------------------------------------------------------------------------
 
     /**
-      * @brief Return if the the player is on a platform
-      * @author PILOTTE Clément
+      * @brief Returns if the the player is on a platform
       * @return Returns true if the player is on a platform
     */
     bool getOnPlatform();
     /**
       * @brief Sets whether Mario is on a platform or not.
-      * @param onPlatform Flag indicating if Mario is on a platform.
+      * @param isOnPlatform Flag indicating if Mario is on a platform.
     */
     void setOnPlatform(bool onPlatform);
+
+    /**
+      * @brief Returns if the the player is on a ladder
+      * @return Returns true if the player is on a ladder
+    */
+    bool getOnLadder();
+    /**
+      * @brief Sets whether Mario is on a ladder or not.
+      * @param isOnLadder Flag indicating if Mario is on a ladder.
+    */
+    void setOnLadder(bool onLadder);
+    /**
+      * @brief Returns if the the player is dead
+      * @return Returns true if the player is dead
+    */
+    bool getIsDead();
+    /**
+      * @brief Sets whether Mario is dead or not
+      * @param isDead Flag indicating if Mario is dead
+    */
+    void setIsDead(bool dead);
 
     // --------------------------------------------------------------------------------------------
 

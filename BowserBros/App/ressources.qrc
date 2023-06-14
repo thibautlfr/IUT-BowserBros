@@ -2,6 +2,7 @@
     <qresource prefix="/Levels">
         <file>Levels/level1.txt</file>
         <file>Levels/level2.txt</file>
+        <file>Levels/level3.txt</file>
     </qresource>
     <qresource prefix="/Assets">
         <file>Assets/background/background1.png</file>
@@ -45,6 +46,7 @@
         <file>Assets/menu/menu.png</file>
         <file>Assets/mario/mariowin.png</file>
         <file>Assets/mario/mariodead.png</file>
+        <file>Assets/other/ladder.png</file>
         <file>Assets/ennemis/ennemi2dead.png</file>
         <file>Assets/ennemis/ennemi2L.png</file>
         <file>Assets/ennemis/ennemi2Lrun.png</file>
@@ -56,6 +58,8 @@
         <file>Assets/ennemis/ennemiR.png</file>
         <file>Assets/ennemis/ennemiRrun.png</file>
         <file>Assets/menu/setting.png</file>
+        <file>Assets/background/background3.png</file>
+        <file>Assets/other/logo.ico</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>

@@ -37,7 +37,7 @@ MenuForm::MenuForm(QWidget *parent) :
 
     QPixmap podiumAsset(":/Assets/Assets/other/podium.png");
     ui->podiumButton->setIcon(podiumAsset);
-    ui->podiumButton->setIconSize(QSize(80, 80));
+    ui->podiumButton->setIconSize(QSize(110, 110));
 
     QPixmap soundSettingsAsset(":/Assets/Assets/menu/setting.png");
     ui->soundSettingsButton->setIcon(soundSettingsAsset);

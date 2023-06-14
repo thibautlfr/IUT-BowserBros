@@ -28,6 +28,9 @@ Element::Element(float x, float y, ElementType type)
     case CHEST:
         itsImage.load(QString::fromStdString(":Assets/Assets/other/chest.png"));
         break;
+    case LADDER:
+        itsImage.load(QString::fromStdString(":Assets/Assets/other/ladder.png"));
+        break;
     default:
         break;
     }
@@ -50,6 +53,11 @@ QRect Element::getRect()
     return itsRect;
 }
 
+ElementType Element::getItsType() const
+{
+    return itsType;
+}
+
 void Element::draw(QPainter *aPainter)
 {
     if (itsImage.isNull())
@@ -63,4 +71,14 @@ void Element::draw(QPainter *aPainter)
     {
         aPainter->drawImage(itsX , itsY , itsImage);
     }
+}
+
+int Element::getItsX()
+{
+    return itsX;
+}
+
+int Element::getItsY()
+{
+    return itsY;
 }
