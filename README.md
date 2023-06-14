@@ -1,10 +1,56 @@
-# RG23-D21 | Bowser Bros.
+ 
+# RG23-D21 | Bowser Bros. 
+
+<div align="center">
+  <img src="./Images/logo.png" width="300">
+</div>
 
 ## Présentation du Projet BowserBros - SAE Retro Gaming
 
 ---
 
 > **BowserBros** est un projet de développement d'une application de jeu de plateforme en C++ avec Qt Creator. Ce projet est réalisé dans le cadre de la première année du BUT Informatique de La Rochelle. Pour de précisions sur le projet, veillez à consulter le **Wiki** sur GitLab.
+
+---
+
+
+### *Arborescence*
+
+```
+├───BowserBros
+│   ├───App
+│   │   ├───Assets
+│   │   │   ├───background
+│   │   │   ├───block
+│   │   │   ├───bowser
+│   │   │   ├───mario
+│   │   │   ├───menu
+│   │   │   ├───other
+│   │   │   └───score
+│   │   ├───Fonts
+│   │   ├───Levels
+│   │   └───Song
+│   ├───TestBowser
+│   ├───TestElement
+│   ├───TestEntity
+│   └───TestMario
+|
+├───Database
+|
+├───Documents
+|
+├───Doxygen
+│   ├───html
+│   └───latex
+|
+├───Executable
+│           
+├───Images
+└───Map-Designer
+    ├───background
+    ├───block
+    └───other
+```
 
 ---
 
@@ -33,7 +79,7 @@ Vous pouvez également lancer le fichier exécutable `BowserBros.exe` dans le r�
 
 L'application est un jeu de plateforme du style **Mario Bros**. Le but du jeu est de monter verticalement dans le niveau en évitant les boules de feu de **Bowser** afin d'atteindre un coffre qui mets fin au niveau.
 
-- La version actuelle du projet dispose d'un menu et d'un unique niveau. Vous trouverez ci-dessous des captures d'écran de l'application.
+- La version actuelle du projet dispose d'un menu et de 3 niveaux différents, le joueur à également la possibilité de modifier le volume dans les paramètres.
 
 #### Images 
 
@@ -42,7 +88,7 @@ L'application est un jeu de plateforme du style **Mario Bros**. Le but du jeu es
 Menu principal de l'application. Permet de choisir entre jouer, voir le classement ou quitter l'application.
 
 <div align="center">
-  <img src="./Images/screen-v2-menu.png" width="700">
+  <img src="./Images/screen-v3-menu.png" width="700">
 </div>
 
 - **Début du niveau**
@@ -50,7 +96,7 @@ Menu principal de l'application. Permet de choisir entre jouer, voir le classeme
 Etat du niveau au début de la partie.
 
 <div align="center">
-  <img src="./Images/screen-v1-levelstart.png" width="700">
+  <img src="./Images/screen-v3-startlevel.png" width="700">
 </div>
 
 - **Haut du niveau**
@@ -75,6 +121,14 @@ Site HTML/CS/JS permettant de créer des niveaux pour le jeu.
 
 <div align="center">
   <img src="./Images/screen-v2-map-editor.png" width="700">
+</div>
+
+- **Réglages**
+
+Menu de réglages pour modifier les volumes des sons du jeu.
+
+<div align="center">
+  <img src="./Images/screen-v3-reglages.png" width="700">
 </div>
 
 ---

@@ -20,9 +20,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="tumblr_maff0m6Y0j1rfjowdo1_500.gif"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 2.0</span>
+   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 3.0</span>
    </div>
    <div id="projectbrief">Jeu de plateforme du style Mario Bros implémenté en C++ avec Qt Creator</div>
   </td>
@@ -94,9 +94,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a791d0c61e750ae88890db269437a7398"><td class="memItemLeft" align="right" valign="top">QRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_element.html#a791d0c61e750ae88890db269437a7398">getRect</a> ()</td></tr>
 <tr class="memdesc:a791d0c61e750ae88890db269437a7398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the bounding rectangle of the element.  <br /></td></tr>
 <tr class="separator:a791d0c61e750ae88890db269437a7398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a451c6f70dd053564c8a1026285dfdbf6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_element.html#a451c6f70dd053564c8a1026285dfdbf6">getItsX</a> ()</td></tr>
+<tr class="memdesc:a451c6f70dd053564c8a1026285dfdbf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the x-coordinate of the element.  <br /></td></tr>
+<tr class="separator:a451c6f70dd053564c8a1026285dfdbf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf0c640bbb8fb27066aa36f0cb8fe2e2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_element.html#abf0c640bbb8fb27066aa36f0cb8fe2e2">getItsY</a> ()</td></tr>
+<tr class="memdesc:abf0c640bbb8fb27066aa36f0cb8fe2e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the y-coordinate of the element.  <br /></td></tr>
+<tr class="separator:abf0c640bbb8fb27066aa36f0cb8fe2e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afca529aab9f253870c961e96096f456e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_element.html#afca529aab9f253870c961e96096f456e">getYSpeed</a> ()</td></tr>
 <tr class="memdesc:afca529aab9f253870c961e96096f456e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the y-speed of the element.  <br /></td></tr>
 <tr class="separator:afca529aab9f253870c961e96096f456e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2da0510fbd3201053761860560a43847"><td class="memItemLeft" align="right" valign="top"><a class="el" href="element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_element.html#a2da0510fbd3201053761860560a43847">getItsType</a> () const</td></tr>
+<tr class="memdesc:a2da0510fbd3201053761860560a43847"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of the element.  <br /></td></tr>
+<tr class="separator:a2da0510fbd3201053761860560a43847"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4eba9d0acde5621a8aae65476ea6646d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_element.html#a4eba9d0acde5621a8aae65476ea6646d">draw</a> (QPainter *aPainter)</td></tr>
 <tr class="memdesc:a4eba9d0acde5621a8aae65476ea6646d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the element on a QPainter object.  <br /></td></tr>
 <tr class="separator:a4eba9d0acde5621a8aae65476ea6646d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,8 +150,7 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">x</td><td>The x-coordinate of the element's position. </td></tr>
     <tr><td class="paramname">y</td><td>The y-coordinate of the element's position. </td></tr>
-    <tr><td class="paramname">width</td><td>The width of the element. </td></tr>
-    <tr><td class="paramname">height</td><td>The height of the element. </td></tr>
+    <tr><td class="paramname">type</td><td>The type of the element created. </td></tr>
   </table>
   </dd>
 </dl>
@@ -220,6 +228,66 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a2da0510fbd3201053761860560a43847" name="a2da0510fbd3201053761860560a43847"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da0510fbd3201053761860560a43847">&#9670;&#160;</a></span>getItsType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="element_8h.html#a16b11be27a8e9362dd122c4d879e01ae">ElementType</a> Element::getItsType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the type of the element. </p>
+<dl class="section return"><dt>Returns</dt><dd>The type of the element. </dd></dl>
+
+</div>
+</div>
+<a id="a451c6f70dd053564c8a1026285dfdbf6" name="a451c6f70dd053564c8a1026285dfdbf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a451c6f70dd053564c8a1026285dfdbf6">&#9670;&#160;</a></span>getItsX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Element::getItsX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the x-coordinate of the element. </p>
+<dl class="section return"><dt>Returns</dt><dd>The X of the element </dd></dl>
+
+</div>
+</div>
+<a id="abf0c640bbb8fb27066aa36f0cb8fe2e2" name="abf0c640bbb8fb27066aa36f0cb8fe2e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf0c640bbb8fb27066aa36f0cb8fe2e2">&#9670;&#160;</a></span>getItsY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Element::getItsY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the y-coordinate of the element. </p>
+<dl class="section return"><dt>Returns</dt><dd>The Y of the element </dd></dl>
+
+</div>
+</div>
 <a id="a791d0c61e750ae88890db269437a7398" name="a791d0c61e750ae88890db269437a7398"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a791d0c61e750ae88890db269437a7398">&#9670;&#160;</a></span>getRect()</h2>
 
@@ -261,8 +329,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23_BowserBros/BowserBros/App/<a class="el" href="element_8h_source.html">element.h</a></li>
-<li>/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23_BowserBros/BowserBros/App/element.cpp</li>
+<li><a class="el" href="element_8h_source.html">element.h</a></li>
+<li>element.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

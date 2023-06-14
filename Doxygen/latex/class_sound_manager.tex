@@ -1,5 +1,14 @@
 \hypertarget{class_sound_manager}{}\doxysection{Sound\+Manager Class Reference}
 \label{class_sound_manager}\index{SoundManager@{SoundManager}}
+
+
+The \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} class manages the playback of various sounds and music in the application.  
+
+
+
+
+{\ttfamily \#include $<$soundmanager.\+h$>$}
+
 Inheritance diagram for Sound\+Manager\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,37 +20,50 @@ Inheritance diagram for Sound\+Manager\+:\begin{figure}[H]
 \item 
 \mbox{\Hypertarget{class_sound_manager_a4294cbd9c215a38aaa396a913e0b2611}\label{class_sound_manager_a4294cbd9c215a38aaa396a913e0b2611}} 
 void {\bfseries music\+Finished} ()
-\begin{DoxyCompactList}\small\item\em Signal launched when a sound effect has finished to play. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Signal emitted when the music finishes playing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_sound_manager_a0c743872759b9882c49e5d723f74f332}{Sound\+Manager}} (QObject $\ast$parent=nullptr)
-\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_sound_manager_ad5dbf8eab22db48ff8f3db51b02f8938}\label{class_sound_manager_ad5dbf8eab22db48ff8f3db51b02f8938}} 
 {\bfseries $\sim$\+Sound\+Manager} ()
-\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_sound_manager_a731e77036e5dff6dc7e200bbae94631d}\label{class_sound_manager_a731e77036e5dff6dc7e200bbae94631d}} 
 void {\bfseries play\+Jump\+Effect} ()
-\begin{DoxyCompactList}\small\item\em Plays the jump effect sound. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Plays the jump sound effect. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_sound_manager_a773c01a5cadf25de0b31f0ae90ba2ed2}\label{class_sound_manager_a773c01a5cadf25de0b31f0ae90ba2ed2}} 
 void {\bfseries play\+Main\+Music} ()
-\begin{DoxyCompactList}\small\item\em Plays the main music of the game. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_sound_manager_a8b60e29894d21df2c2e48f898d6e0da7}\label{class_sound_manager_a8b60e29894d21df2c2e48f898d6e0da7}} 
-void {\bfseries play\+Death\+Music} ()
-\begin{DoxyCompactList}\small\item\em Play a different music when mario hits an ennemy and looses the game. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_sound_manager_afb42de26e643d5fa91a6835763174c7e}\label{class_sound_manager_afb42de26e643d5fa91a6835763174c7e}} 
-void {\bfseries play\+Win\+Music} ()
-\begin{DoxyCompactList}\small\item\em Plays the winning theme of the mario game. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_sound_manager_afef8416d8ded26f6b597d50d6549b899}\label{class_sound_manager_afef8416d8ded26f6b597d50d6549b899}} 
-void {\bfseries play\+Level\+Passed\+Music} ()
-\begin{DoxyCompactList}\small\item\em Plays a sound effect when mario passes a level. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Plays the main music. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_sound_manager_ac8dae0514bc7f73779bbb8ada97d64b7}\label{class_sound_manager_ac8dae0514bc7f73779bbb8ada97d64b7}} 
 void {\bfseries play\+Menu\+Music} ()
-\begin{DoxyCompactList}\small\item\em Plays the main theme of the menu. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Plays the menu music. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sound_manager_a8b60e29894d21df2c2e48f898d6e0da7}\label{class_sound_manager_a8b60e29894d21df2c2e48f898d6e0da7}} 
+void {\bfseries play\+Death\+Music} ()
+\begin{DoxyCompactList}\small\item\em Plays the death music. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sound_manager_afb42de26e643d5fa91a6835763174c7e}\label{class_sound_manager_afb42de26e643d5fa91a6835763174c7e}} 
+void {\bfseries play\+Win\+Music} ()
+\begin{DoxyCompactList}\small\item\em Plays the win music. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sound_manager_afef8416d8ded26f6b597d50d6549b899}\label{class_sound_manager_afef8416d8ded26f6b597d50d6549b899}} 
+void {\bfseries play\+Level\+Passed\+Music} ()
+\begin{DoxyCompactList}\small\item\em Plays the level passed music. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sound_manager_ae2e4a99846c45f72c41f7f96c89c5a2a}{set\+Main\+Volume}} (float volume)
+\begin{DoxyCompactList}\small\item\em Sets the main music volume. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sound_manager_af95dee12918f0f17f13349e7276ef874}{set\+Effects\+Volume}} (float volume)
+\begin{DoxyCompactList}\small\item\em Sets the sound effects volume. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_sound_manager_ae1838019fe2b6407ef697b81527ae3a8}\label{class_sound_manager_ae1838019fe2b6407ef697b81527ae3a8}} 
 void {\bfseries stop\+All\+Sounds} ()
-\begin{DoxyCompactList}\small\item\em Stop all of the currently playing sounds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Stops all currently playing sounds. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sound_manager_a57a087855912dc7fb37a0c54d95346e2}{get\+Volume}} () const
+\begin{DoxyCompactList}\small\item\em Returns the current main music volume. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sound_manager_a55ab79b04aa6cca287e89aa9a476d5e8}{get\+Effects\+Volume}} () const
+\begin{DoxyCompactList}\small\item\em Returns the current sound effects volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} class manages the playback of various sounds and music in the application. 
+
+The \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} class provides functionality to play jump sound effects, main music, menu music, death music, win music, and level passed music. It also allows setting the main and effects volume, stopping all sounds, and retrieving volume levels. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_sound_manager_a0c743872759b9882c49e5d723f74f332}\label{class_sound_manager_a0c743872759b9882c49e5d723f74f332}} 
@@ -52,11 +74,75 @@ void {\bfseries stop\+All\+Sounds} ()
 
 
 
-Constructor for \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}}. 
+Constructs a \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} object. 
 
-Loads each .wav files for the game 
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent object (default is nullptr). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sound_manager_a55ab79b04aa6cca287e89aa9a476d5e8}\label{class_sound_manager_a55ab79b04aa6cca287e89aa9a476d5e8}} 
+\index{SoundManager@{SoundManager}!getEffectsVolume@{getEffectsVolume}}
+\index{getEffectsVolume@{getEffectsVolume}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{getEffectsVolume()}{getEffectsVolume()}}
+{\footnotesize\ttfamily float Sound\+Manager\+::get\+Effects\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the current sound effects volume. 
+
+\begin{DoxyReturn}{Returns}
+The sound effects volume level. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sound_manager_a57a087855912dc7fb37a0c54d95346e2}\label{class_sound_manager_a57a087855912dc7fb37a0c54d95346e2}} 
+\index{SoundManager@{SoundManager}!getVolume@{getVolume}}
+\index{getVolume@{getVolume}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{getVolume()}{getVolume()}}
+{\footnotesize\ttfamily float Sound\+Manager\+::get\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the current main music volume. 
+
+\begin{DoxyReturn}{Returns}
+The main music volume level. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sound_manager_af95dee12918f0f17f13349e7276ef874}\label{class_sound_manager_af95dee12918f0f17f13349e7276ef874}} 
+\index{SoundManager@{SoundManager}!setEffectsVolume@{setEffectsVolume}}
+\index{setEffectsVolume@{setEffectsVolume}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{setEffectsVolume()}{setEffectsVolume()}}
+{\footnotesize\ttfamily void Sound\+Manager\+::set\+Effects\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume }\end{DoxyParamCaption})}
+
+
+
+Sets the sound effects volume. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em volume} & The volume level to set (0.\+0 to 1.\+0). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sound_manager_ae2e4a99846c45f72c41f7f96c89c5a2a}\label{class_sound_manager_ae2e4a99846c45f72c41f7f96c89c5a2a}} 
+\index{SoundManager@{SoundManager}!setMainVolume@{setMainVolume}}
+\index{setMainVolume@{setMainVolume}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{setMainVolume()}{setMainVolume()}}
+{\footnotesize\ttfamily void Sound\+Manager\+::set\+Main\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume }\end{DoxyParamCaption})}
+
+
+
+Sets the main music volume. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em volume} & The volume level to set (0.\+0 to 1.\+0). \\
+\hline
+\end{DoxyParams}
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/\mbox{\hyperlink{soundmanager_8h}{soundmanager.\+h}}\item 
-/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/soundmanager.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{soundmanager_8h}{soundmanager.\+h}}\item 
+soundmanager.\+cpp\end{DoxyCompactItemize}

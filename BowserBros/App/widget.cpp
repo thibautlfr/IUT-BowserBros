@@ -22,7 +22,7 @@ Widget::Widget(QWidget *parent)
     setWindowIcon(QIcon(":Assets/Assets/other/chest.png"));
 
     // Changer l'icône de l'application
-    QApplication::setWindowIcon(QIcon(":Assets/Assets/other/logo.ico"));
+    QApplication::setWindowIcon(QIcon(":Assets/Assets/other/logo.png"));
 
     //=======================================================================
 

@@ -6,5 +6,5 @@ var searchData=
   ['_7escoreboard_3',['~ScoreBoard',['../class_score_board.html#a013e4595d35ab03d6f480c9388cc7b8a',1,'ScoreBoard']]],
   ['_7escoreboardform_4',['~ScoreboardForm',['../class_scoreboard_form.html#ac6ea56df338260fc336f9ffffe8b9e78',1,'ScoreboardForm']]],
   ['_7esoundmanager_5',['~SoundManager',['../class_sound_manager.html#ad5dbf8eab22db48ff8f3db51b02f8938',1,'SoundManager']]],
-  ['_7ewidget_6',['~Widget',['../class_widget.html#aa24f66bcbaaec6d458b0980e8c8eae65',1,'Widget']]]
+  ['_7esoundsettingsform_6',['~SoundSettingsForm',['../class_sound_settings_form.html#a779ffc7039d803a8f31ea1dfe33c6a7c',1,'SoundSettingsForm']]]
 ];
