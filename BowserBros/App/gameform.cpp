@@ -544,13 +544,26 @@ void GameForm::checkGoombasCollision()
             // Sinon, le joueur perds
             else if(!goomba->getIsDead())
             {
-                /// Arrêtez le jeu et revenez au menu
-                itsCharacter->setItsImage(":Assets/Assets/mario/mariodead.png");
-                itsTimer->stop();
-
+                // Arrêtez le jeu et revenez au menu
                 soundManager->playDeathMusic();
 
+                // On regle l'asset et la vitesse de mario
+                itsCharacter->setIsDead(true);
+                itsCharacter->setXSpeed(0);
+                itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
+
+                // Arret du timer principal
+                itsTimer->stop();
+
+                // Désactive le focus pour ne plus controler mario lors de l'animation
+                this->setEnabled(false);
+
+                // Lancement de l'animation de mort de mario
+                marioTimer->start(10);
+                itsCharacter->setYSpeed(-5);
+
                 QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                    marioTimer->stop();
                     emit gameLosed();
                 });
 
@@ -713,13 +726,26 @@ void GameForm::checkKoopasCollision()
             // Sinon, le joueur perds
             else if(!koopa->getIsDead() || (koopa->getIsDead() && koopa->getXSpeed() != 0) )
             {
-                /// Arrêtez le jeu et revenez au menu
-                itsCharacter->setItsImage(":Assets/Assets/mario/mariodead.png");
-                itsTimer->stop();
-
+                // Arrêtez le jeu et revenez au menu
                 soundManager->playDeathMusic();
 
+                // On regle l'asset et la vitesse de mario
+                itsCharacter->setIsDead(true);
+                itsCharacter->setXSpeed(0);
+                itsCharacter->setItsImage(":/Assets/Assets/mario/mariodead.png");
+
+                // Arret du timer principal
+                itsTimer->stop();
+
+                // Désactive le focus pour ne plus controler mario lors de l'animation
+                this->setEnabled(false);
+
+                // Lancement de l'animation de mort de mario
+                marioTimer->start(10);
+                itsCharacter->setYSpeed(-5);
+
                 QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                    marioTimer->stop();
                     emit gameLosed();
                 });
 
