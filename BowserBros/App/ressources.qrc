@@ -3,6 +3,8 @@
         <file>Levels/level1.txt</file>
         <file>Levels/level2.txt</file>
         <file>Levels/level3.txt</file>
+        <file>Levels/level4.txt</file>
+        <file>Levels/level5.txt</file>
     </qresource>
     <qresource prefix="/Assets">
         <file>Assets/background/background1.png</file>
@@ -67,6 +69,8 @@
         <file>Assets/menu/screenlvl4.png</file>
         <file>Assets/menu/screenlvl5.png</file>
         <file>Assets/menu/restart.png</file>
+        <file>Assets/background/background4.png</file>
+        <file>Assets/background/background5.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>
