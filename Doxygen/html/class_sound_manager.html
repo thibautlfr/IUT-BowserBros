@@ -20,9 +20,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="tumblr_maff0m6Y0j1rfjowdo1_500.gif"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 2.0</span>
+   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 3.0</span>
    </div>
    <div id="projectbrief">Jeu de plateforme du style Mario Bros implémenté en C++ avec Qt Creator</div>
   </td>
@@ -78,6 +78,11 @@ $(function() {
   <div class="headertitle"><div class="title">SoundManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a> class manages the playback of various sounds and music in the application.  
+ <a href="class_sound_manager.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="soundmanager_8h_source.html">soundmanager.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SoundManager:</div>
 <div class="dyncontent">
@@ -89,48 +94,63 @@ Inheritance diagram for SoundManager:</div>
 Signals</h2></td></tr>
 <tr class="memitem:a4294cbd9c215a38aaa396a913e0b2611"><td class="memItemLeft" align="right" valign="top"><a id="a4294cbd9c215a38aaa396a913e0b2611" name="a4294cbd9c215a38aaa396a913e0b2611"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>musicFinished</b> ()</td></tr>
-<tr class="memdesc:a4294cbd9c215a38aaa396a913e0b2611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal launched when a sound effect has finished to play. <br /></td></tr>
+<tr class="memdesc:a4294cbd9c215a38aaa396a913e0b2611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the music finishes playing. <br /></td></tr>
 <tr class="separator:a4294cbd9c215a38aaa396a913e0b2611"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0c743872759b9882c49e5d723f74f332"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound_manager.html#a0c743872759b9882c49e5d723f74f332">SoundManager</a> (QObject *parent=nullptr)</td></tr>
-<tr class="memdesc:a0c743872759b9882c49e5d723f74f332"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="class_sound_manager.html">SoundManager</a>.  <br /></td></tr>
+<tr class="memdesc:a0c743872759b9882c49e5d723f74f332"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a> object.  <br /></td></tr>
 <tr class="separator:a0c743872759b9882c49e5d723f74f332"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5dbf8eab22db48ff8f3db51b02f8938"><td class="memItemLeft" align="right" valign="top"><a id="ad5dbf8eab22db48ff8f3db51b02f8938" name="ad5dbf8eab22db48ff8f3db51b02f8938"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~SoundManager</b> ()</td></tr>
-<tr class="memdesc:ad5dbf8eab22db48ff8f3db51b02f8938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for <a class="el" href="class_sound_manager.html">SoundManager</a>. <br /></td></tr>
+<tr class="memdesc:ad5dbf8eab22db48ff8f3db51b02f8938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a> object. <br /></td></tr>
 <tr class="separator:ad5dbf8eab22db48ff8f3db51b02f8938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a731e77036e5dff6dc7e200bbae94631d"><td class="memItemLeft" align="right" valign="top"><a id="a731e77036e5dff6dc7e200bbae94631d" name="a731e77036e5dff6dc7e200bbae94631d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>playJumpEffect</b> ()</td></tr>
-<tr class="memdesc:a731e77036e5dff6dc7e200bbae94631d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the jump effect sound. <br /></td></tr>
+<tr class="memdesc:a731e77036e5dff6dc7e200bbae94631d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the jump sound effect. <br /></td></tr>
 <tr class="separator:a731e77036e5dff6dc7e200bbae94631d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a773c01a5cadf25de0b31f0ae90ba2ed2"><td class="memItemLeft" align="right" valign="top"><a id="a773c01a5cadf25de0b31f0ae90ba2ed2" name="a773c01a5cadf25de0b31f0ae90ba2ed2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>playMainMusic</b> ()</td></tr>
-<tr class="memdesc:a773c01a5cadf25de0b31f0ae90ba2ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the main music of the game. <br /></td></tr>
+<tr class="memdesc:a773c01a5cadf25de0b31f0ae90ba2ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the main music. <br /></td></tr>
 <tr class="separator:a773c01a5cadf25de0b31f0ae90ba2ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8dae0514bc7f73779bbb8ada97d64b7"><td class="memItemLeft" align="right" valign="top"><a id="ac8dae0514bc7f73779bbb8ada97d64b7" name="ac8dae0514bc7f73779bbb8ada97d64b7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>playMenuMusic</b> ()</td></tr>
+<tr class="memdesc:ac8dae0514bc7f73779bbb8ada97d64b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the menu music. <br /></td></tr>
+<tr class="separator:ac8dae0514bc7f73779bbb8ada97d64b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b60e29894d21df2c2e48f898d6e0da7"><td class="memItemLeft" align="right" valign="top"><a id="a8b60e29894d21df2c2e48f898d6e0da7" name="a8b60e29894d21df2c2e48f898d6e0da7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>playDeathMusic</b> ()</td></tr>
-<tr class="memdesc:a8b60e29894d21df2c2e48f898d6e0da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Play a different music when mario hits an ennemy and looses the game. <br /></td></tr>
+<tr class="memdesc:a8b60e29894d21df2c2e48f898d6e0da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the death music. <br /></td></tr>
 <tr class="separator:a8b60e29894d21df2c2e48f898d6e0da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb42de26e643d5fa91a6835763174c7e"><td class="memItemLeft" align="right" valign="top"><a id="afb42de26e643d5fa91a6835763174c7e" name="afb42de26e643d5fa91a6835763174c7e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>playWinMusic</b> ()</td></tr>
-<tr class="memdesc:afb42de26e643d5fa91a6835763174c7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the winning theme of the mario game. <br /></td></tr>
+<tr class="memdesc:afb42de26e643d5fa91a6835763174c7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the win music. <br /></td></tr>
 <tr class="separator:afb42de26e643d5fa91a6835763174c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afef8416d8ded26f6b597d50d6549b899"><td class="memItemLeft" align="right" valign="top"><a id="afef8416d8ded26f6b597d50d6549b899" name="afef8416d8ded26f6b597d50d6549b899"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>playLevelPassedMusic</b> ()</td></tr>
-<tr class="memdesc:afef8416d8ded26f6b597d50d6549b899"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays a sound effect when mario passes a level. <br /></td></tr>
+<tr class="memdesc:afef8416d8ded26f6b597d50d6549b899"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the level passed music. <br /></td></tr>
 <tr class="separator:afef8416d8ded26f6b597d50d6549b899"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8dae0514bc7f73779bbb8ada97d64b7"><td class="memItemLeft" align="right" valign="top"><a id="ac8dae0514bc7f73779bbb8ada97d64b7" name="ac8dae0514bc7f73779bbb8ada97d64b7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>playMenuMusic</b> ()</td></tr>
-<tr class="memdesc:ac8dae0514bc7f73779bbb8ada97d64b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the main theme of the menu. <br /></td></tr>
-<tr class="separator:ac8dae0514bc7f73779bbb8ada97d64b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e4a99846c45f72c41f7f96c89c5a2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound_manager.html#ae2e4a99846c45f72c41f7f96c89c5a2a">setMainVolume</a> (float volume)</td></tr>
+<tr class="memdesc:ae2e4a99846c45f72c41f7f96c89c5a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the main music volume.  <br /></td></tr>
+<tr class="separator:ae2e4a99846c45f72c41f7f96c89c5a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af95dee12918f0f17f13349e7276ef874"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound_manager.html#af95dee12918f0f17f13349e7276ef874">setEffectsVolume</a> (float volume)</td></tr>
+<tr class="memdesc:af95dee12918f0f17f13349e7276ef874"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sound effects volume.  <br /></td></tr>
+<tr class="separator:af95dee12918f0f17f13349e7276ef874"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1838019fe2b6407ef697b81527ae3a8"><td class="memItemLeft" align="right" valign="top"><a id="ae1838019fe2b6407ef697b81527ae3a8" name="ae1838019fe2b6407ef697b81527ae3a8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>stopAllSounds</b> ()</td></tr>
-<tr class="memdesc:ae1838019fe2b6407ef697b81527ae3a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop all of the currently playing sounds. <br /></td></tr>
+<tr class="memdesc:ae1838019fe2b6407ef697b81527ae3a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops all currently playing sounds. <br /></td></tr>
 <tr class="separator:ae1838019fe2b6407ef697b81527ae3a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a087855912dc7fb37a0c54d95346e2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound_manager.html#a57a087855912dc7fb37a0c54d95346e2">getVolume</a> () const</td></tr>
+<tr class="memdesc:a57a087855912dc7fb37a0c54d95346e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current main music volume.  <br /></td></tr>
+<tr class="separator:a57a087855912dc7fb37a0c54d95346e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55ab79b04aa6cca287e89aa9a476d5e8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound_manager.html#a55ab79b04aa6cca287e89aa9a476d5e8">getEffectsVolume</a> () const</td></tr>
+<tr class="memdesc:a55ab79b04aa6cca287e89aa9a476d5e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current sound effects volume.  <br /></td></tr>
+<tr class="separator:a55ab79b04aa6cca287e89aa9a476d5e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a> class manages the playback of various sounds and music in the application. </p>
+<p>The <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a> class provides functionality to play jump sound effects, main music, menu music, death music, win music, and level passed music. It also allows setting the main and effects volume, stopping all sounds, and retrieving volume levels. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0c743872759b9882c49e5d723f74f332" name="a0c743872759b9882c49e5d723f74f332"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c743872759b9882c49e5d723f74f332">&#9670;&#160;</a></span>SoundManager()</h2>
 
@@ -155,14 +175,112 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>stopAllSounds</b> ()<
 </table>
 </div><div class="memdoc">
 
-<p>Constructor for <a class="el" href="class_sound_manager.html">SoundManager</a>. </p>
-<p>Loads each .wav files for the game </p>
+<p>Constructs a <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>The parent object (default is nullptr). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a55ab79b04aa6cca287e89aa9a476d5e8" name="a55ab79b04aa6cca287e89aa9a476d5e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55ab79b04aa6cca287e89aa9a476d5e8">&#9670;&#160;</a></span>getEffectsVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SoundManager::getEffectsVolume </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the current sound effects volume. </p>
+<dl class="section return"><dt>Returns</dt><dd>The sound effects volume level. </dd></dl>
+
+</div>
+</div>
+<a id="a57a087855912dc7fb37a0c54d95346e2" name="a57a087855912dc7fb37a0c54d95346e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57a087855912dc7fb37a0c54d95346e2">&#9670;&#160;</a></span>getVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SoundManager::getVolume </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the current main music volume. </p>
+<dl class="section return"><dt>Returns</dt><dd>The main music volume level. </dd></dl>
+
+</div>
+</div>
+<a id="af95dee12918f0f17f13349e7276ef874" name="af95dee12918f0f17f13349e7276ef874"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af95dee12918f0f17f13349e7276ef874">&#9670;&#160;</a></span>setEffectsVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SoundManager::setEffectsVolume </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>volume</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the sound effects volume. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>The volume level to set (0.0 to 1.0). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae2e4a99846c45f72c41f7f96c89c5a2a" name="ae2e4a99846c45f72c41f7f96c89c5a2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2e4a99846c45f72c41f7f96c89c5a2a">&#9670;&#160;</a></span>setMainVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SoundManager::setMainVolume </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>volume</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the main music volume. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>The volume level to set (0.0 to 1.0). </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23_BowserBros/BowserBros/App/<a class="el" href="soundmanager_8h_source.html">soundmanager.h</a></li>
-<li>/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23_BowserBros/BowserBros/App/soundmanager.cpp</li>
+<li><a class="el" href="soundmanager_8h_source.html">soundmanager.h</a></li>
+<li>soundmanager.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

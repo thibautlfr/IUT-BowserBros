@@ -23,15 +23,17 @@ void {\bfseries gameloop} ()
 \begin{DoxyCompactList}\small\item\em The game loop that updates the game state. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_game_form_a7b1bfa851740c8c62b617621e5a9991e}\label{class_game_form_a7b1bfa851740c8c62b617621e5a9991e}} 
 void {\bfseries start} ()
-\begin{DoxyCompactList}\small\item\em Starts the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Starts the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a9b1f6c9a2339bb6d70561350826251d0}\label{class_game_form_a9b1f6c9a2339bb6d70561350826251d0}} 
+void {\bfseries animation\+Death} ()
+\begin{DoxyCompactList}\small\item\em Animations of mario\textquotesingle{}s death. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_game_form_a68a3bb229c812702fd5d2475f6851ea7}\label{class_game_form_a68a3bb229c812702fd5d2475f6851ea7}} 
 void {\bfseries game\+Losed} ()
 \begin{DoxyCompactList}\small\item\em Signal emitted when the game is losed. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_game_form_a324273bd6ab9b281af55427c219d2d3d}\label{class_game_form_a324273bd6ab9b281af55427c219d2d3d}} 
-void {\bfseries game\+Won} (int elapsed\+Time)
+void \mbox{\hyperlink{class_game_form_a324273bd6ab9b281af55427c219d2d3d}{game\+Won}} (int elapsed\+Time)
 \begin{DoxyCompactList}\small\item\em Signal emitted when the game is won. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -49,22 +51,32 @@ void {\bfseries check\+Character\+Collision} ()
 \mbox{\Hypertarget{class_game_form_a23b137c85d4bae5c8e2b07ce270abb7d}\label{class_game_form_a23b137c85d4bae5c8e2b07ce270abb7d}} 
 void {\bfseries check\+Bowser\+Collision} ()
 \begin{DoxyCompactList}\small\item\em Checks for collisions with \mbox{\hyperlink{class_bowser}{Bowser}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}{check\+Collision\+Fire\+Balls}} ()
+\mbox{\Hypertarget{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}\label{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}} 
+void {\bfseries check\+Collision\+Fire\+Balls} ()
 \begin{DoxyCompactList}\small\item\em Checks for collisions with fireballs. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a86a54c36711a791e5ccbf348a9765016}\label{class_game_form_a86a54c36711a791e5ccbf348a9765016}} 
+void {\bfseries check\+Ladder\+Collision} ()
+\begin{DoxyCompactList}\small\item\em Checks for collisions with ladders. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_form_a8386c0313181b8b39549e5c53490c943}{paint\+Player\+Helps}} (QPainter $\ast$painter)
 \begin{DoxyCompactList}\small\item\em Paints the player\textquotesingle{}s helps. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_game_form_aab9cda161194e2f0013fd61cdd76fafa}\label{class_game_form_aab9cda161194e2f0013fd61cdd76fafa}} 
 void {\bfseries update\+Scroll} ()
-\begin{DoxyCompactList}\small\item\em Updates the scrolling of the game. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates the position of the scroll area in the game. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_game_form_aa6bc375695665688925ed87bbbc005ba}\label{class_game_form_aa6bc375695665688925ed87bbbc005ba}} 
 void {\bfseries update\+Fire\+Balls} ()
-\begin{DoxyCompactList}\small\item\em Updates the fireballs in the game. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates the position of fireballs in the game. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_game_form_a84f3d4616130ad4b319be532eff8c95a}\label{class_game_form_a84f3d4616130ad4b319be532eff8c95a}} 
 void {\bfseries load\+Level} ()
 \begin{DoxyCompactList}\small\item\em Loads a specific level. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_game_form_a07ecc9468504b29d479445d78a03a3b8}\label{class_game_form_a07ecc9468504b29d479445d78a03a3b8}} 
 void {\bfseries display\+Chrono} ()
-\begin{DoxyCompactList}\small\item\em Displays the chrono at the top right corner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Displays the chrono at the top right corner. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a0c03d54e8c467d3eb561bc1a741d6495}\label{class_game_form_a0c03d54e8c467d3eb561bc1a741d6495}} 
+\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$ {\bfseries get\+Sound\+Manager} () const
+\item 
+\mbox{\Hypertarget{class_game_form_aea83ccc4ab2540668f5efc22c5b02580}\label{class_game_form_aea83ccc4ab2540668f5efc22c5b02580}} 
+void {\bfseries set\+Volume} (\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$menu\+Sound\+Manager)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -89,17 +101,22 @@ Constructs a \mbox{\hyperlink{class_game_form}{Game\+Form}} object.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}\label{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}} 
-\index{GameForm@{GameForm}!checkCollisionFireBalls@{checkCollisionFireBalls}}
-\index{checkCollisionFireBalls@{checkCollisionFireBalls}!GameForm@{GameForm}}
-\doxysubsubsection{\texorpdfstring{checkCollisionFireBalls()}{checkCollisionFireBalls()}}
-{\footnotesize\ttfamily void Game\+Form\+::check\+Collision\+Fire\+Balls (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_game_form_a324273bd6ab9b281af55427c219d2d3d}\label{class_game_form_a324273bd6ab9b281af55427c219d2d3d}} 
+\index{GameForm@{GameForm}!gameWon@{gameWon}}
+\index{gameWon@{gameWon}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{gameWon}{gameWon}}
+{\footnotesize\ttfamily void Game\+Form\+::game\+Won (\begin{DoxyParamCaption}\item[{int}]{elapsed\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
 
 
 
-Checks for collisions with fireballs. 
+Signal emitted when the game is won. 
 
-Arrêtez le jeu et revenez au menu\mbox{\Hypertarget{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}\label{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}} 
+
+\begin{DoxyParams}{Parameters}
+{\em The} & integer of the timer of the game loop \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}\label{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}} 
 \index{GameForm@{GameForm}!getScrollArea@{getScrollArea}}
 \index{getScrollArea@{getScrollArea}!GameForm@{GameForm}}
 \doxysubsubsection{\texorpdfstring{getScrollArea()}{getScrollArea()}}
@@ -110,7 +127,7 @@ Arrêtez le jeu et revenez au menu\mbox{\Hypertarget{class_game_form_a2dbb54a96c
 Getter for its\+Scroll\+Area. 
 
 \begin{DoxyReturn}{Returns}
-the scroll area element of the \mbox{\hyperlink{class_game_form}{Game\+Form}} 
+The scroll area element of the \mbox{\hyperlink{class_game_form}{Game\+Form}} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_game_form_a8386c0313181b8b39549e5c53490c943}\label{class_game_form_a8386c0313181b8b39549e5c53490c943}} 
 \index{GameForm@{GameForm}!paintPlayerHelps@{paintPlayerHelps}}
@@ -131,5 +148,5 @@ Paints the player\textquotesingle{}s helps.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/\mbox{\hyperlink{gameform_8h}{gameform.\+h}}\item 
-/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/gameform.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{gameform_8h}{gameform.\+h}}\item 
+gameform.\+cpp\end{DoxyCompactItemize}

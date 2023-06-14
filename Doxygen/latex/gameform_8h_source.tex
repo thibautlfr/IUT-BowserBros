@@ -1,5 +1,4 @@
 \hypertarget{gameform_8h_source}{}\doxysection{gameform.\+h}
-\label{gameform_8h_source}\index{/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23\_BowserBros/BowserBros/App/gameform.h@{/Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23\_BowserBros/BowserBros/App/gameform.h}}
 \mbox{\hyperlink{gameform_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
@@ -15,100 +14,111 @@
 \DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QScrollArea>}}
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QLabel>}}
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <list>}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{soundmanager_8h}{soundmanager.h}}"{}}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mario_8h}{mario.h}}"{}}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bowser_8h}{bowser.h}}"{}}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{element_8h}{element.h}}"{}}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scoreboard_8h}{scoreboard.h}}"{}}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{using\ namespace\ }std;}
-\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }Ui\ \{}
-\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_form}{GameForm}};}
-\DoxyCodeLine{00028\ \}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_form}{GameForm}}\ :\ \textcolor{keyword}{public}\ QWidget}
-\DoxyCodeLine{00037\ \{}
-\DoxyCodeLine{00038\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_game_form}{GameForm}}(QWidget\ *parent\ =\ 0);}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_game_form_a9a68a99923b27abccde9562cf43a5195}{\string~GameForm}}();}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00058\ \ \ \ \ QScrollArea*\ \mbox{\hyperlink{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}{getScrollArea}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a527a1f3aa5c4115f25a0724a50068866}{checkCharacterCollision}}();}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a23b137c85d4bae5c8e2b07ce270abb7d}{checkBowserCollision}}();}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}{checkCollisionFireBalls}}();}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a8386c0313181b8b39549e5c53490c943}{paintPlayerHelps}}(QPainter\ *painter);}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_aab9cda161194e2f0013fd61cdd76fafa}{updateScroll}}();}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_aa6bc375695665688925ed87bbbc005ba}{updateFireBalls}}();}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a84f3d4616130ad4b319be532eff8c95a}{loadLevel}}();}
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a07ecc9468504b29d479445d78a03a3b8}{displayChrono}}();}
-\DoxyCodeLine{00104\ }
-\DoxyCodeLine{00105\ \textcolor{keyword}{public}\ slots:}
-\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a91c7ea0d51aa02f436f5fcbc04833950}{gameloop}}();}
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a7b1bfa851740c8c62b617621e5a9991e}{start}}();}
-\DoxyCodeLine{00114\ }
-\DoxyCodeLine{00115\ signals:}
-\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a68a3bb229c812702fd5d2475f6851ea7}{gameLosed}}();}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a324273bd6ab9b281af55427c219d2d3d}{gameWon}}(\textcolor{keywordtype}{int}\ elapsedTime);}
-\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{soundmanager_8h}{soundmanager.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mario_8h}{mario.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bowser_8h}{bowser.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{element_8h}{element.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_form}{GameForm}};}
+\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_form}{GameForm}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_game_form}{GameForm}}(QWidget\ *parent\ =\ 0);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_game_form_a9a68a99923b27abccde9562cf43a5195}{\string~GameForm}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00057\ \ \ \ \ QScrollArea*\ \mbox{\hyperlink{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}{getScrollArea}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a527a1f3aa5c4115f25a0724a50068866}{checkCharacterCollision}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a23b137c85d4bae5c8e2b07ce270abb7d}{checkBowserCollision}}();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}{checkCollisionFireBalls}}();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a86a54c36711a791e5ccbf348a9765016}{checkLadderCollision}}();}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a8386c0313181b8b39549e5c53490c943}{paintPlayerHelps}}(QPainter\ *painter);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_aab9cda161194e2f0013fd61cdd76fafa}{updateScroll}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_aa6bc375695665688925ed87bbbc005ba}{updateFireBalls}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a84f3d4616130ad4b319be532eff8c95a}{loadLevel}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a07ecc9468504b29d479445d78a03a3b8}{displayChrono}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}*\ getSoundManager()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ setVolume(\mbox{\hyperlink{class_sound_manager}{SoundManager}}\ *menuSoundManager);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a91c7ea0d51aa02f436f5fcbc04833950}{gameloop}}();}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a7b1bfa851740c8c62b617621e5a9991e}{start}}();}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a9b1f6c9a2339bb6d70561350826251d0}{animationDeath}}();}
 \DoxyCodeLine{00126\ }
-\DoxyCodeLine{00127\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ \ \ \ \ Ui::GameForm\ *ui;\ }
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{int}\ itsLevel;\ }
-\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{int}\ itsAvalaibleLevelsNb;\ }
-\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{int}\ elapsedTime;\ }
-\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{int}\ backgroundY;\ }
-\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{bool}\ isGameEnded;\ }
-\DoxyCodeLine{00135\ \ \ \ \ QLabel\ *timeLabel;\ }
-\DoxyCodeLine{00136\ \ \ \ \ QLabel*\ levelLabel;\ }
-\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00127\ signals:}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a68a3bb229c812702fd5d2475f6851ea7}{gameLosed}}();}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_form_a324273bd6ab9b281af55427c219d2d3d}{gameWon}}(\textcolor{keywordtype}{int}\ elapsedTime);}
+\DoxyCodeLine{00138\ }
 \DoxyCodeLine{00139\ }
-\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{class_mario}{Mario}}\ *itsCharacter;\ }
-\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{class_bowser}{Bowser}}\ *itsBoss;\ }
-\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{class_element}{Element}}\ *itsFloor;\ }
-\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{class_element}{Element}}\ *itsChest;\ }
-\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00146\ }
-\DoxyCodeLine{00147\ \ \ \ \ QImage\ itsBackground;\ }
-\DoxyCodeLine{00148\ \ \ \ \ QImage\ leftArrow;\ }
-\DoxyCodeLine{00149\ \ \ \ \ QImage\ rightArrow;\ }
-\DoxyCodeLine{00150\ \ \ \ \ QImage\ chestArrow;\ }
-\DoxyCodeLine{00151\ \ \ \ \ QImage\ spaceBar;\ }
-\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00154\ }
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00156\ \ \ \ \ QScrollArea\ *itsScrollArea;\ }
-\DoxyCodeLine{00157\ \ \ \ \ QTimer\ *itsTimer;\ }
-\DoxyCodeLine{00158\ \ \ \ \ vector<Element*>\ itsBlocks;\ }
-\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}\ *soundManager;\ }
-\DoxyCodeLine{00162\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00163\ }
-\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{void}\ keyPressEvent(QKeyEvent\ *event);}
-\DoxyCodeLine{00169\ }
-\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ keyReleaseEvent(QKeyEvent\ *event);}
-\DoxyCodeLine{00175\ }
-\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{void}\ paintEvent(QPaintEvent\ *event);}
-\DoxyCodeLine{00181\ \};}
-\DoxyCodeLine{00182\ }
-\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAMEFORM\_H}}
+\DoxyCodeLine{00140\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ Ui::GameForm\ *ui;\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{int}\ itsLevel;\ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{int}\ itsAvalaibleLevelsNb;\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{int}\ elapsedTime;\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{int}\ backgroundY;\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{bool}\ isGameEnded;\ }
+\DoxyCodeLine{00148\ \ \ \ \ QLabel\ *timeLabel;\ }
+\DoxyCodeLine{00149\ \ \ \ \ QLabel*\ levelLabel;\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{class_mario}{Mario}}\ *itsCharacter;\ }
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{class_bowser}{Bowser}}\ *itsBoss;\ }
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{class_element}{Element}}\ *itsFloor;\ }
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{class_element}{Element}}\ *itsChest;\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ QImage\ itsBackground;\ }
+\DoxyCodeLine{00161\ \ \ \ \ QImage\ leftArrow;\ }
+\DoxyCodeLine{00162\ \ \ \ \ QImage\ rightArrow;\ }
+\DoxyCodeLine{00163\ \ \ \ \ QImage\ chestArrow;\ }
+\DoxyCodeLine{00164\ \ \ \ \ QImage\ spaceBar;\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ QScrollArea\ *itsScrollArea;\ }
+\DoxyCodeLine{00170\ \ \ \ \ QTimer\ *itsTimer;\ }
+\DoxyCodeLine{00171\ \ \ \ \ QTimer\ *\ marioTimer;\ }
+\DoxyCodeLine{00172\ \ \ \ \ list<Element*>\ itsBlocks;\ }
+\DoxyCodeLine{00173\ \ \ \ \ list<Element*>\ itsLadders;\ }
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}\ *soundManager;\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{float}\ itsVolumesGen;}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{float}\ itsVolumesEffect;}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{void}\ keyPressEvent(QKeyEvent\ *event);}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordtype}{void}\ keyReleaseEvent(QKeyEvent\ *event);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{void}\ paintEvent(QPaintEvent\ *event);}
+\DoxyCodeLine{00197\ \};}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAMEFORM\_H}}
 
 \end{DoxyCode}

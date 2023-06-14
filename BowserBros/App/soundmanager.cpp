@@ -1,11 +1,12 @@
 #include "soundmanager.h"
 
-#include <QThread>
-
 SoundManager::SoundManager(QObject *parent) : QObject(parent)
 {
-    // Création et pré-chargement de tout les sons du jeu
+    // Initialise les volume à 1 lors de la création du soundManager
+    itsVolume = 1.0f;
+    itsEffectsVolume = 1.0f;
 
+    // Création et pré-chargement de tout les sons du jeu
     jumpEffect = new QSoundEffect(this);
     jumpEffect->setSource(QUrl::fromLocalFile(":Song/Song/JumpSound.wav"));
 
@@ -34,9 +35,21 @@ SoundManager::~SoundManager()
     levelPassedMusic->deleteLater();
     menuMusic->deleteLater();
 }
-
 // ---------------------------------------------------------------------------------------------------------
 
+//Catch les attributs qui sont une copie de ceux du MenuForm
+
+float SoundManager::getVolume() const
+{
+    return itsVolume;
+}
+
+float SoundManager::getEffectsVolume() const
+{
+    return itsEffectsVolume;
+}
+
+// ---------------------------------------------------------------------------------------------------------
 
 void SoundManager::playJumpEffect()
 {
@@ -62,8 +75,6 @@ void SoundManager::playMenuMusic()
 void SoundManager::playDeathMusic()
 {
     stopAllSounds();
-
-    //deathMusic->setSource(QUrl::fromLocalFile(":Song/Song/gameover.wav"));
     QObject::connect(deathMusic, &QSoundEffect::playingChanged, this, [this]() {
         if (!deathMusic->isPlaying()) {
             emit musicFinished();
@@ -76,8 +87,6 @@ void SoundManager::playDeathMusic()
 void SoundManager::playWinMusic()
 {
     stopAllSounds();
-
-    //winMusic->setSource(QUrl::fromLocalFile(":Song/Song/win.wav"));
     QObject::connect(winMusic, &QSoundEffect::playingChanged, this, [this]() {
         if (!winMusic->isPlaying()) {
             emit musicFinished();
@@ -90,8 +99,6 @@ void SoundManager::playWinMusic()
 void SoundManager::playLevelPassedMusic()
 {
     stopAllSounds();
-
-    //levelPassedMusic->setSource(QUrl::fromLocalFile(":Song/Song/endl.wav"));
     QObject::connect(levelPassedMusic, &QSoundEffect::playingChanged, this, [this]() {
         if (!levelPassedMusic->isPlaying()) {
             emit musicFinished();
@@ -103,10 +110,33 @@ void SoundManager::playLevelPassedMusic()
 
 // ---------------------------------------------------------------------------------------------------------
 
+void SoundManager::setMainVolume(float volume)
+{
+    //Change tous les volumes
+    mainMusic->setVolume(volume);
+    deathMusic->setVolume(volume);
+    menuMusic->setVolume(volume);
+    winMusic->setVolume(volume);
+
+    //Initialise l'attribut pour le sauvegarder et le copier dans le gameform
+    itsVolume=volume;
+
+}
+
+void SoundManager::setEffectsVolume(float volume)
+{
+    //Modifie tous les sons
+    jumpEffect->setVolume(volume);
+    levelPassedMusic->setVolume(volume);
+
+    //Initialise l'attribut pour le sauvegarder et le copier dans le gameform
+    itsEffectsVolume=volume;
+}
+
+// ---------------------------------------------------------------------------------------------------------
 
 void SoundManager::stopAllSounds()
 {
-
     if (mainMusic->isPlaying())
     {
         mainMusic->stop();
@@ -127,6 +157,10 @@ void SoundManager::stopAllSounds()
     {
         winMusic->stop();
     }
-
+    if (levelPassedMusic->isPlaying())
+    {
+        levelPassedMusic->stop();
+    }
 }
+
 

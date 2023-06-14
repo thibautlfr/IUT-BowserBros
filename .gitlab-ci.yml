@@ -10,4 +10,3 @@ pages:
       - public
   only:
     - main
-    - release-2.0

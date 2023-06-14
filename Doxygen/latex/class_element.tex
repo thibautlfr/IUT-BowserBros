@@ -18,8 +18,14 @@ Represents a game element. The \mbox{\hyperlink{class_element}{Element}} class p
 \begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_element}{Element}} object with position and asset. \end{DoxyCompactList}\item 
 QRect \mbox{\hyperlink{class_element_a791d0c61e750ae88890db269437a7398}{get\+Rect}} ()
 \begin{DoxyCompactList}\small\item\em Returns the bounding rectangle of the element. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_element_a451c6f70dd053564c8a1026285dfdbf6}{get\+ItsX}} ()
+\begin{DoxyCompactList}\small\item\em Returns the x-\/coordinate of the element. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_element_abf0c640bbb8fb27066aa36f0cb8fe2e2}{get\+ItsY}} ()
+\begin{DoxyCompactList}\small\item\em Returns the y-\/coordinate of the element. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_element_afca529aab9f253870c961e96096f456e}{get\+YSpeed}} ()
 \begin{DoxyCompactList}\small\item\em Returns the y-\/speed of the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01ae}{Element\+Type}} \mbox{\hyperlink{class_element_a2da0510fbd3201053761860560a43847}{get\+Its\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Returns the type of the element. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_element_a4eba9d0acde5621a8aae65476ea6646d}{draw}} (QPainter $\ast$a\+Painter)
 \begin{DoxyCompactList}\small\item\em Draws the element on a QPainter object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -44,9 +50,7 @@ Constructs an \mbox{\hyperlink{class_element}{Element}} object with position and
 \hline
 {\em y} & The y-\/coordinate of the element\textquotesingle{}s position. \\
 \hline
-{\em width} & The width of the element. \\
-\hline
-{\em height} & The height of the element. \\
+{\em type} & The type of the element created. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_element_a7c02e572e7efbfa7b4a620f9ccf41e80}\label{class_element_a7c02e572e7efbfa7b4a620f9ccf41e80}} 
@@ -86,6 +90,45 @@ Draws the element on a QPainter object.
 {\em a\+Painter} & A pointer to the QPainter object. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_element_a2da0510fbd3201053761860560a43847}\label{class_element_a2da0510fbd3201053761860560a43847}} 
+\index{Element@{Element}!getItsType@{getItsType}}
+\index{getItsType@{getItsType}!Element@{Element}}
+\doxysubsubsection{\texorpdfstring{getItsType()}{getItsType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{element_8h_a16b11be27a8e9362dd122c4d879e01ae}{Element\+Type}} Element\+::get\+Its\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the type of the element. 
+
+\begin{DoxyReturn}{Returns}
+The type of the element. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_element_a451c6f70dd053564c8a1026285dfdbf6}\label{class_element_a451c6f70dd053564c8a1026285dfdbf6}} 
+\index{Element@{Element}!getItsX@{getItsX}}
+\index{getItsX@{getItsX}!Element@{Element}}
+\doxysubsubsection{\texorpdfstring{getItsX()}{getItsX()}}
+{\footnotesize\ttfamily int Element\+::get\+ItsX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the x-\/coordinate of the element. 
+
+\begin{DoxyReturn}{Returns}
+The X of the element 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_element_abf0c640bbb8fb27066aa36f0cb8fe2e2}\label{class_element_abf0c640bbb8fb27066aa36f0cb8fe2e2}} 
+\index{Element@{Element}!getItsY@{getItsY}}
+\index{getItsY@{getItsY}!Element@{Element}}
+\doxysubsubsection{\texorpdfstring{getItsY()}{getItsY()}}
+{\footnotesize\ttfamily int Element\+::get\+ItsY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the y-\/coordinate of the element. 
+
+\begin{DoxyReturn}{Returns}
+The Y of the element 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_element_a791d0c61e750ae88890db269437a7398}\label{class_element_a791d0c61e750ae88890db269437a7398}} 
 \index{Element@{Element}!getRect@{getRect}}
 \index{getRect@{getRect}!Element@{Element}}
@@ -116,5 +159,5 @@ The y-\/speed of the element.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/\mbox{\hyperlink{element_8h}{element.\+h}}\item 
-/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/element.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{element_8h}{element.\+h}}\item 
+element.\+cpp\end{DoxyCompactItemize}

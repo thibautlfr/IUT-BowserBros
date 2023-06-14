@@ -1,4 +1,5 @@
 BowserBros/BowserBros.pro.user
+BowserBros/App/Assets/ennemis/.DS_Store
 build-BowserBros/
 Doxygen/.DS_Store
 Images/.DS_Store
@@ -18,4 +19,5 @@ build-BowserBros-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/
 build-BowserBros-Desktop_arm_darwin_generic_mach_o_64bit-Debug/
 /.DS_Store
 build-BowserBros-Desktop_Qt_6_5_1_MinGW_64_bit-Release/
-
+BowserBros/App/App.pro.user
+BowserBros/build-App-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/

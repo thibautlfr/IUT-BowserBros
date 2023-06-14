@@ -84,7 +84,7 @@ body {
     gap: 1px;
     width: 840px;
     height: 1240px;
-    background-image: url('background/background1.png'); 
+    background-image: url('Images/background1.png'); 
     /* Chemin vers votre image d'arrière-plan */
     background-size: cover;
     background-position: center;
@@ -107,11 +107,11 @@ body {
 }
 
 .block[data-type="0"] {
-    background-image: url('other/chest.png');
+    background-image: url('Images/chest.png');
 }
 
 .block[data-type="1"] {
-    background-image: url('block/block1.jpg');
+    background-image: url('Images/block1.jpg');
 }
 
 button,
@@ -155,7 +155,7 @@ select:hover {
     height: 20px;
     /* Hauteur de la grille */
     gap: 1px;
-    background-image: url('other/floor.png');
+    background-image: url('Images/floor.png');
     background-size: cover;
     background-position: center;
 }

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>BowserBros - RG23D21: /Users/colin/Documents/Etudes/BUT Info/Semestre 2/RETROG23/RetroG23_BowserBros/BowserBros/App/bowser.h Source File</title>
+<title>BowserBros - RG23D21: bowser.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,9 +20,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="tumblr_maff0m6Y0j1rfjowdo1_500.gif"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 2.0</span>
+   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 3.0</span>
    </div>
    <div id="projectbrief">Jeu de plateforme du style Mario Bros implémenté en C++ avec Qt Creator</div>
   </td>
@@ -48,6 +48,7 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +70,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_712571e4a3b0a270fbf7d97d73def702.html">BowserBros</a></li><li class="navelem"><a class="el" href="dir_5d883f2ca634069f4a75b7bf6a08bd7f.html">App</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">bowser.h</div></div>
 </div><!--header-->
@@ -93,26 +89,24 @@ $(function() {
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    vector&lt;FireBall*&gt; * itsFireBalls; </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_class" href="class_bowser.html">Bowser</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, <span class="keywordtype">string</span> asset);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_function" href="class_bowser.html#a12a1ac2920cf067f9466ce7e9261bf7e">~Bowser</a>();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    vector&lt;FireBall*&gt; * <a class="code hl_function" href="class_bowser.html#adc115b644cc74011ddc863bffa884232">getItsFireBalls</a>();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_class" href="class_bowser.html">Bowser</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, <span class="keywordtype">string</span> asset);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_function" href="class_bowser.html#a12a1ac2920cf067f9466ce7e9261bf7e">~Bowser</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    vector&lt;FireBall*&gt; * <a class="code hl_function" href="class_bowser.html#adc115b644cc74011ddc863bffa884232">getItsFireBalls</a>();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// --------------------------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bowser.html#acdd34fa89cebd709d4787b0a3dcd7921">dropFireBall</a>();</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_bowser.html#a8a87caa82804ac9ee792ba1d96bddabf">   62</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bowser.html#a8a87caa82804ac9ee792ba1d96bddabf">eraseFireBall</a>(vector&lt;FireBall*&gt;::iterator it);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif </span><span class="comment">// BOWSER_H</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>};</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif </span><span class="comment">// BOWSER_H</span></div>
 <div class="ttc" id="aclass_bowser_html"><div class="ttname"><a href="class_bowser.html">Bowser</a></div><div class="ttdoc">Represents the Bowser enemy. The Bowser class is derived from the Entity class and provides functiona...</div><div class="ttdef"><b>Definition:</b> bowser.h:22</div></div>
 <div class="ttc" id="aclass_bowser_html_a12a1ac2920cf067f9466ce7e9261bf7e"><div class="ttname"><a href="class_bowser.html#a12a1ac2920cf067f9466ce7e9261bf7e">Bowser::~Bowser</a></div><div class="ttdeci">~Bowser()</div><div class="ttdoc">Destroys the Bowser object.</div><div class="ttdef"><b>Definition:</b> bowser.cpp:15</div></div>
-<div class="ttc" id="aclass_bowser_html_a8a87caa82804ac9ee792ba1d96bddabf"><div class="ttname"><a href="class_bowser.html#a8a87caa82804ac9ee792ba1d96bddabf">Bowser::eraseFireBall</a></div><div class="ttdeci">void eraseFireBall(vector&lt; FireBall * &gt;::iterator it)</div><div class="ttdoc">Erases a FireBall.</div></div>
-<div class="ttc" id="aclass_bowser_html_acdd34fa89cebd709d4787b0a3dcd7921"><div class="ttname"><a href="class_bowser.html#acdd34fa89cebd709d4787b0a3dcd7921">Bowser::dropFireBall</a></div><div class="ttdeci">void dropFireBall()</div><div class="ttdoc">Drops a FireBall.</div><div class="ttdef"><b>Definition:</b> bowser.cpp:29</div></div>
+<div class="ttc" id="aclass_bowser_html_acdd34fa89cebd709d4787b0a3dcd7921"><div class="ttname"><a href="class_bowser.html#acdd34fa89cebd709d4787b0a3dcd7921">Bowser::dropFireBall</a></div><div class="ttdeci">void dropFireBall()</div><div class="ttdoc">Drops a FireBall. Creates a new FireBall object and adds it to the vector of FireBall objects.</div><div class="ttdef"><b>Definition:</b> bowser.cpp:29</div></div>
 <div class="ttc" id="aclass_bowser_html_adc115b644cc74011ddc863bffa884232"><div class="ttname"><a href="class_bowser.html#adc115b644cc74011ddc863bffa884232">Bowser::getItsFireBalls</a></div><div class="ttdeci">vector&lt; FireBall * &gt; * getItsFireBalls()</div><div class="ttdoc">Returns a pointer to the vector of FireBall objects.</div><div class="ttdef"><b>Definition:</b> bowser.cpp:24</div></div>
 <div class="ttc" id="aclass_entity_html"><div class="ttname"><a href="class_entity.html">Entity</a></div><div class="ttdoc">Represents a game entity. The Entity class provides common attributes and functionalities for game en...</div><div class="ttdef"><b>Definition:</b> entity.h:20</div></div>
 <div class="ttc" id="aentity_8h_html"><div class="ttname"><a href="entity_8h.html">entity.h</a></div><div class="ttdoc">Defines the Entity class.</div></div>

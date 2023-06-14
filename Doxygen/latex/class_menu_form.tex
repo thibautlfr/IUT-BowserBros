@@ -26,21 +26,27 @@ void {\bfseries quit\+Button\+Clicked} ()
 \begin{DoxyCompactList}\small\item\em Signal emitted when the quit button is clicked. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_menu_form_ac2eed775b966c149121e43bcadb86640}\label{class_menu_form_ac2eed775b966c149121e43bcadb86640}} 
 void {\bfseries podium\+Button\+Clicked} ()
-\begin{DoxyCompactList}\small\item\em Signal emitted when the podium button is clicked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Signal emitted when the podium button is clicked. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_form_a0389ea4f081fff2d67e947363ee7312b}\label{class_menu_form_a0389ea4f081fff2d67e947363ee7312b}} 
+void {\bfseries sound\+Settings\+Button\+Clicked} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{class_menu_form_a07c88ef530135f508495ea373807e955}\label{class_menu_form_a07c88ef530135f508495ea373807e955}} 
+\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$ {\bfseries get\+Sound\+Manager} () const
+\item 
 \mbox{\hyperlink{class_menu_form_acaab5223ef7986a0e55157632db86265}{Menu\+Form}} (QWidget $\ast$parent=nullptr)
 \begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_menu_form}{Menu\+Form}} object. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_menu_form_a125f20265d5cafa039579a88d7ae8bc2}\label{class_menu_form_a125f20265d5cafa039579a88d7ae8bc2}} 
-void {\bfseries play\+Music} ()
-\item 
-\mbox{\Hypertarget{class_menu_form_aef828ea0bbc8667eaa9462f4ecb6d741}\label{class_menu_form_aef828ea0bbc8667eaa9462f4ecb6d741}} 
-void {\bfseries stop\+Music} ()
-\item 
 \mbox{\Hypertarget{class_menu_form_ab20e7f52b30cb65140d1b7a6a80a89e6}\label{class_menu_form_ab20e7f52b30cb65140d1b7a6a80a89e6}} 
 {\bfseries $\sim$\+Menu\+Form} ()
-\begin{DoxyCompactList}\small\item\em Destructs the \mbox{\hyperlink{class_menu_form}{Menu\+Form}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Destructs the \mbox{\hyperlink{class_menu_form}{Menu\+Form}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_form_a125f20265d5cafa039579a88d7ae8bc2}\label{class_menu_form_a125f20265d5cafa039579a88d7ae8bc2}} 
+void {\bfseries play\+Music} ()
+\begin{DoxyCompactList}\small\item\em Manage all the musics of the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_form_aef828ea0bbc8667eaa9462f4ecb6d741}\label{class_menu_form_aef828ea0bbc8667eaa9462f4ecb6d741}} 
+void {\bfseries stop\+Music} ()
+\begin{DoxyCompactList}\small\item\em Stop all the musics of the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,8 +60,7 @@ QImage \mbox{\hyperlink{class_menu_form_a0ca014313d0eb5c638441276ce5008a3}{its\+
 \item 
 QImage \mbox{\hyperlink{class_menu_form_a96679a536f3b4c4875ef0cd05efdd6a1}{its\+Game\+Title}}
 \item 
-\mbox{\Hypertarget{class_menu_form_a9553b4a3edae3991bb8cf1faf75c4a67}\label{class_menu_form_a9553b4a3edae3991bb8cf1faf75c4a67}} 
-\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$ {\bfseries sound\+Manager}
+\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$ \mbox{\hyperlink{class_menu_form_a9553b4a3edae3991bb8cf1faf75c4a67}{sound\+Manager}}
 \end{DoxyCompactItemize}
 
 
@@ -111,9 +116,15 @@ The game title image of the menu form. \mbox{\Hypertarget{class_menu_form_ab1518
 \doxysubsubsection{\texorpdfstring{itsMario}{itsMario}}
 {\footnotesize\ttfamily QImage Menu\+Form\+::its\+Mario}
 
-The \mbox{\hyperlink{class_mario}{Mario}} image of the menu form. 
+The \mbox{\hyperlink{class_mario}{Mario}} image of the menu form. \mbox{\Hypertarget{class_menu_form_a9553b4a3edae3991bb8cf1faf75c4a67}\label{class_menu_form_a9553b4a3edae3991bb8cf1faf75c4a67}} 
+\index{MenuForm@{MenuForm}!soundManager@{soundManager}}
+\index{soundManager@{soundManager}!MenuForm@{MenuForm}}
+\doxysubsubsection{\texorpdfstring{soundManager}{soundManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}}$\ast$ Menu\+Form\+::sound\+Manager}
+
+The sound manager of the menu form 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/\mbox{\hyperlink{menuform_8h}{menuform.\+h}}\item 
-/\+Users/colin/\+Documents/\+Etudes/\+BUT Info/\+Semestre 2/\+RETROG23/\+Retro\+G23\+\_\+\+Bowser\+Bros/\+Bowser\+Bros/\+App/menuform.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{menuform_8h}{menuform.\+h}}\item 
+menuform.\+cpp\end{DoxyCompactItemize}

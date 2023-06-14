@@ -1,0 +1,49 @@
+\hypertarget{soundsettingsform_8h_source}{}\doxysection{soundsettingsform.\+h}
+\mbox{\hyperlink{soundsettingsform_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ SOUNDSSETTINGSFORM\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SOUNDSSETTINGSFORM\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}qlabel.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{soundmanager_8h}{soundmanager.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}};}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr},\ \mbox{\hyperlink{class_sound_manager}{SoundManager}}\ *soundMenuManager\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_sound_settings_form_a779ffc7039d803a8f31ea1dfe33c6a7c}{\string~SoundSettingsForm}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}\ *\ \mbox{\hyperlink{class_sound_settings_form_ad818ed53d1fe5e283e49352680414180}{menuSoundManager}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_ad52a09e0bab3f4b20e8274423bb7f464}{itsBackground}};\ }
+\DoxyCodeLine{00045\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_a478f15994e682310862ed452648813a1}{itsFloor}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_a379f0061039a23baa1678b3a72cf3bd2}{itsMario}};\ }
+\DoxyCodeLine{00047\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_a551b04ef84fdca023a90bb561d7965d0}{itsBowser}};\ }
+\DoxyCodeLine{00049\ \ \ \ \ QLabel\ *\ itsTitle;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ signals:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_settings_form_a2598a9224dba0c2f6e48dc1ee5c02343}{finished}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_generalVolumeSlider\_valueChanged(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_effectsVolumeSlider\_valueChanged(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00071\ \ \ \ \ Ui::SoundSettingsForm\ *ui;\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ paintEvent(QPaintEvent\ *event);}
+\DoxyCodeLine{00073\ \ \ \ \ QLabel*\ musicVolumeLabel;}
+\DoxyCodeLine{00074\ \ \ \ \ QLabel*\ effectsVolumeLabel;}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SOUNDSSETTINGSFORM\_H}}
+
+\end{DoxyCode}
