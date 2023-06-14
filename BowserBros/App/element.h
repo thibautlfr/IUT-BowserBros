@@ -8,7 +8,6 @@
 
 #include <QRect>
 #include <QPainter>
-#include <QImage>
 
 using namespace std;
 
