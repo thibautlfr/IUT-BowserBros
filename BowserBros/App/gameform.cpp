@@ -228,6 +228,7 @@ void GameForm::checkLadderCollision()
         return;
     }
 
+
     for(Element* ladder : nearlyLadders)
     {
         if(itsCharacter->getItsRect().center().x()+5 >= ladder->getRect().left() &&
@@ -235,7 +236,7 @@ void GameForm::checkLadderCollision()
             ladder->getRect().bottom() >= itsCharacter->getItsRect().bottom()
              )
         {
-            if(itsCharacter->getYSpeed() > 0 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() >= 2 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() <= 10)
+            if(itsCharacter->getYSpeed() > 0 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() >= 0 and ladder->getRect().top() - itsCharacter->getItsRect().bottom() <= 10)
             {
                 itsCharacter->setItsY(ladder->getRect().top()-47);
                 itsCharacter->setOnLadder(false);
@@ -247,12 +248,6 @@ void GameForm::checkLadderCollision()
                 itsCharacter->setOnLadder(true);
                 itsCharacter->setOnPlatform(false);
             }
-            else if(itsCharacter->getItsRect().bottom() == ladder->getRect().top())
-            {
-                itsCharacter->setOnLadder(false);
-                itsCharacter->setOnPlatform(true);
-                itsCharacter->setItsY(ladder->getRect().top()-47);
-            }
         }
         else
         {
@@ -260,6 +255,7 @@ void GameForm::checkLadderCollision()
             itsCharacter->setOnPlatform(true);
         }
     }
+
 }
 
 
@@ -635,15 +631,26 @@ void GameForm::updateScroll() {
 
 void GameForm::updateFireBalls()
 {
-    for (FireBall * fireball : *itsBoss->getItsFireBalls())
+    static int previousTime;
+    if(elapsedTime == 10)
+    {
+        previousTime = 0; // Variable pour conserver le temps précédent
+    }
+
+    int currentTime = elapsedTime;
+
+    for (FireBall* fireball : *itsBoss->getItsFireBalls())
     {
         fireball->calculatePosition();
     }
 
-    double coefficient = (1 - (0.1 * (itsLevel - 1))); // Accélérer la fréquence en fonction du niveau
-    if(elapsedTime % int(1000 * coefficient) == 0)
+    double coefficient = (1 - (0.05 * (itsLevel - 1))); // Accélérer la fréquence en fonction du niveau
+    qDebug() << coefficient;
+
+    if (currentTime - previousTime >= 1000 * coefficient)
     {
         itsBoss->dropFireBall();
+        previousTime = currentTime; // Mettre à jour le temps précédent
     }
 }
 
@@ -713,31 +720,23 @@ void GameForm::keyPressEvent (QKeyEvent * event)
 
     if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 and !itsCharacter->getOnLadder())
     {
-        //sound->JumpSound();
         soundManager->playJumpEffect();
         itsCharacter->jump();
         qDebug() << "Space Key";
     }
-    for (Element *block : itsBlocks)
+
+    if(event->key() == Qt::Key_Up and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 and itsCharacter->getYSpeed() == 0 )
     {
-        if(!itsCharacter->intersect(block->getRect()))
-        {
-            if(event->key() == Qt::Key_Up and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 and itsCharacter->getYSpeed() == 0 )
-            {
-                itsCharacter->setYSpeed(-2);
-                itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
-            }
-            if(event->key() == Qt::Key_Down and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 and itsCharacter->getYSpeed() == 0)
-            {
-                itsCharacter->setYSpeed(2);
-                itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
-            }
-        }
-        else
-        {
-            itsCharacter->setItsImage(":Assets/Assets/mario/mario4.png");
-        }
+        itsCharacter->setYSpeed(-2);
+        itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
     }
+    if(event->key() == Qt::Key_Down and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 and itsCharacter->getYSpeed() == 0)
+    {
+        itsCharacter->setYSpeed(2);
+        itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
+    }
+
+
 }
 
 void GameForm::keyReleaseEvent (QKeyEvent * event)
