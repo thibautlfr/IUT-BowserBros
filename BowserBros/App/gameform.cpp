@@ -1,6 +1,5 @@
 #include "gameform.h"
 #include "ui_gameform.h"
-#include "soundsettingsform.h"
 
 #include <iostream>
 #include <QDebug>
