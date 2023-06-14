@@ -182,8 +182,11 @@ void SoundSettingsForm::setIsOnPaused(bool newIsOnPaused)
 // Méthode pour sauvegarder les paramètres
 void SoundSettingsForm::saveSettings()
 {
-    // Ouvrir le fichier en écriture
-    settingsFile.open("../../Settings/settings.txt", std::ios::out);
+    #if defined _WIN32
+        settingsFile.open("../../Settings/settings.txt", std::ios::out);
+    #elif defined(__LINUX__) || defined(__gnu_linux__) || defined(__linux__) || defined (__APPLE__)
+        settingsFile.open("../../../../../Settings/settings.txt", std::ios::out);
+    #endif
 
     if (settingsFile.is_open())
     {
