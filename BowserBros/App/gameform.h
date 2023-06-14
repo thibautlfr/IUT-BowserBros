@@ -44,7 +44,7 @@ public:
       * @brief Constructs a GameForm object.
       * @param parent The parent QWidget object.
      */
-    explicit GameForm(QWidget *parent = 0);
+    explicit GameForm(int level, int availableLevelsNb, QWidget *parent = nullptr);
 
     /**
       * @brief Destructs the GameForm object.
@@ -77,7 +77,6 @@ public:
     void checkCollisionFireBalls();
 
     /**
-<<<<<<< HEAD
      * @brief Check for the goombas collisions
      */
     void checkGoombasCollision();
@@ -147,6 +146,10 @@ public:
       * @brief Updates the position of fireballs in the game.
      */
     void updateFireBalls();
+
+    void replaceAndDeleteActors();
+
+    // --------------------------------------------------------------------------------------------
 
     /**
       * @brief Loads a specific level.

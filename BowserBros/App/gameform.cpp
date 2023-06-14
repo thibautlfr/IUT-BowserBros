@@ -16,7 +16,7 @@ using namespace std;
 
 const float GRAVITY = 0.25;
 
-GameForm::GameForm(QWidget *parent)
+GameForm::GameForm(int level, int availableLevelsNb, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::GameForm)
 {
@@ -75,16 +75,23 @@ GameForm::GameForm(QWidget *parent)
 
     //====================================================================
 
-    // Chargement du premier niveau
-    itsLevel = 1;
-    itsAvalaibleLevelsNb = QDir(":Levels/Levels").entryInfoList().count();
-    loadLevel();
-
     // Création du sol, du personnage et du boss
     itsFloor = new Element(0, height() - 20, ":Assets/Assets/other/floor.png");
     itsCharacter = new Mario(50, height() - 50, ":Assets/Assets/mario/mario4.png");
-    itsCharacter->setOnLadder(false);
     itsBoss = new Bowser(width()-80, height()-570, 41, 59, ":Assets/Assets/bowser/bowserright.png");
+
+    // Chargement du premier niveau
+    if (level == 0 && availableLevelsNb == 0)
+    {
+        itsLevel = 1;
+        itsAvalaibleLevelsNb = QDir(":Levels/Levels").entryInfoList().count();
+    }
+    else
+    {
+        itsLevel = level;
+        itsAvalaibleLevelsNb = availableLevelsNb;
+    }
+    loadLevel();
 
     //====================================================================
 
@@ -127,28 +134,8 @@ void GameForm::loadLevel() {
         return ;
     }
 
-    if(itsLevel > 1)
-    {
-        // Repositionement des acteurs du jeu et suppression des éléments du niveau précédent
-        itsCharacter->setItsX(50);
-        itsCharacter->setItsY(height() - 100);
-
-        itsGoombas.clear();
-        itsKoopas.clear();
-
-        itsBoss->setItsX(width()-80);
-        itsBoss->setItsY(height()-570);
-
-        itsBoss->getItsFireBalls()->clear();
-        itsBlocks.clear();
-        itsLadders.clear();
-    }
-
-    // Lancement de la musique si on est au niveau 1
-    if (itsLevel == 1)
-    {
-        soundManager->playMainMusic();
-    }
+    // Lancement de la musique
+    soundManager->playMainMusic();
 
     // Chargement du fichier texte du niveau ainsi que du background
     QString filename = ":Levels/Levels/level" + QString::number(itsLevel) + ".txt";
@@ -294,6 +281,7 @@ void GameForm::checkCharacterCollision()
             soundManager->playWinMusic();
 
             QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                replaceAndDeleteActors();
                 emit gameWon(elapsedTime);
             });
         }
@@ -306,8 +294,10 @@ void GameForm::checkCharacterCollision()
             itsLevel ++;
 
             QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
-                soundManager->playMainMusic();
                 itsTimer->start();
+
+                // Replacement des acteurs du jeu
+                replaceAndDeleteActors();
                 loadLevel();
             });
         }
@@ -424,6 +414,7 @@ void GameForm::checkCollisionFireBalls()
             itsCharacter->setYSpeed(-5);
 
             QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                replaceAndDeleteActors();
                 marioTimer->stop();
                 emit gameLosed();
             });
@@ -563,6 +554,7 @@ void GameForm::checkGoombasCollision()
                 itsCharacter->setYSpeed(-5);
 
                 QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                    replaceAndDeleteActors();
                     marioTimer->stop();
                     emit gameLosed();
                 });
@@ -745,6 +737,7 @@ void GameForm::checkKoopasCollision()
                 itsCharacter->setYSpeed(-5);
 
                 QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
+                    replaceAndDeleteActors();
                     marioTimer->stop();
                     emit gameLosed();
                 });
@@ -1125,6 +1118,22 @@ void GameForm::updateFireBalls()
     }
 }
 
+void GameForm::replaceAndDeleteActors()
+{
+    // Replacement des acteurs du jeu
+    itsCharacter->setItsX(50);
+    itsCharacter->setItsY(height() - 100);
+
+    itsGoombas.clear();
+    itsKoopas.clear();
+
+    itsBoss->setItsX(width()-80);
+    itsBoss->setItsY(height()-570);
+
+    itsBoss->getItsFireBalls()->clear();
+    itsBlocks.clear();
+    itsLadders.clear();
+}
 // ---------------------------------------------------------------------------------------------------------
 
 void GameForm::gameloop()

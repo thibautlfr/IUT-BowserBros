@@ -13,6 +13,7 @@
 #include "gameform.h"
 #include "soundsettingsform.h"
 #include "scoreboardform.h"
+#include "trainingform.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -41,6 +42,7 @@ private:
     QStackedWidget* stackedWidget;
     MenuForm * menuForm; /**< The menu form object. */
     GameForm * gameForm;/**< The game form object. */
+    TrainingForm * trainingForm;
     SoundSettingsForm * soundSettingsForm; /**< The sound settings board form object */
     ScoreboardForm * scoreboardForm; /**< The score board form object */
 };

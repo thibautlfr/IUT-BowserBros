@@ -45,7 +45,7 @@ Widget::Widget(QWidget *parent)
         menuForm->stopMusic();
 
         // Création et affichage du widget pour la partie
-        gameForm = new GameForm;
+        gameForm = new GameForm(0, 0);
 
         // Initialise les volumes sonores identiques aux volumes du Menu
         gameForm->setVolume(menuForm->getSoundManager());
@@ -55,7 +55,7 @@ Widget::Widget(QWidget *parent)
         stackedWidget->setCurrentWidget(gameForm->getScrollArea());
         gameForm->setFocus();
 
-        // Retou au MENU quand la partie est perdue
+        // Retour au MENU quand la partie est perdue
         connect(gameForm, &GameForm::gameLosed, this, [=]() {
             if (gameForm != nullptr)
             {
@@ -90,6 +90,67 @@ Widget::Widget(QWidget *parent)
 
     // Bouton QUITTER
     connect(menuForm, &MenuForm::quitButtonClicked, this, &QApplication::quit);
+
+    // Bouton TRAINING
+    connect(menuForm, &MenuForm::trainingButtonClicked, this, [=]() {
+        // Création du widget de training
+        trainingForm = new TrainingForm;
+        stackedWidget->addWidget(trainingForm);
+
+        // Ajout du widget de training au stacked widget
+        stackedWidget->setCurrentWidget(trainingForm);
+        trainingForm->setFocus();
+
+        // Bouton MENU dans TRAINING
+        connect(trainingForm, &TrainingForm::menuButtonClicked, this, [=]() {
+            stackedWidget->setCurrentWidget(menuForm);
+            menuForm->setFocus();
+            delete trainingForm;
+        });
+
+        // Niveau sélectionné dans TRAINING
+        connect(trainingForm, &TrainingForm::levelSelected, this, [=](int level) {
+            // Arrêt de la musique du menu
+            menuForm->stopMusic();
+            qDebug() << level;
+
+            // Création et affichage du widget pour la partie
+            gameForm = new GameForm(level, level);
+
+            // Initialise les volumes sonores identiques aux volumes du Menu
+            gameForm->setVolume(menuForm->getSoundManager());
+
+            // Ajoute la scrollArea au stackedWidget ce qui permet de suivre le joueur
+            stackedWidget->addWidget(gameForm->getScrollArea());
+            stackedWidget->setCurrentWidget(gameForm->getScrollArea());
+            gameForm->setFocus();
+
+            // Retour au TRAINING quand la partie est perdue
+            connect(gameForm, &GameForm::gameLosed, this, [=]() {
+                if (gameForm != nullptr)
+                {
+                    qDebug() << "GameForm deleted";
+                    delete gameForm;
+                    gameForm = nullptr; // Ajoutez cette ligne
+                    stackedWidget->setCurrentWidget(trainingForm);
+                    menuForm->playMusic();
+                }
+            });
+            // Retour au TRAINING quand la partie est gagnée
+            connect(gameForm, &GameForm::gameWon, this, [=] {
+                if (gameForm != nullptr)
+                {
+                    qDebug() << "GameForm deleted";
+                    delete gameForm;
+                    gameForm = nullptr; // Ajoutez cette ligne
+                    stackedWidget->setCurrentWidget(trainingForm);
+                    menuForm->playMusic();
+                }
+            });
+        });
+    });
+
+    //=======================================================================
 
     // Bouton CLASSEMENT
     connect(menuForm, &MenuForm::podiumButtonClicked, this, [=]() {

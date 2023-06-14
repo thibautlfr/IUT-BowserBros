@@ -24,6 +24,7 @@ SOURCES += \
     scoreboard.cpp \
     soundmanager.cpp \
     soundsettingsform.cpp \
+    trainingform.cpp \
     widget.cpp
 
 HEADERS += \
@@ -40,6 +41,7 @@ HEADERS += \
     scoreboard.h \
     soundmanager.h \
     soundsettingsform.h \
+    trainingform.h \
     widget.h
 
 FORMS += \
@@ -47,6 +49,7 @@ FORMS += \
     menuform.ui \
     scoreboardform.ui \
     soundsettingsform.ui \
+    trainingform.ui \
     widget.ui
 
 # Default rules for deployment.

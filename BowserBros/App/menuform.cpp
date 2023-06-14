@@ -35,6 +35,11 @@ MenuForm::MenuForm(QWidget *parent) :
     ui->quitButton->setIcon(quitAsset);
     ui->quitButton->setIconSize(quitAsset.size());
 
+    // Création des images des boutons du jeu
+    QPixmap trainingAsset(":Assets/Assets/menu/playbutton.png");
+    ui->trainingButton->setIcon(playAsset);
+    ui->trainingButton->setIconSize(playAsset.size());
+
     QPixmap podiumAsset(":/Assets/Assets/other/podium.png");
     ui->podiumButton->setIcon(podiumAsset);
     ui->podiumButton->setIconSize(QSize(110, 110));
@@ -47,6 +52,7 @@ MenuForm::MenuForm(QWidget *parent) :
     connect(ui->playButton, &QPushButton::clicked, this, &MenuForm::playButtonClicked);
     connect(ui->quitButton, &QPushButton::clicked, this, &MenuForm::quitButtonClicked);
     connect(ui->podiumButton, &QPushButton::clicked, this, &MenuForm::podiumButtonClicked);
+    connect(ui->trainingButton, &QPushButton::clicked, this, &MenuForm::trainingButtonClicked);
     connect(ui->soundSettingsButton, &QPushButton::clicked, this, &MenuForm::soundSettingsButtonClicked);
 
 
