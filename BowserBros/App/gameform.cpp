@@ -144,12 +144,6 @@ void GameForm::loadLevel() {
         itsLadders.clear();
     }
 
-    // Lancement de la musique si on est au niveau 1
-    if (itsLevel == 1)
-    {
-        soundManager->playMainMusic();
-    }
-
     // Chargement du fichier texte du niveau ainsi que du background
     QString filename = ":Levels/Levels/level" + QString::number(itsLevel) + ".txt";
     QString backgroundName = ":Assets/Assets/background/background" + QString::number(itsLevel) + ".png";
@@ -1164,7 +1158,6 @@ void GameForm::setIsOnGamed(bool newIsOnGamed)
     if(newIsOnGamed == true)
     {
         itsTimer->start();
-        soundManager->playMainMusic();
     }
 }
 
@@ -1345,4 +1338,6 @@ void GameForm::setVolume(SoundManager * menuSoundManager){
     //Modifie les volumes du gameForm
     soundManager->setEffectsVolume(itsVolumesEffect);
     soundManager->setMainVolume(itsVolumesGen);
+
+    soundManager->playMainMusic();
 }

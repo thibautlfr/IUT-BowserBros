@@ -77,7 +77,6 @@ public:
     void checkCollisionFireBalls();
 
     /**
-<<<<<<< HEAD
      * @brief Check for the goombas collisions
      */
     void checkGoombasCollision();
