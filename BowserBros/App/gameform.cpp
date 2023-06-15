@@ -62,6 +62,7 @@ GameForm::GameForm(int level, int availableLevelsNb, QWidget *parent)
     leftArrow.load(":Assets/Assets/other/leftarrow.png");
     spaceBar.load(":Assets/Assets/other/spacebar.png");
     chestArrow.load(":Assets/Assets/other/chest-arrow.png");
+    upArrow.load(":Assets/Assets/other/uparrow.png");
 
     // Initialise le Y du background
     backgroundY = height() - itsBackground.height();
@@ -85,11 +86,13 @@ GameForm::GameForm(int level, int availableLevelsNb, QWidget *parent)
     {
         itsLevel = 1;
         itsAvalaibleLevelsNb = QDir(":Levels/Levels").entryInfoList().count();
+        trainingMode = false;
     }
     else
     {
         itsLevel = level;
         itsAvalaibleLevelsNb = availableLevelsNb;
+        trainingMode = true;
     }
     loadLevel();
 
@@ -134,8 +137,10 @@ void GameForm::loadLevel() {
         return ;
     }
 
-    // Lancement de la musique
-    soundManager->playMainMusic();
+    if(itsLevel > 1 && trainingMode == false)
+    {
+        soundManager->playMainMusic();
+    }
 
     // Chargement du fichier texte du niveau ainsi que du background
     QString filename = ":Levels/Levels/level" + QString::number(itsLevel) + ".txt";
@@ -240,7 +245,7 @@ void GameForm::checkLadderCollision()
                 itsCharacter->setOnPlatform(true);
                 itsCharacter->setYSpeed(0);
             }
-            else if(ladder->getRect().top() <= itsCharacter->getItsRect().top() - 1 )
+            else if(ladder->getRect().top() <= itsCharacter->getItsRect().top() - 1 && itsCharacter->getOnPlatform())
             {
                 itsCharacter->setOnLadder(true);
                 itsCharacter->setOnPlatform(false);
@@ -1134,6 +1139,7 @@ void GameForm::replaceAndDeleteActors()
     itsBlocks.clear();
     itsLadders.clear();
 }
+
 // ---------------------------------------------------------------------------------------------------------
 
 void GameForm::gameloop()
@@ -1204,24 +1210,24 @@ void GameForm::start()
 
 void GameForm::keyPressEvent (QKeyEvent * event)
 {
+    // Gérez les déplacements X
     if (event->key() == Qt::Key_Left)
     {
         itsCharacter->setXSpeed(-2);
-        qDebug() << "Left Key";
     }
     else if(event->key() == Qt::Key_Right)
     {
         itsCharacter->setXSpeed(2);
-        qDebug() << "Right Key";
     }
 
+    // Sauter
     if(event->key() == Qt::Key_Space && itsCharacter->getYSpeed() == 0 and !itsCharacter->getOnLadder())
     {
         soundManager->playJumpEffect();
         itsCharacter->jump();
-        qDebug() << "Space Key";
     }
 
+    // Monter et descendre de l'échelle
     if(event->key() == Qt::Key_Up and itsCharacter->getOnLadder() and itsCharacter->getXSpeed() == 0 and itsCharacter->getYSpeed() == 0 )
     {
         itsCharacter->setYSpeed(-2);
@@ -1232,11 +1238,12 @@ void GameForm::keyPressEvent (QKeyEvent * event)
         itsCharacter->setYSpeed(2);
         itsCharacter->setItsImage(":Assets/Assets/mario/mario8.png");
     }
+
+    // Menu Pause
     if (event->key() == Qt::Key_Escape)
     {
         emit gamePaused();
         soundManager->stopAllSounds();
-        qDebug() << "Escape Key" ;
         itsTimer->stop();
         isOnGamed = false ;
     }
@@ -1244,10 +1251,12 @@ void GameForm::keyPressEvent (QKeyEvent * event)
 
 void GameForm::keyReleaseEvent (QKeyEvent * event)
 {
+    // Arrêt des déplacement X
     if ((event->key() == Qt::Key_Left) || event->key() == Qt::Key_Right)
     {
         itsCharacter->setXSpeed(0);
     }
+    // Arret des déplacements Y
     if((event->key() == Qt::Key_Up || event->key() == Qt::Key_Down) and itsCharacter->getOnLadder())
     {
         itsCharacter->setYSpeed(0);
@@ -1297,14 +1306,15 @@ void GameForm::paintEvent(QPaintEvent *event)
     itsCharacter->draw(painter);
     itsBoss->draw(painter);
 
-
-
     delete painter;
 }
 
 void GameForm::paintPlayerHelps(QPainter* painter)
 {
-
+    if (itsLevel == 1 && (itsCharacter->getItsRect().bottom() + 300) > height() - 80)
+    {
+        painter->drawImage(180, height() - 80, upArrow);
+    }
     if (itsCharacter->getItsY() > height() - 300)
     {
         painter->drawImage(600, height() - 65, leftArrow);

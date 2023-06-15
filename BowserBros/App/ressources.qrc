@@ -71,6 +71,7 @@
         <file>Assets/menu/restart.png</file>
         <file>Assets/background/background4.png</file>
         <file>Assets/background/background5.png</file>
+        <file>Assets/other/uparrow.png</file>
     </qresource>
     <qresource prefix="/Song">
         <file>Song/JumpSound.wav</file>

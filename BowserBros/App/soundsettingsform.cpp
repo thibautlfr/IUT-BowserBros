@@ -50,8 +50,6 @@ SoundSettingsForm::SoundSettingsForm(QWidget *parent,  SoundManager *soundMenuMa
 
     connect(ui->itsRestartButton, &QPushButton::clicked, this, &::SoundSettingsForm::restarted);
 
-
-
     // --------------------------------------------------------------------------------------------------------------------------------
 
     // Créer l'effet d'ombre
@@ -100,8 +98,9 @@ SoundSettingsForm::SoundSettingsForm(QWidget *parent,  SoundManager *soundMenuMa
 
 SoundSettingsForm::~SoundSettingsForm()
 {
-    delete ui;
     saveSettings();
+    delete itsTitle;
+    delete ui;
 }
 
 void SoundSettingsForm::on_generalVolumeSlider_valueChanged(int value)
@@ -203,7 +202,7 @@ void SoundSettingsForm::saveSettings()
     {
         // Erreur lors de l'ouverture du fichier
         qDebug() << "Erreur lors de l'ouverture du fichier pour sauvegarder les paramètres";
-            return;
+        return;
     }
 }
 
@@ -218,7 +217,6 @@ void SoundSettingsForm::loadSettings()
 
             // Convertir la ligne en QString
             QString qLine = QString::fromStdString(line);
-            qDebug() << qLine;
 
             // Vérifier si la ligne est vide
             if (qLine.isEmpty())

@@ -225,6 +225,7 @@ private:
     QImage itsBackground; /**< The background image. */
     QImage leftArrow; /**< The left arrow image for player help. */
     QImage rightArrow; /**< The right arrow image for player help. */
+    QImage upArrow;
     QImage chestArrow; /**< The chest arrow image for player help. */
     QImage spaceBar; /**< The space bar image for player help. */
 
@@ -242,7 +243,8 @@ private:
     float itsVolumesGen;
     float itsVolumesEffect;
 
-    bool isOnGamed ;
+    bool isOnGamed;
+    bool trainingMode;
 
 
 

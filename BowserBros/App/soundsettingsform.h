@@ -95,7 +95,7 @@ private:
 
     bool isOnPaused = false ;
 
-    fstream settingsFile ;
+    fstream settingsFile;
 };
 
 #endif // SOUNDSSETTINGSFORM_H

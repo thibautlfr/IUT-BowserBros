@@ -129,11 +129,6 @@ Widget::Widget(QWidget *parent)
 
     //----------------------------------------------------------------------
 
-    // Bouton QUITTER
-    connect(menuForm, &MenuForm::quitButtonClicked, this, &QApplication::quit);
-
-    //----------------------------------------------------------------------
-
     // Bouton TRAINING
     connect(menuForm, &MenuForm::trainingButtonClicked, this, [=]() {
         // Création du widget de training
@@ -267,6 +262,13 @@ Widget::Widget(QWidget *parent)
     });
 
     //=======================================================================
+
+    // Bouton QUITTER
+    connect(menuForm, &MenuForm::quitButtonClicked, this, [=]() {
+        QApplication::quit();
+    });
+
+    //----------------------------------------------------------------------
 
     // Création d'un layout pour centrer la fenêtre en plein écran
     QVBoxLayout *vLayout = new QVBoxLayout;
