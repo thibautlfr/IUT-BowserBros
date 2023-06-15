@@ -34,11 +34,14 @@ void {\bfseries animation\+Death} ()
 void {\bfseries game\+Losed} ()
 \begin{DoxyCompactList}\small\item\em Signal emitted when the game is losed. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_form_a324273bd6ab9b281af55427c219d2d3d}{game\+Won}} (int elapsed\+Time)
-\begin{DoxyCompactList}\small\item\em Signal emitted when the game is won. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Signal emitted when the game is won. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a55d27f58f7b68c1d1438b1c5b0a49495}\label{class_game_form_a55d27f58f7b68c1d1438b1c5b0a49495}} 
+void {\bfseries game\+Paused} ()
+\begin{DoxyCompactList}\small\item\em Signal emitted when the game is paused. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_game_form_a9f4418060b0102494713e7ce629f8bb6}{Game\+Form}} (QWidget $\ast$parent=0)
+\mbox{\hyperlink{class_game_form_ab8005376e6c481bc23128d7fc30520ef}{Game\+Form}} (int level, int available\+Levels\+Nb, QWidget $\ast$parent=nullptr)
 \begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_game_form}{Game\+Form}} object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_game_form_a9a68a99923b27abccde9562cf43a5195}\label{class_game_form_a9a68a99923b27abccde9562cf43a5195}} 
 {\bfseries $\sim$\+Game\+Form} ()
@@ -54,6 +57,22 @@ void {\bfseries check\+Bowser\+Collision} ()
 \mbox{\Hypertarget{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}\label{class_game_form_a085119e87e8f5220a3da2a2311b1ed71}} 
 void {\bfseries check\+Collision\+Fire\+Balls} ()
 \begin{DoxyCompactList}\small\item\em Checks for collisions with fireballs. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a918be215e051587649d55edb665954e0}\label{class_game_form_a918be215e051587649d55edb665954e0}} 
+void {\bfseries check\+Goombas\+Collision} ()
+\begin{DoxyCompactList}\small\item\em Check for the goombas collisions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_ab9d13d0536ba78df3a019c09addc8ed2}\label{class_game_form_ab9d13d0536ba78df3a019c09addc8ed2}} 
+void {\bfseries check\+Koopas\+Collision} ()
+\begin{DoxyCompactList}\small\item\em Checks for the koopas collisions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_form_a480874c21e56226220b722dbf20cb813}{check\+Floor\+Collision}} (\mbox{\hyperlink{class_entity}{Entity}} $\ast$an\+Entity)
+\begin{DoxyCompactList}\small\item\em Checks the collisions between the floor and an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_form_acc9d0879330d5fe255e556a1a53d2c76}{check\+Platform\+Collision}} (\mbox{\hyperlink{class_entity}{Entity}} $\ast$an\+Entity, vector$<$ \mbox{\hyperlink{class_element}{Element}} $\ast$ $>$ nearly\+Blocks)
+\begin{DoxyCompactList}\small\item\em Checks the collisions between an entity and the blocks near theme. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_form_ad6d93e4d44c60119a2b09df5e3c9c5f8}{check\+Entity\+On\+Blocks}} (\mbox{\hyperlink{class_entity}{Entity}} $\ast$an\+Entity, vector$<$ \mbox{\hyperlink{class_element}{Element}} $\ast$ $>$ nearly\+Blocks)
+\begin{DoxyCompactList}\small\item\em Checks if an entity is on a block and the collisions associated. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_form_ab0b63df1a46259c80cc13615afb9efd6}{check\+Entity\+On\+Floor}} (\mbox{\hyperlink{class_entity}{Entity}} $\ast$an\+Entity, vector$<$ \mbox{\hyperlink{class_element}{Element}} $\ast$ $>$ nearly\+Blocks)
+\begin{DoxyCompactList}\small\item\em Checks if an entity is on the floor and the collisions associated. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_element}{Element}} $\ast$ $>$ \mbox{\hyperlink{class_game_form_ae3a35e3848928630295a70be20b42f69}{get\+Nearly\+Blocks}} (\mbox{\hyperlink{class_entity}{Entity}} $\ast$an\+Entity)
+\begin{DoxyCompactList}\small\item\em Gets the blocks near an entity. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_game_form_a86a54c36711a791e5ccbf348a9765016}\label{class_game_form_a86a54c36711a791e5ccbf348a9765016}} 
 void {\bfseries check\+Ladder\+Collision} ()
 \begin{DoxyCompactList}\small\item\em Checks for collisions with ladders. \end{DoxyCompactList}\item 
@@ -65,29 +84,32 @@ void {\bfseries update\+Scroll} ()
 \mbox{\Hypertarget{class_game_form_aa6bc375695665688925ed87bbbc005ba}\label{class_game_form_aa6bc375695665688925ed87bbbc005ba}} 
 void {\bfseries update\+Fire\+Balls} ()
 \begin{DoxyCompactList}\small\item\em Updates the position of fireballs in the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_form_a8a4727331df62ac6caa0ba815ced8c79}\label{class_game_form_a8a4727331df62ac6caa0ba815ced8c79}} 
+void {\bfseries replace\+And\+Delete\+Actors} ()
+\begin{DoxyCompactList}\small\item\em Replaces and deletes actors in the game. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_game_form_a84f3d4616130ad4b319be532eff8c95a}\label{class_game_form_a84f3d4616130ad4b319be532eff8c95a}} 
 void {\bfseries load\+Level} ()
 \begin{DoxyCompactList}\small\item\em Loads a specific level. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_game_form_a07ecc9468504b29d479445d78a03a3b8}\label{class_game_form_a07ecc9468504b29d479445d78a03a3b8}} 
 void {\bfseries display\+Chrono} ()
 \begin{DoxyCompactList}\small\item\em Displays the chrono at the top right corner. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_game_form_a0c03d54e8c467d3eb561bc1a741d6495}\label{class_game_form_a0c03d54e8c467d3eb561bc1a741d6495}} 
-\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$ {\bfseries get\+Sound\+Manager} () const
-\item 
-\mbox{\Hypertarget{class_game_form_aea83ccc4ab2540668f5efc22c5b02580}\label{class_game_form_aea83ccc4ab2540668f5efc22c5b02580}} 
-void {\bfseries set\+Volume} (\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$menu\+Sound\+Manager)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$ \mbox{\hyperlink{class_game_form_a0c03d54e8c467d3eb561bc1a741d6495}{get\+Sound\+Manager}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_form_aea83ccc4ab2540668f5efc22c5b02580}{set\+Volume}} (\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$menu\+Sound\+Manager)
+\begin{DoxyCompactList}\small\item\em Sets the volume of the \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_form_a4f2d648fe2bee22458c78bd890f12190}{set\+Is\+On\+Gamed}} (bool new\+Is\+On\+Gamed)
+\begin{DoxyCompactList}\small\item\em Sets the flag indicating if the game is currently running. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Represents the game interface. The \mbox{\hyperlink{class_game_form}{Game\+Form}} class represents the game interface where the game is played. It handles various game functionalities such as character movement, collisions, level loading, etc. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_game_form_a9f4418060b0102494713e7ce629f8bb6}\label{class_game_form_a9f4418060b0102494713e7ce629f8bb6}} 
+\mbox{\Hypertarget{class_game_form_ab8005376e6c481bc23128d7fc30520ef}\label{class_game_form_ab8005376e6c481bc23128d7fc30520ef}} 
 \index{GameForm@{GameForm}!GameForm@{GameForm}}
 \index{GameForm@{GameForm}!GameForm@{GameForm}}
 \doxysubsubsection{\texorpdfstring{GameForm()}{GameForm()}}
-{\footnotesize\ttfamily Game\+Form\+::\+Game\+Form (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily Game\+Form\+::\+Game\+Form (\begin{DoxyParamCaption}\item[{int}]{level,  }\item[{int}]{available\+Levels\+Nb,  }\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
@@ -101,6 +123,78 @@ Constructs a \mbox{\hyperlink{class_game_form}{Game\+Form}} object.
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_form_ad6d93e4d44c60119a2b09df5e3c9c5f8}\label{class_game_form_ad6d93e4d44c60119a2b09df5e3c9c5f8}} 
+\index{GameForm@{GameForm}!checkEntityOnBlocks@{checkEntityOnBlocks}}
+\index{checkEntityOnBlocks@{checkEntityOnBlocks}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{checkEntityOnBlocks()}{checkEntityOnBlocks()}}
+{\footnotesize\ttfamily bool Game\+Form\+::check\+Entity\+On\+Blocks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}} $\ast$}]{an\+Entity,  }\item[{vector$<$ \mbox{\hyperlink{class_element}{Element}} $\ast$ $>$}]{nearly\+Blocks }\end{DoxyParamCaption})}
+
+
+
+Checks if an entity is on a block and the collisions associated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an\+Entity} & \+: the entity we want to verify \\
+\hline
+{\em nearly\+Blocks} & \+: the blocks near the entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the entity is on a block and false either 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_form_ab0b63df1a46259c80cc13615afb9efd6}\label{class_game_form_ab0b63df1a46259c80cc13615afb9efd6}} 
+\index{GameForm@{GameForm}!checkEntityOnFloor@{checkEntityOnFloor}}
+\index{checkEntityOnFloor@{checkEntityOnFloor}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{checkEntityOnFloor()}{checkEntityOnFloor()}}
+{\footnotesize\ttfamily bool Game\+Form\+::check\+Entity\+On\+Floor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}} $\ast$}]{an\+Entity,  }\item[{vector$<$ \mbox{\hyperlink{class_element}{Element}} $\ast$ $>$}]{nearly\+Blocks }\end{DoxyParamCaption})}
+
+
+
+Checks if an entity is on the floor and the collisions associated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an\+Entity} & \+: the entity we want to verify \\
+\hline
+{\em nearly\+Blocks} & \+: the blocks near the entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the entity is on the floor and false either 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_form_a480874c21e56226220b722dbf20cb813}\label{class_game_form_a480874c21e56226220b722dbf20cb813}} 
+\index{GameForm@{GameForm}!checkFloorCollision@{checkFloorCollision}}
+\index{checkFloorCollision@{checkFloorCollision}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{checkFloorCollision()}{checkFloorCollision()}}
+{\footnotesize\ttfamily void Game\+Form\+::check\+Floor\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}} $\ast$}]{an\+Entity }\end{DoxyParamCaption})}
+
+
+
+Checks the collisions between the floor and an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an\+Entity} & \+: the entity we want to verify \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_form_acc9d0879330d5fe255e556a1a53d2c76}\label{class_game_form_acc9d0879330d5fe255e556a1a53d2c76}} 
+\index{GameForm@{GameForm}!checkPlatformCollision@{checkPlatformCollision}}
+\index{checkPlatformCollision@{checkPlatformCollision}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{checkPlatformCollision()}{checkPlatformCollision()}}
+{\footnotesize\ttfamily void Game\+Form\+::check\+Platform\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}} $\ast$}]{an\+Entity,  }\item[{vector$<$ \mbox{\hyperlink{class_element}{Element}} $\ast$ $>$}]{nearly\+Blocks }\end{DoxyParamCaption})}
+
+
+
+Checks the collisions between an entity and the blocks near theme. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an\+Entity} & \+: the entity we want to verify \\
+\hline
+{\em nearly\+Blocks} & \+: the blocks near the entity \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_game_form_a324273bd6ab9b281af55427c219d2d3d}\label{class_game_form_a324273bd6ab9b281af55427c219d2d3d}} 
 \index{GameForm@{GameForm}!gameWon@{gameWon}}
 \index{gameWon@{gameWon}!GameForm@{GameForm}}
@@ -116,6 +210,24 @@ Signal emitted when the game is won.
 {\em The} & integer of the timer of the game loop \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_game_form_ae3a35e3848928630295a70be20b42f69}\label{class_game_form_ae3a35e3848928630295a70be20b42f69}} 
+\index{GameForm@{GameForm}!getNearlyBlocks@{getNearlyBlocks}}
+\index{getNearlyBlocks@{getNearlyBlocks}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{getNearlyBlocks()}{getNearlyBlocks()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_element}{Element}} $\ast$ $>$ Game\+Form\+::get\+Nearly\+Blocks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}} $\ast$}]{an\+Entity }\end{DoxyParamCaption})}
+
+
+
+Gets the blocks near an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an\+Entity} & \+: the entity we want to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}\label{class_game_form_a2dbb54a96ca9be0c91db5c1b5bc0c3bc}} 
 \index{GameForm@{GameForm}!getScrollArea@{getScrollArea}}
 \index{getScrollArea@{getScrollArea}!GameForm@{GameForm}}
@@ -128,6 +240,19 @@ Getter for its\+Scroll\+Area.
 
 \begin{DoxyReturn}{Returns}
 The scroll area element of the \mbox{\hyperlink{class_game_form}{Game\+Form}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_form_a0c03d54e8c467d3eb561bc1a741d6495}\label{class_game_form_a0c03d54e8c467d3eb561bc1a741d6495}} 
+\index{GameForm@{GameForm}!getSoundManager@{getSoundManager}}
+\index{getSoundManager@{getSoundManager}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{getSoundManager()}{getSoundManager()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$ Game\+Form\+::get\+Sound\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} object. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} object. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_game_form_a8386c0313181b8b39549e5c53490c943}\label{class_game_form_a8386c0313181b8b39549e5c53490c943}} 
 \index{GameForm@{GameForm}!paintPlayerHelps@{paintPlayerHelps}}
@@ -142,6 +267,36 @@ Paints the player\textquotesingle{}s helps.
 
 \begin{DoxyParams}{Parameters}
 {\em painter} & A pointer to the QPainter object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_form_a4f2d648fe2bee22458c78bd890f12190}\label{class_game_form_a4f2d648fe2bee22458c78bd890f12190}} 
+\index{GameForm@{GameForm}!setIsOnGamed@{setIsOnGamed}}
+\index{setIsOnGamed@{setIsOnGamed}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{setIsOnGamed()}{setIsOnGamed()}}
+{\footnotesize\ttfamily void Game\+Form\+::set\+Is\+On\+Gamed (\begin{DoxyParamCaption}\item[{bool}]{new\+Is\+On\+Gamed }\end{DoxyParamCaption})}
+
+
+
+Sets the flag indicating if the game is currently running. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Is\+On\+Gamed} & Flag indicating if the game is currently running. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_form_aea83ccc4ab2540668f5efc22c5b02580}\label{class_game_form_aea83ccc4ab2540668f5efc22c5b02580}} 
+\index{GameForm@{GameForm}!setVolume@{setVolume}}
+\index{setVolume@{setVolume}!GameForm@{GameForm}}
+\doxysubsubsection{\texorpdfstring{setVolume()}{setVolume()}}
+{\footnotesize\ttfamily void Game\+Form\+::set\+Volume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$}]{menu\+Sound\+Manager }\end{DoxyParamCaption})}
+
+
+
+Sets the volume of the \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu\+Sound\+Manager} & A pointer to the \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} object. \\
 \hline
 \end{DoxyParams}
 

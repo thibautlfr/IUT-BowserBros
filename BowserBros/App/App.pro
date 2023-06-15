@@ -15,6 +15,8 @@ SOURCES += \
     element.cpp \
     fireball.cpp \
     gameform.cpp \
+    goomba.cpp \
+    koopa.cpp \
     main.cpp \
     mario.cpp \
     menuform.cpp \
@@ -22,6 +24,7 @@ SOURCES += \
     scoreboard.cpp \
     soundmanager.cpp \
     soundsettingsform.cpp \
+    trainingform.cpp \
     widget.cpp
 
 HEADERS += \
@@ -30,12 +33,15 @@ HEADERS += \
     element.h \
     fireball.h \
     gameform.h \
+    goomba.h \
+    koopa.h \
     mario.h \
     menuform.h \
     scoreboardform.h \
     scoreboard.h \
     soundmanager.h \
     soundsettingsform.h \
+    trainingform.h \
     widget.h
 
 FORMS += \
@@ -43,6 +49,7 @@ FORMS += \
     menuform.ui \
     scoreboardform.ui \
     soundsettingsform.ui \
+    trainingform.ui \
     widget.ui
 
 # Default rules for deployment.

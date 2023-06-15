@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['mario_0',['Mario',['../class_mario.html#ab95512785b18f8be80facfcae0894efb',1,'Mario::Mario(float x, float y, int width, int height)'],['../class_mario.html#a18dc19a04b05c2e6502a5633e05cbc18',1,'Mario::Mario(float x, float y, string asset)']]],
-  ['menubuttonclicked_1',['menuButtonClicked',['../class_scoreboard_form.html#a8ceb99b236bd7c13ce8bedc860d035db',1,'ScoreboardForm']]],
-  ['menuform_2',['MenuForm',['../class_menu_form.html#acaab5223ef7986a0e55157632db86265',1,'MenuForm']]],
-  ['musicfinished_3',['musicFinished',['../class_sound_manager.html#a4294cbd9c215a38aaa396a913e0b2611',1,'SoundManager']]]
+  ['level1buttonclicked_0',['level1ButtonClicked',['../class_training_form.html#ace6cf988ccec843d6774cef91a278207',1,'TrainingForm']]],
+  ['level2buttonclicked_1',['level2ButtonClicked',['../class_training_form.html#a2a4dfe6503106acf0fcb1c4437f0d7b5',1,'TrainingForm']]],
+  ['level3buttonclicked_2',['level3ButtonClicked',['../class_training_form.html#aae699cfafb86e0c6ed7f539074bc6800',1,'TrainingForm']]],
+  ['level4buttonclicked_3',['level4ButtonClicked',['../class_training_form.html#a30fe2e9a10f4b4232f59167f0d29a45f',1,'TrainingForm']]],
+  ['level5buttonclicked_4',['level5ButtonClicked',['../class_training_form.html#a63dc72e56ce990a7a4c9e2ba996c025c',1,'TrainingForm']]],
+  ['levelselected_5',['levelSelected',['../class_training_form.html#a00b5fe1a4b2db145a6297ad6a462ee7c',1,'TrainingForm']]],
+  ['loadlevel_6',['loadLevel',['../class_game_form.html#a84f3d4616130ad4b319be532eff8c95a',1,'GameForm']]],
+  ['loadsettings_7',['loadSettings',['../class_sound_settings_form.html#a625a3c0a8518b2a8c25c313e2ccae74c',1,'SoundSettingsForm']]]
 ];

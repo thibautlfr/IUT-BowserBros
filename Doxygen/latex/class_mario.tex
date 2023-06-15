@@ -48,16 +48,9 @@ bool \mbox{\hyperlink{class_mario_a4aa96bb8f6d098098a5ea175364ad085}{intersect}}
 \begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and size. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_entity_afe525604909cacead8754fed6988349f}{Entity}} (float x, float y, string asset)
 \begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and asset. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{class_entity_a4c7bd3bd447928ae871833b749fb9dcd}{get\+ItsY}} ()
-\begin{DoxyCompactList}\small\item\em Returns the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{class_entity_aa0c849c1529ca6c0dde810e5c0741c35}{get\+ItsX}} ()
-\begin{DoxyCompactList}\small\item\em Returns the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{class_entity_adad018778998318bb083da987536c932}{get\+YSpeed}} ()
-\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{class_entity_a86c9d6debe5cef873e9bb2807cae4125}{get\+XSpeed}} ()
-\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
-QRect \mbox{\hyperlink{class_entity_a38553a2451e4963a279129fa10264cb4}{get\+Its\+Rect}} ()
-\begin{DoxyCompactList}\small\item\em Returns the bounding rectangle of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}\label{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}} 
+virtual {\bfseries $\sim$\+Entity} ()
+\begin{DoxyCompactList}\small\item\em Destructor for entity. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_entity_ac8cb9f36ba2c8f8ca112556beeacfca0}{set\+ItsY}} (float Y)
 \begin{DoxyCompactList}\small\item\em Sets the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_entity_a42afe2a0c04394db1f026f46430fee3e}{set\+ItsX}} (float X)
@@ -68,6 +61,20 @@ void \mbox{\hyperlink{class_entity_a6409ad44a9b174490083dabee12f1025}{set\+YSpee
 \begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_entity_a9bd1559414607eef261997bf69de63e9}{set\+Its\+Image}} (string new\+Asset\+Path)
 \begin{DoxyCompactList}\small\item\em Sets the image asset of the entity. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_entity_a252505d876878e6be6c4364ed1be67f9}{set\+On\+Platform}} (bool on\+Platform)
+\begin{DoxyCompactList}\small\item\em Set the attribute on\+Platform. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_a4c7bd3bd447928ae871833b749fb9dcd}{get\+ItsY}} ()
+\begin{DoxyCompactList}\small\item\em Returns the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_aa0c849c1529ca6c0dde810e5c0741c35}{get\+ItsX}} ()
+\begin{DoxyCompactList}\small\item\em Returns the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_adad018778998318bb083da987536c932}{get\+YSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_a86c9d6debe5cef873e9bb2807cae4125}{get\+XSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
+QRect \mbox{\hyperlink{class_entity_a38553a2451e4963a279129fa10264cb4}{get\+Its\+Rect}} ()
+\begin{DoxyCompactList}\small\item\em Returns the bounding rectangle of the entity. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_entity_a3082eb8fe1b3fc5afdc3562007b4aa74}{get\+On\+Platform}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the on\+Platform attribute. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_entity_ad745385f5f47550344c9f470980b9ab0}\label{class_entity_ad745385f5f47550344c9f470980b9ab0}} 
 void {\bfseries calculate\+Position} ()
 \begin{DoxyCompactList}\small\item\em Calculates the new position of the entity based on its speed. \end{DoxyCompactList}\item 
@@ -174,7 +181,7 @@ Returns true if the player is on a ladder
 \index{Mario@{Mario}!getOnPlatform@{getOnPlatform}}
 \index{getOnPlatform@{getOnPlatform}!Mario@{Mario}}
 \doxysubsubsection{\texorpdfstring{getOnPlatform()}{getOnPlatform()}}
-{\footnotesize\ttfamily bool Mario\+::get\+On\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Mario\+::get\+On\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -183,6 +190,10 @@ Returns if the the player is on a platform.
 \begin{DoxyReturn}{Returns}
 Returns true if the player is on a platform 
 \end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_entity_a3082eb8fe1b3fc5afdc3562007b4aa74}{Entity}}.
+
 \mbox{\Hypertarget{class_mario_a4aa96bb8f6d098098a5ea175364ad085}\label{class_mario_a4aa96bb8f6d098098a5ea175364ad085}} 
 \index{Mario@{Mario}!intersect@{intersect}}
 \index{intersect@{intersect}!Mario@{Mario}}
@@ -235,7 +246,7 @@ Sets whether \mbox{\hyperlink{class_mario}{Mario}} is on a ladder or not.
 \index{Mario@{Mario}!setOnPlatform@{setOnPlatform}}
 \index{setOnPlatform@{setOnPlatform}!Mario@{Mario}}
 \doxysubsubsection{\texorpdfstring{setOnPlatform()}{setOnPlatform()}}
-{\footnotesize\ttfamily void Mario\+::set\+On\+Platform (\begin{DoxyParamCaption}\item[{bool}]{on\+Platform }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Mario\+::set\+On\+Platform (\begin{DoxyParamCaption}\item[{bool}]{on\+Platform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -246,6 +257,10 @@ Sets whether \mbox{\hyperlink{class_mario}{Mario}} is on a platform or not.
 {\em is\+On\+Platform} & Flag indicating if \mbox{\hyperlink{class_mario}{Mario}} is on a platform. \\
 \hline
 \end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_entity_a252505d876878e6be6c4364ed1be67f9}{Entity}}.
+
 \mbox{\Hypertarget{class_mario_af98b58d0ae7ffbd220bbfdab43ec74dc}\label{class_mario_af98b58d0ae7ffbd220bbfdab43ec74dc}} 
 \index{Mario@{Mario}!updateAsset@{updateAsset}}
 \index{updateAsset@{updateAsset}!Mario@{Mario}}

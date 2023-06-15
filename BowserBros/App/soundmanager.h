@@ -40,6 +40,19 @@ public:
     void playJumpEffect();
 
     /**
+     * @brief Plays the koopa rebounce sound effect.
+     */
+    void playKoopaBumpEffect();
+
+    /**
+     * @brief Plays the death sound effect for ennemies.
+     */
+    void playEnnemyDeathEffect();
+
+
+    // ---------------------------------------------------------------------------------------------------------
+
+    /**
      * @brief Plays the main music.
      */
     void playMainMusic();
@@ -64,6 +77,22 @@ public:
      */
     void playLevelPassedMusic();
 
+    // -----------------------------------------------------------------------------------------
+
+    /**
+     * @brief Returns the current main music volume.
+     * @return The main music volume level.
+     */
+    float getVolume() const;
+
+    /**
+     * @brief Returns the current sound effects volume.
+     * @return The sound effects volume level.
+     */
+    float getEffectsVolume() const;
+
+    // -----------------------------------------------------------------------------------------
+
     /**
      * @brief Sets the main music volume.
      * @param volume The volume level to set (0.0 to 1.0).
@@ -81,17 +110,23 @@ public:
      */
     void stopAllSounds();
 
-    /**
-     * @brief Returns the current main music volume.
-     * @return The main music volume level.
-     */
-    float getVolume() const;
+private:
+    QSoundEffect *jumpEffect; /**< A jump sound effect. */
+    QSoundEffect *koopaBumpEffect; /**< A koopa bump sound effect. */
+    QSoundEffect *ennemyDeathEffect; /**< An ennemy death sound effect. */
 
-    /**
-     * @brief Returns the current sound effects volume.
-     * @return The sound effects volume level.
-     */
-    float getEffectsVolume() const;
+    // -----------------------------------------------------------------------------------------
+
+    QSoundEffect *mainMusic; /**< The main music of the game. */
+    QSoundEffect *deathMusic; /**< Music theme for loosing the game. */
+    QSoundEffect *winMusic; /**< Music theme when winning the game. */
+    QSoundEffect *levelPassedMusic; /**< Sound effect happening when mario passes a level. */
+    QSoundEffect *menuMusic; /**< Main menu music theme. */
+
+    // -----------------------------------------------------------------------------------------
+
+    float itsVolume;                    /**< The main music volume. */
+    float itsEffectsVolume;             /**< The sound effects volume. */
 
 signals:
     /**
@@ -99,15 +134,6 @@ signals:
      */
     void musicFinished();
 
-private:
-    QSoundEffect* jumpEffect;           /**< The jump sound effect object. */
-    QSoundEffect* mainMusic;            /**< The main music sound effect object. */
-    QSoundEffect* deathMusic;           /**< The death music sound effect object. */
-    QSoundEffect* winMusic;             /**< The win music sound effect object. */
-    QSoundEffect* menuMusic;            /**< The menu music sound effect object. */
-    QSoundEffect* levelPassedMusic;     /**< The level passed music sound effect object. */
-    float itsVolume;                    /**< The main music volume. */
-    float itsEffectsVolume;             /**< The sound effects volume. */
 };
 
 #endif // SOUNDMANAGER_H

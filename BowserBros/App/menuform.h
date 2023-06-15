@@ -74,6 +74,8 @@ signals:
      */
     void podiumButtonClicked();
 
+    void trainingButtonClicked();
+
     void soundSettingsButtonClicked();
 
 private:

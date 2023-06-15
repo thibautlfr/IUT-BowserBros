@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 3.0</span>
+   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 4.0</span>
    </div>
    <div id="projectbrief">Jeu de plateforme du style Mario Bros implémenté en C++ avec Qt Creator</div>
   </td>
@@ -97,6 +97,10 @@ Signals</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>finished</b> ()</td></tr>
 <tr class="memdesc:a2598a9224dba0c2f6e48dc1ee5c02343"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the user has finished with the sound settings. <br /></td></tr>
 <tr class="separator:a2598a9224dba0c2f6e48dc1ee5c02343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81702d893478fdbc0001a70ad0b62436"><td class="memItemLeft" align="right" valign="top"><a id="a81702d893478fdbc0001a70ad0b62436" name="a81702d893478fdbc0001a70ad0b62436"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>restarted</b> ()</td></tr>
+<tr class="memdesc:a81702d893478fdbc0001a70ad0b62436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the user wants to restart the game (if it was paused). <br /></td></tr>
+<tr class="separator:a81702d893478fdbc0001a70ad0b62436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -107,6 +111,20 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~SoundSettingsForm</b> ()</td></tr>
 <tr class="memdesc:a779ffc7039d803a8f31ea1dfe33c6a7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="class_sound_settings_form.html" title="The SoundSettingsForm class represents a form for sound settings.">SoundSettingsForm</a> object. <br /></td></tr>
 <tr class="separator:a779ffc7039d803a8f31ea1dfe33c6a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b8cb6b904b54e77bb4c91e0c03f396c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound_settings_form.html#a7b8cb6b904b54e77bb4c91e0c03f396c">setIsOnPaused</a> (bool newIsOnPaused)</td></tr>
+<tr class="memdesc:a7b8cb6b904b54e77bb4c91e0c03f396c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the paused state of the game.  <br /></td></tr>
+<tr class="separator:a7b8cb6b904b54e77bb4c91e0c03f396c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a508fd995db5ac568976a7216681b898d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound_settings_form.html#a508fd995db5ac568976a7216681b898d">getIsOnPaused</a> () const</td></tr>
+<tr class="memdesc:a508fd995db5ac568976a7216681b898d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the paused state of the game.  <br /></td></tr>
+<tr class="separator:a508fd995db5ac568976a7216681b898d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46c0f71a8bdcd01902240df8f8511726"><td class="memItemLeft" align="right" valign="top"><a id="a46c0f71a8bdcd01902240df8f8511726" name="a46c0f71a8bdcd01902240df8f8511726"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>saveSettings</b> ()</td></tr>
+<tr class="memdesc:a46c0f71a8bdcd01902240df8f8511726"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the sound settings to a file. <br /></td></tr>
+<tr class="separator:a46c0f71a8bdcd01902240df8f8511726"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a625a3c0a8518b2a8c25c313e2ccae74c"><td class="memItemLeft" align="right" valign="top"><a id="a625a3c0a8518b2a8c25c313e2ccae74c" name="a625a3c0a8518b2a8c25c313e2ccae74c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loadSettings</b> ()</td></tr>
+<tr class="memdesc:a625a3c0a8518b2a8c25c313e2ccae74c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the sound settings from a file. <br /></td></tr>
+<tr class="separator:a625a3c0a8518b2a8c25c313e2ccae74c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -120,8 +138,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a379f0061039a23baa1678b3a72cf3bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a551b04ef84fdca023a90bb561d7965d0"><td class="memItemLeft" align="right" valign="top">QImage&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound_settings_form.html#a551b04ef84fdca023a90bb561d7965d0">itsBowser</a></td></tr>
 <tr class="separator:a551b04ef84fdca023a90bb561d7965d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22c82501d844a8abf6114499965e8494"><td class="memItemLeft" align="right" valign="top"><a id="a22c82501d844a8abf6114499965e8494" name="a22c82501d844a8abf6114499965e8494"></a>
-QLabel *&#160;</td><td class="memItemRight" valign="bottom"><b>itsTitle</b></td></tr>
+<tr class="memitem:a22c82501d844a8abf6114499965e8494"><td class="memItemLeft" align="right" valign="top">QLabel *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound_settings_form.html#a22c82501d844a8abf6114499965e8494">itsTitle</a></td></tr>
 <tr class="separator:a22c82501d844a8abf6114499965e8494"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -167,6 +184,53 @@ QLabel *&#160;</td><td class="memItemRight" valign="bottom"><b>itsTitle</b></td>
   <table class="params">
     <tr><td class="paramname">parent</td><td>The parent widget (default is nullptr). </td></tr>
     <tr><td class="paramname">soundMenuManager</td><td>The sound manager object for menu sounds (default is nullptr). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a508fd995db5ac568976a7216681b898d" name="a508fd995db5ac568976a7216681b898d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a508fd995db5ac568976a7216681b898d">&#9670;&#160;</a></span>getIsOnPaused()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SoundSettingsForm::getIsOnPaused </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the paused state of the game. </p>
+<dl class="section return"><dt>Returns</dt><dd>The paused state of the game. </dd></dl>
+
+</div>
+</div>
+<a id="a7b8cb6b904b54e77bb4c91e0c03f396c" name="a7b8cb6b904b54e77bb4c91e0c03f396c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b8cb6b904b54e77bb4c91e0c03f396c">&#9670;&#160;</a></span>setIsOnPaused()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SoundSettingsForm::setIsOnPaused </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>newIsOnPaused</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the paused state of the game. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newIsOnPaused</td><td>The new paused state of the game. </td></tr>
   </table>
   </dd>
 </dl>
@@ -231,6 +295,21 @@ QLabel *&#160;</td><td class="memItemRight" valign="bottom"><b>itsTitle</b></td>
       </table>
 </div><div class="memdoc">
 <p>The <a class="el" href="class_mario.html" title="Represents the player character Mario. The Mario class represents the player character in the game....">Mario</a> image of the scoreboard form. </p>
+
+</div>
+</div>
+<a id="a22c82501d844a8abf6114499965e8494" name="a22c82501d844a8abf6114499965e8494"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c82501d844a8abf6114499965e8494">&#9670;&#160;</a></span>itsTitle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QLabel* SoundSettingsForm::itsTitle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The title label of the sound settings form. </p>
 
 </div>
 </div>

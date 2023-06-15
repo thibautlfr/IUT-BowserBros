@@ -44,37 +44,10 @@ public:
      */
     Entity(float x, float y, string asset);
 
-    // --------------------------------------------------------------------------------------------
-
     /**
-      * @brief Returns the y-coordinate of the entity's position.
-      * @return The y-coordinate of the entity's position.
+     * @brief Destructor for entity
      */
-    float getItsY();
-
-    /**
-      * @brief Returns the x-coordinate of the entity's position.
-      * @return The x-coordinate of the entity's position.
-     */
-    float getItsX();
-
-    /**
-      * @brief Returns the speed of the entity along the y-axis.
-      * @return The speed of the entity along the y-axis.
-     */
-    float getYSpeed();
-
-    /**
-      * @brief Returns the speed of the entity along the x-axis.
-      * @return The speed of the entity along the x-axis.
-    */
-    float getXSpeed();
-
-    /**
-      * @brief Returns the bounding rectangle of the entity.
-      * @return The bounding rectangle of the entity.
-     */
-    QRect getItsRect();
+    virtual ~Entity();
 
     // --------------------------------------------------------------------------------------------
 
@@ -107,6 +80,50 @@ public:
       * @param newAssetPath The new asset file path for the entity's image.
      */
     void setItsImage(string newAssetPath);
+
+    /**
+     * @brief Set the attribute onPlatform
+     * @param onPlatform : boolean
+     */
+    virtual void setOnPlatform(bool onPlatform);
+
+    // --------------------------------------------------------------------------------------------
+
+    /**
+      * @brief Returns the y-coordinate of the entity's position.
+      * @return The y-coordinate of the entity's position.
+     */
+    float getItsY();
+
+    /**
+      * @brief Returns the x-coordinate of the entity's position.
+      * @return The x-coordinate of the entity's position.
+     */
+    float getItsX();
+
+    /**
+      * @brief Returns the speed of the entity along the y-axis.
+      * @return The speed of the entity along the y-axis.
+     */
+    float getYSpeed();
+
+    /**
+      * @brief Returns the speed of the entity along the x-axis.
+      * @return The speed of the entity along the x-axis.
+    */
+    float getXSpeed();
+
+    /**
+      * @brief Returns the bounding rectangle of the entity.
+      * @return The bounding rectangle of the entity.
+     */
+    QRect getItsRect();
+
+    /**
+     * @brief Getter for the onPlatform attribute
+     * @return
+     */
+    virtual bool getOnPlatform();
 
     // --------------------------------------------------------------------------------------------
 

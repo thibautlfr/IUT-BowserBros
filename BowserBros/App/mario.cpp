@@ -15,6 +15,8 @@ Mario::Mario(float x, float y, string asset) :
     itsImage.load(QString::fromStdString(asset));
 }
 
+// ------------------------------------------------------------------
+
 void Mario::jump()
 {
     itsYSpeed = itsJumpSpeed;
@@ -57,7 +59,6 @@ void Mario::updateAsset(int timeElapsed)
     }
     itsRect = itsImage.rect();
 }
-
 
 bool Mario::getOnPlatform()
 {

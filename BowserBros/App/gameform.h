@@ -20,7 +20,10 @@
 #include "soundmanager.h"
 #include "mario.h"
 #include "bowser.h"
+#include "goomba.h"
+#include "koopa.h"
 #include "element.h"
+
 using namespace std;
 namespace Ui {
 class GameForm;
@@ -41,7 +44,7 @@ public:
       * @brief Constructs a GameForm object.
       * @param parent The parent QWidget object.
      */
-    explicit GameForm(QWidget *parent = 0);
+    explicit GameForm(int level, int availableLevelsNb, QWidget *parent = nullptr);
 
     /**
       * @brief Destructs the GameForm object.
@@ -74,9 +77,58 @@ public:
     void checkCollisionFireBalls();
 
     /**
+     * @brief Check for the goombas collisions
+     */
+    void checkGoombasCollision();
+
+    /**
+     * @brief Checks for the koopas collisions
+     */
+    void checkKoopasCollision();
+
+    /**
+     * @brief Checks the collisions between the floor and an entity
+     * @param anEntity : the entity we want to verify
+     */
+    void checkFloorCollision(Entity * anEntity);
+
+    // ----------------------------------------------------------------------------------------------
+
+    /**
+     * @brief Checks the collisions between an entity and the blocks near theme
+     * @param anEntity : the entity we want to verify
+     * @param nearlyBlocks : the blocks near the entity
+     */
+    void checkPlatformCollision(Entity * anEntity, vector<Element*> nearlyBlocks);
+
+    /**
+     * @brief Checks if an entity is on a block and the collisions associated
+     * @param anEntity : the entity we want to verify
+     * @param nearlyBlocks : the blocks near the entity
+     * @return true if the entity is on a block and false either
+     */
+    bool checkEntityOnBlocks(Entity * anEntity, vector<Element*> nearlyBlocks);
+
+    /**
+     * @brief Checks if an entity is on the floor and the collisions associated
+     * @param anEntity : the entity we want to verify
+     * @param nearlyBlocks : the blocks near the entity
+     * @return true if the entity is on the floor and false either
+     */
+    bool checkEntityOnFloor(Entity * anEntity, vector<Element*> nearlyBlocks);
+
+    /**
+     * @brief Gets the blocks near an entity
+     * @param anEntity : the entity we want to check
+     * @return
+     */
+    vector<Element*> getNearlyBlocks(Entity * anEntity);
+
+    /**
      * @brief Checks for collisions with ladders.
      */
     void checkLadderCollision();
+
     // --------------------------------------------------------------------------------------------
 
     /**
@@ -96,6 +148,13 @@ public:
     void updateFireBalls();
 
     /**
+     * @brief Replaces and deletes actors in the game.
+     */
+    void replaceAndDeleteActors();
+
+    // --------------------------------------------------------------------------------------------
+
+    /**
       * @brief Loads a specific level.
      */
     void loadLevel();
@@ -105,9 +164,24 @@ public:
      */
     void displayChrono();
 
+    /**
+     * @brief Getter for the SoundManager object.
+     * @return A pointer to the SoundManager object.
+     */
     SoundManager* getSoundManager() const;
 
+    /**
+     * @brief Sets the volume of the SoundManager.
+     * @param menuSoundManager A pointer to the SoundManager object.
+     */
     void setVolume(SoundManager *menuSoundManager);
+
+    /**
+     * @brief Sets the flag indicating if the game is currently running.
+     * @param newIsOnGamed Flag indicating if the game is currently running.
+     */
+    void setIsOnGamed(bool newIsOnGamed);
+
 
 public slots:
     /**
@@ -136,6 +210,11 @@ signals:
     */
     void gameWon(int elapsedTime);
 
+    /**
+      * @brief Signal emitted when the game is paused.
+    */
+    void gamePaused();
+
 
 private:
 
@@ -152,6 +231,8 @@ private:
 
     Mario *itsCharacter; /**< The player character. */
     Bowser *itsBoss; /**< The boss character. */
+    vector<Goomba*> itsGoombas;
+    vector<Koopa*> itsKoopas;
     Element *itsFloor; /**< The floor element. */
     Element *itsChest; /**< The chest element. */
 
@@ -160,20 +241,26 @@ private:
     QImage itsBackground; /**< The background image. */
     QImage leftArrow; /**< The left arrow image for player help. */
     QImage rightArrow; /**< The right arrow image for player help. */
+    QImage upArrow;
     QImage chestArrow; /**< The chest arrow image for player help. */
     QImage spaceBar; /**< The space bar image for player help. */
 
     // --------------------------------------------------------------------------------------------
 
 
-    QScrollArea *itsScrollArea; /**< The scroll area for the game. */
-    QTimer *itsTimer; /**< The timer for the game loop. */
+    QScrollArea * itsScrollArea; /**< The scroll area for the game. */
+    QTimer * itsTimer; /**< The timer for the game loop. */
+
     QTimer * marioTimer; /**< The timer for the mario animation death */
     list<Element*> itsBlocks; /**< The list of blocks in the game. */
     list<Element*> itsLadders; /**< The list of ladders in the game. */
-    SoundManager *soundManager; /**< Attribute used to mange sounds during the game */
-    float itsVolumesGen;
-    float itsVolumesEffect;
+
+    SoundManager * soundManager; /**< Attribute used to mange sounds during the game */
+    float itsVolumesGen; /**< The general volume level. */
+    float itsVolumesEffect; /**< The effects volume level. */
+
+    bool isOnGamed; /**< Flag indicating if the game is currently running. */
+    bool trainingMode; /**< Flag indicating if the game is in training mode. */
 
     // --------------------------------------------------------------------------------------------
 

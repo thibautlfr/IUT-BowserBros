@@ -30,6 +30,8 @@ public:
      */
     Mario(float x, float y, int width, int height);
 
+    //~Mario();
+
     /**
       * @brief Constructs a Mario object.
       * @param x The initial x-coordinate of Mario.
@@ -78,6 +80,7 @@ public:
       * @brief Makes Mario jump.
      */
     void jump();
+
     /**
       * @brief Updates the asset of Mario based on the elapsed time.
       * @param timeElapsed The elapsed time since the last update.

@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 3.0</span>
+   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 4.0</span>
    </div>
    <div id="projectbrief">Jeu de plateforme du style Mario Bros implémenté en C++ avec Qt Creator</div>
   </td>
@@ -89,7 +89,13 @@ $(function() {
 <li>checkBowserCollision()&#160;:&#160;<a class="el" href="class_game_form.html#a23b137c85d4bae5c8e2b07ce270abb7d">GameForm</a></li>
 <li>checkCharacterCollision()&#160;:&#160;<a class="el" href="class_game_form.html#a527a1f3aa5c4115f25a0724a50068866">GameForm</a></li>
 <li>checkCollisionFireBalls()&#160;:&#160;<a class="el" href="class_game_form.html#a085119e87e8f5220a3da2a2311b1ed71">GameForm</a></li>
+<li>checkEntityOnBlocks()&#160;:&#160;<a class="el" href="class_game_form.html#ad6d93e4d44c60119a2b09df5e3c9c5f8">GameForm</a></li>
+<li>checkEntityOnFloor()&#160;:&#160;<a class="el" href="class_game_form.html#ab0b63df1a46259c80cc13615afb9efd6">GameForm</a></li>
+<li>checkFloorCollision()&#160;:&#160;<a class="el" href="class_game_form.html#a480874c21e56226220b722dbf20cb813">GameForm</a></li>
+<li>checkGoombasCollision()&#160;:&#160;<a class="el" href="class_game_form.html#a918be215e051587649d55edb665954e0">GameForm</a></li>
+<li>checkKoopasCollision()&#160;:&#160;<a class="el" href="class_game_form.html#ab9d13d0536ba78df3a019c09addc8ed2">GameForm</a></li>
 <li>checkLadderCollision()&#160;:&#160;<a class="el" href="class_game_form.html#a86a54c36711a791e5ccbf348a9765016">GameForm</a></li>
+<li>checkPlatformCollision()&#160;:&#160;<a class="el" href="class_game_form.html#acc9d0879330d5fe255e556a1a53d2c76">GameForm</a></li>
 </ul>
 
 
@@ -115,44 +121,49 @@ $(function() {
 
 
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
-<li>GameForm()&#160;:&#160;<a class="el" href="class_game_form.html#a9f4418060b0102494713e7ce629f8bb6">GameForm</a></li>
+<li>GameForm()&#160;:&#160;<a class="el" href="class_game_form.html#ab8005376e6c481bc23128d7fc30520ef">GameForm</a></li>
 <li>gameloop()&#160;:&#160;<a class="el" href="class_game_form.html#a91c7ea0d51aa02f436f5fcbc04833950">GameForm</a></li>
 <li>gameLosed()&#160;:&#160;<a class="el" href="class_game_form.html#a68a3bb229c812702fd5d2475f6851ea7">GameForm</a></li>
+<li>gamePaused()&#160;:&#160;<a class="el" href="class_game_form.html#a55d27f58f7b68c1d1438b1c5b0a49495">GameForm</a></li>
 <li>gameWon()&#160;:&#160;<a class="el" href="class_game_form.html#a324273bd6ab9b281af55427c219d2d3d">GameForm</a></li>
 <li>getEffectsVolume()&#160;:&#160;<a class="el" href="class_sound_manager.html#a55ab79b04aa6cca287e89aa9a476d5e8">SoundManager</a></li>
 <li>getFilePath()&#160;:&#160;<a class="el" href="class_score_board.html#a6646a7b4d903c46158a192d2a078eaf4">ScoreBoard</a></li>
-<li>getIsDead()&#160;:&#160;<a class="el" href="class_mario.html#aadc75d3cd6c05cd664b5a9e39b65e27d">Mario</a></li>
+<li>getIsDead()&#160;:&#160;<a class="el" href="class_goomba.html#a50b4841836cd48b3643115d2e25093ee">Goomba</a>, <a class="el" href="class_koopa.html#a7763a50610b0f99661c1a023847e2e60">Koopa</a>, <a class="el" href="class_mario.html#aadc75d3cd6c05cd664b5a9e39b65e27d">Mario</a></li>
+<li>getIsOnPaused()&#160;:&#160;<a class="el" href="class_sound_settings_form.html#a508fd995db5ac568976a7216681b898d">SoundSettingsForm</a></li>
 <li>getItsFireBalls()&#160;:&#160;<a class="el" href="class_bowser.html#adc115b644cc74011ddc863bffa884232">Bowser</a></li>
 <li>getItsRect()&#160;:&#160;<a class="el" href="class_entity.html#a38553a2451e4963a279129fa10264cb4">Entity</a>, <a class="el" href="class_fire_ball.html#a7b64931c629c8c922a8a2686c279ec1a">FireBall</a></li>
 <li>getItsType()&#160;:&#160;<a class="el" href="class_element.html#a2da0510fbd3201053761860560a43847">Element</a></li>
 <li>getItsX()&#160;:&#160;<a class="el" href="class_element.html#a451c6f70dd053564c8a1026285dfdbf6">Element</a>, <a class="el" href="class_entity.html#aa0c849c1529ca6c0dde810e5c0741c35">Entity</a></li>
 <li>getItsY()&#160;:&#160;<a class="el" href="class_element.html#abf0c640bbb8fb27066aa36f0cb8fe2e2">Element</a>, <a class="el" href="class_entity.html#a4c7bd3bd447928ae871833b749fb9dcd">Entity</a></li>
+<li>getNearlyBlocks()&#160;:&#160;<a class="el" href="class_game_form.html#ae3a35e3848928630295a70be20b42f69">GameForm</a></li>
 <li>getOnLadder()&#160;:&#160;<a class="el" href="class_mario.html#aeff3daaa6c194a6fd71fc7226ffabd48">Mario</a></li>
-<li>getOnPlatform()&#160;:&#160;<a class="el" href="class_mario.html#a92dc681fb1bb688a9ed0662aef312e72">Mario</a></li>
+<li>getOnPlatform()&#160;:&#160;<a class="el" href="class_entity.html#a3082eb8fe1b3fc5afdc3562007b4aa74">Entity</a>, <a class="el" href="class_goomba.html#a0d8852fa79586fa54bc3a053e86edaf1">Goomba</a>, <a class="el" href="class_koopa.html#a8012d6bc76f1e2cb9b39ad5596322865">Koopa</a>, <a class="el" href="class_mario.html#a92dc681fb1bb688a9ed0662aef312e72">Mario</a></li>
 <li>getRect()&#160;:&#160;<a class="el" href="class_element.html#a791d0c61e750ae88890db269437a7398">Element</a></li>
 <li>getScrollArea()&#160;:&#160;<a class="el" href="class_game_form.html#a2dbb54a96ca9be0c91db5c1b5bc0c3bc">GameForm</a></li>
+<li>getSoundManager()&#160;:&#160;<a class="el" href="class_game_form.html#a0c03d54e8c467d3eb561bc1a741d6495">GameForm</a></li>
 <li>getTopPlayers()&#160;:&#160;<a class="el" href="class_score_board.html#aa030b3eda0158df0ddf02ba43352f0d6">ScoreBoard</a></li>
 <li>getVolume()&#160;:&#160;<a class="el" href="class_sound_manager.html#a57a087855912dc7fb37a0c54d95346e2">SoundManager</a></li>
 <li>getXSpeed()&#160;:&#160;<a class="el" href="class_entity.html#a86c9d6debe5cef873e9bb2807cae4125">Entity</a></li>
 <li>getYSpeed()&#160;:&#160;<a class="el" href="class_element.html#afca529aab9f253870c961e96096f456e">Element</a>, <a class="el" href="class_entity.html#adad018778998318bb083da987536c932">Entity</a></li>
+<li>Goomba()&#160;:&#160;<a class="el" href="class_goomba.html#aeb9501b66a3018e10133725374a0eeda">Goomba</a></li>
 </ul>
 
 
 <h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
 <li>intersect()&#160;:&#160;<a class="el" href="class_mario.html#a4aa96bb8f6d098098a5ea175364ad085">Mario</a></li>
-<li>itsBackground&#160;:&#160;<a class="el" href="class_menu_form.html#ab337166203f67e366b13820d3736f3f6">MenuForm</a>, <a class="el" href="class_scoreboard_form.html#a24c5786cc92599d6805ce81042ed5aa9">ScoreboardForm</a>, <a class="el" href="class_sound_settings_form.html#ad52a09e0bab3f4b20e8274423bb7f464">SoundSettingsForm</a></li>
-<li>itsBowser&#160;:&#160;<a class="el" href="class_menu_form.html#a0ca014313d0eb5c638441276ce5008a3">MenuForm</a>, <a class="el" href="class_scoreboard_form.html#a68289fabaa74c47535578aad4b652167">ScoreboardForm</a>, <a class="el" href="class_sound_settings_form.html#a551b04ef84fdca023a90bb561d7965d0">SoundSettingsForm</a></li>
-<li>itsFloor&#160;:&#160;<a class="el" href="class_menu_form.html#a7e677d26c885317462d009e57af36b3e">MenuForm</a>, <a class="el" href="class_scoreboard_form.html#a252a765ed16233ac7b9ba78323913efe">ScoreboardForm</a>, <a class="el" href="class_sound_settings_form.html#a478f15994e682310862ed452648813a1">SoundSettingsForm</a></li>
+<li>itsBackground&#160;:&#160;<a class="el" href="class_menu_form.html#ab337166203f67e366b13820d3736f3f6">MenuForm</a>, <a class="el" href="class_scoreboard_form.html#a24c5786cc92599d6805ce81042ed5aa9">ScoreboardForm</a>, <a class="el" href="class_sound_settings_form.html#ad52a09e0bab3f4b20e8274423bb7f464">SoundSettingsForm</a>, <a class="el" href="class_training_form.html#a8cc86043a42edecc30602166ceb1966e">TrainingForm</a></li>
+<li>itsBowser&#160;:&#160;<a class="el" href="class_menu_form.html#a0ca014313d0eb5c638441276ce5008a3">MenuForm</a>, <a class="el" href="class_scoreboard_form.html#a68289fabaa74c47535578aad4b652167">ScoreboardForm</a>, <a class="el" href="class_sound_settings_form.html#a551b04ef84fdca023a90bb561d7965d0">SoundSettingsForm</a>, <a class="el" href="class_training_form.html#a5f8f40388edf61455050bf90381a8ee9">TrainingForm</a></li>
+<li>itsFloor&#160;:&#160;<a class="el" href="class_menu_form.html#a7e677d26c885317462d009e57af36b3e">MenuForm</a>, <a class="el" href="class_scoreboard_form.html#a252a765ed16233ac7b9ba78323913efe">ScoreboardForm</a>, <a class="el" href="class_sound_settings_form.html#a478f15994e682310862ed452648813a1">SoundSettingsForm</a>, <a class="el" href="class_training_form.html#adca6ac5033c28237290e22a26723e8f9">TrainingForm</a></li>
 <li>itsGameTitle&#160;:&#160;<a class="el" href="class_menu_form.html#a96679a536f3b4c4875ef0cd05efdd6a1">MenuForm</a></li>
 <li>itsImage&#160;:&#160;<a class="el" href="class_entity.html#ac8f5c15659ea04667f2e4280d570e088">Entity</a></li>
 <li>itsInstructionsLabel&#160;:&#160;<a class="el" href="class_scoreboard_form.html#a46508109b4cde0ebcd6c80e6df372ade">ScoreboardForm</a></li>
-<li>itsMario&#160;:&#160;<a class="el" href="class_menu_form.html#ab1518926630806b1d2d90d39caabfd07">MenuForm</a>, <a class="el" href="class_scoreboard_form.html#ab283e831c146b88f2db29d1df7ed997a">ScoreboardForm</a>, <a class="el" href="class_sound_settings_form.html#a379f0061039a23baa1678b3a72cf3bd2">SoundSettingsForm</a></li>
+<li>itsMario&#160;:&#160;<a class="el" href="class_menu_form.html#ab1518926630806b1d2d90d39caabfd07">MenuForm</a>, <a class="el" href="class_scoreboard_form.html#ab283e831c146b88f2db29d1df7ed997a">ScoreboardForm</a>, <a class="el" href="class_sound_settings_form.html#a379f0061039a23baa1678b3a72cf3bd2">SoundSettingsForm</a>, <a class="el" href="class_training_form.html#a68c20c0b27d4c2d38919e4924eada18a">TrainingForm</a></li>
 <li>itsPlayerTimeLabel&#160;:&#160;<a class="el" href="class_scoreboard_form.html#ac4035f51bbc68a5d192566c5232e6ae0">ScoreboardForm</a></li>
 <li>itsPseudoLineEdit&#160;:&#160;<a class="el" href="class_scoreboard_form.html#a8dcaeb202c8a039ff6289f1484938138">ScoreboardForm</a></li>
 <li>itsRankingTable&#160;:&#160;<a class="el" href="class_scoreboard_form.html#a93fd3bec78706236f748e67a65140dc6">ScoreboardForm</a></li>
 <li>itsRect&#160;:&#160;<a class="el" href="class_entity.html#a30c27b56869648d8d59d2a6a4f52b2fb">Entity</a></li>
 <li>itsScoreBoard&#160;:&#160;<a class="el" href="class_scoreboard_form.html#a0bd5280a553858578cc0adc4760dc4d8">ScoreboardForm</a></li>
-<li>itsTitle&#160;:&#160;<a class="el" href="class_scoreboard_form.html#a2468682593788a4b0663519fd647336e">ScoreboardForm</a></li>
+<li>itsTitle&#160;:&#160;<a class="el" href="class_scoreboard_form.html#a2468682593788a4b0663519fd647336e">ScoreboardForm</a>, <a class="el" href="class_sound_settings_form.html#a22c82501d844a8abf6114499965e8494">SoundSettingsForm</a></li>
 <li>itsX&#160;:&#160;<a class="el" href="class_entity.html#a996440af8e9edf9475eae8fcc07413cf">Entity</a></li>
 <li>itsXSpeed&#160;:&#160;<a class="el" href="class_entity.html#a4fcab160674d29af76f8f01aeb786277">Entity</a></li>
 <li>itsY&#160;:&#160;<a class="el" href="class_entity.html#aee9b8509d9ec5d40df774f8d224c98ea">Entity</a></li>
@@ -165,14 +176,26 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_k" name="index_k"></a>- k -</h3><ul>
+<li>Koopa()&#160;:&#160;<a class="el" href="class_koopa.html#ae98b50796ab7463f9317bfe3e4c1e0c6">Koopa</a></li>
+</ul>
+
+
 <h3><a id="index_l" name="index_l"></a>- l -</h3><ul>
+<li>level1ButtonClicked()&#160;:&#160;<a class="el" href="class_training_form.html#ace6cf988ccec843d6774cef91a278207">TrainingForm</a></li>
+<li>level2ButtonClicked()&#160;:&#160;<a class="el" href="class_training_form.html#a2a4dfe6503106acf0fcb1c4437f0d7b5">TrainingForm</a></li>
+<li>level3ButtonClicked()&#160;:&#160;<a class="el" href="class_training_form.html#aae699cfafb86e0c6ed7f539074bc6800">TrainingForm</a></li>
+<li>level4ButtonClicked()&#160;:&#160;<a class="el" href="class_training_form.html#a30fe2e9a10f4b4232f59167f0d29a45f">TrainingForm</a></li>
+<li>level5ButtonClicked()&#160;:&#160;<a class="el" href="class_training_form.html#a63dc72e56ce990a7a4c9e2ba996c025c">TrainingForm</a></li>
+<li>levelSelected()&#160;:&#160;<a class="el" href="class_training_form.html#a00b5fe1a4b2db145a6297ad6a462ee7c">TrainingForm</a></li>
 <li>loadLevel()&#160;:&#160;<a class="el" href="class_game_form.html#a84f3d4616130ad4b319be532eff8c95a">GameForm</a></li>
+<li>loadSettings()&#160;:&#160;<a class="el" href="class_sound_settings_form.html#a625a3c0a8518b2a8c25c313e2ccae74c">SoundSettingsForm</a></li>
 </ul>
 
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>Mario()&#160;:&#160;<a class="el" href="class_mario.html#ab95512785b18f8be80facfcae0894efb">Mario</a></li>
-<li>menuButtonClicked()&#160;:&#160;<a class="el" href="class_scoreboard_form.html#a8ceb99b236bd7c13ce8bedc860d035db">ScoreboardForm</a></li>
+<li>menuButtonClicked()&#160;:&#160;<a class="el" href="class_scoreboard_form.html#a8ceb99b236bd7c13ce8bedc860d035db">ScoreboardForm</a>, <a class="el" href="class_training_form.html#a65c12ffc8827a291f56b969511d4594b">TrainingForm</a></li>
 <li>MenuForm()&#160;:&#160;<a class="el" href="class_menu_form.html#acaab5223ef7986a0e55157632db86265">MenuForm</a></li>
 <li>menuSoundManager&#160;:&#160;<a class="el" href="class_sound_settings_form.html#ad818ed53d1fe5e283e49352680414180">SoundSettingsForm</a></li>
 <li>musicFinished()&#160;:&#160;<a class="el" href="class_sound_manager.html#a4294cbd9c215a38aaa396a913e0b2611">SoundManager</a></li>
@@ -183,9 +206,11 @@ $(function() {
 <li>paintPlayerHelps()&#160;:&#160;<a class="el" href="class_game_form.html#a8386c0313181b8b39549e5c53490c943">GameForm</a></li>
 <li>playButtonClicked()&#160;:&#160;<a class="el" href="class_menu_form.html#a5b6a1433f9bc85f8802f8d7a37c9d547">MenuForm</a></li>
 <li>playDeathMusic()&#160;:&#160;<a class="el" href="class_sound_manager.html#a8b60e29894d21df2c2e48f898d6e0da7">SoundManager</a></li>
+<li>playEnnemyDeathEffect()&#160;:&#160;<a class="el" href="class_sound_manager.html#acd3db7f0787c1f9376053f48f6b4b73f">SoundManager</a></li>
 <li>playerName&#160;:&#160;<a class="el" href="class_scoreboard_form.html#ad9c82b9ac268df2ce307c949e8f43f88">ScoreboardForm</a></li>
 <li>playerScore&#160;:&#160;<a class="el" href="class_scoreboard_form.html#a8780542afcba7f07969a240c93714724">ScoreboardForm</a></li>
 <li>playJumpEffect()&#160;:&#160;<a class="el" href="class_sound_manager.html#a731e77036e5dff6dc7e200bbae94631d">SoundManager</a></li>
+<li>playKoopaBumpEffect()&#160;:&#160;<a class="el" href="class_sound_manager.html#a5363bac6e9603804072ec798cdce5b3c">SoundManager</a></li>
 <li>playLevelPassedMusic()&#160;:&#160;<a class="el" href="class_sound_manager.html#afef8416d8ded26f6b597d50d6549b899">SoundManager</a></li>
 <li>playMainMusic()&#160;:&#160;<a class="el" href="class_sound_manager.html#a773c01a5cadf25de0b31f0ae90ba2ed2">SoundManager</a></li>
 <li>playMenuMusic()&#160;:&#160;<a class="el" href="class_sound_manager.html#ac8dae0514bc7f73779bbb8ada97d64b7">SoundManager</a></li>
@@ -201,23 +226,29 @@ $(function() {
 
 
 <h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<li>replaceAndDeleteActors()&#160;:&#160;<a class="el" href="class_game_form.html#a8a4727331df62ac6caa0ba815ced8c79">GameForm</a></li>
+<li>restarted()&#160;:&#160;<a class="el" href="class_sound_settings_form.html#a81702d893478fdbc0001a70ad0b62436">SoundSettingsForm</a></li>
 <li>reverseXSpeed()&#160;:&#160;<a class="el" href="class_entity.html#a97c9f08ae564416ec74f43b45077e324">Entity</a></li>
 <li>reverseYSpeed()&#160;:&#160;<a class="el" href="class_entity.html#a8609b50d53decd1f099bad8c31008c94">Entity</a></li>
 </ul>
 
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
+<li>saveSettings()&#160;:&#160;<a class="el" href="class_sound_settings_form.html#a46c0f71a8bdcd01902240df8f8511726">SoundSettingsForm</a></li>
 <li>ScoreBoard()&#160;:&#160;<a class="el" href="class_score_board.html#a7d0760d6ff5bd6440dd682a016db31e3">ScoreBoard</a></li>
 <li>ScoreboardForm()&#160;:&#160;<a class="el" href="class_scoreboard_form.html#a569c63f1a18444edbef5ae51a471a2f7">ScoreboardForm</a></li>
 <li>setEffectsVolume()&#160;:&#160;<a class="el" href="class_sound_manager.html#af95dee12918f0f17f13349e7276ef874">SoundManager</a></li>
-<li>setIsDead()&#160;:&#160;<a class="el" href="class_mario.html#a36d1bff03c7fd0d8662ee708cfd60f17">Mario</a></li>
+<li>setIsDead()&#160;:&#160;<a class="el" href="class_goomba.html#a107e4f2e03d5b7593437a32246b224d2">Goomba</a>, <a class="el" href="class_koopa.html#acd3b054923c0c2452f4eb245b1ce2971">Koopa</a>, <a class="el" href="class_mario.html#a36d1bff03c7fd0d8662ee708cfd60f17">Mario</a></li>
+<li>setIsOnGamed()&#160;:&#160;<a class="el" href="class_game_form.html#a4f2d648fe2bee22458c78bd890f12190">GameForm</a></li>
+<li>setIsOnPaused()&#160;:&#160;<a class="el" href="class_sound_settings_form.html#a7b8cb6b904b54e77bb4c91e0c03f396c">SoundSettingsForm</a></li>
 <li>setItsImage()&#160;:&#160;<a class="el" href="class_entity.html#a9bd1559414607eef261997bf69de63e9">Entity</a></li>
 <li>setItsX()&#160;:&#160;<a class="el" href="class_entity.html#a42afe2a0c04394db1f026f46430fee3e">Entity</a></li>
 <li>setItsY()&#160;:&#160;<a class="el" href="class_entity.html#ac8cb9f36ba2c8f8ca112556beeacfca0">Entity</a></li>
 <li>setMainVolume()&#160;:&#160;<a class="el" href="class_sound_manager.html#ae2e4a99846c45f72c41f7f96c89c5a2a">SoundManager</a></li>
 <li>setOnLadder()&#160;:&#160;<a class="el" href="class_mario.html#a7083b53e26e0d54227da5556bf381e56">Mario</a></li>
-<li>setOnPlatform()&#160;:&#160;<a class="el" href="class_mario.html#a0801c2edd426c94b35f1e8817c6ab91d">Mario</a></li>
+<li>setOnPlatform()&#160;:&#160;<a class="el" href="class_entity.html#a252505d876878e6be6c4364ed1be67f9">Entity</a>, <a class="el" href="class_goomba.html#a68155423450aad667534841dec646359">Goomba</a>, <a class="el" href="class_koopa.html#ac3702af58db4d3cc3aad9fe8c81fabfd">Koopa</a>, <a class="el" href="class_mario.html#a0801c2edd426c94b35f1e8817c6ab91d">Mario</a></li>
 <li>setSettingsTable()&#160;:&#160;<a class="el" href="class_scoreboard_form.html#ad4bfe344a4b41620c9b429c64aa683b0">ScoreboardForm</a></li>
+<li>setVolume()&#160;:&#160;<a class="el" href="class_game_form.html#aea83ccc4ab2540668f5efc22c5b02580">GameForm</a></li>
 <li>setXSpeed()&#160;:&#160;<a class="el" href="class_entity.html#a6a99fc0394e8c99e3f2ab626c2da2767">Entity</a></li>
 <li>setYSpeed()&#160;:&#160;<a class="el" href="class_entity.html#a6409ad44a9b174490083dabee12f1025">Entity</a></li>
 <li>soundManager&#160;:&#160;<a class="el" href="class_menu_form.html#a9553b4a3edae3991bb8cf1faf75c4a67">MenuForm</a></li>
@@ -230,7 +261,7 @@ $(function() {
 
 
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
-<li>updateAsset()&#160;:&#160;<a class="el" href="class_mario.html#af98b58d0ae7ffbd220bbfdab43ec74dc">Mario</a></li>
+<li>updateAsset()&#160;:&#160;<a class="el" href="class_goomba.html#a37c7103bc9be2736b995839c092fa8a5">Goomba</a>, <a class="el" href="class_koopa.html#a143ae67136bc27ca4cf2878dd5dc2164">Koopa</a>, <a class="el" href="class_mario.html#af98b58d0ae7ffbd220bbfdab43ec74dc">Mario</a></li>
 <li>updateFireBalls()&#160;:&#160;<a class="el" href="class_game_form.html#aa6bc375695665688925ed87bbbc005ba">GameForm</a></li>
 <li>updateScroll()&#160;:&#160;<a class="el" href="class_game_form.html#aab9cda161194e2f0013fd61cdd76fafa">GameForm</a></li>
 </ul>
@@ -243,6 +274,7 @@ $(function() {
 
 <h3><a id="index__7E" name="index__7E"></a>- ~ -</h3><ul>
 <li>~Bowser()&#160;:&#160;<a class="el" href="class_bowser.html#a12a1ac2920cf067f9466ce7e9261bf7e">Bowser</a></li>
+<li>~Entity()&#160;:&#160;<a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">Entity</a></li>
 <li>~GameForm()&#160;:&#160;<a class="el" href="class_game_form.html#a9a68a99923b27abccde9562cf43a5195">GameForm</a></li>
 <li>~MenuForm()&#160;:&#160;<a class="el" href="class_menu_form.html#ab20e7f52b30cb65140d1b7a6a80a89e6">MenuForm</a></li>
 <li>~ScoreBoard()&#160;:&#160;<a class="el" href="class_score_board.html#a013e4595d35ab03d6f480c9388cc7b8a">ScoreBoard</a></li>

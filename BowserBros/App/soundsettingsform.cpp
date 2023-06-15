@@ -3,15 +3,16 @@
 #include "qpainter.h"
 #include "ui_soundsettingsform.h"
 
-
 #include <QFontDatabase>
 #include <QDebug>
+#include <QSettings>
+
 
 SoundSettingsForm::SoundSettingsForm(QWidget *parent,  SoundManager *soundMenuManager) :
     QWidget(parent),
     menuSoundManager(soundMenuManager),
-    ui(new Ui::SoundSettingsForm)
-
+    ui(new Ui::SoundSettingsForm),
+    settingsFile()
 {
     ui->setupUi(this);
 
@@ -34,6 +35,7 @@ SoundSettingsForm::SoundSettingsForm(QWidget *parent,  SoundManager *soundMenuMa
 
     // --------------------------------------------------------------------------------------------------------------------------------
 
+
     // Bouton menu
     QPixmap menuAsset(":/Assets/Assets/menu/menu.png");
     ui->finishedButton->setIcon(menuAsset);
@@ -41,7 +43,15 @@ SoundSettingsForm::SoundSettingsForm(QWidget *parent,  SoundManager *soundMenuMa
 
     connect(ui->finishedButton, &QPushButton::clicked, this, &SoundSettingsForm::finished);
 
+    // Bouton reprendre
+    QPixmap restartAsset(":/Assets/Assets/menu/restart.png");
+    ui->itsRestartButton->setIcon(restartAsset);
+    ui->itsRestartButton->setIconSize(QSize(200, 70));
+
+    connect(ui->itsRestartButton, &QPushButton::clicked, this, &::SoundSettingsForm::restarted);
+
     // --------------------------------------------------------------------------------------------------------------------------------
+
     // Créer l'effet d'ombre
     QGraphicsDropShadowEffect* shadowEffect = new QGraphicsDropShadowEffect;
     shadowEffect->setColor(Qt::black);
@@ -74,12 +84,22 @@ SoundSettingsForm::SoundSettingsForm(QWidget *parent,  SoundManager *soundMenuMa
     musicVolumeLabel->setStyleSheet("QLabel { color : rgb(223,178,73); }");
     effectsVolumeLabel->setStyleSheet("QLabel { color : rgb(223,178,73); }");
 
+    // --------------------------------------------------------------------------------------------------------------------------------
 
+    #if defined _WIN32
+        settingsFile.open("../../Settings/settings.txt", std::ios::in);
+    #elif defined(__LINUX__) || defined(__gnu_linux__) || defined(__linux__) || defined (__APPLE__)
+        settingsFile.open("../../../../../Settings/settings.txt", std::ios::in);
+    #endif
+
+    loadSettings();
 }
 
 
 SoundSettingsForm::~SoundSettingsForm()
 {
+    saveSettings();
+    delete itsTitle;
     delete ui;
 }
 
@@ -96,6 +116,16 @@ void SoundSettingsForm::on_effectsVolumeSlider_valueChanged(int value)
 
 void SoundSettingsForm::paintEvent(QPaintEvent *event)
 {
+    // Si on est en pause, on affiche le bouton pour reprendre, sinon on le cache
+    if(isOnPaused)
+    {
+        ui->itsRestartButton->show();
+    }
+    else
+    {
+        ui->itsRestartButton->hide();
+    }
+
     Q_UNUSED(event);
     QPainter * painter = new QPainter(this);
     painter->drawImage(0, 0, itsBackground);
@@ -138,3 +168,86 @@ void SoundSettingsForm::paintEvent(QPaintEvent *event)
     delete painter;
 }
 
+bool SoundSettingsForm::getIsOnPaused() const
+{
+    return isOnPaused;
+}
+
+void SoundSettingsForm::setIsOnPaused(bool newIsOnPaused)
+{
+    isOnPaused = newIsOnPaused;
+}
+
+// Méthode pour sauvegarder les paramètres
+void SoundSettingsForm::saveSettings()
+{
+    #if defined _WIN32
+        settingsFile.open("../../Settings/settings.txt", std::ios::out);
+    #elif defined(__LINUX__) || defined(__gnu_linux__) || defined(__linux__) || defined (__APPLE__)
+        settingsFile.open("../../../../../Settings/settings.txt", std::ios::out);
+    #endif
+
+    if (settingsFile.is_open())
+    {
+        // Convertir les valeurs des curseurs en chaînes de caractères
+        std::string line = std::to_string(ui->generalVolumeSlider->value()) + ';' + std::to_string(ui->effectsVolumeSlider->value());
+
+        // Écrire la ligne dans le fichier
+        settingsFile << line;
+
+        // Fermer le fichier
+        settingsFile.close();
+    }
+    else
+    {
+        // Erreur lors de l'ouverture du fichier
+        qDebug() << "Erreur lors de l'ouverture du fichier pour sauvegarder les paramètres";
+        return;
+    }
+}
+
+// Méthode pour restaurer les paramètres
+void SoundSettingsForm::loadSettings()
+{
+    if (settingsFile.is_open())
+    {
+            // Lire la première ligne du fichier
+            std::string line;
+            getline(settingsFile, line);
+
+            // Convertir la ligne en QString
+            QString qLine = QString::fromStdString(line);
+
+            // Vérifier si la ligne est vide
+            if (qLine.isEmpty())
+            {
+                // Définir les valeurs par défaut pour les curseurs
+                ui->generalVolumeSlider->setValue(50);
+                ui->effectsVolumeSlider->setValue(50);
+            }
+            else
+            {
+                // Diviser la ligne en deux parties
+                QStringList volume = qLine.split(';');
+
+                // Vérifier s'il y a deux parties
+                if (volume.size() == 2)
+                {
+                    // Récupérer les valeurs des curseurs à partir des parties divisées
+                    ui->generalVolumeSlider->setValue(volume[0].toFloat());
+                    ui->effectsVolumeSlider->setValue(volume[1].toFloat());
+                }
+            }
+
+            // Fermer le fichier
+            settingsFile.close();
+    }
+    else
+    {
+            // Fichier non ouvert, les paramètres n'existent pas
+            qDebug() << "Paramètres non existants, création du fichier lors de la fermeture du jeu";
+            ui->generalVolumeSlider->setValue(50);
+            ui->effectsVolumeSlider->setValue(50);
+            return;
+    }
+}

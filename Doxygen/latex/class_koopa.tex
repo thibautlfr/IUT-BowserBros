@@ -1,0 +1,208 @@
+\hypertarget{class_koopa}{}\doxysection{Koopa Class Reference}
+\label{class_koopa}\index{Koopa@{Koopa}}
+
+
+Represents a \mbox{\hyperlink{class_koopa}{Koopa}} enemy.  
+
+
+
+
+{\ttfamily \#include $<$koopa.\+h$>$}
+
+Inheritance diagram for Koopa\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_koopa}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_koopa_ae98b50796ab7463f9317bfe3e4c1e0c6}{Koopa}} (float x, float y, string asset)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_koopa}{Koopa}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_koopa_a8012d6bc76f1e2cb9b39ad5596322865}{get\+On\+Platform}} ()
+\begin{DoxyCompactList}\small\item\em Returns whether the \mbox{\hyperlink{class_koopa}{Koopa}} is on a platform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_koopa_ac3702af58db4d3cc3aad9fe8c81fabfd}{set\+On\+Platform}} (bool on\+Platform)
+\begin{DoxyCompactList}\small\item\em Sets whether the \mbox{\hyperlink{class_koopa}{Koopa}} is on a platform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_koopa_a143ae67136bc27ca4cf2878dd5dc2164}{update\+Asset}} (int time\+Elapsed)
+\begin{DoxyCompactList}\small\item\em Updates the asset of the \mbox{\hyperlink{class_koopa}{Koopa}} based on the elapsed time. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_koopa_a7763a50610b0f99661c1a023847e2e60}{get\+Is\+Dead}} () const
+\begin{DoxyCompactList}\small\item\em Returns whether the \mbox{\hyperlink{class_koopa}{Koopa}} is dead. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_koopa_acd3b054923c0c2452f4eb245b1ce2971}{set\+Is\+Dead}} (bool new\+Is\+Dead)
+\begin{DoxyCompactList}\small\item\em Sets whether the \mbox{\hyperlink{class_koopa}{Koopa}} is dead. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_a87015483c7f33232367b9df539486af3}{Entity}} (float x, float y, int width, int height)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity_afe525604909cacead8754fed6988349f}{Entity}} (float x, float y, string asset)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_entity}{Entity}} object with position and asset. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}\label{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}} 
+virtual {\bfseries $\sim$\+Entity} ()
+\begin{DoxyCompactList}\small\item\em Destructor for entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ac8cb9f36ba2c8f8ca112556beeacfca0}{set\+ItsY}} (float Y)
+\begin{DoxyCompactList}\small\item\em Sets the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a42afe2a0c04394db1f026f46430fee3e}{set\+ItsX}} (float X)
+\begin{DoxyCompactList}\small\item\em Sets the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6a99fc0394e8c99e3f2ab626c2da2767}{set\+XSpeed}} (float a\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6409ad44a9b174490083dabee12f1025}{set\+YSpeed}} (float a\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a9bd1559414607eef261997bf69de63e9}{set\+Its\+Image}} (string new\+Asset\+Path)
+\begin{DoxyCompactList}\small\item\em Sets the image asset of the entity. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_entity_a252505d876878e6be6c4364ed1be67f9}{set\+On\+Platform}} (bool on\+Platform)
+\begin{DoxyCompactList}\small\item\em Set the attribute on\+Platform. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_a4c7bd3bd447928ae871833b749fb9dcd}{get\+ItsY}} ()
+\begin{DoxyCompactList}\small\item\em Returns the y-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_aa0c849c1529ca6c0dde810e5c0741c35}{get\+ItsX}} ()
+\begin{DoxyCompactList}\small\item\em Returns the x-\/coordinate of the entity\textquotesingle{}s position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_adad018778998318bb083da987536c932}{get\+YSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the y-\/axis. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_a86c9d6debe5cef873e9bb2807cae4125}{get\+XSpeed}} ()
+\begin{DoxyCompactList}\small\item\em Returns the speed of the entity along the x-\/axis. \end{DoxyCompactList}\item 
+QRect \mbox{\hyperlink{class_entity_a38553a2451e4963a279129fa10264cb4}{get\+Its\+Rect}} ()
+\begin{DoxyCompactList}\small\item\em Returns the bounding rectangle of the entity. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_entity_a3082eb8fe1b3fc5afdc3562007b4aa74}{get\+On\+Platform}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the on\+Platform attribute. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_ad745385f5f47550344c9f470980b9ab0}\label{class_entity_ad745385f5f47550344c9f470980b9ab0}} 
+void {\bfseries calculate\+Position} ()
+\begin{DoxyCompactList}\small\item\em Calculates the new position of the entity based on its speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ac46c3c209c82cc006ada312cd6516b03}{draw}} (QPainter $\ast$a\+Painter)
+\begin{DoxyCompactList}\small\item\em Draws the entity on a QPainter object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a97c9f08ae564416ec74f43b45077e324}\label{class_entity_a97c9f08ae564416ec74f43b45077e324}} 
+void {\bfseries reverse\+XSpeed} ()
+\begin{DoxyCompactList}\small\item\em Reverses the x-\/speed of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a8609b50d53decd1f099bad8c31008c94}\label{class_entity_a8609b50d53decd1f099bad8c31008c94}} 
+void {\bfseries reverse\+YSpeed} ()
+\begin{DoxyCompactList}\small\item\em Reverses the y-\/speed of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_entity_a996440af8e9edf9475eae8fcc07413cf}{itsX}}
+\item 
+float \mbox{\hyperlink{class_entity_aee9b8509d9ec5d40df774f8d224c98ea}{itsY}}
+\item 
+float \mbox{\hyperlink{class_entity_a4fcab160674d29af76f8f01aeb786277}{its\+XSpeed}}
+\item 
+float \mbox{\hyperlink{class_entity_a815ea04795bc966aa2d7c911bcc3b790}{its\+YSpeed}}
+\item 
+QRect \mbox{\hyperlink{class_entity_a30c27b56869648d8d59d2a6a4f52b2fb}{its\+Rect}}
+\item 
+QImage \mbox{\hyperlink{class_entity_ac8f5c15659ea04667f2e4280d570e088}{its\+Image}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a \mbox{\hyperlink{class_koopa}{Koopa}} enemy. 
+
+The \mbox{\hyperlink{class_koopa}{Koopa}} class represents a \mbox{\hyperlink{class_koopa}{Koopa}} enemy in the game. It inherits from the \mbox{\hyperlink{class_entity}{Entity}} class. It contains properties and functionalities specific to the \mbox{\hyperlink{class_koopa}{Koopa}} enemy. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_koopa_ae98b50796ab7463f9317bfe3e4c1e0c6}\label{class_koopa_ae98b50796ab7463f9317bfe3e4c1e0c6}} 
+\index{Koopa@{Koopa}!Koopa@{Koopa}}
+\index{Koopa@{Koopa}!Koopa@{Koopa}}
+\doxysubsubsection{\texorpdfstring{Koopa()}{Koopa()}}
+{\footnotesize\ttfamily Koopa\+::\+Koopa (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{string}]{asset }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{class_koopa}{Koopa}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x-\/coordinate of the \mbox{\hyperlink{class_koopa}{Koopa}}. \\
+\hline
+{\em y} & The initial y-\/coordinate of the \mbox{\hyperlink{class_koopa}{Koopa}}. \\
+\hline
+{\em asset} & The asset file path for the \mbox{\hyperlink{class_koopa}{Koopa}}\textquotesingle{}s image. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_koopa_a7763a50610b0f99661c1a023847e2e60}\label{class_koopa_a7763a50610b0f99661c1a023847e2e60}} 
+\index{Koopa@{Koopa}!getIsDead@{getIsDead}}
+\index{getIsDead@{getIsDead}!Koopa@{Koopa}}
+\doxysubsubsection{\texorpdfstring{getIsDead()}{getIsDead()}}
+{\footnotesize\ttfamily bool Koopa\+::get\+Is\+Dead (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns whether the \mbox{\hyperlink{class_koopa}{Koopa}} is dead. 
+
+\begin{DoxyReturn}{Returns}
+True if the \mbox{\hyperlink{class_koopa}{Koopa}} is dead, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_koopa_a8012d6bc76f1e2cb9b39ad5596322865}\label{class_koopa_a8012d6bc76f1e2cb9b39ad5596322865}} 
+\index{Koopa@{Koopa}!getOnPlatform@{getOnPlatform}}
+\index{getOnPlatform@{getOnPlatform}!Koopa@{Koopa}}
+\doxysubsubsection{\texorpdfstring{getOnPlatform()}{getOnPlatform()}}
+{\footnotesize\ttfamily bool Koopa\+::get\+On\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns whether the \mbox{\hyperlink{class_koopa}{Koopa}} is on a platform. 
+
+\begin{DoxyReturn}{Returns}
+True if the \mbox{\hyperlink{class_koopa}{Koopa}} is on a platform, false otherwise. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_entity_a3082eb8fe1b3fc5afdc3562007b4aa74}{Entity}}.
+
+\mbox{\Hypertarget{class_koopa_acd3b054923c0c2452f4eb245b1ce2971}\label{class_koopa_acd3b054923c0c2452f4eb245b1ce2971}} 
+\index{Koopa@{Koopa}!setIsDead@{setIsDead}}
+\index{setIsDead@{setIsDead}!Koopa@{Koopa}}
+\doxysubsubsection{\texorpdfstring{setIsDead()}{setIsDead()}}
+{\footnotesize\ttfamily void Koopa\+::set\+Is\+Dead (\begin{DoxyParamCaption}\item[{bool}]{new\+Is\+Dead }\end{DoxyParamCaption})}
+
+
+
+Sets whether the \mbox{\hyperlink{class_koopa}{Koopa}} is dead. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Is\+Dead} & Flag indicating if the \mbox{\hyperlink{class_koopa}{Koopa}} is dead. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_koopa_ac3702af58db4d3cc3aad9fe8c81fabfd}\label{class_koopa_ac3702af58db4d3cc3aad9fe8c81fabfd}} 
+\index{Koopa@{Koopa}!setOnPlatform@{setOnPlatform}}
+\index{setOnPlatform@{setOnPlatform}!Koopa@{Koopa}}
+\doxysubsubsection{\texorpdfstring{setOnPlatform()}{setOnPlatform()}}
+{\footnotesize\ttfamily void Koopa\+::set\+On\+Platform (\begin{DoxyParamCaption}\item[{bool}]{on\+Platform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets whether the \mbox{\hyperlink{class_koopa}{Koopa}} is on a platform. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em on\+Platform} & Flag indicating if the \mbox{\hyperlink{class_koopa}{Koopa}} is on a platform. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_entity_a252505d876878e6be6c4364ed1be67f9}{Entity}}.
+
+\mbox{\Hypertarget{class_koopa_a143ae67136bc27ca4cf2878dd5dc2164}\label{class_koopa_a143ae67136bc27ca4cf2878dd5dc2164}} 
+\index{Koopa@{Koopa}!updateAsset@{updateAsset}}
+\index{updateAsset@{updateAsset}!Koopa@{Koopa}}
+\doxysubsubsection{\texorpdfstring{updateAsset()}{updateAsset()}}
+{\footnotesize\ttfamily void Koopa\+::update\+Asset (\begin{DoxyParamCaption}\item[{int}]{time\+Elapsed }\end{DoxyParamCaption})}
+
+
+
+Updates the asset of the \mbox{\hyperlink{class_koopa}{Koopa}} based on the elapsed time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+Elapsed} & The elapsed time since the last update. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{koopa_8h}{koopa.\+h}}\item 
+koopa.\+cpp\end{DoxyCompactItemize}
