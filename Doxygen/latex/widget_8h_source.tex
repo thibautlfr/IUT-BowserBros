@@ -12,28 +12,31 @@
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gameform_8h}{gameform.h}}"{}}}
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{soundsettingsform_8h}{soundsettingsform.h}}"{}}}
 \DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scoreboardform_8h}{scoreboardform.h}}"{}}}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ QT\_BEGIN\_NAMESPACE}
-\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }Ui\ \{\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget}{Widget}};\ \}}
-\DoxyCodeLine{00019\ QT\_END\_NAMESPACE}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget}{Widget}}\ :\ \textcolor{keyword}{public}\ QWidget}
-\DoxyCodeLine{00028\ \{}
-\DoxyCodeLine{00029\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_widget}{Widget}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_widget}{\string~Widget}}();}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00040\ \ \ \ \ Ui::Widget\ *ui;}
-\DoxyCodeLine{00041\ \ \ \ \ QStackedWidget*\ stackedWidget;}
-\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_menu_form}{MenuForm}}\ *\ menuForm;\ }
-\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_game_form}{GameForm}}\ *\ gameForm;}
-\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}}\ *\ soundSettingsForm;\ }
-\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_scoreboard_form}{ScoreboardForm}}\ *\ scoreboardForm;\ }
-\DoxyCodeLine{00046\ \};}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ WIDGET\_H}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}trainingform.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }Ui\ \{\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget}{Widget}};\ \}}
+\DoxyCodeLine{00020\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_widget}{Widget}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_widget}{Widget}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_widget}{\string~Widget}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ Ui::Widget\ *ui;}
+\DoxyCodeLine{00042\ \ \ \ \ QStackedWidget*\ stackedWidget;}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_menu_form}{MenuForm}}\ *\ menuForm;\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_game_form}{GameForm}}\ *\ gameForm;}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_training_form}{TrainingForm}}\ *\ trainingForm;}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}}\ *\ soundSettingsForm;\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_scoreboard_form}{ScoreboardForm}}\ *\ scoreboardForm;\ }
+\DoxyCodeLine{00048\ \ \ \ \ QMetaObject::Connection\ gamePausedConnection;}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ WIDGET\_H}}
 
 \end{DoxyCode}

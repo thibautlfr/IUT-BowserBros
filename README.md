@@ -36,14 +36,14 @@
 │   └───TestMario
 |
 ├───Database
+├───Settings
 |
 ├───Documents
+├───Executable
 |
 ├───Doxygen
 │   ├───html
 │   └───latex
-|
-├───Executable
 │           
 ├───Images
 └───Map-Designer
@@ -63,15 +63,16 @@
 - **`/.gitlab-ci.yml`** : Fichier de configuration de GitLab CI. Permet la mise en ligne de la documentation du projet.
 - **`/Map-Designer`** : Dossier contenant le site HTML/CSS/JS permettant de créer/modifier des niveaux pour le jeu.
 - **`/Database`** : Dossier contenant le fichier JSON de la base de données du jeu.
+- **`/Settings`** : Dossier contenant le fichier .txt permettant de stocker les volumes des sons du jeu.
 
 ---
 
 ### *Installation*
 
-- **Prérequis** : Avoir installé `QtCreator`.
+- **Prérequis** : Avoir installé `QtCreator` si vous voulez le compiler vous même.
 
 - **Installation** : Pour installer le projet, il suffit de cloner le projet sur votre machine et d'ouvrir le projet `BowserBros.pro` avec `QtCreator`. Vous pouvez ensuite compiler le projet et l'exécuter.  
-Vous pouvez également lancer le fichier exécutable `BowserBros.exe` dans le répertoire `/Executable` pour Windows ou `BowserBros.app` pour Mac OS.
+Vous pouvez également lancer le fichier exécutable `BowserBros.exe` dans le répertoire `/Executable` pour Windows ce qui se chargera d'installer les librairies nécéssaires ou simplement `BowserBros.app` pour Mac OS.
 
 ---
 
@@ -79,7 +80,8 @@ Vous pouvez également lancer le fichier exécutable `BowserBros.exe` dans le r�
 
 L'application est un jeu de plateforme du style **Mario Bros**. Le but du jeu est de monter verticalement dans le niveau en évitant les boules de feu de **Bowser** afin d'atteindre un coffre qui mets fin au niveau.
 
-- La version actuelle du projet dispose d'un menu et de 3 niveaux différents, le joueur à également la possibilité de modifier le volume dans les paramètres.
+- La version actuelle du projet dispose d'un menu et de 5 niveaux différents, le joueur à également la possibilité de modifier le volume dans les paramètres.
+- Le jeu dispose également d'un mode entrainement permettant de tester les différents niveaux du jeu.
 
 #### Images 
 
@@ -88,7 +90,7 @@ L'application est un jeu de plateforme du style **Mario Bros**. Le but du jeu es
 Menu principal de l'application. Permet de choisir entre jouer, voir le classement ou quitter l'application.
 
 <div align="center">
-  <img src="./Images/screen-v3-menu.png" width="700">
+  <img src="./Images/screen-v4-menu.png" width="700">
 </div>
 
 - **Début du niveau**
@@ -107,29 +109,43 @@ Etat du niveau lorsque le joueur est monté dans le niveau.
   <img src="./Images/screen-v1-endlevel.png" width="700">
 </div>
 
+- **Mode Training**
+
+Mode Entrainement permettant de tester les différents niveaux du jeu.
+
+<div align="center">
+  <img src="./Images/screen-v4-training.png" width="700">
+</div>
+
+---
+
 - **Classement**
 
 Affichage du top 5 du jeu et proposition d'inscription.
 
 <div align="center">
-  <img src="./Images/screen-v2-classement.png" width="700">
+  <img src="./Images/screen-v4-classement.png" width="700">
 </div>
+
+- **Réglages**
+
+Menu de réglages pour modifier les volumes des sons du jeu. (Marche également lors de la pause du jeu avec appui sur la touche `ECHAP`)
+
+<div align="center">
+  <img src="./Images/screen-v4-pause.png" width="700">
+</div>
+
+---
 
 - **Map Editor**
 
 Site HTML/CS/JS permettant de créer des niveaux pour le jeu.
 
 <div align="center">
-  <img src="./Images/screen-v2-map-editor.png" width="700">
+  <img src="./Images/screen-v4-editeur.png" width="700">
 </div>
 
-- **Réglages**
 
-Menu de réglages pour modifier les volumes des sons du jeu.
-
-<div align="center">
-  <img src="./Images/screen-v3-reglages.png" width="700">
-</div>
 
 ---
 

@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 3.0</span>
+   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 4.0</span>
    </div>
    <div id="projectbrief">Jeu de plateforme du style Mario Bros implémenté en C++ avec Qt Creator</div>
   </td>
@@ -115,12 +115,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>gameLosed</b> ()</td>
 <tr class="memitem:a324273bd6ab9b281af55427c219d2d3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#a324273bd6ab9b281af55427c219d2d3d">gameWon</a> (int elapsedTime)</td></tr>
 <tr class="memdesc:a324273bd6ab9b281af55427c219d2d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the game is won.  <br /></td></tr>
 <tr class="separator:a324273bd6ab9b281af55427c219d2d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55d27f58f7b68c1d1438b1c5b0a49495"><td class="memItemLeft" align="right" valign="top"><a id="a55d27f58f7b68c1d1438b1c5b0a49495" name="a55d27f58f7b68c1d1438b1c5b0a49495"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>gamePaused</b> ()</td></tr>
+<tr class="memdesc:a55d27f58f7b68c1d1438b1c5b0a49495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the game is paused. <br /></td></tr>
+<tr class="separator:a55d27f58f7b68c1d1438b1c5b0a49495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9f4418060b0102494713e7ce629f8bb6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#a9f4418060b0102494713e7ce629f8bb6">GameForm</a> (QWidget *parent=0)</td></tr>
-<tr class="memdesc:a9f4418060b0102494713e7ce629f8bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_game_form.html" title="Represents the game interface. The GameForm class represents the game interface where the game is pla...">GameForm</a> object.  <br /></td></tr>
-<tr class="separator:a9f4418060b0102494713e7ce629f8bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8005376e6c481bc23128d7fc30520ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#ab8005376e6c481bc23128d7fc30520ef">GameForm</a> (int level, int availableLevelsNb, QWidget *parent=nullptr)</td></tr>
+<tr class="memdesc:ab8005376e6c481bc23128d7fc30520ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_game_form.html" title="Represents the game interface. The GameForm class represents the game interface where the game is pla...">GameForm</a> object.  <br /></td></tr>
+<tr class="separator:ab8005376e6c481bc23128d7fc30520ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a68a99923b27abccde9562cf43a5195"><td class="memItemLeft" align="right" valign="top"><a id="a9a68a99923b27abccde9562cf43a5195" name="a9a68a99923b27abccde9562cf43a5195"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~GameForm</b> ()</td></tr>
 <tr class="memdesc:a9a68a99923b27abccde9562cf43a5195"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructs the <a class="el" href="class_game_form.html" title="Represents the game interface. The GameForm class represents the game interface where the game is pla...">GameForm</a> object. <br /></td></tr>
@@ -140,6 +144,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>checkBowserCollision<
 void&#160;</td><td class="memItemRight" valign="bottom"><b>checkCollisionFireBalls</b> ()</td></tr>
 <tr class="memdesc:a085119e87e8f5220a3da2a2311b1ed71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collisions with fireballs. <br /></td></tr>
 <tr class="separator:a085119e87e8f5220a3da2a2311b1ed71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a918be215e051587649d55edb665954e0"><td class="memItemLeft" align="right" valign="top"><a id="a918be215e051587649d55edb665954e0" name="a918be215e051587649d55edb665954e0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>checkGoombasCollision</b> ()</td></tr>
+<tr class="memdesc:a918be215e051587649d55edb665954e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for the goombas collisions. <br /></td></tr>
+<tr class="separator:a918be215e051587649d55edb665954e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9d13d0536ba78df3a019c09addc8ed2"><td class="memItemLeft" align="right" valign="top"><a id="ab9d13d0536ba78df3a019c09addc8ed2" name="ab9d13d0536ba78df3a019c09addc8ed2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>checkKoopasCollision</b> ()</td></tr>
+<tr class="memdesc:ab9d13d0536ba78df3a019c09addc8ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for the koopas collisions. <br /></td></tr>
+<tr class="separator:ab9d13d0536ba78df3a019c09addc8ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a480874c21e56226220b722dbf20cb813"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#a480874c21e56226220b722dbf20cb813">checkFloorCollision</a> (<a class="el" href="class_entity.html">Entity</a> *anEntity)</td></tr>
+<tr class="memdesc:a480874c21e56226220b722dbf20cb813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the collisions between the floor and an entity.  <br /></td></tr>
+<tr class="separator:a480874c21e56226220b722dbf20cb813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc9d0879330d5fe255e556a1a53d2c76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#acc9d0879330d5fe255e556a1a53d2c76">checkPlatformCollision</a> (<a class="el" href="class_entity.html">Entity</a> *anEntity, vector&lt; <a class="el" href="class_element.html">Element</a> * &gt; nearlyBlocks)</td></tr>
+<tr class="memdesc:acc9d0879330d5fe255e556a1a53d2c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the collisions between an entity and the blocks near theme.  <br /></td></tr>
+<tr class="separator:acc9d0879330d5fe255e556a1a53d2c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6d93e4d44c60119a2b09df5e3c9c5f8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#ad6d93e4d44c60119a2b09df5e3c9c5f8">checkEntityOnBlocks</a> (<a class="el" href="class_entity.html">Entity</a> *anEntity, vector&lt; <a class="el" href="class_element.html">Element</a> * &gt; nearlyBlocks)</td></tr>
+<tr class="memdesc:ad6d93e4d44c60119a2b09df5e3c9c5f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an entity is on a block and the collisions associated.  <br /></td></tr>
+<tr class="separator:ad6d93e4d44c60119a2b09df5e3c9c5f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0b63df1a46259c80cc13615afb9efd6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#ab0b63df1a46259c80cc13615afb9efd6">checkEntityOnFloor</a> (<a class="el" href="class_entity.html">Entity</a> *anEntity, vector&lt; <a class="el" href="class_element.html">Element</a> * &gt; nearlyBlocks)</td></tr>
+<tr class="memdesc:ab0b63df1a46259c80cc13615afb9efd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an entity is on the floor and the collisions associated.  <br /></td></tr>
+<tr class="separator:ab0b63df1a46259c80cc13615afb9efd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3a35e3848928630295a70be20b42f69"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_element.html">Element</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#ae3a35e3848928630295a70be20b42f69">getNearlyBlocks</a> (<a class="el" href="class_entity.html">Entity</a> *anEntity)</td></tr>
+<tr class="memdesc:ae3a35e3848928630295a70be20b42f69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the blocks near an entity.  <br /></td></tr>
+<tr class="separator:ae3a35e3848928630295a70be20b42f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86a54c36711a791e5ccbf348a9765016"><td class="memItemLeft" align="right" valign="top"><a id="a86a54c36711a791e5ccbf348a9765016" name="a86a54c36711a791e5ccbf348a9765016"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>checkLadderCollision</b> ()</td></tr>
 <tr class="memdesc:a86a54c36711a791e5ccbf348a9765016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collisions with ladders. <br /></td></tr>
@@ -155,6 +182,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateScroll</b> ()</
 void&#160;</td><td class="memItemRight" valign="bottom"><b>updateFireBalls</b> ()</td></tr>
 <tr class="memdesc:aa6bc375695665688925ed87bbbc005ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position of fireballs in the game. <br /></td></tr>
 <tr class="separator:aa6bc375695665688925ed87bbbc005ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a4727331df62ac6caa0ba815ced8c79"><td class="memItemLeft" align="right" valign="top"><a id="a8a4727331df62ac6caa0ba815ced8c79" name="a8a4727331df62ac6caa0ba815ced8c79"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>replaceAndDeleteActors</b> ()</td></tr>
+<tr class="memdesc:a8a4727331df62ac6caa0ba815ced8c79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces and deletes actors in the game. <br /></td></tr>
+<tr class="separator:a8a4727331df62ac6caa0ba815ced8c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84f3d4616130ad4b319be532eff8c95a"><td class="memItemLeft" align="right" valign="top"><a id="a84f3d4616130ad4b319be532eff8c95a" name="a84f3d4616130ad4b319be532eff8c95a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>loadLevel</b> ()</td></tr>
 <tr class="memdesc:a84f3d4616130ad4b319be532eff8c95a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a specific level. <br /></td></tr>
@@ -163,18 +194,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>loadLevel</b> ()</td>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>displayChrono</b> ()</td></tr>
 <tr class="memdesc:a07ecc9468504b29d479445d78a03a3b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the chrono at the top right corner. <br /></td></tr>
 <tr class="separator:a07ecc9468504b29d479445d78a03a3b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c03d54e8c467d3eb561bc1a741d6495"><td class="memItemLeft" align="right" valign="top"><a id="a0c03d54e8c467d3eb561bc1a741d6495" name="a0c03d54e8c467d3eb561bc1a741d6495"></a>
-<a class="el" href="class_sound_manager.html">SoundManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getSoundManager</b> () const</td></tr>
+<tr class="memitem:a0c03d54e8c467d3eb561bc1a741d6495"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sound_manager.html">SoundManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#a0c03d54e8c467d3eb561bc1a741d6495">getSoundManager</a> () const</td></tr>
+<tr class="memdesc:a0c03d54e8c467d3eb561bc1a741d6495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a> object.  <br /></td></tr>
 <tr class="separator:a0c03d54e8c467d3eb561bc1a741d6495"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea83ccc4ab2540668f5efc22c5b02580"><td class="memItemLeft" align="right" valign="top"><a id="aea83ccc4ab2540668f5efc22c5b02580" name="aea83ccc4ab2540668f5efc22c5b02580"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setVolume</b> (<a class="el" href="class_sound_manager.html">SoundManager</a> *menuSoundManager)</td></tr>
+<tr class="memitem:aea83ccc4ab2540668f5efc22c5b02580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#aea83ccc4ab2540668f5efc22c5b02580">setVolume</a> (<a class="el" href="class_sound_manager.html">SoundManager</a> *menuSoundManager)</td></tr>
+<tr class="memdesc:aea83ccc4ab2540668f5efc22c5b02580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the volume of the <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a>.  <br /></td></tr>
 <tr class="separator:aea83ccc4ab2540668f5efc22c5b02580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f2d648fe2bee22458c78bd890f12190"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_form.html#a4f2d648fe2bee22458c78bd890f12190">setIsOnGamed</a> (bool newIsOnGamed)</td></tr>
+<tr class="memdesc:a4f2d648fe2bee22458c78bd890f12190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the flag indicating if the game is currently running.  <br /></td></tr>
+<tr class="separator:a4f2d648fe2bee22458c78bd890f12190"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents the game interface. The <a class="el" href="class_game_form.html" title="Represents the game interface. The GameForm class represents the game interface where the game is pla...">GameForm</a> class represents the game interface where the game is played. It handles various game functionalities such as character movement, collisions, level loading, etc. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9f4418060b0102494713e7ce629f8bb6" name="a9f4418060b0102494713e7ce629f8bb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f4418060b0102494713e7ce629f8bb6">&#9670;&#160;</a></span>GameForm()</h2>
+<a id="ab8005376e6c481bc23128d7fc30520ef" name="ab8005376e6c481bc23128d7fc30520ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8005376e6c481bc23128d7fc30520ef">&#9670;&#160;</a></span>GameForm()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -185,9 +219,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setVolume</b> (<a cla
         <tr>
           <td class="memname">GameForm::GameForm </td>
           <td>(</td>
-          <td class="paramtype">QWidget *&#160;</td>
-          <td class="paramname"><em>parent</em> = <code>0</code></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>availableLevelsNb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -208,6 +258,145 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setVolume</b> (<a cla
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad6d93e4d44c60119a2b09df5e3c9c5f8" name="ad6d93e4d44c60119a2b09df5e3c9c5f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6d93e4d44c60119a2b09df5e3c9c5f8">&#9670;&#160;</a></span>checkEntityOnBlocks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameForm::checkEntityOnBlocks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_entity.html">Entity</a> *&#160;</td>
+          <td class="paramname"><em>anEntity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_element.html">Element</a> * &gt;&#160;</td>
+          <td class="paramname"><em>nearlyBlocks</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an entity is on a block and the collisions associated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">anEntity</td><td>: the entity we want to verify </td></tr>
+    <tr><td class="paramname">nearlyBlocks</td><td>: the blocks near the entity </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the entity is on a block and false either </dd></dl>
+
+</div>
+</div>
+<a id="ab0b63df1a46259c80cc13615afb9efd6" name="ab0b63df1a46259c80cc13615afb9efd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0b63df1a46259c80cc13615afb9efd6">&#9670;&#160;</a></span>checkEntityOnFloor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameForm::checkEntityOnFloor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_entity.html">Entity</a> *&#160;</td>
+          <td class="paramname"><em>anEntity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_element.html">Element</a> * &gt;&#160;</td>
+          <td class="paramname"><em>nearlyBlocks</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an entity is on the floor and the collisions associated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">anEntity</td><td>: the entity we want to verify </td></tr>
+    <tr><td class="paramname">nearlyBlocks</td><td>: the blocks near the entity </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the entity is on the floor and false either </dd></dl>
+
+</div>
+</div>
+<a id="a480874c21e56226220b722dbf20cb813" name="a480874c21e56226220b722dbf20cb813"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a480874c21e56226220b722dbf20cb813">&#9670;&#160;</a></span>checkFloorCollision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameForm::checkFloorCollision </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_entity.html">Entity</a> *&#160;</td>
+          <td class="paramname"><em>anEntity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks the collisions between the floor and an entity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">anEntity</td><td>: the entity we want to verify </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acc9d0879330d5fe255e556a1a53d2c76" name="acc9d0879330d5fe255e556a1a53d2c76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc9d0879330d5fe255e556a1a53d2c76">&#9670;&#160;</a></span>checkPlatformCollision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameForm::checkPlatformCollision </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_entity.html">Entity</a> *&#160;</td>
+          <td class="paramname"><em>anEntity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_element.html">Element</a> * &gt;&#160;</td>
+          <td class="paramname"><em>nearlyBlocks</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks the collisions between an entity and the blocks near theme. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">anEntity</td><td>: the entity we want to verify </td></tr>
+    <tr><td class="paramname">nearlyBlocks</td><td>: the blocks near the entity </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a324273bd6ab9b281af55427c219d2d3d" name="a324273bd6ab9b281af55427c219d2d3d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a324273bd6ab9b281af55427c219d2d3d">&#9670;&#160;</a></span>gameWon</h2>
 
@@ -242,6 +431,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setVolume</b> (<a cla
 
 </div>
 </div>
+<a id="ae3a35e3848928630295a70be20b42f69" name="ae3a35e3848928630295a70be20b42f69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3a35e3848928630295a70be20b42f69">&#9670;&#160;</a></span>getNearlyBlocks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="class_element.html">Element</a> * &gt; GameForm::getNearlyBlocks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_entity.html">Entity</a> *&#160;</td>
+          <td class="paramname"><em>anEntity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the blocks near an entity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">anEntity</td><td>: the entity we want to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <a id="a2dbb54a96ca9be0c91db5c1b5bc0c3bc" name="a2dbb54a96ca9be0c91db5c1b5bc0c3bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2dbb54a96ca9be0c91db5c1b5bc0c3bc">&#9670;&#160;</a></span>getScrollArea()</h2>
 
@@ -259,6 +475,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setVolume</b> (<a cla
 
 <p>Getter for itsScrollArea. </p>
 <dl class="section return"><dt>Returns</dt><dd>The scroll area element of the <a class="el" href="class_game_form.html" title="Represents the game interface. The GameForm class represents the game interface where the game is pla...">GameForm</a> </dd></dl>
+
+</div>
+</div>
+<a id="a0c03d54e8c467d3eb561bc1a741d6495" name="a0c03d54e8c467d3eb561bc1a741d6495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c03d54e8c467d3eb561bc1a741d6495">&#9670;&#160;</a></span>getSoundManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sound_manager.html">SoundManager</a> * GameForm::getSoundManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for the <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a> object. </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a> object. </dd></dl>
 
 </div>
 </div>
@@ -282,6 +518,58 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setVolume</b> (<a cla
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">painter</td><td>A pointer to the QPainter object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4f2d648fe2bee22458c78bd890f12190" name="a4f2d648fe2bee22458c78bd890f12190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f2d648fe2bee22458c78bd890f12190">&#9670;&#160;</a></span>setIsOnGamed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameForm::setIsOnGamed </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>newIsOnGamed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the flag indicating if the game is currently running. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newIsOnGamed</td><td>Flag indicating if the game is currently running. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aea83ccc4ab2540668f5efc22c5b02580" name="aea83ccc4ab2540668f5efc22c5b02580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea83ccc4ab2540668f5efc22c5b02580">&#9670;&#160;</a></span>setVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameForm::setVolume </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sound_manager.html">SoundManager</a> *&#160;</td>
+          <td class="paramname"><em>menuSoundManager</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the volume of the <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">menuSoundManager</td><td>A pointer to the <a class="el" href="class_sound_manager.html" title="The SoundManager class manages the playback of various sounds and music in the application.">SoundManager</a> object. </td></tr>
   </table>
   </dd>
 </dl>

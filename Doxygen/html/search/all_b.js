@@ -1,15 +1,10 @@
 var searchData=
 [
-  ['paintplayerhelps_0',['paintPlayerHelps',['../class_game_form.html#a8386c0313181b8b39549e5c53490c943',1,'GameForm']]],
-  ['playbuttonclicked_1',['playButtonClicked',['../class_menu_form.html#a5b6a1433f9bc85f8802f8d7a37c9d547',1,'MenuForm']]],
-  ['playdeathmusic_2',['playDeathMusic',['../class_sound_manager.html#a8b60e29894d21df2c2e48f898d6e0da7',1,'SoundManager']]],
-  ['playername_3',['playerName',['../class_scoreboard_form.html#ad9c82b9ac268df2ce307c949e8f43f88',1,'ScoreboardForm']]],
-  ['playerscore_4',['playerScore',['../class_scoreboard_form.html#a8780542afcba7f07969a240c93714724',1,'ScoreboardForm']]],
-  ['playjumpeffect_5',['playJumpEffect',['../class_sound_manager.html#a731e77036e5dff6dc7e200bbae94631d',1,'SoundManager']]],
-  ['playlevelpassedmusic_6',['playLevelPassedMusic',['../class_sound_manager.html#afef8416d8ded26f6b597d50d6549b899',1,'SoundManager']]],
-  ['playmainmusic_7',['playMainMusic',['../class_sound_manager.html#a773c01a5cadf25de0b31f0ae90ba2ed2',1,'SoundManager']]],
-  ['playmenumusic_8',['playMenuMusic',['../class_sound_manager.html#ac8dae0514bc7f73779bbb8ada97d64b7',1,'SoundManager']]],
-  ['playmusic_9',['playMusic',['../class_menu_form.html#a125f20265d5cafa039579a88d7ae8bc2',1,'MenuForm']]],
-  ['playwinmusic_10',['playWinMusic',['../class_sound_manager.html#afb42de26e643d5fa91a6835763174c7e',1,'SoundManager']]],
-  ['podiumbuttonclicked_11',['podiumButtonClicked',['../class_menu_form.html#ac2eed775b966c149121e43bcadb86640',1,'MenuForm']]]
+  ['mario_0',['Mario',['../class_mario.html',1,'Mario'],['../class_mario.html#ab95512785b18f8be80facfcae0894efb',1,'Mario::Mario(float x, float y, int width, int height)'],['../class_mario.html#a18dc19a04b05c2e6502a5633e05cbc18',1,'Mario::Mario(float x, float y, string asset)']]],
+  ['mario_2eh_1',['mario.h',['../mario_8h.html',1,'']]],
+  ['menubuttonclicked_2',['menuButtonClicked',['../class_scoreboard_form.html#a8ceb99b236bd7c13ce8bedc860d035db',1,'ScoreboardForm::menuButtonClicked()'],['../class_training_form.html#a65c12ffc8827a291f56b969511d4594b',1,'TrainingForm::menuButtonClicked()']]],
+  ['menuform_3',['MenuForm',['../class_menu_form.html',1,'MenuForm'],['../class_menu_form.html#acaab5223ef7986a0e55157632db86265',1,'MenuForm::MenuForm()']]],
+  ['menuform_2eh_4',['menuform.h',['../menuform_8h.html',1,'']]],
+  ['menusoundmanager_5',['menuSoundManager',['../class_sound_settings_form.html#ad818ed53d1fe5e283e49352680414180',1,'SoundSettingsForm']]],
+  ['musicfinished_6',['musicFinished',['../class_sound_manager.html#a4294cbd9c215a38aaa396a913e0b2611',1,'SoundManager']]]
 ];

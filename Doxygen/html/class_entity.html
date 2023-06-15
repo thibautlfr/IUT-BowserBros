@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 3.0</span>
+   <div id="projectname">BowserBros - RG23D21<span id="projectnumber">&#160;Version 4.0</span>
    </div>
    <div id="projectbrief">Jeu de plateforme du style Mario Bros implémenté en C++ avec Qt Creator</div>
   </td>
@@ -89,8 +89,10 @@ Inheritance diagram for Entity:</div>
  <div class="center">
   <img src="class_entity.png" usemap="#Entity_map" alt=""/>
   <map id="Entity_map" name="Entity_map">
-<area href="class_bowser.html" title="Represents the Bowser enemy. The Bowser class is derived from the Entity class and provides functiona..." alt="Bowser" shape="rect" coords="0,56,54,80"/>
-<area href="class_mario.html" title="Represents the player character Mario. The Mario class represents the player character in the game...." alt="Mario" shape="rect" coords="64,56,118,80"/>
+<area href="class_bowser.html" title="Represents the Bowser enemy. The Bowser class is derived from the Entity class and provides functiona..." alt="Bowser" shape="rect" coords="0,56,58,80"/>
+<area href="class_goomba.html" title="Represents a Goomba enemy." alt="Goomba" shape="rect" coords="68,56,126,80"/>
+<area href="class_koopa.html" title="Represents a Koopa enemy." alt="Koopa" shape="rect" coords="136,56,194,80"/>
+<area href="class_mario.html" title="Represents the player character Mario. The Mario class represents the player character in the game...." alt="Mario" shape="rect" coords="204,56,262,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -102,21 +104,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afe525604909cacead8754fed6988349f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#afe525604909cacead8754fed6988349f">Entity</a> (float x, float y, string asset)</td></tr>
 <tr class="memdesc:afe525604909cacead8754fed6988349f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="class_entity.html" title="Represents a game entity. The Entity class provides common attributes and functionalities for game en...">Entity</a> object with position and asset.  <br /></td></tr>
 <tr class="separator:afe525604909cacead8754fed6988349f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c7bd3bd447928ae871833b749fb9dcd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a4c7bd3bd447928ae871833b749fb9dcd">getItsY</a> ()</td></tr>
-<tr class="memdesc:a4c7bd3bd447928ae871833b749fb9dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the y-coordinate of the entity's position.  <br /></td></tr>
-<tr class="separator:a4c7bd3bd447928ae871833b749fb9dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0c849c1529ca6c0dde810e5c0741c35"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aa0c849c1529ca6c0dde810e5c0741c35">getItsX</a> ()</td></tr>
-<tr class="memdesc:aa0c849c1529ca6c0dde810e5c0741c35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the x-coordinate of the entity's position.  <br /></td></tr>
-<tr class="separator:aa0c849c1529ca6c0dde810e5c0741c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adad018778998318bb083da987536c932"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adad018778998318bb083da987536c932">getYSpeed</a> ()</td></tr>
-<tr class="memdesc:adad018778998318bb083da987536c932"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the speed of the entity along the y-axis.  <br /></td></tr>
-<tr class="separator:adad018778998318bb083da987536c932"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86c9d6debe5cef873e9bb2807cae4125"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a86c9d6debe5cef873e9bb2807cae4125">getXSpeed</a> ()</td></tr>
-<tr class="memdesc:a86c9d6debe5cef873e9bb2807cae4125"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the speed of the entity along the x-axis.  <br /></td></tr>
-<tr class="separator:a86c9d6debe5cef873e9bb2807cae4125"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38553a2451e4963a279129fa10264cb4"><td class="memItemLeft" align="right" valign="top">QRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a38553a2451e4963a279129fa10264cb4">getItsRect</a> ()</td></tr>
-<tr class="memdesc:a38553a2451e4963a279129fa10264cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the bounding rectangle of the entity.  <br /></td></tr>
-<tr class="separator:a38553a2451e4963a279129fa10264cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf6d3f7cb1b2ba029b6b048a395cc8ae"><td class="memItemLeft" align="right" valign="top"><a id="adf6d3f7cb1b2ba029b6b048a395cc8ae" name="adf6d3f7cb1b2ba029b6b048a395cc8ae"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~Entity</b> ()</td></tr>
+<tr class="memdesc:adf6d3f7cb1b2ba029b6b048a395cc8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for entity. <br /></td></tr>
+<tr class="separator:adf6d3f7cb1b2ba029b6b048a395cc8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8cb9f36ba2c8f8ca112556beeacfca0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ac8cb9f36ba2c8f8ca112556beeacfca0">setItsY</a> (float Y)</td></tr>
 <tr class="memdesc:ac8cb9f36ba2c8f8ca112556beeacfca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the y-coordinate of the entity's position.  <br /></td></tr>
 <tr class="separator:ac8cb9f36ba2c8f8ca112556beeacfca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,6 +123,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9bd1559414607eef261997bf69de63e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a9bd1559414607eef261997bf69de63e9">setItsImage</a> (string newAssetPath)</td></tr>
 <tr class="memdesc:a9bd1559414607eef261997bf69de63e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the image asset of the entity.  <br /></td></tr>
 <tr class="separator:a9bd1559414607eef261997bf69de63e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a252505d876878e6be6c4364ed1be67f9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a252505d876878e6be6c4364ed1be67f9">setOnPlatform</a> (bool onPlatform)</td></tr>
+<tr class="memdesc:a252505d876878e6be6c4364ed1be67f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the attribute onPlatform.  <br /></td></tr>
+<tr class="separator:a252505d876878e6be6c4364ed1be67f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7bd3bd447928ae871833b749fb9dcd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a4c7bd3bd447928ae871833b749fb9dcd">getItsY</a> ()</td></tr>
+<tr class="memdesc:a4c7bd3bd447928ae871833b749fb9dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the y-coordinate of the entity's position.  <br /></td></tr>
+<tr class="separator:a4c7bd3bd447928ae871833b749fb9dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0c849c1529ca6c0dde810e5c0741c35"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aa0c849c1529ca6c0dde810e5c0741c35">getItsX</a> ()</td></tr>
+<tr class="memdesc:aa0c849c1529ca6c0dde810e5c0741c35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the x-coordinate of the entity's position.  <br /></td></tr>
+<tr class="separator:aa0c849c1529ca6c0dde810e5c0741c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adad018778998318bb083da987536c932"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adad018778998318bb083da987536c932">getYSpeed</a> ()</td></tr>
+<tr class="memdesc:adad018778998318bb083da987536c932"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the speed of the entity along the y-axis.  <br /></td></tr>
+<tr class="separator:adad018778998318bb083da987536c932"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86c9d6debe5cef873e9bb2807cae4125"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a86c9d6debe5cef873e9bb2807cae4125">getXSpeed</a> ()</td></tr>
+<tr class="memdesc:a86c9d6debe5cef873e9bb2807cae4125"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the speed of the entity along the x-axis.  <br /></td></tr>
+<tr class="separator:a86c9d6debe5cef873e9bb2807cae4125"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38553a2451e4963a279129fa10264cb4"><td class="memItemLeft" align="right" valign="top">QRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a38553a2451e4963a279129fa10264cb4">getItsRect</a> ()</td></tr>
+<tr class="memdesc:a38553a2451e4963a279129fa10264cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the bounding rectangle of the entity.  <br /></td></tr>
+<tr class="separator:a38553a2451e4963a279129fa10264cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3082eb8fe1b3fc5afdc3562007b4aa74"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a3082eb8fe1b3fc5afdc3562007b4aa74">getOnPlatform</a> ()</td></tr>
+<tr class="memdesc:a3082eb8fe1b3fc5afdc3562007b4aa74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the onPlatform attribute.  <br /></td></tr>
+<tr class="separator:a3082eb8fe1b3fc5afdc3562007b4aa74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad745385f5f47550344c9f470980b9ab0"><td class="memItemLeft" align="right" valign="top"><a id="ad745385f5f47550344c9f470980b9ab0" name="ad745385f5f47550344c9f470980b9ab0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>calculatePosition</b> ()</td></tr>
 <tr class="memdesc:ad745385f5f47550344c9f470980b9ab0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the new position of the entity based on its speed. <br /></td></tr>
@@ -348,6 +360,36 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a3082eb8fe1b3fc5afdc3562007b4aa74" name="a3082eb8fe1b3fc5afdc3562007b4aa74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3082eb8fe1b3fc5afdc3562007b4aa74">&#9670;&#160;</a></span>getOnPlatform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Entity::getOnPlatform </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Getter for the onPlatform attribute. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_goomba.html#a0d8852fa79586fa54bc3a053e86edaf1">Goomba</a>, <a class="el" href="class_koopa.html#a8012d6bc76f1e2cb9b39ad5596322865">Koopa</a>, and <a class="el" href="class_mario.html#a92dc681fb1bb688a9ed0662aef312e72">Mario</a>.</p>
+
+</div>
+</div>
 <a id="a86c9d6debe5cef873e9bb2807cae4125" name="a86c9d6debe5cef873e9bb2807cae4125"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a86c9d6debe5cef873e9bb2807cae4125">&#9670;&#160;</a></span>getXSpeed()</h2>
 
@@ -463,6 +505,42 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a252505d876878e6be6c4364ed1be67f9" name="a252505d876878e6be6c4364ed1be67f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a252505d876878e6be6c4364ed1be67f9">&#9670;&#160;</a></span>setOnPlatform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Entity::setOnPlatform </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>onPlatform</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the attribute onPlatform. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onPlatform</td><td>: boolean </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_goomba.html#a68155423450aad667534841dec646359">Goomba</a>, <a class="el" href="class_koopa.html#ac3702af58db4d3cc3aad9fe8c81fabfd">Koopa</a>, and <a class="el" href="class_mario.html#a0801c2edd426c94b35f1e8817c6ab91d">Mario</a>.</p>
 
 </div>
 </div>

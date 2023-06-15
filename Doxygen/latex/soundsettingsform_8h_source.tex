@@ -6,44 +6,63 @@
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SOUNDSSETTINGSFORM\_H}}
 \DoxyCodeLine{00008\ }
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QWidget>}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}qlabel.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{soundmanager_8h}{soundmanager.h}}"{}}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }Ui\ \{}
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}};}
-\DoxyCodeLine{00015\ \}}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}}\ :\ \textcolor{keyword}{public}\ QWidget}
-\DoxyCodeLine{00026\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr},\ \mbox{\hyperlink{class_sound_manager}{SoundManager}}\ *soundMenuManager\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_sound_settings_form_a779ffc7039d803a8f31ea1dfe33c6a7c}{\string~SoundSettingsForm}}();}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}\ *\ \mbox{\hyperlink{class_sound_settings_form_ad818ed53d1fe5e283e49352680414180}{menuSoundManager}};\ }
-\DoxyCodeLine{00044\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_ad52a09e0bab3f4b20e8274423bb7f464}{itsBackground}};\ }
-\DoxyCodeLine{00045\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_a478f15994e682310862ed452648813a1}{itsFloor}};\ }
-\DoxyCodeLine{00046\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_a379f0061039a23baa1678b3a72cf3bd2}{itsMario}};\ }
-\DoxyCodeLine{00047\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_a551b04ef84fdca023a90bb561d7965d0}{itsBowser}};\ }
-\DoxyCodeLine{00049\ \ \ \ \ QLabel\ *\ itsTitle;}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ signals:}
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_settings_form_a2598a9224dba0c2f6e48dc1ee5c02343}{finished}}();}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \textcolor{keyword}{private}\ slots:}
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_generalVolumeSlider\_valueChanged(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QFile>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}qlabel.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{soundmanager_8h}{soundmanager.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <istream>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ namespace\ }std\ ;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}};}
+\DoxyCodeLine{00022\ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_sound_settings_form}{SoundSettingsForm}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr},\ \mbox{\hyperlink{class_sound_manager}{SoundManager}}\ *soundMenuManager\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_sound_settings_form_a779ffc7039d803a8f31ea1dfe33c6a7c}{\string~SoundSettingsForm}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}\ *\ \mbox{\hyperlink{class_sound_settings_form_ad818ed53d1fe5e283e49352680414180}{menuSoundManager}};\ }
+\DoxyCodeLine{00051\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_ad52a09e0bab3f4b20e8274423bb7f464}{itsBackground}};\ }
+\DoxyCodeLine{00052\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_a478f15994e682310862ed452648813a1}{itsFloor}};\ }
+\DoxyCodeLine{00053\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_a379f0061039a23baa1678b3a72cf3bd2}{itsMario}};\ }
+\DoxyCodeLine{00054\ \ \ \ \ QImage\ \mbox{\hyperlink{class_sound_settings_form_a551b04ef84fdca023a90bb561d7965d0}{itsBowser}};\ }
+\DoxyCodeLine{00056\ \ \ \ \ QLabel\ *\ \mbox{\hyperlink{class_sound_settings_form_a22c82501d844a8abf6114499965e8494}{itsTitle}};\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_settings_form_a7b8cb6b904b54e77bb4c91e0c03f396c}{setIsOnPaused}}(\textcolor{keywordtype}{bool}\ newIsOnPaused);}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_effectsVolumeSlider\_valueChanged(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sound_settings_form_a508fd995db5ac568976a7216681b898d}{getIsOnPaused}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00071\ \ \ \ \ Ui::SoundSettingsForm\ *ui;\ }
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ paintEvent(QPaintEvent\ *event);}
-\DoxyCodeLine{00073\ \ \ \ \ QLabel*\ musicVolumeLabel;}
-\DoxyCodeLine{00074\ \ \ \ \ QLabel*\ effectsVolumeLabel;}
-\DoxyCodeLine{00075\ \};}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SOUNDSSETTINGSFORM\_H}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_settings_form_a46c0f71a8bdcd01902240df8f8511726}{saveSettings}}();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_settings_form_a625a3c0a8518b2a8c25c313e2ccae74c}{loadSettings}}();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ signals:}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_settings_form_a2598a9224dba0c2f6e48dc1ee5c02343}{finished}}();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_settings_form_a81702d893478fdbc0001a70ad0b62436}{restarted}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_generalVolumeSlider\_valueChanged(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_effectsVolumeSlider\_valueChanged(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00105\ \ \ \ \ Ui::SoundSettingsForm\ *ui;\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{void}\ paintEvent(QPaintEvent\ *event);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ QLabel*\ musicVolumeLabel;\ }
+\DoxyCodeLine{00114\ \ \ \ \ QLabel*\ effectsVolumeLabel;\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{bool}\ isOnPaused\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00118\ \ \ \ \ fstream\ settingsFile;\ }
+\DoxyCodeLine{00119\ \};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SOUNDSSETTINGSFORM\_H}}
 
 \end{DoxyCode}

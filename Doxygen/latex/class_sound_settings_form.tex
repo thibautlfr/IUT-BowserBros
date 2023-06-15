@@ -20,7 +20,10 @@ Inheritance diagram for Sound\+Settings\+Form\+:\begin{figure}[H]
 \item 
 \mbox{\Hypertarget{class_sound_settings_form_a2598a9224dba0c2f6e48dc1ee5c02343}\label{class_sound_settings_form_a2598a9224dba0c2f6e48dc1ee5c02343}} 
 void {\bfseries finished} ()
-\begin{DoxyCompactList}\small\item\em Signal emitted when the user has finished with the sound settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Signal emitted when the user has finished with the sound settings. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sound_settings_form_a81702d893478fdbc0001a70ad0b62436}\label{class_sound_settings_form_a81702d893478fdbc0001a70ad0b62436}} 
+void {\bfseries restarted} ()
+\begin{DoxyCompactList}\small\item\em Signal emitted when the user wants to restart the game (if it was paused). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,7 +31,17 @@ void {\bfseries finished} ()
 \begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_sound_settings_form}{Sound\+Settings\+Form}} object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_sound_settings_form_a779ffc7039d803a8f31ea1dfe33c6a7c}\label{class_sound_settings_form_a779ffc7039d803a8f31ea1dfe33c6a7c}} 
 {\bfseries $\sim$\+Sound\+Settings\+Form} ()
-\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{class_sound_settings_form}{Sound\+Settings\+Form}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{class_sound_settings_form}{Sound\+Settings\+Form}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sound_settings_form_a7b8cb6b904b54e77bb4c91e0c03f396c}{set\+Is\+On\+Paused}} (bool new\+Is\+On\+Paused)
+\begin{DoxyCompactList}\small\item\em Sets the paused state of the game. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sound_settings_form_a508fd995db5ac568976a7216681b898d}{get\+Is\+On\+Paused}} () const
+\begin{DoxyCompactList}\small\item\em Gets the paused state of the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sound_settings_form_a46c0f71a8bdcd01902240df8f8511726}\label{class_sound_settings_form_a46c0f71a8bdcd01902240df8f8511726}} 
+void {\bfseries save\+Settings} ()
+\begin{DoxyCompactList}\small\item\em Saves the sound settings to a file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sound_settings_form_a625a3c0a8518b2a8c25c313e2ccae74c}\label{class_sound_settings_form_a625a3c0a8518b2a8c25c313e2ccae74c}} 
+void {\bfseries load\+Settings} ()
+\begin{DoxyCompactList}\small\item\em Loads the sound settings from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,8 +55,7 @@ QImage \mbox{\hyperlink{class_sound_settings_form_a379f0061039a23baa1678b3a72cf3
 \item 
 QImage \mbox{\hyperlink{class_sound_settings_form_a551b04ef84fdca023a90bb561d7965d0}{its\+Bowser}}
 \item 
-\mbox{\Hypertarget{class_sound_settings_form_a22c82501d844a8abf6114499965e8494}\label{class_sound_settings_form_a22c82501d844a8abf6114499965e8494}} 
-QLabel $\ast$ {\bfseries its\+Title}
+QLabel $\ast$ \mbox{\hyperlink{class_sound_settings_form_a22c82501d844a8abf6114499965e8494}{its\+Title}}
 \end{DoxyCompactItemize}
 
 
@@ -68,6 +80,37 @@ Constructs a \mbox{\hyperlink{class_sound_settings_form}{Sound\+Settings\+Form}}
 {\em parent} & The parent widget (default is nullptr). \\
 \hline
 {\em sound\+Menu\+Manager} & The sound manager object for menu sounds (default is nullptr). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sound_settings_form_a508fd995db5ac568976a7216681b898d}\label{class_sound_settings_form_a508fd995db5ac568976a7216681b898d}} 
+\index{SoundSettingsForm@{SoundSettingsForm}!getIsOnPaused@{getIsOnPaused}}
+\index{getIsOnPaused@{getIsOnPaused}!SoundSettingsForm@{SoundSettingsForm}}
+\doxysubsubsection{\texorpdfstring{getIsOnPaused()}{getIsOnPaused()}}
+{\footnotesize\ttfamily bool Sound\+Settings\+Form\+::get\+Is\+On\+Paused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the paused state of the game. 
+
+\begin{DoxyReturn}{Returns}
+The paused state of the game. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sound_settings_form_a7b8cb6b904b54e77bb4c91e0c03f396c}\label{class_sound_settings_form_a7b8cb6b904b54e77bb4c91e0c03f396c}} 
+\index{SoundSettingsForm@{SoundSettingsForm}!setIsOnPaused@{setIsOnPaused}}
+\index{setIsOnPaused@{setIsOnPaused}!SoundSettingsForm@{SoundSettingsForm}}
+\doxysubsubsection{\texorpdfstring{setIsOnPaused()}{setIsOnPaused()}}
+{\footnotesize\ttfamily void Sound\+Settings\+Form\+::set\+Is\+On\+Paused (\begin{DoxyParamCaption}\item[{bool}]{new\+Is\+On\+Paused }\end{DoxyParamCaption})}
+
+
+
+Sets the paused state of the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Is\+On\+Paused} & The new paused state of the game. \\
 \hline
 \end{DoxyParams}
 
@@ -97,7 +140,13 @@ The floor image of the scoreboard form. \mbox{\Hypertarget{class_sound_settings_
 \doxysubsubsection{\texorpdfstring{itsMario}{itsMario}}
 {\footnotesize\ttfamily QImage Sound\+Settings\+Form\+::its\+Mario}
 
-The \mbox{\hyperlink{class_mario}{Mario}} image of the scoreboard form. \mbox{\Hypertarget{class_sound_settings_form_ad818ed53d1fe5e283e49352680414180}\label{class_sound_settings_form_ad818ed53d1fe5e283e49352680414180}} 
+The \mbox{\hyperlink{class_mario}{Mario}} image of the scoreboard form. \mbox{\Hypertarget{class_sound_settings_form_a22c82501d844a8abf6114499965e8494}\label{class_sound_settings_form_a22c82501d844a8abf6114499965e8494}} 
+\index{SoundSettingsForm@{SoundSettingsForm}!itsTitle@{itsTitle}}
+\index{itsTitle@{itsTitle}!SoundSettingsForm@{SoundSettingsForm}}
+\doxysubsubsection{\texorpdfstring{itsTitle}{itsTitle}}
+{\footnotesize\ttfamily QLabel$\ast$ Sound\+Settings\+Form\+::its\+Title}
+
+The title label of the sound settings form. \mbox{\Hypertarget{class_sound_settings_form_ad818ed53d1fe5e283e49352680414180}\label{class_sound_settings_form_ad818ed53d1fe5e283e49352680414180}} 
 \index{SoundSettingsForm@{SoundSettingsForm}!menuSoundManager@{menuSoundManager}}
 \index{menuSoundManager@{menuSoundManager}!SoundSettingsForm@{SoundSettingsForm}}
 \doxysubsubsection{\texorpdfstring{menuSoundManager}{menuSoundManager}}

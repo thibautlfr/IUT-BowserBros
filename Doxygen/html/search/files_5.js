@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['scoreboard_2eh_0',['scoreboard.h',['../scoreboard_8h.html',1,'']]],
-  ['scoreboardform_2eh_1',['scoreboardform.h',['../scoreboardform_8h.html',1,'']]],
-  ['soundmanager_2eh_2',['soundmanager.h',['../soundmanager_8h.html',1,'']]],
-  ['soundsettingsform_2eh_3',['soundsettingsform.h',['../soundsettingsform_8h.html',1,'']]]
+  ['mario_2eh_0',['mario.h',['../mario_8h.html',1,'']]],
+  ['menuform_2eh_1',['menuform.h',['../menuform_8h.html',1,'']]]
 ];

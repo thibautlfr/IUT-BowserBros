@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['reversexspeed_0',['reverseXSpeed',['../class_entity.html#a97c9f08ae564416ec74f43b45077e324',1,'Entity']]],
-  ['reverseyspeed_1',['reverseYSpeed',['../class_entity.html#a8609b50d53decd1f099bad8c31008c94',1,'Entity']]]
+  ['quitbuttonclicked_0',['quitButtonClicked',['../class_menu_form.html#aa8720bd59c2dca3d8ab0271b364052bf',1,'MenuForm']]]
 ];
