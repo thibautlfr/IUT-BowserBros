@@ -53,14 +53,28 @@ public:
     QImage itsMario; /**< The Mario image of the scoreboard form. */
     QImage itsBowser; /**< The Bowser image of the scoreboard form. */
 
-    QLabel * itsTitle;
+    QLabel * itsTitle; /**< The title label of the sound settings form. */
 
+    /**
+     * @brief Sets the paused state of the game.
+     * @param newIsOnPaused The new paused state of the game.
+     */
     void setIsOnPaused(bool newIsOnPaused);
 
+    /**
+     * @brief Gets the paused state of the game.
+     * @return The paused state of the game.
+     */
     bool getIsOnPaused() const;
 
+    /**
+     * @brief Saves the sound settings to a file.
+     */
     void saveSettings();
 
+    /**
+     * @brief Loads the sound settings from a file.
+     */
     void loadSettings();
 
 signals:
@@ -70,32 +84,38 @@ signals:
     void finished();
 
     /**
-     * @brief Signal emitted when the user want to restart the game (if he paused it).
+     * @brief Signal emitted when the user wants to restart the game (if it was paused).
      */
     void restarted();
 
 private slots:
     /**
-     * @brief Slot called when the "generalVolumeSlider" value changes.
+     * @brief Slot called when the value of the "generalVolumeSlider" changes.
      * @param value The new value of the general volume slider.
      */
     void on_generalVolumeSlider_valueChanged(int value);
 
     /**
-     * @brief Slot called when the "effectsVolumeSlider" value changes.
+     * @brief Slot called when the value of the "effectsVolumeSlider" changes.
      * @param value The new value of the effects volume slider.
      */
     void on_effectsVolumeSlider_valueChanged(int value);
 
 private:
     Ui::SoundSettingsForm *ui; /**< The user interface object for the sound settings form. */
+
+    /**
+     * @brief Paints the sound settings form.
+     * @param event The QPaintEvent object.
+     */
     void paintEvent(QPaintEvent *event);
-    QLabel* musicVolumeLabel;
-    QLabel* effectsVolumeLabel;
 
-    bool isOnPaused = false ;
+    QLabel* musicVolumeLabel; /**< The label for displaying the music volume. */
+    QLabel* effectsVolumeLabel; /**< The label for displaying the effects volume. */
 
-    fstream settingsFile;
+    bool isOnPaused = false; /**< Flag indicating if the game is currently paused. */
+
+    fstream settingsFile; /**< The file stream for saving and loading sound settings. */
 };
 
 #endif // SOUNDSSETTINGSFORM_H

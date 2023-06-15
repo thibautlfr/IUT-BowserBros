@@ -22,11 +22,11 @@ public:
     QImage itsBowser; /**< The Bowser image of the scoreboard form. */
 
 public slots:
-    void level1ButtonClicked();
-    void level2ButtonClicked();
-    void level3ButtonClicked();
-    void level4ButtonClicked();
-    void level5ButtonClicked();
+    void level1ButtonClicked(); /**< Slot for handling the level 1 button clicked event. */
+    void level2ButtonClicked(); /**< Slot for handling the level 2 button clicked event. */
+    void level3ButtonClicked(); /**< Slot for handling the level 3 button clicked event. */
+    void level4ButtonClicked(); /**< Slot for handling the level 4 button clicked event. */
+    void level5ButtonClicked(); /**< Slot for handling the level 5 button clicked event. */
 
 signals:
     /**
@@ -34,11 +34,19 @@ signals:
      */
     void menuButtonClicked();
 
+    /**
+     * @brief Signal emitted when a level button is clicked.
+     * @param level The number of level which is selected
+     */
     void levelSelected(int level);
 
 private:
     Ui::TrainingForm *ui;
 
+    /**
+     * @brief Paints the scoreboard form.
+     * @param event The QPaintEvent object.
+     */
     void paintEvent(QPaintEvent *event);
 };
 

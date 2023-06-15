@@ -147,6 +147,9 @@ public:
      */
     void updateFireBalls();
 
+    /**
+     * @brief Replaces and deletes actors in the game.
+     */
     void replaceAndDeleteActors();
 
     // --------------------------------------------------------------------------------------------
@@ -161,11 +164,24 @@ public:
      */
     void displayChrono();
 
+    /**
+     * @brief Getter for the SoundManager object.
+     * @return A pointer to the SoundManager object.
+     */
     SoundManager* getSoundManager() const;
 
+    /**
+     * @brief Sets the volume of the SoundManager.
+     * @param menuSoundManager A pointer to the SoundManager object.
+     */
     void setVolume(SoundManager *menuSoundManager);
 
+    /**
+     * @brief Sets the flag indicating if the game is currently running.
+     * @param newIsOnGamed Flag indicating if the game is currently running.
+     */
     void setIsOnGamed(bool newIsOnGamed);
+
 
 public slots:
     /**
@@ -232,22 +248,19 @@ private:
     // --------------------------------------------------------------------------------------------
 
 
-    QScrollArea *itsScrollArea; /**< The scroll area for the game. */
-    QTimer *itsTimer; /**< The timer for the game loop. */
+    QScrollArea * itsScrollArea; /**< The scroll area for the game. */
+    QTimer * itsTimer; /**< The timer for the game loop. */
 
     QTimer * marioTimer; /**< The timer for the mario animation death */
     list<Element*> itsBlocks; /**< The list of blocks in the game. */
     list<Element*> itsLadders; /**< The list of ladders in the game. */
 
-    SoundManager *soundManager; /**< Attribute used to mange sounds during the game */
-    float itsVolumesGen;
-    float itsVolumesEffect;
+    SoundManager * soundManager; /**< Attribute used to mange sounds during the game */
+    float itsVolumesGen; /**< The general volume level. */
+    float itsVolumesEffect; /**< The effects volume level. */
 
-    bool isOnGamed;
-    bool trainingMode;
-
-
-
+    bool isOnGamed; /**< Flag indicating if the game is currently running. */
+    bool trainingMode; /**< Flag indicating if the game is in training mode. */
 
     // --------------------------------------------------------------------------------------------
 

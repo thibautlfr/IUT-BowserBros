@@ -39,8 +39,14 @@ public:
      */
     void playJumpEffect();
 
+    /**
+     * @brief Plays the koopa rebounce sound effect.
+     */
     void playKoopaBumpEffect();
 
+    /**
+     * @brief Plays the death sound effect for ennemies.
+     */
     void playEnnemyDeathEffect();
 
 
@@ -106,8 +112,8 @@ public:
 
 private:
     QSoundEffect *jumpEffect; /**< A jump sound effect. */
-    QSoundEffect *koopaBumpEffect;
-    QSoundEffect *ennemyDeathEffect;
+    QSoundEffect *koopaBumpEffect; /**< A koopa bump sound effect. */
+    QSoundEffect *ennemyDeathEffect; /**< An ennemy death sound effect. */
 
     // -----------------------------------------------------------------------------------------
 
