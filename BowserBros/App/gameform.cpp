@@ -298,6 +298,7 @@ void GameForm::checkCharacterCollision()
             soundManager->playLevelPassedMusic();
             itsLevel ++;
 
+
             QObject::connect(soundManager, &SoundManager::musicFinished, this, [this]() {
                 itsTimer->start();
 
@@ -332,7 +333,6 @@ void GameForm::checkCharacterCollision()
             return;
         }
     }
-
 
     // Si il est ni sur le sol ni sur une plateforme alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
     if (itsCharacter->getOnPlatform() == false)
@@ -488,15 +488,15 @@ void GameForm::checkGoombasCollision()
     float characterY = itsCharacter->getItsY();
     for (Goomba * goomba : itsGoombas)
     {
-        if (characterY > height()-300 && goomba->getItsY() >= height()-600)
+        if (characterY > height()-300 && goomba->getItsRect().bottom() >= height()-600)
         {
             visibleGoombas.push_back(goomba);
         }
-        else if (characterY < height()-300 && characterY > 300 && goomba->getItsY() > characterY-300)
+        else if (characterY < height()-300 && characterY > 300 && goomba->getItsRect().bottom() > characterY-300)
         {
             visibleGoombas.push_back(goomba);
         }
-        else if (characterY < 300 && goomba->getItsY() < 600)
+        else if (characterY < 300 && goomba->getItsRect().bottom() < 600)
         {
             visibleGoombas.push_back(goomba);
         }
@@ -596,7 +596,7 @@ void GameForm::checkGoombasCollision()
         if(checkEntityOnBlocks(goomba, nearlyBlocks))
         {
             goomba->updateAsset(elapsedTime);
-            return;
+            //return;
         }
 
         // Si il est ni sur le sol ni sur une plateforme alors il est soit en train de rentrer dans quelque chose ou soit dans les airs
@@ -624,19 +624,18 @@ void GameForm::checkKoopasCollision()
     float characterY = itsCharacter->getItsY();
     for (Koopa * koopa : itsKoopas)
     {
-        if (characterY > height()-300 && koopa->getItsY() >= height()-600)
+        if (characterY > height()-300 && koopa->getItsRect().bottom() >= height()-600)
         {
             visibleKoopas.push_back(koopa);
         }
-        else if (characterY < height()-300 && characterY > 300 && koopa->getItsY() > characterY-300)
+        else if (characterY < height()-300 && characterY > 300 && koopa->getItsRect().bottom() > characterY-300)
         {
             visibleKoopas.push_back(koopa);
         }
-        else if (characterY < 300 && koopa->getItsY() < 600)
+        else if (characterY < 300 && koopa->getItsRect().bottom() < 600)
         {
             visibleKoopas.push_back(koopa);
         }
-
     }
 
     // ---------------------------------------------------------------------------------------------------
@@ -985,10 +984,20 @@ bool GameForm::checkEntityOnBlocks(Entity * anEntity, vector<Element*> nearlyBlo
                     if(anEntity->getXSpeed() < 0 and anEntity->getItsRect().left() - platformRect.left() > 0)
                     {
                         anEntity->setItsX(platformRect.right()+1);
+                        // Si la vitesse correspond a celle d'un koopa ou d'un goomba alors on reverse la xspeed
+                        if (anEntity->getXSpeed() == float(-0.4) || anEntity->getXSpeed() == float(-0.5) || anEntity->getXSpeed() == float(-1.5))
+                        {
+                            anEntity->reverseXSpeed();
+                        }
                     }
                     else if(anEntity->getXSpeed() > 0 and anEntity->getItsRect().right() - platformRect.right() < 0)
                     {
                         anEntity->setItsX(platformRect.left()-anEntity->getItsRect().width());
+                        // Si la vitesse correspond a celle d'un koopa ou d'un goomba alors on reverse la xspeed
+                        if (anEntity->getXSpeed() == float(0.4) || anEntity->getXSpeed() == float(0.5) || anEntity->getXSpeed() == float(1.5))
+                        {
+                            anEntity->reverseXSpeed();
+                        }
                     }
                 }
             }
@@ -998,7 +1007,6 @@ bool GameForm::checkEntityOnBlocks(Entity * anEntity, vector<Element*> nearlyBlo
                 anEntity->setItsY(anEntity->getItsY() + 5);
             }
             anEntity->calculatePosition();
-            //anEntity->updateAsset(elapsedTime);
             return true;
         }
     }
